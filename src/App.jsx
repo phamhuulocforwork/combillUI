@@ -1,5 +1,6 @@
 import JobCard from './features/JobCard'
 import List from './features/List'
+import MessageBox from './features/MessageBox'
 import Todo from './features/Todo'
 import UserProfile from './features/UserProfile'
 
@@ -9,7 +10,8 @@ function App() {
       {/* <Todo></Todo> */}
       {/* <UserProfile></UserProfile> */}
       {/* <List></List> */}
-      <JobCard></JobCard>
+      {/* <JobCard></JobCard> */}
+      <MessageBox></MessageBox>
     </div>
   )
 }
