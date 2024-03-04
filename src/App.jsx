@@ -1,3 +1,4 @@
+import CollectionList from './features/CollectionList'
 import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
@@ -11,7 +12,8 @@ function App() {
       {/* <UserProfile></UserProfile> */}
       {/* <List></List> */}
       {/* <JobCard></JobCard> */}
-      <MessageBox></MessageBox>
+      {/* <MessageBox></MessageBox> */}
+      <CollectionList></CollectionList>
     </div>
   )
 }
