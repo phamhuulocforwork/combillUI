@@ -2,6 +2,7 @@ import CollectionList from './features/CollectionList'
 import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
+import ProductReview from './features/ProductReviewModal'
 import Todo from './features/Todo'
 import UserProfile from './features/UserProfile'
 
@@ -13,7 +14,8 @@ function App() {
       {/* <List></List> */}
       {/* <JobCard></JobCard> */}
       {/* <MessageBox></MessageBox> */}
-      <CollectionList></CollectionList>
+      {/* <CollectionList></CollectionList> */}
+      <ProductReview></ProductReview>
     </div>
   )
 }
