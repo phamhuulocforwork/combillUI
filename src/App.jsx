@@ -3,6 +3,7 @@ import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
 import ProductReview from './features/ProductReviewModal'
+import Subscription from './features/Subscription'
 import Todo from './features/Todo'
 import UserProfile from './features/UserProfile'
 
@@ -15,7 +16,8 @@ function App() {
       {/* <JobCard></JobCard> */}
       {/* <MessageBox></MessageBox> */}
       {/* <CollectionList></CollectionList> */}
-      <ProductReview></ProductReview>
+      {/* <ProductReview></ProductReview> */}
+      <Subscription></Subscription>
     </div>
   )
 }

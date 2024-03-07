@@ -10,7 +10,7 @@ const Rating = () => {
           key={star}
           className={`
           ${reviewScore >= star ? 'text-yellow-500' : 'text-slate-300'}
-          border-2 border-slate-200 rounded-md flex justify-center items-center`}
+          border-2 border-slate-200 rounded-md flex justify-center items-center cursor-pointer`}
           onClick={() => setReviewScore(star)}
         >
           <svg
@@ -20,7 +20,7 @@ const Rating = () => {
             stroke-width="1.5"
             stroke="currentColor"
             className={`
-            ${reviewScore >= star && 'fill-yellow-500'}
+            ${reviewScore >= star && 'fill-yellow-400'}
             w-8 h-8`}
           >
             <path
