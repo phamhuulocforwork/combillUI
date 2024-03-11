@@ -5,6 +5,7 @@ import MessageBox from './features/MessageBox'
 import ProductReview from './features/ProductReviewModal'
 import Subscription from './features/Subscription'
 import Todo from './features/Todo'
+import UserList from './features/User list'
 import UserProfile from './features/UserProfile'
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       {/* <MessageBox></MessageBox> */}
       {/* <CollectionList></CollectionList> */}
       {/* <ProductReview></ProductReview> */}
-      <Subscription></Subscription>
+      {/* <Subscription></Subscription> */}
+      <UserList></UserList>
     </div>
   )
 }
