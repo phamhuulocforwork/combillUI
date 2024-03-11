@@ -1,4 +1,5 @@
 import CollectionList from './features/CollectionList'
+import Feedback from './features/Feedback'
 import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
@@ -19,7 +20,8 @@ function App() {
       {/* <CollectionList></CollectionList> */}
       {/* <ProductReview></ProductReview> */}
       {/* <Subscription></Subscription> */}
-      <UserList></UserList>
+      {/* <UserList></UserList> */}
+      <Feedback></Feedback>
     </div>
   )
 }
