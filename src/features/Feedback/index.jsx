@@ -40,7 +40,9 @@ const Feedback = () => {
         <ResponsiveTextarea></ResponsiveTextarea>
       </div>
       <div className="flex flex-col">
-        <Comment comments={COMMENTS}></Comment>
+        {COMMENTS.map((comment) => (
+          <Comment comment={comment}></Comment>
+        ))}
       </div>
     </div>
   )
