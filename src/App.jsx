@@ -1,4 +1,6 @@
+import Calendar from './features/Calendar'
 import CollectionList from './features/CollectionList'
+import DropdownMenu from './features/DropdownMenu'
 import Feedback from './features/Feedback'
 import JobCard from './features/JobCard'
 import List from './features/List'
@@ -21,7 +23,9 @@ function App() {
       {/* <ProductReview></ProductReview> */}
       {/* <Subscription></Subscription> */}
       {/* <UserList></UserList> */}
-      <Feedback></Feedback>
+      {/* <Feedback></Feedback> */}
+      {/* <Calendar></Calendar> */}
+      <DropdownMenu></DropdownMenu>
     </div>
   )
 }
