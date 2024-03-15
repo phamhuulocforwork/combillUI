@@ -24,8 +24,8 @@ function App() {
       {/* <Subscription></Subscription> */}
       {/* <UserList></UserList> */}
       {/* <Feedback></Feedback> */}
-      {/* <Calendar></Calendar> */}
-      <DropdownMenu></DropdownMenu>
+      <Calendar></Calendar>
+      {/* <DropdownMenu></DropdownMenu> */}
     </div>
   )
 }

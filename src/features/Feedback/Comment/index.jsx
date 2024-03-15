@@ -25,6 +25,7 @@ const Comment = ({ comment }) => {
             id={comment.id}
             className="hover:bg-slate-300 cursor-pointer p-1 rounded-full relative"
             onClick={() => setOpenDropdownMenu((prev) => !prev)}
+            onMouseDown={(e) => e.preventDefault()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
