@@ -1,11 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SliderToggle from '../../components/SiderToggle'
+import {
+  eachDayOfInterval,
+  endOfMonth,
+  format,
+  getDay,
+  isToday,
+  startOfMonth,
+} from 'date-fns'
 
 const Calendar = () => {
   const sliderName = ['Month View', 'Week View']
+  const WEEKDAYS = ['Mon', 'Tue', 'Web', 'Thu', 'Fri', 'Sat', 'Sun']
+  const currentDate = new Date()
+  const firstDayOfMonth = startOfMonth(currentDate)
+  const lastDayOfMonth = endOfMonth(currentDate)
 
-  const days = ['Mon', 'Tue', 'Web', 'Thu', 'Fri', 'Sat', 'Sun']
+  const daysInMonth = eachDayOfInterval({
+    start: firstDayOfMonth,
+    end: lastDayOfMonth,
+  })
+
+  const startingDayIndex = getDay(firstDayOfMonth)
 
   return (
     <div className="bg-slate-50 w-[50rem] rounded-xl p-2 text-slate-700">
@@ -24,7 +41,7 @@ const Calendar = () => {
             className="text-sm font-semibold cursor-default"
             onMouseDown={(e) => e.preventDefault()}
           >
-            November 2023
+            {format(currentDate, 'MMMM')}
           </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,32 +72,41 @@ const Calendar = () => {
       </div>
 
       <div className="grid gap-1 pb-2">
-        {[...Array(1)].map((_, rowIndex) => (
-          <div key={rowIndex} className="grid grid-cols-7 gap-1">
-            {days.map((day, colIndex) => (
+        <div className="grid grid-cols-7 gap-1">
+          {WEEKDAYS.map((day, index) => (
+            <div
+              key={index}
+              className="text-center text-sm font-bold bg-slate-100 px-2 py-1 rounded-md cursor-default"
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              {day}
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-7 gap-1">
+          {Array.from({ length: startingDayIndex - 1 }).map((_, index) => {
+            return (
               <div
-                key={colIndex}
+                key={`empty-${index}`}
                 className="text-center text-sm font-bold bg-slate-100 px-2 py-1 rounded-md cursor-default"
                 onMouseDown={(e) => e.preventDefault()}
+              ></div>
+            )
+          })}
+          {daysInMonth.map((day, index) => (
+            <div
+              key={index}
+              className="items-center flex justify-center text-sm font-bold cursor-pointer bg-slate-100 w-full h-16 rounded-md"
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              <span
+                className={`${isToday(day) ? 'bg-slate-700 w-8 h-8 rounded-full text-slate-50 flex items-center justify-center' : ''}`}
               >
-                {day}
-              </div>
-            ))}
-          </div>
-        ))}
-        {[...Array(5)].map((_, rowIndex) => (
-          <div key={rowIndex} className="grid grid-cols-7 gap-1">
-            {[...Array(7)].map((_, colIndex) => (
-              <div
-                key={colIndex}
-                className="items-center flex justify-center text-sm font-bold cursor-pointer bg-slate-100 w-full h-16 rounded-md"
-                onMouseDown={(e) => e.preventDefault()}
-              >
-                {colIndex}
-              </div>
-            ))}
-          </div>
-        ))}
+                {format(day, 'd')}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
