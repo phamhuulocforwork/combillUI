@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import SliderToggle from '../../components/SiderToggle'
 import {
@@ -13,7 +13,9 @@ import {
 const Calendar = () => {
   const sliderName = ['Month View', 'Week View']
   const WEEKDAYS = ['Mon', 'Tue', 'Web', 'Thu', 'Fri', 'Sat', 'Sun']
-  const currentDate = new Date()
+
+  const [currentDate, setCurrentDate] = useState(new Date())
+
   const firstDayOfMonth = startOfMonth(currentDate)
   const lastDayOfMonth = endOfMonth(currentDate)
 
@@ -34,21 +36,33 @@ const Calendar = () => {
             fill="currentColor"
             className="w-6 h-6 cursor-pointer transition duration-300 hover:scale-110"
             onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              setCurrentDate((prev) => {
+                return new Date(prev.setMonth(prev.getMonth() - 1))
+              })
+            }}
           >
             <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path>
           </svg>
-          <p
-            className="text-sm font-semibold cursor-default"
-            onMouseDown={(e) => e.preventDefault()}
-          >
-            {format(currentDate, 'MMMM')}
-          </p>
+          <div className="w-24 flex justify-center">
+            <p
+              className="text-sm font-semibold cursor-default"
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              {format(currentDate, 'MMMM')}
+            </p>
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
             className="w-6 h-6 cursor-pointer transition duration-300 hover:scale-110"
             onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              setCurrentDate((prev) => {
+                return new Date(prev.setMonth(prev.getMonth() + 1))
+              })
+            }}
           >
             <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path>
           </svg>
@@ -57,17 +71,6 @@ const Calendar = () => {
           <div className="flex items-center bg-gray-300 p-1 rounded-full">
             <SliderToggle sliderName={sliderName}></SliderToggle>
           </div>
-          <button className="flex items-center gap-1 bg-gray-700 px-3 py-2 rounded-full text-slate-50 text-xs font-medium">
-            Add Event
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-4 h-4"
-            >
-              <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-            </svg>
-          </button>
         </div>
       </div>
 
