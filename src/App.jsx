@@ -1,5 +1,6 @@
 import Calendar from './features/Calendar'
 import CollectionList from './features/CollectionList'
+import DatePicker from './features/DatePicker'
 import DropdownMenu from './features/DropdownMenu'
 import Feedback from './features/Feedback'
 import JobCard from './features/JobCard'
@@ -24,8 +25,9 @@ function App() {
       {/* <Subscription></Subscription> */}
       {/* <UserList></UserList> */}
       {/* <Feedback></Feedback> */}
-      <Calendar></Calendar>
+      {/* <Calendar></Calendar> */}
       {/* <DropdownMenu></DropdownMenu> */}
+      <DatePicker></DatePicker>
     </div>
   )
 }
