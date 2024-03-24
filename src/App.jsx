@@ -7,6 +7,7 @@ import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
 import ProductReview from './features/ProductReviewModal'
+import SlideInNotifications from './features/SlideInNotifications'
 import Subscription from './features/Subscription'
 import Todo from './features/Todo'
 import UserList from './features/User list'
@@ -27,7 +28,8 @@ function App() {
       {/* <Feedback></Feedback> */}
       {/* <Calendar></Calendar> */}
       {/* <DropdownMenu></DropdownMenu> */}
-      <DatePicker></DatePicker>
+      {/* <DatePicker></DatePicker> */}
+      <SlideInNotifications></SlideInNotifications>
     </div>
   )
 }
