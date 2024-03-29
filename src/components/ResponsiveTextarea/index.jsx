@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
-const ResponsiveTextarea = () => {
+const ResponsiveTextarea = (props) => {
+  const { Placeholder } = props
+
   const textAreaRef = useRef(null)
   const [val, setVal] = useState()
   const handleChange = (e) => {
@@ -16,7 +18,7 @@ const ResponsiveTextarea = () => {
   return (
     <textarea
       className="box-border w-full outline-none resize-none overflow-hidden border text-sm rounded-lg p-4 border-slate-300"
-      placeholder="Write comment"
+      placeholder={Placeholder}
       name=""
       id=""
       row="2"

@@ -1,3 +1,4 @@
+import ApiTokenForm from './features/ApiTokenForm'
 import Calendar from './features/Calendar'
 import CollectionList from './features/CollectionList'
 import DatePicker from './features/DatePicker'
@@ -31,7 +32,8 @@ function App() {
       {/* <DropdownMenu></DropdownMenu> */}
       {/* <DatePicker></DatePicker> */}
       {/* <SlideInNotifications></SlideInNotifications> */}
-      <Dropdown></Dropdown>
+      {/* <Dropdown></Dropdown> */}
+      <ApiTokenForm></ApiTokenForm>
     </div>
   )
 }
