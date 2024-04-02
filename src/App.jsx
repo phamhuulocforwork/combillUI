@@ -15,6 +15,7 @@ import TextFormattingToolbar from './features/TextFormattingToolbar'
 import Todo from './features/Todo'
 import UserList from './features/User list'
 import UserProfile from './features/UserProfile'
+import VideoPlayer from './features/VideoPlayer'
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
       {/* <SlideInNotifications></SlideInNotifications> */}
       {/* <Dropdown></Dropdown> */}
       {/* <ApiTokenForm></ApiTokenForm> */}
-      <TextFormattingToolbar></TextFormattingToolbar>
+      {/* <TextFormattingToolbar></TextFormattingToolbar> */}
+      <VideoPlayer></VideoPlayer>
     </div>
   )
 }
