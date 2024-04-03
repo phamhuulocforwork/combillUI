@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-
+let interval
 const VideoPlayer = () => {
   const iconStyle = 'text-slate-50 w-8 h-8 cursor-pointer'
+
+  const rangevalValue = 3373
+
+  const [isPlay, setPlay] = useState(false)
+
+  const secondsToHHMMSS = (seconds) => {
+    const date = new Date(null)
+    date.setSeconds(seconds)
+    return date.toISOString().slice(11, 19)
+  }
+
+  useEffect(() => {
+    if (isPlay) {
+      interval = setInterval(() => {
+        setRangeval((prev) => prev + 1)
+      }, 1000)
+    } else {
+      clearInterval(interval)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isPlay])
+
+  const [rangeval, setRangeval] = useState(0)
 
   return (
     <div className="w-[48rem] h-[28rem] rounded-3xl bg-gray-700 relative flex flex-col p-4">
@@ -26,7 +51,7 @@ const VideoPlayer = () => {
       </div>
 
       <div className="mt-auto bg-slate-950 w-full rounded-2xl p-4 flex items-center justify-between gap-4">
-        <div>
+        <div onClick={() => setPlay((prev) => !prev)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -43,14 +68,22 @@ const VideoPlayer = () => {
           </svg>
         </div>
 
-        <div className="h-2 bg-slate-400 content-none flex-1 z-0 rounded-full">
-          <div className="h-2 relative bg-slate-50 content-none w-1/2 rounded-full before:w-4 before:h-4 before:bg-slate-50 before:absolute before:-top-1/2 before:rounded-full before:right-0"></div>
+        <div className="flex justify-center items-center flex-1">
+          <input
+            type="range"
+            min="0"
+            max={rangevalValue}
+            value={rangeval}
+            step="1"
+            className="w-full"
+            onChange={(event) => setRangeval(parseInt(event.target.value))}
+          />
         </div>
 
-        <div className="flex">
+        <div className="flex w-48 justify-center px-1">
           <p className="text-slate-50 flex">
-            34:45&nbsp;
-            <p className="text-slate-400">/ 56:23</p>
+            {secondsToHHMMSS(rangeval)}&nbsp;
+            <p className="text-slate-400">/ {secondsToHHMMSS(rangevalValue)}</p>
           </p>
         </div>
 
