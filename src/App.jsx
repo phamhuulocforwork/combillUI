@@ -9,6 +9,7 @@ import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
 import ProductReview from './features/ProductReviewModal'
+import SimpleMenu from './features/SimpleMenu'
 import SlideInNotifications from './features/SlideInNotifications'
 import Subscription from './features/Subscription'
 import TextFormattingToolbar from './features/TextFormattingToolbar'
@@ -37,7 +38,8 @@ function App() {
       {/* <Dropdown></Dropdown> */}
       {/* <ApiTokenForm></ApiTokenForm> */}
       {/* <TextFormattingToolbar></TextFormattingToolbar> */}
-      <VideoPlayer></VideoPlayer>
+      {/* <VideoPlayer></VideoPlayer> */}
+      <SimpleMenu></SimpleMenu>
     </div>
   )
 }
