@@ -7,7 +7,7 @@ const FontSize = () => {
   return (
     <div className="flex justify-center items-center bg-white rounded-md border text-slate-800 border-slate-400 shadow-sm">
       <div
-        className="p-2 hover:bg-slate-300 cursor-pointer rounded-l-md select-none border-l-slate-300 border box-border"
+        className="p-2 hover:bg-slate-300 cursor-pointer rounded-l-md select-none border-r border-slate-300 box-border"
         onClick={() => setFontSize(fontSize - 1)}
       >
         <svg
@@ -26,7 +26,7 @@ const FontSize = () => {
         onChange={(e) => setFontSize(parseInt(e.target.value))}
       ></input>
       <div
-        className="p-2 hover:bg-slate-300 cursor-pointer rounded-r-md select-none border-l-slate-300 border box-border"
+        className="p-2 hover:bg-slate-300 cursor-pointer rounded-r-md select-none border-l border-slate-300 box-border"
         onClick={() => setFontSize(fontSize + 1)}
       >
         <svg
