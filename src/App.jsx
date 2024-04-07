@@ -40,7 +40,8 @@ function App() {
       {/* <ApiTokenForm></ApiTokenForm> */}
       {/* <TextFormattingToolbar></TextFormattingToolbar> */}
       {/* <VideoPlayer></VideoPlayer> */}
-      <SimpleMenu></SimpleMenu>
+      {/* <SimpleMenu></SimpleMenu> */}
+      <TeamPage></TeamPage>
     </div>
   )
 }
