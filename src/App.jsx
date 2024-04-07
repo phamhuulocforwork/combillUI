@@ -17,6 +17,7 @@ import Todo from './features/Todo'
 import UserList from './features/User list'
 import UserProfile from './features/UserProfile'
 import VideoPlayer from './features/VideoPlayer'
+import TeamPage from './views/TeamPage'
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
       {/* <ApiTokenForm></ApiTokenForm> */}
       {/* <TextFormattingToolbar></TextFormattingToolbar> */}
       {/* <VideoPlayer></VideoPlayer> */}
-      <SimpleMenu></SimpleMenu>
+      {/* <SimpleMenu></SimpleMenu> */}
+      <TeamPage></TeamPage>
     </div>
   )
 }
