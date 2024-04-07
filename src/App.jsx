@@ -8,8 +8,8 @@ import Feedback from './features/Feedback'
 import JobCard from './features/JobCard'
 import List from './features/List'
 import MessageBox from './features/MessageBox'
+import PopupNotifications from './features/PopupNotifications'
 import ProductReview from './features/ProductReviewModal'
-import SimpleMenu from './features/SimpleMenu'
 import SlideInNotifications from './features/SlideInNotifications'
 import Subscription from './features/Subscription'
 import TextFormattingToolbar from './features/TextFormattingToolbar'
@@ -40,8 +40,7 @@ function App() {
       {/* <ApiTokenForm></ApiTokenForm> */}
       {/* <TextFormattingToolbar></TextFormattingToolbar> */}
       {/* <VideoPlayer></VideoPlayer> */}
-      {/* <SimpleMenu></SimpleMenu> */}
-      <TeamPage></TeamPage>
+      <SimpleMenu></SimpleMenu>
     </div>
   )
 }
