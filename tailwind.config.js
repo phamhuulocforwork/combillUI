@@ -3,7 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      backgroundImage: {},
+      backgroundImage: {
+        'logo': "url('/public/huuloclogo.svg')",
+      },
     },
   },
   plugins: [],
