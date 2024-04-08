@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 const TeamPage = () => {
   return (
     <div className="h-full w-full bg-black flex flex-col text-slate-50">
-      <div className="py-6 px-16">
-        <div className=" flex justify-between items-center">
+      <div className="flex flex-col gap-4">
+        <div className="px-16 flex justify-between items-center">
           <div>
             <svg
               width="169"
@@ -73,7 +73,26 @@ const TeamPage = () => {
             </button>
           </div>
         </div>
+
+        <div className="bg-black">
+          <svg viewBox="0 0 2000 1000" xmlns="http://www.w3.org/2000/svg">
+            <mask id="b" x="0" y="0" width="2000" height="1000">
+              <path fill="url(#a)" d="M0 0h2000v1000H0z" />
+            </mask>
+            <g stroke="#4c4e72" stroke-width="2" fill="none" mask="url(#b)">
+              <path d="M0 0h200v200H0zM200 0h200v200H200zM400 0h200v200H400zM600 0h200v200H600zM800 0h200v200H800zM1000 0h200v200h-200zM1200 0h200v200h-200zM1400 0h200v200h-200zM1600 0h200v200h-200zM1800 0h200v200h-200zM0 200h200v200H0zM200 200h200v200H200zM400 200h200v200H400zM600 200h200v200H600zM800 200h200v200H800zM1000 200h200v200h-200zM1200 200h200v200h-200zM1400 200h200v200h-200zM1600 200h200v200h-200zM1800 200h200v200h-200zM0 400h200v200H0zM200 400h200v200H200zM400 400h200v200H400zM600 400h200v200H600zM800 400h200v200H800zM1000 400h200v200h-200zM1200 400h200v200h-200zM1400 400h200v200h-200zM1600 400h200v200h-200zM1800 400h200v200h-200zM0 600h200v200H0zM200 600h200v200H200zM400 600h200v200H400zM600 600h200v200H600zM800 600h200v200H800zM1000 600h200v200h-200zM1200 600h200v200h-200zM1400 600h200v200h-200zM1600 600h200v200h-200zM1800 600h200v200h-200zM0 800h200v200H0zM200 800h200v200H200zM400 800h200v200H400zM600 800h200v200H600zM800 800h200v200H800zM1000 800h200v200h-200zM1200 800h200v200h-200zM1400 800h200v200h-200zM1600 800h200v200h-200zM1800 800h200v200h-200z" />
+            </g>
+            <defs>
+              <linearGradient id="a" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fff" />
+                <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
         <hr className="my-4 border-slate-500" />
+
         <div className="flex flex-col items-center gap-12">
           <ul className="flex gap-6 text-slate-500 font-semibold ">
             <li className="hover:text-slate-300">
