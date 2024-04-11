@@ -1,7 +1,7 @@
-import TeamPage from './views/TeamPage'
+import PricingPage from './views/PricingPage'
 
 function App() {
-  return <TeamPage></TeamPage>
+  return <PricingPage></PricingPage>
 }
 
 export default App

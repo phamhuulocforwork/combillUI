@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 const TOGGLE_CLASSES =
-  'text-xs font-semibold flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10'
+  'text-xs font-bold flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10'
 
 const SliderToggle = ({ sliderName }) => {
   const [selected, setSelected] = useState(true)
@@ -11,7 +11,7 @@ const SliderToggle = ({ sliderName }) => {
     <div className="relative flex w-fit items-center rounded-full">
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === true ? 'text-slate-700' : 'text-slate-700'
+          selected === true ? 'text-slate-500' : 'text-slate-500'
         }`}
         onMouseDown={(e) => e.preventDefault()}
         onClick={() => {
@@ -22,7 +22,7 @@ const SliderToggle = ({ sliderName }) => {
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === false ? 'text-slate-700' : 'text-slate-700'
+          selected === false ? 'text-slate-500' : 'text-slate-500'
         }`}
         onMouseDown={(e) => e.preventDefault()}
         onClick={() => {
