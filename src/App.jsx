@@ -1,10 +1,9 @@
-import FlashMessage from './features/FlashMessage'
+import MusicPlayer from './features/MusicPlayer'
 
 function App() {
   return (
-    <div className="flex items-center justify-center bg-blue-300 w-full h-screen gap-4">
-      <FlashMessage state={'success'}></FlashMessage>
-      <FlashMessage state={'error'}></FlashMessage>
+    <div className="flex items-center justify-center bg-white w-full h-screen gap-4">
+      <MusicPlayer></MusicPlayer>
     </div>
   )
 }
