@@ -1,9 +1,9 @@
-import WorkspaceInfo from './features/WorkspaceInfo'
+import StepCount from './features/StepCount'
 
 function App() {
   return (
     <div className="flex items-center justify-center bg-blue-100 w-full h-screen gap-8">
-      <WorkspaceInfo></WorkspaceInfo>
+      <StepCount></StepCount>
     </div>
   )
 }
