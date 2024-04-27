@@ -38,7 +38,7 @@ export default function WorkspaceInfo() {
 
   return (
     <>
-      <div className="dark w-[30rem] bg-slate-50 dark:bg-slate-900 rounded-xl flex flex-col relative text-slate-800 dark:text-slate-50">
+      <div className="w-[30rem] bg-slate-50 dark:bg-slate-900 rounded-xl flex flex-col relative text-slate-800 dark:text-slate-50">
         <div className="p-6 flex">
           <div className="absolute top-4 right-4">
             <svg
