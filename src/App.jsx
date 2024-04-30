@@ -1,9 +1,9 @@
-import WorkspaceInfo from './features/WorkspaceInfo'
+import CalendarTodoList from './features/CalendarTodoList'
 
 function App() {
   return (
-    <div className="flex items-center justify-center bg-blue-100 w-full h-screen gap-8">
-      <WorkspaceInfo></WorkspaceInfo>
+    <div className="flex h-screen w-full items-center justify-center gap-8 bg-blue-100">
+      <CalendarTodoList></CalendarTodoList>
     </div>
   )
 }
