@@ -26,10 +26,19 @@ export default function CreateNewWorkSpace() {
           <div className="flex flex-col gap-2">
             <label htmlFor="">Name</label>
             <input
-              className="py-2 px-4 outline-none border border-slate-400 rounded-md"
+              className="py-2 px-4 outline-none border-solid border border-slate-300 rounded-md"
               type="text"
               placeholder="Enter workspace name"
             />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="">Logo</label>
+            <div className="flex items-center justify-center py-2 px-4 outline-none border-dashed min-h-16 border-2 text-slate-400 border-slate-200 rounded-md">
+              <p>
+                Drag and Drop or{' '}
+                <strong className="text-slate-600">browse your device</strong>
+              </p>
+            </div>
           </div>
         </div>
       </form>
