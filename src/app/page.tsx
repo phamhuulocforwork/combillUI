@@ -7,14 +7,15 @@ export default function Home() {
       <Button variant="default" size="xs">
         Default Button
       </Button>
+      <Button variant="block">Block Button</Button>
       <Button variant="outline" size="sm">
-        Default Button
+        Outline Button
       </Button>
       <Button variant="destructive" size="lg">
         Destructive Button
       </Button>
       <Button variant="secondary">Secondary Button</Button>
-      <Button variant="link">Link Button</Button>
+      <Button variant="link">Link</Button>
       <Button variant="outline" size="icon">
         <Move />
       </Button>
