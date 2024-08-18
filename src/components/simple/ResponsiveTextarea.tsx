@@ -24,7 +24,7 @@ const ResponsiveTextarea = React.forwardRef<
   return (
     <textarea
       className={cn(
-        'border-input bg-background dark:bg-background-dark ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'border-input placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-background-dark',
         className,
       )}
       ref={textAreaRef}
