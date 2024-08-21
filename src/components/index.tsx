@@ -9,4 +9,4 @@ export * from './simple/Slider';
 export * from './simple/Skeleton';
 export * from './simple/Separator';
 export * from './simple/Select';
-export * from './simple/SliderToggle';
+export * from './simple/Lever';

@@ -1,7 +1,11 @@
-import { SliderToggle } from '@/components';
+import { Lever } from '@/components';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
+  const handleToggle = (value: boolean) => {
+    console.log('Lever is now:', value ? 'Option A' : 'Option B');
+  };
+
   return (
     <main className='flex min-h-screen w-full items-center justify-center'>
       {/* <div className='flex flex-col items-center justify-center gap-4'>
@@ -13,7 +17,10 @@ export default function Home() {
         </p>
       </div> */}
       <div className='flex flex-col items-center justify-center gap-4'>
-        <SliderToggle></SliderToggle>
+        <Lever>
+          <span>Danh sách phát</span>
+          <span>Nghe gần đây</span>
+        </Lever>
       </div>
     </main>
   );
