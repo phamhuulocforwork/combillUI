@@ -13,24 +13,24 @@ const Lever = React.forwardRef<
     }
   >
 >(({ className, children, ...props }, ref) => {
-  const [selected, setSelected] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
-  const handleToggle = (value: boolean) => {
-    setSelected(value);
+  const handleToggle = () => {
+    setChecked((prev) => !prev);
   };
 
   return (
     <SwitchPrimitives.Root
       className={cn(
-        'relative flex w-fit cursor-pointer items-center rounded-full bg-slate-500 ring-2 ring-slate-500 transition-colors',
+        'relative flex w-fit cursor-pointer items-center rounded-full bg-primary-500 text-text-light ring-2 ring-primary-500 transition-colors dark:text-text-dark',
         className,
       )}
       {...props}
-      onClick={() => handleToggle(!selected)}
       ref={ref}
+      checked={checked}
+      onCheckedChange={handleToggle}
     >
-      <LeverButton selected={selected}>A</LeverButton>
-      <LeverButton selected={!selected}>B</LeverButton>
+      {children}
       <SwitchPrimitives.Thumb
         className={cn(
           'absolute inset-0 z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end',
@@ -39,7 +39,7 @@ const Lever = React.forwardRef<
         <motion.span
           layout
           transition={{ type: 'spring', damping: 15, stiffness: 250 }}
-          className='h-full w-1/2 rounded-full bg-slate-50'
+          className='h-full w-1/2 rounded-full bg-light dark:bg-white'
         />
       </SwitchPrimitives.Thumb>
     </SwitchPrimitives.Root>
@@ -57,7 +57,7 @@ const LeverButton = ({
   <div
     className={cn(
       'relative z-10 flex items-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5',
-      selected ? 'text-slate-500' : 'text-slate-300',
+      selected ? 'text-text-light' : 'text-text-dark',
     )}
     onMouseDown={(e) => e.preventDefault()}
   >

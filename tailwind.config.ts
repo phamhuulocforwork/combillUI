@@ -16,11 +16,11 @@ const config = {
         dark: "url('/noise-dark.gif')",
       },
       colors: {
-        // background: {
-        //   DEFAULT: '',
-        //   light: '',
-        //   dark: '',
-        // },
+        background: {
+          DEFAULT: '#ffffff',
+          light: '#ffffff',
+          dark: '#0f172a',
+        },
         text: {
           DEFAULT: '#0f172a',
           light: '#0f172a',
