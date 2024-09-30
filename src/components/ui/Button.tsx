@@ -16,10 +16,11 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive focus:ring-4 focus:outline-none focus:ring-destructive-300 text-destructive-foreground hover:bg-destructive/90',
         outline:
-          'border border-primary text-primary bg-background hover:bg-accent hover:text-accent-foreground',
+          'border border-primary text-primary hover:bg-accent hover:text-accent-foreground',
         secondary:
           'bg-secondary focus:ring-4 focus:outline-none focus:ring-secondary-300 text-secondary-foreground hover:bg-secondary/80',
         link: 'text-primary underline-offset-4 hover:underline',
+        ghost: 'text-primary',
       },
       size: {
         default: 'h-10 rounded-md px-4 py-2',

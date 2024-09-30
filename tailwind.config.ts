@@ -21,11 +21,14 @@ const config = {
           light: '#ffffff',
           dark: '#0f172a',
         },
-        text: {
+        foreground: {
           DEFAULT: '#0f172a',
           light: '#0f172a',
           dark: '#ffffff',
         },
+        border: '#cbd5e1',
+        input: '#f1f5f9',
+        ring: '',
         primary: {
           DEFAULT: '#0e91e9',
           '50': '#f0f9ff',
@@ -100,32 +103,30 @@ const config = {
           '950': '#082f49',
           foreground: '#ffffff',
         },
-        // popover: {
-        //   DEFAULT: "hsl(var(--popover))",
-        //   foreground: "hsl(var(--popover-foreground))",
-        // },
-        // card: {
-        //   DEFAULT: "hsl(var(--card))",
-        //   foreground: "hsl(var(--card-foreground))",
-        // },
       },
-      // keyframes: {
-      //   'accordion-down': {
-      //     from: { height: '0' },
-      //     to: { height: 'var(--radix-accordion-content-height)' },
-      //   },
-      //   'accordion-up': {
-      //     from: { height: 'var(--radix-accordion-content-height)' },
-      //     to: { height: '0' },
-      //   },
-      // },
-      // animation: {
-      //   'accordion-down': 'accordion-down 0.2s ease-out',
-      // 'accordion-up': 'accordion-up 0.2s ease-out',
-      // },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
+  safelist: [
+    {
+      pattern:
+        /bg-(primary|secondary|destructive|muted|accent)-(50|100|200|300|400|500|600|700|800|900|950)/,
+    },
+  ],
 } satisfies Config;
 
 export default config;
