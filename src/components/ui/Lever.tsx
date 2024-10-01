@@ -22,7 +22,7 @@ const Lever = React.forwardRef<
   return (
     <SwitchPrimitives.Root
       className={cn(
-        'relative flex w-fit cursor-pointer items-center rounded-full bg-primary-500 text-text-light ring-2 ring-primary-500 transition-colors dark:text-text-dark',
+        'text-text-light dark:text-text-dark relative flex w-fit cursor-pointer items-center rounded-full bg-primary-500 ring-2 ring-primary-500 transition-colors',
         className,
       )}
       {...props}
@@ -57,7 +57,7 @@ const LeverButton = ({
   <div
     className={cn(
       'relative z-10 flex items-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5',
-      selected ? 'text-text-light' : 'text-text-dark',
+      selected ? 'text-primary' : 'text-primary-foreground',
     )}
     onMouseDown={(e) => e.preventDefault()}
   >

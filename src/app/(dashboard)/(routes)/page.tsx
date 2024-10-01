@@ -1,46 +1,78 @@
 'use client';
 
 import {
-  ButtonWrapper,
-  ColorPalette,
-  Lever,
-  LeverButton,
+  ComponentWarpper,
+  ColorPaletteDemo,
+  ButtonDemo,
+  AlertDemo,
+  CheckBoxDemo,
+  SelectDemo,
+  SeparatorDemo,
+  SkeletonDemo,
+  SliderDemo,
+  SwitchDemo,
+  LeverDemo,
   ResponsiveTextarea,
-  SwitchModeButton,
+  Textarea,
+  AlertDialogDemo,
 } from '@/components';
-import { useState } from 'react';
-import { ComponentWarpper } from '@/components';
 
 export default function Home() {
-  const [selected, setSelected] = useState(true);
-
-  const handleToggle = (value: boolean) => {
-    setSelected(value);
-  };
-
   return (
-    <div className='relative z-20 flex translate-x-10 flex-row items-start'>
-      <div className='flex min-w-[896px] flex-col gap-8 rounded-xl border border-border bg-transparent p-16 shadow-md dark:border-foreground-dark'>
+    <div className='container'>
+      <div className='flex flex-col gap-8 rounded-xl border border-border p-8 md:p-16'>
         <ComponentWarpper label='Colors'>
-          <ColorPalette />
+          <ColorPaletteDemo />
         </ComponentWarpper>
 
         <ComponentWarpper label='Button'>
-          <ButtonWrapper />
+          <ButtonDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Alert'>
+          <AlertDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Check box'>
+          <CheckBoxDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Select' className='max-w-56'>
+          <SelectDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Separator'>
+          <SeparatorDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Skeleton'>
+          <SkeletonDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Slider'>
+          <SliderDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Switch'>
+          <SwitchDemo />
         </ComponentWarpper>
 
         <ComponentWarpper label='Lever'>
-          <Lever onClick={() => handleToggle(!selected)}>
-            <LeverButton selected={selected}>Danh sách phát</LeverButton>
-            <LeverButton selected={!selected}>Nghe gần đây</LeverButton>
-          </Lever>
+          <LeverDemo />
         </ComponentWarpper>
 
         <ComponentWarpper label='Responsive Textarea'>
-          <ResponsiveTextarea className='text-text'></ResponsiveTextarea>
+          <ResponsiveTextarea></ResponsiveTextarea>
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Textarea'>
+          <Textarea></Textarea>
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Alert Dialog'>
+          <AlertDialogDemo />
         </ComponentWarpper>
       </div>
-      <SwitchModeButton />
     </div>
   );
 }

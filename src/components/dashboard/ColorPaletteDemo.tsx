@@ -16,20 +16,22 @@ const shades = [
   '950',
 ];
 
-export function ColorPalette() {
+export function ColorPaletteDemo() {
   return (
     <div className='flex flex-col gap-4'>
       {colors.map((color) => (
         <>
           <Label className='capitalize'>{color}</Label>
-          <div key={color} className='grid grid-cols-11 grid-rows-1 gap-1'>
+          <div key={color} className='grid grid-cols-6 gap-1 md:grid-cols-11'>
             {shades.map((shade) => (
               <div className='flex flex-col items-center justify-center gap-1'>
                 <div
                   key={shade}
                   className={`h-10 w-full bg-${color}-${shade} rounded-md`}
                 />
-                <Label className='text-sm font-semibold'>{shade}</Label>
+                <Label className='text-xs font-semibold md:text-sm'>
+                  {shade}
+                </Label>
               </div>
             ))}
           </div>

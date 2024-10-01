@@ -101,7 +101,15 @@ const config = {
           '800': '#075385',
           '900': '#0c476e',
           '950': '#082f49',
-          foreground: '#ffffff',
+          foreground: '#0f172a',
+        },
+        popover: {
+          DEFAULT: '#ffffff',
+          foreground: '#0f172a',
+        },
+        card: {
+          DEFAULT: '#ffffff',
+          foreground: '#0f172a',
         },
       },
       keyframes: {

@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
 import './globals.css';
+import type { Metadata } from 'next';
 import { ThemeProvider } from '@/context';
-import { Header } from '@/components';
+import { Header, LeftSideBar, RightSideBar } from '@/components';
 
 export const metadata: Metadata = {
   title: 'TailwindCSS UI Kit',
@@ -18,14 +18,15 @@ export default function RootLayout({
       <body>
         <ThemeProvider
           attribute='class'
-          defaultTheme='system'
-          enableSystem
+          defaultTheme='dark'
           disableTransitionOnChange
         >
-          <main className='relative flex min-h-screen w-full flex-col items-center justify-center bg-light dark:bg-dark'>
-            <div className='my-32 flex flex-col gap-16'>
-              <Header />
+          <main className='relative flex w-full flex-col bg-light dark:bg-dark'>
+            <Header />
+            <div className='relative mb-16 flex min-h-screen flex-row items-start justify-center gap-2'>
+              <LeftSideBar />
               {children}
+              <RightSideBar />
             </div>
           </main>
         </ThemeProvider>
