@@ -2,12 +2,12 @@
 
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { Button } from '@/components';
+import { Button, Label } from '@/components';
 
 export function SwitchModeButton() {
   const { theme, setTheme } = useTheme();
   return (
-    <div>
+    <div className='flex items-center space-x-2'>
       {theme === 'light' ? (
         <Button size='icon' onClick={() => setTheme('dark')}>
           <Moon />
@@ -17,6 +17,7 @@ export function SwitchModeButton() {
           <Sun />
         </Button>
       )}
+      <Label>Theme mode</Label>
     </div>
   );
 }

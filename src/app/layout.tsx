@@ -21,9 +21,9 @@ export default function RootLayout({
           defaultTheme='dark'
           disableTransitionOnChange
         >
-          <main className='relative flex w-full flex-col bg-light dark:bg-dark'>
+          <main className='relative flex w-full flex-col items-center justify-center bg-light dark:bg-dark'>
             <Header />
-            <div className='relative mb-16 flex min-h-screen flex-row items-start justify-center gap-2'>
+            <div className='container relative mb-16 flex min-h-screen flex-row items-start justify-center gap-4'>
               <LeftSideBar />
               {children}
               <RightSideBar />
