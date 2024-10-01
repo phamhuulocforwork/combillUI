@@ -14,6 +14,7 @@ import {
   LeverDemo,
   ResponsiveTextarea,
   Textarea,
+  Input,
   AlertDialogDemo,
   BreadcrumbDemo,
 } from '@/components';
@@ -47,6 +48,10 @@ export default function Home() {
 
       <ComponentWarpper label='Select' className='max-w-56'>
         <SelectDemo />
+      </ComponentWarpper>
+
+      <ComponentWarpper label='Input'>
+        <Input type='input' placeholder='Input' />
       </ComponentWarpper>
 
       <ComponentWarpper label='Separator'>

@@ -15,6 +15,7 @@ export * from './ui/Alert';
 export * from './ui/Separator';
 export * from './ui/AlertDialog';
 export * from './ui/Breadcrumb';
+export * from './ui/Input';
 export * from './complex/DragItem';
 export * from './dashboard/ComponentWarpper';
 export * from './dashboard/ColorPaletteDemo';

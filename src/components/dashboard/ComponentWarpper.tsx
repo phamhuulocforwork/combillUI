@@ -15,7 +15,11 @@ export function ComponentWarpper({
 }: ComponentWarpperProps) {
   return (
     <div className={cn('flex flex-col gap-4', className)}>
-      {label && <Label className='text-xl font-bold'>{label}</Label>}
+      {label && (
+        <Label className='text-xl font-bold underline underline-offset-4'>
+          {label}
+        </Label>
+      )}
       {children}
     </div>
   );
