@@ -15,12 +15,13 @@ import {
   ResponsiveTextarea,
   Textarea,
   AlertDialogDemo,
+  BreadcrumbDemo,
 } from '@/components';
 
 export default function Home() {
   return (
-    <div className='container'>
-      <div className='flex flex-col gap-8 rounded-xl border border-border p-8 md:p-16'>
+    <div className='container md:mx-32'>
+      <div className='flex flex-col gap-8 rounded-xl border-border p-8 md:border md:p-16'>
         <ComponentWarpper label='Colors'>
           <ColorPaletteDemo />
         </ComponentWarpper>
@@ -31,6 +32,10 @@ export default function Home() {
 
         <ComponentWarpper label='Alert'>
           <AlertDemo />
+        </ComponentWarpper>
+
+        <ComponentWarpper label='Alert Dialog'>
+          <AlertDialogDemo />
         </ComponentWarpper>
 
         <ComponentWarpper label='Check box'>
@@ -62,15 +67,15 @@ export default function Home() {
         </ComponentWarpper>
 
         <ComponentWarpper label='Responsive Textarea'>
-          <ResponsiveTextarea></ResponsiveTextarea>
+          <ResponsiveTextarea />
         </ComponentWarpper>
 
         <ComponentWarpper label='Textarea'>
-          <Textarea></Textarea>
+          <Textarea />
         </ComponentWarpper>
 
-        <ComponentWarpper label='Alert Dialog'>
-          <AlertDialogDemo />
+        <ComponentWarpper label='Breadcrumb'>
+          <BreadcrumbDemo />
         </ComponentWarpper>
       </div>
     </div>

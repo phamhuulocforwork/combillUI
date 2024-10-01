@@ -1,10 +1,14 @@
+import Image from 'next/image';
+
 export function Header() {
   return (
     <div className='w-full p-8 md:p-16'>
-      <img
+      <Image
         src='/vtuberlogo.svg'
+        width={300}
+        height={300}
         alt=''
-        className='absolute left-1/2 top-1/2 -z-0 w-[30vw] -translate-x-1/2 -translate-y-1/2 transform opacity-20'
+        className='absolute left-1/2 top-1/2 -z-0 w-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-20 md:w-1/3'
       />
       <div className='flex flex-col items-center justify-center gap-4'>
         <h1 className='text-center text-2xl font-bold md:text-5xl'>
