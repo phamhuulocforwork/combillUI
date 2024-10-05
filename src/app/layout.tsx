@@ -2,7 +2,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/context';
 import { Footer, Header } from '@/components';
+import { Inter } from 'next/font/google';
 import Image from 'next/image';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'billTail',
@@ -16,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>
+      <body className={inter.className}>
         <ThemeProvider
           attribute='class'
           defaultTheme='dark'
@@ -28,10 +31,12 @@ export default function RootLayout({
               width={300}
               height={300}
               alt=''
-              className='absolute left-1/2 top-1/2 -z-0 w-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-20 md:w-1/3'
+              className='pointer-events-none absolute left-1/2 top-1/2 -z-0 w-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-20 md:w-1/3'
             />
             <Header />
-            {children}
+            <div className='flex w-full items-center justify-center'>
+              {children}
+            </div>
             <Footer />
           </main>
         </ThemeProvider>

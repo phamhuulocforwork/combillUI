@@ -39,7 +39,7 @@ export function Header() {
             className='text-background-dark dark:text-background'
             variant='link'
           >
-            <Link href='/docs/installation'>Docs</Link>
+            <Link href='/docs'>Docs</Link>
           </Button>
           <Button
             className='text-background-dark dark:text-background'
