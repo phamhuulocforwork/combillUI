@@ -7,17 +7,16 @@ import { Button, Label } from '@/components';
 export function SwitchModeButton() {
   const { theme, setTheme } = useTheme();
   return (
-    <div className='flex items-center space-x-2'>
+    <>
       {theme === 'light' ? (
-        <Button size='icon' onClick={() => setTheme('dark')}>
+        <Button variant='ghost' size='icon' onClick={() => setTheme('dark')}>
           <Moon />
         </Button>
       ) : (
-        <Button size='icon' onClick={() => setTheme('light')}>
+        <Button variant='ghost' size='icon' onClick={() => setTheme('light')}>
           <Sun />
         </Button>
       )}
-      <Label>Theme mode</Label>
-    </div>
+    </>
   );
 }

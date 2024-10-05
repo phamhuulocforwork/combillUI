@@ -1,6 +1,6 @@
 'use client';
 
-import { SwitchModeButton } from './SwitchModeButton';
+import { SwitchModeButton } from '../layout/SwitchModeButton';
 
 export function RightSideBar() {
   return (

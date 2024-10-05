@@ -19,18 +19,18 @@ const config = {
         background: {
           DEFAULT: '#ffffff',
           light: '#ffffff',
-          dark: '#0f172a',
+          dark: '#1f2630',
         },
         foreground: {
-          DEFAULT: '#0f172a',
-          light: '#0f172a',
+          DEFAULT: '#1f2630',
+          light: '#1f2630',
           dark: '#ffffff',
         },
         border: '#cbd5e1',
         input: '#f1f5f9',
         ring: '',
         primary: {
-          DEFAULT: '#0e91e9',
+          DEFAULT: '#38abf8',
           '50': '#f0f9ff',
           '100': '#e0f2fe',
           '200': '#bae2fd',
