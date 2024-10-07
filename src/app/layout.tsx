@@ -1,4 +1,4 @@
-import './globals.css';
+import '../styles/globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/context';
 import { Footer, Header } from '@/components';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'billTail',
+  title: 'billUI',
   description: '',
 };
 

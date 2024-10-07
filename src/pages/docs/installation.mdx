@@ -1,13 +1,27 @@
+---
+title: Installation
+description: How to install dependencies and structure your app.
+---
+
+## Next.js
+
+Start by creating a new Next.js project using `create-next-app`:
+
+```bash copy
+npx create-next-app@latest my-app --typescript --tailwind --eslint
+```
+
+```ts copy
 import type { Config } from 'tailwindcss';
 const colors = require('tailwindcss/colors');
 
 const config = {
   darkMode: ['class'],
   content: [
-    './pages/**/*.{ts,tsx,md,mxd}',
-    './components/**/*.{ts,tsx,md,mxd}',
-    './app/**/*.{ts,tsx,md,mxd}',
-    './src/**/*.{ts,tsx,md,mxd}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
@@ -138,3 +152,4 @@ const config = {
 } satisfies Config;
 
 export default config;
+```

@@ -2,11 +2,9 @@
 
 import { Button, Logo, SwitchModeButton } from '@/components';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
 export function Header() {
-  const { theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -33,7 +31,7 @@ export function Header() {
             className='text-background-dark dark:text-background'
             variant='link'
           >
-            <Link href='/docs'>Docs</Link>
+            <Link href='/docs/installation'>Docs</Link>
           </Button>
           <Button
             className='text-background-dark dark:text-background'

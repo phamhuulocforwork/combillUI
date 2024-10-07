@@ -8,8 +8,9 @@ export default {
     </>
   ),
   project: {
-    link: 'https://github.com/shuding/nextra',
+    link: 'https://github.com/phamhuulocforwork/',
   },
+  docsRepositoryBase: 'https://github.com/phamhuulocforwork/',
   head: (
     <>
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
