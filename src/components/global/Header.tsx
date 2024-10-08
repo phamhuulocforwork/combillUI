@@ -37,7 +37,7 @@ export function Header() {
             className='text-background-dark dark:text-background'
             variant='link'
           >
-            Component
+            <Link href='/components'>Component</Link>
           </Button>
           <SwitchModeButton />
         </div>

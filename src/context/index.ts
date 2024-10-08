@@ -1,1 +1,1 @@
-export * from './dashboard/ThemeProvider';
+export * from './global/ThemeProvider';
