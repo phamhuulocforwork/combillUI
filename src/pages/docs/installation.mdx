@@ -1,19 +1,156 @@
----
-title: Installation
-description: How to install dependencies and structure your app.
----
+import { Steps, Tabs } from 'nextra/components';
 
-## Next.js
+# Getting Started
 
-Start by creating a new Next.js project using `create-next-app`:
+## Manual Installation
 
-```bash copy
-npx create-next-app@latest my-app --typescript --tailwind --eslint
+Add dependencies to your project manually.
+
+<Steps>
+### Add Tailwind CSS
+ 
+Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.\
+[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation "title")
+ 
+### Add dependencies
+
+Add the following dependencies to your project:
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']} defaultIndex='0'>
+  <Tabs.Tab>
+    ```bash copy
+
+    npm install tailwindcss-animate class-variance-authority clsx tailwind-merge
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    yarn add tailwindcss-animate class-variance-authority clsx tailwind-merge
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    pnpm add tailwindcss-animate class-variance-authority clsx tailwind-merge
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    bun add tailwindcss-animate class-variance-authority clsx tailwind-merge
+
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Add icon library
+
+Install `lucide-react` and `react-icons`:
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']} defaultIndex='0'>
+  <Tabs.Tab>
+    ```bash copy
+
+    npm install lucide-react
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    yarn add lucide-react
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    pnpm add lucide-react
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    bun add lucide-react
+
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']} defaultIndex='0'>
+  <Tabs.Tab>
+    ```bash copy
+
+    npm install react-icons
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    yarn add react-icons
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    pnpm add react-icons
+
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash copy
+
+    bun add react-icons
+
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Configure path aliases
+
+I use the @ alias. This is how I configure it in tsconfig.json:
+
+```json /@/ filename="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
 ```
 
-```ts copy
+The `@` alias is a preference. You can use other aliases if you want.
+
+**If you use a different alias such as ~, you'll need to update import statements when adding components.**
+
+### Configure tailwind.config.ts
+
+Here's what my `tailwind.config.ts` file looks like:
+
+```javascript filename="tailwind.config.ts"
+
 import type { Config } from 'tailwindcss';
-const colors = require('tailwindcss/colors');
 
 const config = {
   darkMode: ['class'],
@@ -25,10 +162,6 @@ const config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        light: "url('/noise-light.gif')",
-        dark: "url('/noise-dark.gif')",
-      },
       colors: {
         background: {
           DEFAULT: '#ffffff',
@@ -143,13 +276,10 @@ const config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-  safelist: [
-    {
-      pattern:
-        /bg-(primary|secondary|destructive|muted|accent)-(50|100|200|300|400|500|600|700|800|900|950)/,
-    },
-  ],
 } satisfies Config;
 
 export default config;
+
 ```
+
+</Steps>
