@@ -1,9 +1,15 @@
 'use client';
 
+import { ButtonDemo, Component, ComponentPreview } from '@/components';
+
 export default function Home() {
   return (
     <div className='container min-h-screen'>
-      <h1>Home</h1>
+      <ComponentPreview>
+        <ButtonDemo />
+      </ComponentPreview>
+
+      <Component></Component>
     </div>
   );
 }

@@ -34,7 +34,7 @@ export default function RootLayout({
               className='pointer-events-none absolute left-1/2 top-1/2 -z-0 w-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-20 md:w-1/3'
             />
             <Header />
-            <div className='flex w-full items-center justify-center'>
+            <div className='z-0 flex w-full items-center justify-center'>
               {children}
             </div>
             <Footer />
