@@ -2,6 +2,7 @@
 export * from './demo/ButtonDemo';
 export * from './demo/ComponentPreview';
 export * from './demo/CollapsibleCode';
+export * from './demo/CodeBlock';
 //Global
 export * from './global/Footer';
 export * from './global/Header';

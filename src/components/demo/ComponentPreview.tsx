@@ -1,7 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-
 interface ComponentPreviewProps {
   name?: string;
   children: React.ReactNode;
