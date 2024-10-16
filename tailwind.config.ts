@@ -18,11 +18,11 @@ const config = {
         background: {
           DEFAULT: '#ffffff',
           light: '#ffffff',
-          dark: '#1f2630',
+          dark: '#111827',
         },
         foreground: {
-          DEFAULT: '#1f2630',
-          light: '#1f2630',
+          DEFAULT: '#111827',
+          light: '#111827',
           dark: '#ffffff',
         },
         border: '#cbd5e1',

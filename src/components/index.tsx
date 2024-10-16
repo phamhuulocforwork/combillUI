@@ -2,7 +2,7 @@
 export * from './demo/ButtonDemo';
 export * from './demo/ComponentPreview';
 export * from './demo/CollapsibleCode';
-export * from './demo/CodeBlock';
+export * from './ui/code-block/CodeBlock';
 //Global
 export * from './global/Footer';
 export * from './global/Header';
