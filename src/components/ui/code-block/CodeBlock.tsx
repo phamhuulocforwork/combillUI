@@ -1,6 +1,5 @@
 import type { BundledLanguage } from 'shiki';
 import { CodeBlockClient } from './CodeBlockClient';
-import { codeToHtml } from 'shiki';
 import { Fira_Code } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
@@ -17,6 +16,7 @@ interface CodeBlockProps {
 }
 
 const CodeBlock = async ({ files: _files, ...props }: CodeBlockProps) => {
+  const { codeToHtml } = await import('shiki');
   const files = await Promise.all(
     _files.map(async ({ fileName, code, lang }) => {
       const html = await codeToHtml(code, {
