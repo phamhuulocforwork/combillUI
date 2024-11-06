@@ -1,10 +1,9 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/context/app/ThemeProvider';
 import { Footer } from '@/components/app/Footer';
 import { Header } from '@/components/app/Header';
 import { Inter } from 'next/font/google';
-import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,20 +25,11 @@ export default function RootLayout({
           defaultTheme='dark'
           disableTransitionOnChange
         >
-          <main className='relative flex min-h-screen w-full flex-col items-center justify-start gap-12 bg-light dark:bg-dark'>
-            <Image
-              src='/vtuberlogo.svg'
-              width={300}
-              height={300}
-              alt=''
-              className='pointer-events-none absolute left-1/2 top-1/2 -z-0 w-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-20 md:w-1/3'
-            />
-            <Header />
-            <div className='z-0 flex w-full items-center justify-center'>
-              {children}
-            </div>
-            <Footer />
+          <Header />
+          <main className='flex w-full flex-col items-center justify-center gap-4'>
+            {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

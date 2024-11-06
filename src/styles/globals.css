@@ -11,6 +11,6 @@ html {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground dark:bg-foreground dark:text-background;
+    @apply min-h-screen bg-background bg-light text-foreground dark:bg-foreground dark:bg-dark dark:text-background;
   }
 }

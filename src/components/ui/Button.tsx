@@ -5,20 +5,20 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         default:
-          'bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 text-primary-foreground hover:bg-primary/90',
+          'bg-primary focus:outline-none text-primary-foreground hover:bg-primary/90',
         block:
-          'w-full bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 text-primary-foreground hover:bg-primary/90',
+          'w-full bg-primary focus:outline-none text-primary-foreground hover:bg-primary/90',
         destructive:
-          'bg-destructive focus:ring-4 focus:outline-none focus:ring-destructive-300 text-destructive-foreground hover:bg-destructive/90',
+          'bg-destructive focus:outline-none text-destructive-foreground hover:bg-destructive/90',
         outline:
           'border border-primary text-primary hover:bg-accent hover:text-accent-foreground',
         secondary:
-          'bg-secondary focus:ring-4 focus:outline-none focus:ring-secondary-300 text-secondary-foreground hover:bg-secondary/80',
+          'bg-secondary focus:outline-none text-secondary-foreground hover:bg-secondary/80',
         link: 'text-primary underline-offset-4 hover:underline',
         ghost: 'text-bakground-dark dark:text-background',
       },

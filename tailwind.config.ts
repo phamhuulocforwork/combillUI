@@ -10,13 +10,6 @@ const config = {
     './src/**/*.{ts,tsx,md,mxd}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       backgroundImage: {
         light: "url('/noise-light.gif')",
