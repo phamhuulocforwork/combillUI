@@ -1,9 +1,10 @@
 'use client';
 
-import { Button, ButtonProps, ScrollArea, ScrollBar } from '@/components';
 import { cn } from '@/lib/utils';
 import { Check, Copy, ChevronUp, ChevronDown } from 'lucide-react';
 import React from 'react';
+import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
+import { Button, ButtonProps } from '@/components/ui/Button';
 
 interface CodeBlockClientProps {
   files: {
@@ -39,7 +40,7 @@ const CodeBlockClient = ({
           <ScrollArea
             className={cn(
               !expandedStates[index] ? 'h-32 overflow-hidden' : 'h-fit',
-              'relative w-full bg-background p-4 dark:bg-background-dark',
+              'relative w-full bg-background p-4 dark:bg-foreground',
             )}
           >
             <CodeBlockCopyButton code={file.codeStr}></CodeBlockCopyButton>

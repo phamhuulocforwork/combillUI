@@ -1,27 +1,31 @@
 'use client';
 
-import { Button, Logo, SwitchModeButton } from '@/components';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Logo } from '@/components/app/Logo';
+import { Button } from '@/components/ui/Button';
+import { SwitchModeButton } from '@/components/app/SwitchModeButton';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
-    setIsScrolled(window.scrollY > 0);
+    if (typeof window !== 'undefined') {
+      setIsScrolled(window.scrollY > 0);
+    }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, []);
 
   return (
-    <header
-      className={`transition-bg top-0 z-20 flex w-full justify-center duration-200 ${isScrolled ? 'sticky my-4 bg-background py-4 dark:bg-background-dark' : 'bg-transparent py-16'}`}
-    >
+    <header className='transition-bg sticky top-0 z-20 flex w-full justify-center bg-background py-4 duration-200 dark:bg-foreground'>
       <div className='container flex w-full flex-row items-center justify-between px-8'>
         <Link href='/'>
           <Logo width={64} height={64} />

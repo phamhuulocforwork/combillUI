@@ -1,5 +1,5 @@
 import { Squirrel } from 'lucide-react';
-import { Button } from '@/components';
+import { Button } from '@/components/ui/Button';
 
 export function ButtonDemo() {
   return (

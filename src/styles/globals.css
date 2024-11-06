@@ -5,3 +5,12 @@
 html {
   @apply [&::-webkit-scrollbar]:hidden;
 }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground dark:bg-foreground dark:text-background;
+  }
+}

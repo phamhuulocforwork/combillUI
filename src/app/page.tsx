@@ -1,10 +1,47 @@
-import { CodeBlock } from '@/components';
+import { ComponentPreview } from '@/components/demo/ComponentPreview';
+
+import { Button } from '@/components/ui/Button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/Card';
+import { CodeBlock } from '@/components/ui/code-block/CodeBlock';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 
 export default function Home() {
   return (
     <div className='container min-h-screen'>
+      {/* <ComponentPreview>
+        <ButtonDemo />
+      </ComponentPreview> */}
+
       <CodeBlock
         files={[
+          {
+            fileName: 'ButtonDemo.tsx',
+            code: `
+<div className='grid grid-cols-1 items-center gap-4 md:grid-cols-3'>
+<Button variant='default'>Default Button</Button>
+<Button variant='secondary'>Secondary Button</Button>
+<Button variant='destructive'>Destructive Button</Button>
+<Button variant='outline'>Outline Button</Button>
+<Button variant='link'>Link Button</Button>
+<Button variant='block'>Block Button</Button>
+<Button size='xs'>Extra Small Button</Button>
+<Button size='sm'>Small Button</Button>
+<Button size='lg'>Large Button</Button>
+<Button size='icon'> <Squirrel /> </Button>
+<Button variant='ghost'>Ghost Button</Button>
+</div>
+`,
+            lang: 'typescript',
+          },
           {
             fileName: 'Button.tsx',
             code: `

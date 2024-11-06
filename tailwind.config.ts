@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
 
 const config = {
   darkMode: ['class'],
@@ -9,38 +10,50 @@ const config = {
     './src/**/*.{ts,tsx,md,mxd}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       backgroundImage: {
         light: "url('/noise-light.gif')",
         dark: "url('/noise-dark.gif')",
       },
       colors: {
-        background: {
-          DEFAULT: '#ffffff',
-          light: '#ffffff',
-          dark: '#111827',
-        },
-        foreground: {
-          DEFAULT: '#111827',
-          light: '#111827',
-          dark: '#ffffff',
-        },
         border: '#cbd5e1',
-        input: '#f1f5f9',
-        ring: '',
+        input: '#cbd5e1',
+        ring: '#d71441',
+        background: '#ffffff',
+        foreground: {
+          DEFAULT: '#0d1117',
+          '50': '#f5f7fa',
+          '100': '#eaeef4',
+          '200': '#d0dae7',
+          '300': '#a7bbd2',
+          '400': '#7798b9',
+          '500': '#567ba1',
+          '600': '#426187',
+          '700': '#374f6d',
+          '800': '#30445c',
+          '900': '#2c3b4e',
+          '950': '#0d1117',
+        },
         primary: {
-          DEFAULT: '#38abf8',
-          '50': '#f0f9ff',
-          '100': '#e0f2fe',
-          '200': '#bae2fd',
-          '300': '#7dc9fc',
-          '400': '#38abf8',
-          '500': '#0e91e9',
-          '600': '#0278c7',
-          '700': '#0362a1',
-          '800': '#075385',
-          '900': '#0c476e',
-          '950': '#082f49',
+          DEFAULT: '#70d5f0',
+          '50': '#edfbfe',
+          '100': '#d2f4fb',
+          '200': '#aae8f7',
+          '300': '#70d5f0',
+          '400': '#1faed8',
+          '500': '#139cc7',
+          '600': '#137ca7',
+          '700': '#166488',
+          '800': '#1b536f',
+          '900': '#1b465e',
+          '950': '#0c2c40',
           foreground: '#ffffff',
         },
         secondary: {
@@ -88,52 +101,32 @@ const config = {
           '950': '#22292f',
         },
         accent: {
-          DEFAULT: '#0e91e9',
-          '50': '#f0f9ff',
-          '100': '#e0f2fe',
-          '200': '#bae2fd',
-          '300': '#7dc9fc',
-          '400': '#38abf8',
-          '500': '#0e91e9',
-          '600': '#0278c7',
-          '700': '#0362a1',
-          '800': '#075385',
-          '900': '#0c476e',
-          '950': '#082f49',
-          foreground: '#0f172a',
+          DEFAULT: '#1faed8',
+          '50': '#edfbfe',
+          '100': '#d2f4fb',
+          '200': '#aae8f7',
+          '300': '#70d5f0',
+          '400': '#1faed8',
+          '500': '#139cc7',
+          '600': '#137ca7',
+          '700': '#166488',
+          '800': '#1b536f',
+          '900': '#1b465e',
+          '950': '#0c2c40',
+          foreground: '#ffffff',
         },
         popover: {
           DEFAULT: '#ffffff',
-          foreground: '#0f172a',
+          foreground: '#ffffff',
         },
         card: {
           DEFAULT: '#ffffff',
-          foreground: '#0f172a',
+          foreground: '#0d1117',
         },
-      },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
-  safelist: [
-    {
-      pattern:
-        /bg-(primary|secondary|destructive|muted|accent)-(50|100|200|300|400|500|600|700|800|900|950)/,
-    },
-  ],
+  plugins: [animate],
 } satisfies Config;
 
 export default config;

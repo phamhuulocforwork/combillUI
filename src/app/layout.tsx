@@ -1,7 +1,8 @@
 import '../styles/globals.css';
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@/context';
-import { Footer, Header } from '@/components';
+import { ThemeProvider } from '@/context/app/ThemeProvider';
+import { Footer } from '@/components/app/Footer';
+import { Header } from '@/components/app/Header';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ScrollArea } from '@/components';
+import { ScrollArea } from '@/components/ui/ScrollArea';
 
 interface CollapsibleCodeProps {
   children: React.ReactNode;
