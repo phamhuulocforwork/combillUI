@@ -1,11 +1,11 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
-import { Label } from '@/components/ui/Label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { CodeBlock } from '@/components/ui/code-block/CodeBlock';
 
 interface ComponentPreviewProps {
   name?: string;
   children: React.ReactNode;
-  containerClassName?: string;
+  className?: string;
   preview?: string;
   expandable?: boolean;
 }
@@ -13,17 +13,19 @@ interface ComponentPreviewProps {
 export function ComponentPreview({
   name,
   children,
-  containerClassName,
+  className,
 }: ComponentPreviewProps) {
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-4 rounded-md border border-border bg-white/50 p-16 dark:bg-transparent',
-        containerClassName,
-      )}
-    >
-      <Label>{name}</Label>
-      {children}
-    </div>
+    <Tabs defaultValue='preview' className='w-[400px]'>
+      <TabsList className='flex items-center justify-start gap-4'>
+        <TabsTrigger value='preview'>Preview</TabsTrigger>
+        <TabsTrigger value='code'>Code</TabsTrigger>
+      </TabsList>
+      <TabsContent value='preview'>{children}</TabsContent>
+      <TabsContent value='code'>
+        {/* <CodeBlock files /> */}
+        <h1>Code</h1>
+      </TabsContent>
+    </Tabs>
   );
 }
