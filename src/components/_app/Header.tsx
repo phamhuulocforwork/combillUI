@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Logo } from '@/components/app/Logo';
+import { Logo } from '@/components/_app/Logo';
 import { Button } from '@/components/ui/Button';
-import { SwitchModeButton } from '@/components/app/SwitchModeButton';
+import { SwitchModeButton } from '@/components/_app/SwitchModeButton';
 import { cn } from '@/lib/utils';
 
 export function Header() {

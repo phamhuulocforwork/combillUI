@@ -1,5 +1,5 @@
-import { Logo } from '@/components/app/Logo';
-import { SwitchModeButton } from '@/components/app/SwitchModeButton';
+import { Logo } from '@/components/_app/Logo';
+import { SwitchModeButton } from '@/components/_app/SwitchModeButton';
 
 export default {
   head: (

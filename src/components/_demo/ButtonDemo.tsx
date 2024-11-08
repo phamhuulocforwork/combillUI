@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button';
 
 export function ButtonDemo() {
   return (
-    <div className='grid grid-cols-1 items-center gap-4 md:grid-cols-3'>
+    <div className='grid w-full grid-cols-1 items-center gap-4 md:grid-cols-3'>
       <Button variant='default'>Default Button</Button>
       <Button variant='secondary'>Secondary Button</Button>
       <Button variant='destructive'>Destructive Button</Button>

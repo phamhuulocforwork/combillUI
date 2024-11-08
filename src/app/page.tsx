@@ -1,5 +1,5 @@
-import { ButtonDemo } from '@/components/demo/ButtonDemo';
-import { ComponentPreview } from '@/components/demo/ComponentPreview';
+import { ButtonDemo } from '@/components/_demo/ButtonDemo';
+import { ComponentPreview } from '@/components/_demo/ComponentPreview';
 
 export default function Home() {
   return (

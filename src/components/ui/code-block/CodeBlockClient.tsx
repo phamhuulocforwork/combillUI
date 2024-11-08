@@ -40,18 +40,18 @@ const CodeBlockClient = ({
           <ScrollArea
             className={cn(
               !expandedStates[index] ? 'h-32 overflow-hidden' : 'h-fit',
-              'relative w-full bg-background p-4 dark:bg-foreground',
+              'relative bg-background p-4 dark:bg-foreground',
             )}
           >
             <CodeBlockCopyButton code={file.codeStr}></CodeBlockCopyButton>
             {file.code}
+            <ScrollBar />
             {expandable && (
               <CodeBlockExpandButton
                 expanded={expandedStates[index]}
                 onClick={() => handleExpand(index)}
               />
             )}
-            <ScrollBar />
           </ScrollArea>
         </CodeBlockContainer>
       ))}
@@ -102,7 +102,7 @@ const CodeBlockExpandButton = ({
     <Button
       variant='ghost'
       size='icon'
-      className='absolute bottom-0 h-12 w-full hover:bg-gradient-to-t dark:from-gray-800/50'
+      className='absolute bottom-0 left-0 h-12 w-full hover:bg-gradient-to-t dark:from-gray-800/50'
       {...props}
     >
       {expanded ? (
