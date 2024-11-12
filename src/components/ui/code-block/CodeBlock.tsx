@@ -13,9 +13,15 @@ interface CodeBlockProps {
     lang: BundledLanguage;
   }[];
   expandable?: boolean;
+  className?: string;
 }
 
-const CodeBlock = async ({ files: _files, ...props }: CodeBlockProps) => {
+const CodeBlock = async ({
+  files: _files,
+  expandable = true,
+  className,
+  ...props
+}: CodeBlockProps) => {
   const { codeToHtml } = await import('shiki');
   const files = await Promise.all(
     _files.map(async ({ fileName, code, lang }) => {
@@ -44,7 +50,9 @@ const CodeBlock = async ({ files: _files, ...props }: CodeBlockProps) => {
     }),
   );
 
-  return <CodeBlockClient files={files} expandable={true}></CodeBlockClient>;
+  return (
+    <CodeBlockClient files={files} expandable={expandable}></CodeBlockClient>
+  );
 };
 
 export { CodeBlock };

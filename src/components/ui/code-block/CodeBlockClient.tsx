@@ -1,10 +1,22 @@
 'use client';
 
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check, Copy, ChevronUp, ChevronDown } from 'lucide-react';
-import React from 'react';
 import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Button, ButtonProps } from '@/components/ui/Button';
+
+const tabsListClassName = cn(
+  'flex h-9 w-full items-center justify-start gap-4',
+  '!rounded-t-md border-b border-border bg-background dark:bg-foreground-900 p-1',
+);
+
+const tabsTriggerClassName = cn(
+  'h-9 bg-transparent px-3 py-1.5',
+  'data-[state=active]:border-b-2 data-[state=active]:border-b-secondary',
+  'data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:dark:text-background font-semibold',
+);
 
 interface CodeBlockClientProps {
   files: {
@@ -17,7 +29,7 @@ interface CodeBlockClientProps {
 }
 const CodeBlockClient = ({
   files,
-  expandable = false,
+  expandable,
   ...props
 }: CodeBlockClientProps) => {
   const [expandedStates, setExpandedStates] = React.useState<boolean[]>(
@@ -33,29 +45,43 @@ const CodeBlockClient = ({
   };
 
   return (
-    <>
+    <Tabs defaultValue={files[0].fileName} className='space-y-0'>
+      {files.length > 0 && (
+        <TabsList className={tabsListClassName}>
+          {files.map((file) => (
+            <TabsTrigger
+              key={file.fileName}
+              value={file.fileName}
+              className={tabsTriggerClassName}
+            >
+              {file.fileName}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      )}
       {files.map((file, index) => (
-        <CodeBlockContainer key={index} {...props}>
-          <CodeBlockHeader fileName={file.fileName} lang={file.lang} />
-          <ScrollArea
-            className={cn(
-              !expandedStates[index] ? 'h-32 overflow-hidden' : 'h-fit',
-              'relative bg-background p-4 dark:bg-foreground',
-            )}
-          >
-            <CodeBlockCopyButton code={file.codeStr}></CodeBlockCopyButton>
-            {file.code}
-            <ScrollBar />
-            {expandable && (
-              <CodeBlockExpandButton
-                expanded={expandedStates[index]}
-                onClick={() => handleExpand(index)}
-              />
-            )}
-          </ScrollArea>
-        </CodeBlockContainer>
+        <TabsContent key={file.fileName} value={file.fileName}>
+          <CodeBlockContainer {...props}>
+            <ScrollArea
+              className={cn(
+                !expandedStates[index] ? 'h-48 overflow-hidden' : 'h-fit',
+                'relative rounded-b-md bg-background p-4 dark:bg-foreground',
+              )}
+            >
+              <CodeBlockCopyButton code={file.codeStr}></CodeBlockCopyButton>
+              {file.code}
+              <ScrollBar />
+              {expandable && (
+                <CodeBlockExpandButton
+                  expanded={expandedStates[index]}
+                  onClick={() => handleExpand(index)}
+                />
+              )}
+            </ScrollArea>
+          </CodeBlockContainer>
+        </TabsContent>
       ))}
-    </>
+    </Tabs>
   );
 };
 
@@ -67,26 +93,8 @@ const CodeBlockContainer = ({
   ...props
 }: CodeBlockContainerProps) => {
   return (
-    <div
-      className='mb-4 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800'
-      {...props}
-    >
+    <div className='overflow-hidden' {...props}>
       {children}
-    </div>
-  );
-};
-
-interface CodeBlockHeaderProps {
-  fileName: string;
-  lang: string;
-}
-const CodeBlockHeader = ({ fileName, lang }: CodeBlockHeaderProps) => {
-  return (
-    <div className='flex items-center justify-between bg-gray-50 px-4 py-2 dark:bg-gray-800'>
-      <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-        {fileName}
-      </span>
-      <span className='text-xs text-gray-500 dark:text-gray-400'>{lang}</span>
     </div>
   );
 };
@@ -102,7 +110,7 @@ const CodeBlockExpandButton = ({
     <Button
       variant='ghost'
       size='icon'
-      className='absolute bottom-0 left-0 h-12 w-full hover:bg-gradient-to-t dark:from-gray-800/50'
+      className='absolute bottom-0 left-0 h-12 w-full from-primary/80 hover:bg-gradient-to-t dark:from-foreground-800/50'
       {...props}
     >
       {expanded ? (

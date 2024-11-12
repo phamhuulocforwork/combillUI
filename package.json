@@ -1,19 +1,18 @@
 {
-  "name": "billUI",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "next build && next start"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.3.28",
-    "fs": "^0.0.1-security",
     "lucide-react": "^0.395.0",
     "next": "14.2.4",
     "next-themes": "^0.3.0",

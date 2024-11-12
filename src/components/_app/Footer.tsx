@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className='z-10 flex w-full items-center justify-center bg-background p-12 dark:bg-foreground'>
+    <footer className='flex w-full items-center justify-center bg-background p-12 dark:bg-foreground'>
       <div className='container flex w-full items-center justify-between'>
         <div className='flex flex-col gap-4'>
           <Label>Contact</Label>

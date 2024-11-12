@@ -28,7 +28,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'transition-bg sticky top-0 z-20 flex w-full justify-center bg-transparent py-6 duration-200',
+        'transition-bg sticky top-0 z-20 flex w-full items-center justify-center bg-transparent py-6 duration-200',
         isScrolled && 'bg-background py-4 dark:bg-foreground',
       )}
     >
