@@ -1,3 +1,5 @@
+//TODO: Lấy file source từ public/registry/demos hoặc public/registry/components
+
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
