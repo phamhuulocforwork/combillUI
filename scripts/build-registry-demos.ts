@@ -11,6 +11,7 @@ async function buildRegistryDemos() {
 type RegistryDemoItem = {
   name: string;
   files: string[];
+  registry: string;
 };
 
 type RegistryDemos = RegistryDemoItem[];
@@ -20,6 +21,7 @@ const buildDemos = (component: string, demos: string[]): RegistryDemos => {
     return {
       name: \`\${demo}\`,
       files: [\`@/components/_demo/\${component}/\${demo}.tsx\`],
+      registry: \`~/public/registry/demos/\${demo}.json\`,
     };
   });
 };

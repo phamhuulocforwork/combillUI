@@ -7,6 +7,7 @@
       ButtonDemo: {
         name: 'ButtonDemo.tsx',
         files: ['components/_demo/button/ButtonDemo.tsx'],
+        registry: import(`~/public/registry/demos/ButtonDemo.json`),
         component: React.lazy(() =>
           import('@/components/_demo/button/ButtonDemo').then((module) => ({
             default: module.ButtonDemo,
@@ -16,6 +17,7 @@
       LeverDemo: {
         name: 'LeverDemo.tsx',
         files: ['components/_demo/lever/LeverDemo.tsx'],
+        registry: import(`~/public/registry/demos/LeverDemo.json`),
         component: React.lazy(() =>
           import('@/components/_demo/lever/LeverDemo').then((module) => ({
             default: module.LeverDemo,

@@ -20,6 +20,7 @@ async function buildDemos() {
       ${name}: {
         name: '${name}.tsx',
         files: ['${componentPath}'],
+        registry: import(\`~/public/registry/demos/${name}.json\`),
         component: React.lazy(() =>
           import('${importPath}').then((module) => ({
             default: module.${name},

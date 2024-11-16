@@ -4,7 +4,6 @@ import { CodeBlock } from '@/components/ui/code-block/CodeBlock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { ComponentPreviewClient } from '@/components/_app/ComponentPreviewClient';
 import { Index } from '@/components/_demo';
-import { getFileSource } from '@/lib/get-file-source';
 
 const tabsListClassName = cn(
   'flex h-9 w-full items-center justify-start gap-4',
@@ -24,7 +23,7 @@ interface ComponentPreviewProps {
   expandable?: boolean;
 }
 
-export function ComponentPreview({
+export async function ComponentPreview({
   name,
   className,
   expandable,
@@ -33,23 +32,15 @@ export function ComponentPreview({
   const componentName = name.split('/')[1];
 
   if (type === 'demo') {
-    //TODO: Lấy file source từ public/registry/demos hoặc public/registry/components
-    const demos: {
-      component: React.ComponentType;
-      code: Array<{
-        fileName: string;
-        code: string;
-      }>;
-    }[] = [
+    const demoData = await Index['demo'][componentName].registry;
+
+    const demos = [
       {
         component: Index['demo'][componentName].component,
-        code: Index['demo'][componentName].files.map((file: string) => {
-          const { fileName, content } = getFileSource(file);
-          return {
-            fileName,
-            code: content,
-          };
-        }),
+        code: demoData.files.map((file: { name: string; content: string }) => ({
+          fileName: file.name,
+          code: file.content,
+        })),
       },
     ];
 
@@ -80,11 +71,13 @@ export function ComponentPreview({
               return (
                 <CodeBlock
                   key={index}
-                  files={elem.code.map((file) => ({
-                    fileName: file.fileName,
-                    code: file.code,
-                    lang: 'tsx',
-                  }))}
+                  files={elem.code.map(
+                    (file: { fileName: any; code: any }) => ({
+                      fileName: file.fileName,
+                      code: file.code,
+                      lang: 'tsx',
+                    }),
+                  )}
                   expandable={expandable}
                 />
               );

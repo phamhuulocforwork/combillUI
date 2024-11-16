@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run build:registry && next dev",
+    "dev": "next dev",
     "build": "npm run build:registry && next build",
     "build:registry": "tsx scripts/build-registry-demos.ts && tsx scripts/build-demos.ts && tsx scripts/build-registry.ts",
     "start": "next start",
