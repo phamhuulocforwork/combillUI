@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils';
 import { CodeBlock } from '@/components/ui/code-block/CodeBlock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { ComponentPreviewClient } from '@/components/_app/ComponentPreviewClient';
-// import { Index } from '@/components/_demo';
-// import { getFileSource } from '@/lib/get-file-source';
+import { Index } from '@/components/_demo';
+import { getFileSource } from '@/lib/get-file-source';
 
 const tabsListClassName = cn(
   'flex h-9 w-full items-center justify-start gap-4',
@@ -34,24 +34,24 @@ export function ComponentPreview({
 
   if (type === 'demo') {
     //TODO: Lấy file source từ public/registry/demos hoặc public/registry/components
-    // const demos: {
-    //   component: React.ComponentType;
-    //   code: Array<{
-    //     fileName: string;
-    //     code: string;
-    //   }>;
-    // }[] = [
-    //   {
-    //     component: Index['demo'][componentName].component,
-    //     code: Index['demo'][componentName].files.map((file: string) => {
-    //       const { fileName, content } = getFileSource(file);
-    //       return {
-    //         fileName,
-    //         code: content,
-    //       };
-    //     }),
-    //   },
-    // ];
+    const demos: {
+      component: React.ComponentType;
+      code: Array<{
+        fileName: string;
+        code: string;
+      }>;
+    }[] = [
+      {
+        component: Index['demo'][componentName].component,
+        code: Index['demo'][componentName].files.map((file: string) => {
+          const { fileName, content } = getFileSource(file);
+          return {
+            fileName,
+            code: content,
+          };
+        }),
+      },
+    ];
 
     return (
       <Tabs defaultValue='preview' className={cn(className, 'w-full')}>
@@ -67,15 +67,15 @@ export function ComponentPreview({
           value='preview'
           className='flex items-center justify-center'
         >
-          {/* <ComponentPreviewClient
+          <ComponentPreviewClient
             demos={demos.map((elem, index) => {
               const Comp = elem.component;
               return <Comp key={index} />;
             })}
-          /> */}
+          />
         </TabsContent>
         <TabsContent value='code'>
-          {/* <ComponentPreviewClient
+          <ComponentPreviewClient
             demos={demos.map((elem, index) => {
               return (
                 <CodeBlock
@@ -89,7 +89,7 @@ export function ComponentPreview({
                 />
               );
             })}
-          /> */}
+          />
         </TabsContent>
       </Tabs>
     );

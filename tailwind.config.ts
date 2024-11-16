@@ -12,8 +12,8 @@ const config = {
   theme: {
     extend: {
       backgroundImage: {
-        light: "url('/noise-light.gif')",
-        dark: "url('/noise-dark.gif')",
+        light: 'url(/assets/gif/noise-light.gif)',
+        dark: 'url(/assets/gif/noise-dark.gif)',
       },
       colors: {
         border: '#cbd5e1',

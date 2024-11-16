@@ -1,11 +1,10 @@
-import { ComponentPreview } from '@/components/_demo/ComponentPreview';
+import { ComponentPreview } from '@/components/_app/ComponentPreview';
 
 export default function Home() {
   return (
-    <div className='flex min-h-screen w-full items-center justify-center'>
+    <div className='my-16 flex w-full items-center justify-center'>
       <div className='container flex h-full w-full flex-col items-center justify-center gap-4'>
-        <ComponentPreview name='ui/ButtonDemo' />
-        <ComponentPreview name='ui/LeverDemo' />
+        <ComponentPreview name='demo/ButtonDemo' />
       </div>
     </div>
   );
