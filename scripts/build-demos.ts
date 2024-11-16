@@ -21,7 +21,7 @@ export const Index: Record<string, any> = {
     ${name}: {
       name: '${name}.tsx',
       files: ['${componentPath}'],
-      registry: import(\`~/public/registry/demos/${name}.json\`),
+      registry: require(\`~/public/registry/demos/${name}.json\`),
       component: React.lazy(() =>
         import('${importPath}').then((module) => ({
           default: module.${name},
