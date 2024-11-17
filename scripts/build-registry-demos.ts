@@ -1,4 +1,10 @@
-//TODO: Đọc toàn bộ file demo từ @/components/_demo tạo file registry.ts khai báo các component demo
+/**
+ * This script scans all demo components in @/components/_demo directory and generates a registry.ts file
+ * The registry.ts file contains metadata about each demo component including:
+ * - name: Name of the demo component
+ * - files: Array of file paths for the demo
+ * - registry: Path to the JSON registry file containing the demo source code
+ */
 
 import { readdirSync, promises as fs } from 'node:fs';
 import path from 'path';
@@ -21,7 +27,6 @@ const buildDemos = (component: string, demos: string[]): RegistryDemos => {
     return {
       name: \`\${demo}\`,
       files: [\`@/components/_demo/\${component}/\${demo}.tsx\`],
-      registry: \`~/public/registry/demos/\${demo}.json\`,
     };
   });
 };
@@ -57,7 +62,7 @@ export const demos: RegistryDemos = [
     path.join(process.cwd(), 'src/components/_demo/registry.ts'),
     index,
   );
-  console.log('✅ Generated registry demos');
+  console.log('✅ Generated demo registry.ts file');
 }
 
 buildRegistryDemos();

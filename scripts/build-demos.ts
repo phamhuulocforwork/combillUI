@@ -1,3 +1,11 @@
+/**
+ * This script scans all demo components in @/components/_demo directory and generates a index.tsx file
+ * The index.tsx file contains metadata about each demo component including:
+ * - name: Name of the demo component
+ * - files: Array of file paths for the demo
+ * - registry: Path to the JSON registry file containing the demo source code
+ */
+
 import { existsSync, promises as fs } from 'node:fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
@@ -21,7 +29,11 @@ export const Index: Record<string, any> = {
     ${name}: {
       name: '${name}.tsx',
       files: ['${componentPath}'],
-      registry: require(\`~/public/registry/demos/${name}.json\`),
+      registry: import(\'~/public/registry/demos/${name}.json\').then(
+        (data) => ({
+          default: data.default,
+        }),
+      ),
       component: React.lazy(() =>
         import('${importPath}').then((module) => ({
           default: module.${name},
@@ -40,7 +52,7 @@ export const Index: Record<string, any> = {
   }
   rimraf.sync(path.join(targetPath, 'index.tsx'));
   await fs.writeFile(path.join(targetPath, 'index.tsx'), index, 'utf8');
-  console.log('✅ Generated demo registry');
+  console.log('✅ Generated demo index.tsx file');
 }
 
 buildDemos();
