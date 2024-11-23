@@ -23,7 +23,7 @@ interface ComponentPreviewProps {
   expandable?: boolean;
 }
 
-export function ComponentPreview({
+export async function ComponentPreview({
   name,
   className,
   expandable,
@@ -32,7 +32,7 @@ export function ComponentPreview({
   const componentName = name.split('/')[1];
 
   if (type === 'demo') {
-    const demoData = Index['demo'][componentName].registry;
+    const demoData = await Index['demo'][componentName].registry;
 
     const demos = [
       {

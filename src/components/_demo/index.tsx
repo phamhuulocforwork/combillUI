@@ -8,7 +8,7 @@ export const Index: Record<string, any> = {
     ButtonDemo: {
       name: 'ButtonDemo.tsx',
       files: ['components/_demo/button/ButtonDemo.tsx'],
-      registry: require(`~/public/registry/demos/ButtonDemo.json`),
+      registry: import(`~/public/registry/demos/ButtonDemo.json`),
       component: React.lazy(() =>
         import('@/components/_demo/button/ButtonDemo').then((module) => ({
           default: module.ButtonDemo,
@@ -18,7 +18,7 @@ export const Index: Record<string, any> = {
     LeverDemo: {
       name: 'LeverDemo.tsx',
       files: ['components/_demo/lever/LeverDemo.tsx'],
-      registry: require(`~/public/registry/demos/LeverDemo.json`),
+      registry: import(`~/public/registry/demos/LeverDemo.json`),
       component: React.lazy(() =>
         import('@/components/_demo/lever/LeverDemo').then((module) => ({
           default: module.LeverDemo,
