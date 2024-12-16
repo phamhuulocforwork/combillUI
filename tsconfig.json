@@ -12,6 +12,7 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@/tailwind.config": ["./tailwind.config.ts"],
       "~/*": ["./*"]
     },
     "plugins": [
