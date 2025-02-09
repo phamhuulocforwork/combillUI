@@ -4,6 +4,8 @@ import localFont from 'next/font/local';
 
 import { RootProvider } from 'fumadocs-ui/provider';
 
+import { Toaster } from '@/components/ui/sonner';
+
 import '@/styles/globals.css';
 
 import { siteConfig } from '@/config/site';
@@ -62,6 +64,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <RootProvider>{children}</RootProvider>
+        <Toaster />
       </body>
     </html>
   );

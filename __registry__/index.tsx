@@ -5,31 +5,88 @@ import * as React from 'react';
 
 export const Index: Record<string, any> = {
   default: {
-    test: {
-      name: 'test',
+    'responsive-textarea': {
+      name: 'responsive-textarea',
       description: '',
       type: 'registry:ui',
       files: [
         {
-          path: 'registry/default/ui/test.tsx',
+          path: 'registry/default/ui/responsive-textarea.tsx',
           type: 'registry:ui',
         },
       ],
-      component: React.lazy(() => import('@/registry/default/ui/test.tsx')),
+      component: React.lazy(
+        () => import('@/registry/default/ui/responsive-textarea.tsx'),
+      ),
     },
 
-    'demo-test': {
-      name: 'demo-test',
+    'responsive-textarea-default': {
+      name: 'responsive-textarea-default',
       description: '',
       type: 'registry:example',
       files: [
         {
-          path: 'registry/default/example/demo-test.tsx',
+          path: 'registry/default/example/responsive-textarea-default.tsx',
           type: 'registry:example',
         },
       ],
       component: React.lazy(
-        () => import('@/registry/default/example/demo-test.tsx'),
+        () =>
+          import('@/registry/default/example/responsive-textarea-default.tsx'),
+      ),
+    },
+
+    'responsive-textarea-with-button': {
+      name: 'responsive-textarea-with-button',
+      description: '',
+      type: 'registry:example',
+      files: [
+        {
+          path: 'registry/default/example/responsive-textarea-with-button.tsx',
+          type: 'registry:example',
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            '@/registry/default/example/responsive-textarea-with-button.tsx'
+          ),
+      ),
+    },
+
+    'responsive-textarea-with-label': {
+      name: 'responsive-textarea-with-label',
+      description: '',
+      type: 'registry:example',
+      files: [
+        {
+          path: 'registry/default/example/responsive-textarea-with-label.tsx',
+          type: 'registry:example',
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            '@/registry/default/example/responsive-textarea-with-label.tsx'
+          ),
+      ),
+    },
+
+    'responsive-textarea-with-text': {
+      name: 'responsive-textarea-with-text',
+      description: '',
+      type: 'registry:example',
+      files: [
+        {
+          path: 'registry/default/example/responsive-textarea-with-text.tsx',
+          type: 'registry:example',
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            '@/registry/default/example/responsive-textarea-with-text.tsx'
+          ),
       ),
     },
   },

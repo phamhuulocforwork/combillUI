@@ -34,6 +34,6 @@ const ResponsiveTextarea = React.forwardRef<
     />
   );
 });
-ResponsiveTextarea.displayName = 'Textarea';
+ResponsiveTextarea.displayName = 'ResponsiveTextarea';
 
-export { ResponsiveTextarea as ResponsiveTextarea };
+export { ResponsiveTextarea };
