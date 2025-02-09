@@ -1,125 +1,122 @@
-import type { Config } from 'tailwindcss';
-import animate from 'tailwindcss-animate';
+import { createPreset } from 'fumadocs-ui/tailwind-plugin';
 
-const config = {
+import type { Config } from 'tailwindcss';
+
+export default {
   darkMode: ['class'],
+  presets: [createPreset({ preset: 'black' })],
   content: [
-    './pages/**/*.{ts,tsx,md,mxd}',
-    './components/**/*.{ts,tsx,md,mxd}',
-    './app/**/*.{ts,tsx,md,mxd}',
-    './src/**/*.{ts,tsx,md,mxd}',
+    './node_modules/fumadocs-ui/dist/**/*.js',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './registry/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        light: 'url(/assets/gif/noise-light.gif)',
-        dark: 'url(/assets/gif/noise-dark.gif)',
+      keyframes: {
+        'fade-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
+        'fade-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+        'stroke-dashoffset': {
+          '0%': { strokeDashoffset: '100%' },
+          '100%': { strokeDashoffset: '0' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.5s',
+        'fade-down': 'fade-down 0.5s',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'stroke-dashoffset': 'stroke-dashoffset 0.2s linear forwards',
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        border: '#cbd5e1',
-        input: '#cbd5e1',
-        ring: '#d71441',
-        background: '#ffffff',
-        foreground: {
-          DEFAULT: '#0d1117',
-          '50': '#f5f7fa',
-          '100': '#eaeef4',
-          '200': '#d0dae7',
-          '300': '#a7bbd2',
-          '400': '#7798b9',
-          '500': '#567ba1',
-          '600': '#426187',
-          '700': '#374f6d',
-          '800': '#30445c',
-          '900': '#2c3b4e',
-          '950': '#0d1117',
-        },
-        primary: {
-          DEFAULT: '#70d5f0',
-          '50': '#edfbfe',
-          '100': '#d2f4fb',
-          '200': '#aae8f7',
-          '300': '#70d5f0',
-          '400': '#1faed8',
-          '500': '#139cc7',
-          '600': '#137ca7',
-          '700': '#166488',
-          '800': '#1b536f',
-          '900': '#1b465e',
-          '950': '#0c2c40',
-          foreground: '#ffffff',
-        },
-        secondary: {
-          DEFAULT: '#fba63c',
-          '50': '#fff7ed',
-          '100': '#ffecd5',
-          '200': '#fed9aa',
-          '300': '#fdc074',
-          '400': '#fba63c',
-          '500': '#f99416',
-          '600': '#ea870c',
-          '700': '#c2710c',
-          '800': '#9a5e12',
-          '900': '#7c4d12',
-          '950': '#432807',
-          foreground: '#ffffff',
-        },
-        destructive: {
-          DEFAULT: '#ef4444',
-          '50': '#fef2f2',
-          '100': '#fee2e2',
-          '200': '#fecaca',
-          '300': '#fca5a5',
-          '400': '#f87171',
-          '500': '#ef4444',
-          '600': '#dc2626',
-          '700': '#b91c1c',
-          '800': '#991b1b',
-          '900': '#7f1d1d',
-          '950': '#450a0a',
-          foreground: '#ffffff',
-        },
-        muted: {
-          DEFAULT: '#668091',
-          '50': '#f9fafb',
-          '100': '#eceff2',
-          '200': '#d5dde2',
-          '300': '#b0bfc9',
-          '400': '#859bab',
-          '500': '#668091',
-          '600': '#516778',
-          '700': '#425462',
-          '800': '#394753',
-          '900': '#333e47',
-          '950': '#22292f',
-        },
-        accent: {
-          DEFAULT: '#1faed8',
-          '50': '#edfbfe',
-          '100': '#d2f4fb',
-          '200': '#aae8f7',
-          '300': '#70d5f0',
-          '400': '#1faed8',
-          '500': '#139cc7',
-          '600': '#137ca7',
-          '700': '#166488',
-          '800': '#1b536f',
-          '900': '#1b465e',
-          '950': '#0c2c40',
-          foreground: '#ffffff',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
-          DEFAULT: '#ffffff',
-          foreground: '#ffffff',
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
-        card: {
-          DEFAULT: '#ffffff',
-          foreground: '#0d1117',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
         },
       },
     },
   },
-  plugins: [animate],
+  plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-
-export default config;

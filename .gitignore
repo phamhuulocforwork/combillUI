@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-/components.json
 
 # testing
 /coverage
@@ -32,11 +31,12 @@ yarn-error.log*
 # vercel
 .vercel
 
-# registry
-public/registry
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-*storybook.log
+#From Fumadocs
+# generated content
+.contentlayer
+.content-collections
+.source
