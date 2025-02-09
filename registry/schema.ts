@@ -1,6 +1,9 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-export const registryItemTypeSchema = z.enum(["registry:ui", "registry:example"]);
+export const registryItemTypeSchema = z.enum([
+  'registry:ui',
+  'registry:example',
+]);
 
 export const componentFileSchema = z.object({
   path: z.string(),
@@ -11,7 +14,7 @@ export const componentFileSchema = z.object({
 export const componentSchema = z.object({
   name: z.string(),
   description: z.string().optional(),
-  type: z.union([z.literal("registry:ui"), z.literal("registry:example")]),
+  type: z.union([z.literal('registry:ui'), z.literal('registry:example')]),
   registryDependencies: z.array(z.string()).optional(),
   dependencies: z.array(z.string()).optional(),
   files: z.array(componentFileSchema),

@@ -1,14 +1,15 @@
-import { type BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { type BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-import { Icons } from "@/components/icons";
-import { siteConfig } from "@/config/site";
+import { Icons } from '@/components/icons';
+
+import { siteConfig } from '@/config/site';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <Icons.logo className="size-4" aria-hidden="true" />
-        <span className="font-medium [.uwu_&]:hidden [header_&]:text-[15px]">
+        <Icons.logo className='size-4' aria-hidden='true' />
+        <span className='font-medium [.uwu_&]:hidden [header_&]:text-[15px]'>
           {siteConfig.name}
         </span>
       </>
@@ -16,14 +17,14 @@ export const baseOptions: BaseLayoutProps = {
   },
   links: [
     {
-      text: "Docs",
-      url: "/docs/introduction",
+      text: 'Docs',
+      url: '/docs/introduction',
     },
     {
-      type: "icon",
+      type: 'icon',
       url: siteConfig.links.github,
-      text: "Github",
-      icon: <Icons.gitHub className="size-4" aria-hidden="true" />,
+      text: 'Github',
+      icon: <Icons.gitHub className='size-4' aria-hidden='true' />,
       external: true,
     },
   ],

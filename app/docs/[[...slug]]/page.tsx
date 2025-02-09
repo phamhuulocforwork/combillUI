@@ -1,10 +1,23 @@
-import { source } from "@/app/source";
-import { useMDXComponents } from "@/components/mdx-components";
-import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
 
-export default async function Page({ params }: { params: { slug?: string[] } }) {
+import { notFound } from 'next/navigation';
+
+import {
+  DocsBody,
+  DocsDescription,
+  DocsPage,
+  DocsTitle,
+} from 'fumadocs-ui/page';
+
+import { useMDXComponents } from '@/components/mdx-components';
+
+import { source } from '@/app/source';
+
+export default async function Page({
+  params,
+}: {
+  params: { slug?: string[] };
+}) {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
@@ -12,9 +25,11 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
-      <div className="flex flex-col gap-2">
+      <div className='flex flex-col gap-2'>
         <DocsTitle>{page.data.title}</DocsTitle>
-        <DocsDescription className="mb-2.5">{page.data.description}</DocsDescription>
+        <DocsDescription className='mb-2.5'>
+          {page.data.description}
+        </DocsDescription>
       </div>
       <DocsBody>
         <MDX components={useMDXComponents({})} />
