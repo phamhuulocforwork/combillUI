@@ -58,8 +58,12 @@ export default {
           },
         },
         'stroke-dashoffset': {
-          '0%': { strokeDashoffset: '100%' },
-          '100%': { strokeDashoffset: '0' },
+          '0%': {
+            strokeDashoffset: '100%',
+          },
+          '100%': {
+            strokeDashoffset: '0',
+          },
         },
       },
       animation: {

@@ -17,6 +17,14 @@ export const componentSchema = z.object({
   type: z.union([z.literal('registry:ui'), z.literal('registry:example')]),
   registryDependencies: z.array(z.string()).optional(),
   dependencies: z.array(z.string()).optional(),
+  devDependencies: z.array(z.string()).optional(),
+  tailwind: z.record(z.any()).optional(),
+  cssVars: z
+    .object({
+      light: z.record(z.string()).optional(),
+      dark: z.record(z.string()).optional(),
+    })
+    .optional(),
   files: z.array(componentFileSchema),
 });
 
