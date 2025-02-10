@@ -22,23 +22,6 @@ export const Index: Record<string, any> = {
       ),
     },
 
-    'test-component': {
-      name: 'test-component',
-      description: '',
-      type: 'registry:ui',
-      files: [
-        {
-          path: 'registry/default/ui/test-component.tsx',
-          content:
-            "'use client';\r\n\r\nimport * as React from 'react';\r\n\r\nimport { Button } from '@/components/ui/button';\r\n\r\nexport function TestComponent() {\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  return (\r\n    <div className='flex flex-col items-center gap-4'>\r\n      <div className='text-4xl font-bold'>{count}</div>\r\n      <div className='flex gap-2'>\r\n        <Button variant='outline' onClick={() => setCount((prev) => prev - 1)}>\r\n          -\r\n        </Button>\r\n        <Button variant='outline' onClick={() => setCount((prev) => prev + 1)}>\r\n          +\r\n        </Button>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
-          type: 'registry:ui',
-        },
-      ],
-      component: React.lazy(
-        () => import('@/registry/default/ui/test-component.tsx'),
-      ),
-    },
-
     'responsive-textarea-default': {
       name: 'responsive-textarea-default',
       description: '',

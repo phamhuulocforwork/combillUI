@@ -8,20 +8,56 @@ preview: true
 
 ## Installation
 
-### Manual
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
 
-<Steps>
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/responsive-textarea.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add button 'https://combillui.vercel.app/registry/responsive-textarea.json';
+        ```
+      </Tab>
 
-  <Step>
-     Install the required shadcn dependencies:
-  </Step>
-  <Step>
-    Copy and paste the following code into your project.
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add button 'https://combillui.vercel.app/registry/responsive-textarea.json';
+        ```
+      </Tab>
 
-    <ComponentSource name="responsive-textarea" />
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add button 'https://combillui.vercel.app/registry/responsive-textarea.json';
+        ```
+      </Tab>
+    </Tabs>
 
-  </Step>
-</Steps>
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies:
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="responsive-textarea" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
 
 ## Examples
 

@@ -9,6 +9,12 @@ import type { MDXComponents } from 'mdx/types';
 import { ComponentSource } from '@/components/component-source';
 import { ComponentTabs } from '@/components/component-tabs';
 import { Table, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import {
+  Tabs as ShadcnTabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs';
 
 import { cn } from '@/lib/utils';
 
@@ -44,6 +50,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ComponentTabs,
     ComponentSource,
+    ShadcnTabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
     Steps,
     Step,
     AutoTypeTable: (props) => (

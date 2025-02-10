@@ -112,7 +112,7 @@
   }
 
   .auto-type-table table td {
-    @apply align-top whitespace-pre-wrap;
+    @apply whitespace-pre-wrap align-top;
   }
 
   .auto-type-table table td:nth-child(2) {
@@ -120,7 +120,7 @@
   }
 
   [data-rehype-pretty-code-figure] figure {
-    @apply border-none !bg-secondary/50 rounded-none m-0;
+    @apply m-0 rounded-none border-none !bg-secondary/50;
   }
 
   [data-line] span {

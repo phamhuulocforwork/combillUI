@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "fumadocs-core": "^14.2.0",
@@ -53,7 +54,7 @@
   "name": "combillui",
   "private": true,
   "scripts": {
-    "clean": "rimraf --glob .next .source __registry__",
+    "clean": "rimraf --glob .next .source __registry__ public/registry",
     "clean:all": "rimraf --glob .next node_modules .source __registry__ public/registry",
     "build:registry": "tsx scripts/build-ui-registry.ts && tsx scripts/build-example-registry.ts && tsx scripts/build-shadcn-cli.ts && tsx scripts/build-registry.ts",
     "preview": "npm run build:all && next start",

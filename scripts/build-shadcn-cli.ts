@@ -7,7 +7,7 @@ import type { Component } from '@/registry/schema';
 
 function buildShadcnCli() {
   // Create the registry directory if it doesn't exist
-  const registry = path.join(process.cwd(), 'public/registry/default/ui');
+  const registry = path.join(process.cwd(), 'public/registry');
   if (!fs.existsSync(registry)) {
     fs.mkdirSync(registry, { recursive: true });
   }
