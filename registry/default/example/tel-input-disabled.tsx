@@ -1,0 +1,21 @@
+'use client';
+
+import * as React from 'react';
+
+import { TelInput } from '@/registry/default/ui/tel-input';
+
+export default function TelInputDisabled() {
+  const [value, setValue] = React.useState<string>('');
+
+  return (
+    <div className='flex flex-col gap-2'>
+      <TelInput
+        value={value}
+        onChange={setValue}
+        defaultCountry='VN'
+        disabled
+        placeholder='Disabled state'
+      />
+    </div>
+  );
+}

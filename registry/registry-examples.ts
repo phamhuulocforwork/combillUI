@@ -41,4 +41,54 @@ export const examples: Registry = [
       },
     ],
   },
+  {
+    name: 'tel-input-custom-labels',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/tel-input-custom-labels.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'tel-input-default-country',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/tel-input-default-country.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'tel-input-default',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/tel-input-default.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'tel-input-disabled',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/tel-input-disabled.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'tel-input-international',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/tel-input-international.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
 ];

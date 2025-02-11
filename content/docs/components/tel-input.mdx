@@ -1,0 +1,85 @@
+---
+title: Tel input
+description: Tel Input component based on react-phone-number-input.
+preview: true
+---
+
+<ComponentTabs name='tel-input-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/tel-input.json';
+        ```
+
+      </Tab>
+
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx shadcn@latest add button 'https://combillui.vercel.app/registry/tel-input.json';
+        ```
+      </Tab>
+
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add button 'https://combillui.vercel.app/registry/tel-input.json';
+        ```
+      </Tab>
+
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add button 'https://combillui.vercel.app/registry/tel-input.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies for both Shadcn UI components and the phone input library:
+        ```bash
+        npm install react-phone-number-input
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="tel-input" />
+      </Step>
+    </Steps>
+  </TabsContent>
+
+</ShadcnTabs>
+
+## Examples
+
+### Default
+
+<ComponentTabs name='tel-input-default-country' />
+
+### Custom Labels
+
+<ComponentTabs name='tel-input-custom-labels' />
+
+### International Format
+
+<ComponentTabs name='tel-input-international' />
+
+### Disabled State
+
+<ComponentTabs name='tel-input-disabled' />
