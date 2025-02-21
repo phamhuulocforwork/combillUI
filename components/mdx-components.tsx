@@ -1,22 +1,22 @@
-import { createTypeTable } from 'fumadocs-typescript/ui';
-import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
-import { Heading } from 'fumadocs-ui/components/heading';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-import defaultComponents from 'fumadocs-ui/mdx';
-import type { MDXComponents } from 'mdx/types';
+import { createTypeTable } from "fumadocs-typescript/ui";
+import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { Heading } from "fumadocs-ui/components/heading";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import defaultComponents from "fumadocs-ui/mdx";
+import type { MDXComponents } from "mdx/types";
 
-import { ComponentSource } from '@/components/component-source';
-import { ComponentTabs } from '@/components/component-tabs';
-import { Table, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import { ComponentSource } from "@/components/component-source";
+import { ComponentTabs } from "@/components/component-tabs";
+import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import {
   Tabs as ShadcnTabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@/components/ui/tabs';
+} from "@/components/ui/tabs";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 const { AutoTypeTable } = createTypeTable();
 
@@ -40,7 +40,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     th: TableHead,
     td: TableCell,
     Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
-      <Tabs className={cn('rounded-md', className)} {...props} />
+      <Tabs className={cn("rounded-md", className)} {...props} />
     ),
     Tab,
     pre: ({ ...props }: React.ComponentProps<typeof Pre>) => (

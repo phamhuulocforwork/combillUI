@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import * as React from 'react';
+import * as React from "react";
 
-import { ResponsiveTextarea } from '@/registry/default/ui/responsive-textarea';
+import { ResponsiveTextarea } from "@/registry/default/ui/responsive-textarea";
 
 export default function ResponsiveTextareaDefault() {
   return (

@@ -12,7 +12,6 @@ module.exports = {
   requirePragma: false,
   semi: true,
   singleAttributePerLine: false,
-  singleQuote: true,
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,

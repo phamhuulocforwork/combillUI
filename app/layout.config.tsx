@@ -1,8 +1,8 @@
-import { type BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { type BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
-import { Icons } from '@/components/icons';
+import { Icons } from "@/components/icons";
 
-import { siteConfig } from '@/config/site';
+import { siteConfig } from "@/config/site";
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
@@ -17,13 +17,13 @@ export const baseOptions: BaseLayoutProps = {
   },
   links: [
     {
-      text: 'Docs',
-      url: '/docs/introduction',
+      text: "Docs",
+      url: "/docs/introduction",
     },
     {
-      type: 'icon',
+      type: "icon",
       url: siteConfig.links.github,
-      text: 'Github',
+      text: "Github",
       icon: <Icons.gitHub className='size-4' aria-hidden='true' />,
       external: true,
     },

@@ -1,10 +1,10 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-import type { Registry } from '@/registry/schema';
+import type { Registry } from "@/registry/schema";
 
-const UI_DIR = path.join(process.cwd(), 'registry/default/ui');
-const OUTPUT_FILE = path.join(process.cwd(), 'registry/registry-ui.ts');
+const UI_DIR = path.join(process.cwd(), "registry/default/ui");
+const OUTPUT_FILE = path.join(process.cwd(), "registry/registry-ui.ts");
 
 function detectDependencies(content: string): {
   registryDependencies: string[];
@@ -17,7 +17,7 @@ function detectDependencies(content: string): {
   const uiImports = content.match(/@\/components\/ui\/([a-zA-Z-]+)/g);
   if (uiImports) {
     uiImports.forEach((imp) => {
-      const component = imp.split('/').pop();
+      const component = imp.split("/").pop();
       if (component) {
         registryDeps.add(component);
       }
@@ -43,22 +43,22 @@ function detectDependencies(content: string): {
 
 function buildUIRegistry() {
   // Read all .tsx files in UI directory
-  const files = fs.readdirSync(UI_DIR).filter((file) => file.endsWith('.tsx'));
+  const files = fs.readdirSync(UI_DIR).filter((file) => file.endsWith(".tsx"));
 
   // Create registry items
   const registry: Registry = files.map((file) => {
-    const name = path.basename(file, '.tsx');
+    const name = path.basename(file, ".tsx");
     const relativePath = path
-      .join('registry/default/ui', file)
-      .replace(/\\/g, '/');
+      .join("registry/default/ui", file)
+      .replace(/\\/g, "/");
 
     // Read file content
-    const content = fs.readFileSync(path.join(UI_DIR, file), 'utf8');
+    const content = fs.readFileSync(path.join(UI_DIR, file), "utf8");
     const { registryDependencies, dependencies } = detectDependencies(content);
 
     return {
       name,
-      type: 'registry:ui',
+      type: "registry:ui",
       registryDependencies,
       dependencies,
       devDependencies: [],
@@ -71,7 +71,7 @@ function buildUIRegistry() {
         {
           path: relativePath,
           content,
-          type: 'registry:ui',
+          type: "registry:ui",
         },
       ],
     };
@@ -85,7 +85,7 @@ export const ui: Registry = ${JSON.stringify(registry, null, 2)};
 
   // Write file
   fs.writeFileSync(OUTPUT_FILE, content);
-  console.log('✅ Generated registry/registry-ui.ts');
+  console.log("✅ Generated registry/registry-ui.ts");
 }
 
 buildUIRegistry();

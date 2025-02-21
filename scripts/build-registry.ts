@@ -1,17 +1,17 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-import { registry } from '@/registry';
-import type { Component, ComponentFile } from '@/registry/schema';
+import { registry } from "@/registry";
+import type { Component, ComponentFile } from "@/registry/schema";
 
-const REGISTRY_DIR = path.join(process.cwd(), 'registry/default/ui');
-const OUTPUT_FILE = path.join(process.cwd(), '__registry__/index.tsx');
+const REGISTRY_DIR = path.join(process.cwd(), "registry/default/ui");
+const OUTPUT_FILE = path.join(process.cwd(), "__registry__/index.tsx");
 
 function buildRegistry() {
   const components: Record<string, Component> = {};
 
   for (const component of registry) {
-    const { name, description = '', type, files } = component;
+    const { name, description = "", type, files } = component;
 
     const processedFiles: ComponentFile[] = files.map((file) => ({
       ...file,
@@ -43,7 +43,7 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/${component.files[0].path}")),
     }`,
       )
-      .join(',\n')}
+      .join(",\n")}
   }
 };`;
 
@@ -53,7 +53,7 @@ export const Index: Record<string, any> = {
   }
 
   fs.writeFileSync(OUTPUT_FILE, registryContent);
-  console.log('✅ Generated __registry__/index.tsx');
+  console.log("✅ Generated __registry__/index.tsx");
 }
 
 buildRegistry();

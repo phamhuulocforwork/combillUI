@@ -1,13 +1,13 @@
 // Adopted from https://niels.foo/post/publishing-custom-shadcn-ui-components
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-import { ui } from '@/registry/registry-ui';
-import type { Component } from '@/registry/schema';
+import { ui } from "@/registry/registry-ui";
+import type { Component } from "@/registry/schema";
 
 function buildShadcnCli() {
   // Create the registry directory if it doesn't exist
-  const registry = path.join(process.cwd(), 'public/registry');
+  const registry = path.join(process.cwd(), "public/registry");
   if (!fs.existsSync(registry)) {
     fs.mkdirSync(registry, { recursive: true });
   }
@@ -26,8 +26,8 @@ function buildShadcnCli() {
         dark: {},
       },
       files: component.files.map((file) => ({
-        path: file.path.split('/').pop() || '',
-        content: file.content || '',
+        path: file.path.split("/").pop() || "",
+        content: file.content || "",
         type: file.type,
       })),
     } satisfies Component;
@@ -37,7 +37,7 @@ function buildShadcnCli() {
       JSON.stringify(schema, null, 2),
     );
   }
-  console.log('✅ Generated registry/default/ui');
+  console.log("✅ Generated registry/default/ui");
 }
 
 buildShadcnCli();
