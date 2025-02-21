@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 
 import { RootProvider } from 'fumadocs-ui/provider';
 
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '@/components/ui/toaster';
 
 import '@/styles/globals.css';
 

@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 
 import { ResponsiveTextarea } from '@/registry/default/ui/responsive-textarea';
 
-export default function ResponsiveTextareaWithText() {
+export default function c() {
   return (
     <div className='grid w-full gap-2'>
       <Label>Your message</Label>

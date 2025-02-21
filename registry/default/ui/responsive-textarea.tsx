@@ -4,12 +4,9 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-export interface ResponsiveTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
-
 const ResponsiveTextarea = React.forwardRef<
   HTMLTextAreaElement,
-  ResponsiveTextareaProps
+  React.ComponentProps<'textarea'>
 >(({ className, ...props }, ref) => {
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
   const [val, setVal] = React.useState<string>('');

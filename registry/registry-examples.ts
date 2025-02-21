@@ -12,11 +12,11 @@ export const examples: Registry = [
     ],
   },
   {
-    name: 'responsive-textarea-with-button',
+    name: 'responsive-textarea-with-form',
     type: 'registry:example',
     files: [
       {
-        path: 'registry/default/example/responsive-textarea-with-button.tsx',
+        path: 'registry/default/example/responsive-textarea-with-form.tsx',
         type: 'registry:example',
       },
     ],
