@@ -44,31 +44,26 @@ export default function ResponsiveTextareaWithForm() {
   }
 
   return (
-    <div>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className='w-full max-w-2xl space-y-4'
-        >
-          <FormField
-            control={form.control}
-            name='message'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <ResponsiveTextarea {...field} className='w-full' />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button className='w-full' type='submit'>
-            Send message
-            <Send />
-          </Button>
-        </form>
-      </Form>
-    </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-4'>
+        <FormField
+          control={form.control}
+          name='message'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <ResponsiveTextarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button className='w-full' type='submit'>
+          Send message
+          <Send />
+        </Button>
+      </form>
+    </Form>
   );
 }
