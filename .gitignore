@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# AI prompts
+_context
+
 #From Fumadocs
 # generated content
 .contentlayer
