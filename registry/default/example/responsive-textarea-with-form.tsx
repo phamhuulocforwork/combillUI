@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import * as React from 'react';
+import * as React from "react";
 
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Send } from 'lucide-react';
-import { useForm } from 'react-hook-form';
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Send } from "lucide-react";
+import { useForm } from "react-hook-form";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,14 +15,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
+} from "@/components/ui/form";
 
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from "@/hooks/use-toast";
 
-import { ResponsiveTextarea } from '@/registry/default/ui/responsive-textarea';
+import { ResponsiveTextarea } from "@/registry/default/ui/responsive-textarea";
 
 const formSchema = z.object({
-  message: z.string().min(1, 'Message is required'),
+  message: z.string().min(1, "Message is required"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,13 +32,13 @@ export default function ResponsiveTextareaWithForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      message: '',
+      message: "",
     },
   });
 
   function onSubmit(data: FormValues) {
     toast({
-      title: 'Message sent!',
+      title: "Message sent!",
       description: `Message: ${data.message}`,
     });
   }

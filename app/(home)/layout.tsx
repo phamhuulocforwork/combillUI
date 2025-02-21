@@ -1,17 +1,17 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import { HomeLayout } from "fumadocs-ui/layouts/home";
 
-import { siteConfig } from '@/config/site';
+import { siteConfig } from "@/config/site";
 
-import { baseOptions } from '../layout.config';
+import { baseOptions } from "../layout.config";
 
 export function SiteFooter() {
   return (
     <footer className='mt-auto border-t bg-fd-card py-6 text-fd-secondary-foreground'>
       <div className='container flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between'>
         <p className='text-muted-foreground text-sm'>
-          Built by{' '}
+          Built by{" "}
           <a
             href={siteConfig.links.github}
             rel='noreferrer noopener'

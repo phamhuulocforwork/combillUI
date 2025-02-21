@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { TelInput } from '@/registry/default/ui/tel-input';
+import { TelInput } from "@/registry/default/ui/tel-input";
 
 export default function TelInputDefault() {
   return (

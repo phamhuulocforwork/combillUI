@@ -1,4 +1,4 @@
-import { Combine, Loader } from 'lucide-react';
+import { Combine, Loader } from "lucide-react";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
