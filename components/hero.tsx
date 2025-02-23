@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 
 const Hero = () => {
   return (
-    <div className='max-w-screen-xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0'>
+    <div className='grid grid-cols-1 md:grid-cols-2 py-10 md:gap-0 gap-10'>
       <div className='max-w-xl'>
         <Badge
           className='rounded-full py-1 border-none animate-fade-up text-balance'
@@ -19,7 +19,7 @@ const Hero = () => {
           {siteConfig.version}
         </Badge>
         <h1
-          className='mt-6 max-w-[20ch] text-5xl lg:text-[2.75rem] xl:text-5xl font-bold !leading-[1.2] tracking-tight animate-fade-up text-balance'
+          className='mt-6 max-w-[20ch] text-4xl xl:text-5xl font-bold !leading-[1.2] tracking-tight animate-fade-up text-balance'
           style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
           {siteConfig.short_description}
@@ -51,7 +51,7 @@ const Hero = () => {
         </div>
       </div>
       <div
-        className='relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square animate-fade-up'
+        className='relative w-full bg-accent rounded-xl aspect-square animate-fade-up'
         style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
       >
         <Image
