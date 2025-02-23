@@ -72,21 +72,21 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "tel-input-disabled",
-    type: "registry:example",
-    files: [
-      {
-        path: "registry/default/example/tel-input-disabled.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "tel-input-international",
     type: "registry:example",
     files: [
       {
         path: "registry/default/example/tel-input-international.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tel-input-with-form",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/tel-input-with-form.tsx",
         type: "registry:example",
       },
     ],
