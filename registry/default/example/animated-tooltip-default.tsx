@@ -17,7 +17,10 @@ export default function AnimatedTooltipDefault() {
       <AnimatedTooltip>
         <AnimatedTooltipTrigger>
           <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>
-            <AvatarImage src='/images/me.jpg' alt='@shadcn' />
+            <AvatarImage
+              src='https://github.com/phamhuulocforwork.png'
+              alt='@shadcn'
+            />
             <AvatarFallback>HL</AvatarFallback>
           </Avatar>
         </AnimatedTooltipTrigger>
