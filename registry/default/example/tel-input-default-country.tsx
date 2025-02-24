@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { TelInput } from "@/registry/default/ui/tel-input";
 
-export default function TelInputDefault() {
+export default function TelInputDefaultCountry() {
   const [value, setValue] = React.useState<string>("");
 
   return (

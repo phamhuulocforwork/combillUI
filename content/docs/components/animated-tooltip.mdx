@@ -1,0 +1,82 @@
+---
+title: Animated tooltip
+description: A tooltip component that animates when it is hovered over.
+preview: true
+---
+
+<ComponentTabs name='animated-tooltip-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/animated-tooltip.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add button 'https://combillui.vercel.app/registry/animated-tooltip.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add button 'https://combillui.vercel.app/registry/animated-tooltip.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add button 'https://combillui.vercel.app/registry/animated-tooltip.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="animated-tooltip" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import {
+  AnimatedTooltip,
+  AnimatedTooltipContent,
+  AnimatedTooltipProvider,
+  AnimatedTooltipTrigger,
+} from "@/components/ui/animated-tooltip";
+```
+
+```tsx
+<AnimatedTooltipProvider>
+  <AnimatedTooltip>
+    <AnimatedTooltipTrigger>Hover</AnimatedTooltipTrigger>
+    <AnimatedTooltipContent className='bg-black'>
+      <p>Add to library</p>
+    </AnimatedTooltipContent>
+  </AnimatedTooltip>
+</AnimatedTooltipProvider>
+```

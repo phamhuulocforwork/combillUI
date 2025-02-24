@@ -2,6 +2,16 @@ import type { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
   {
+    name: "animated-tooltip-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/animated-tooltip-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "responsive-textarea-default",
     type: "registry:example",
     files: [
