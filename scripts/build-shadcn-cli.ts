@@ -37,7 +37,7 @@ function buildShadcnCli() {
       JSON.stringify(schema, null, 2),
     );
   }
-  console.log("✅ Generated registry/default/ui");
+  console.log("✅ Generated public/registry");
 }
 
 buildShadcnCli();

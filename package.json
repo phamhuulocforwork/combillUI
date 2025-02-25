@@ -60,7 +60,7 @@
   "scripts": {
     "clean": "rimraf --glob .next .source __registry__ public/registry",
     "clean:all": "rimraf --glob .next node_modules .source __registry__ public/registry",
-    "build:registry": "tsx scripts/build-ui-registry.ts && tsx scripts/build-example-registry.ts && tsx scripts/build-shadcn-cli.ts && tsx scripts/build-registry.ts",
+    "build:registry": "tsx scripts/build-ui-registry.ts && tsx scripts/build-example-registry.ts && tsx scripts/build-snippets-registry.ts && tsx scripts/build-shadcn-cli.ts && tsx scripts/build-registry.ts",
     "preview": "npm run build:all && next start",
     "format": "prettier --write \"./**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"./**/*.{ts,tsx}\"",

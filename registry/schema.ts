@@ -3,6 +3,7 @@ import { z } from "zod";
 export const registryItemTypeSchema = z.enum([
   "registry:ui",
   "registry:example",
+  "registry:snippet",
 ]);
 
 export const componentFileSchema = z.object({
@@ -14,7 +15,11 @@ export const componentFileSchema = z.object({
 export const componentSchema = z.object({
   name: z.string(),
   description: z.string().optional(),
-  type: z.union([z.literal("registry:ui"), z.literal("registry:example")]),
+  type: z.union([
+    z.literal("registry:ui"),
+    z.literal("registry:example"),
+    z.literal("registry:snippet"),
+  ]),
   registryDependencies: z.array(z.string()).optional(),
   dependencies: z.array(z.string()).optional(),
   devDependencies: z.array(z.string()).optional(),

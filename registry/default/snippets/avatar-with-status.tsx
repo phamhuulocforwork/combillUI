@@ -1,0 +1,55 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+export default function AvatarWithStatus() {
+  return (
+    <div className='flex items-center gap-3'>
+      {/* Online */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* DND */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* Busy */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* Offline */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>
+      </div>
+    </div>
+  );
+}

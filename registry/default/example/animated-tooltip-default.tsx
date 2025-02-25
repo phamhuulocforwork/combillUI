@@ -19,7 +19,7 @@ export default function AnimatedTooltipDefault() {
           <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>
             <AvatarImage
               src='https://github.com/phamhuulocforwork.png'
-              alt='@shadcn'
+              alt='@phamhuulocforwork'
             />
             <AvatarFallback>HL</AvatarFallback>
           </Avatar>
