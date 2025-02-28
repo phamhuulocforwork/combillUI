@@ -1,0 +1,91 @@
+---
+title: Labeled Switch
+description: A switch component with labels.
+preview: true
+---
+
+<ComponentTabs name='labeled-switch-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/labeled-switch.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add button 'https://combillui.vercel.app/registry/labeled-switch.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add button 'https://combillui.vercel.app/registry/labeled-switch.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add button 'https://combillui.vercel.app/registry/labeled-switch.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies
+        ```bash
+        npm install framer-motion
+        ```
+        ```bash
+        npm install @radix-ui/react-switch
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="labeled-switch" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { LabeledSwitch } from "@/components/ui/labeled-switch";
+```
+
+```tsx
+const [selected, setSelected] = React.useState<boolean>(false);
+
+return (
+  <LabeledSwitch
+    firstLabel='False'
+    secondLabel='True'
+    selected={selected}
+    onToggle={setSelected}
+  />
+);
+```
+
+## Examples
+
+### Form
+
+<ComponentTabs name='labeled-switch-with-form' />

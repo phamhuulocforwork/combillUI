@@ -12,6 +12,26 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "labeled-switch-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/labeled-switch-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "labeled-switch-with-form",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/labeled-switch-with-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "responsive-textarea-default",
     type: "registry:example",
     files: [
