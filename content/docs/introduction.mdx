@@ -4,22 +4,38 @@ description: Collection of Customized Shadcn UI Blocks, Components & Hooks.
 ---
 
 import { Card, Cards } from "fumadocs-ui/components/card";
+import { Anchor, Component, SquareDashedBottomCode } from "lucide-react";
 
 ## Getting Started
 
 <Cards>
   <Card
-    title='Components'
+    title={
+      <div className='flex items-center gap-2'>
+        <Component className='h-4 w-4' />
+        Components
+      </div>
+    }
     href='/docs/components/responsive-textarea'
     description='Explore our collection of customized Shadcn UI components.'
   />
   <Card
-    title='Hooks'
+    title={
+      <div className='flex items-center gap-2'>
+        <Anchor className='h-4 w-4' />
+        Hooks
+      </div>
+    }
     href='/docs/hooks/use-boolean'
     description='Explore our collection of customized Shadcn UI hooks.'
   />
   <Card
-    title='Code Snippets'
+    title={
+      <div className='flex items-center gap-2'>
+        <SquareDashedBottomCode className='h-4 w-4' />
+        Code Snippets
+      </div>
+    }
     href='/docs/snippets/avatar'
     description='Reusable UI code snippets built with Shadcn UI.'
   />
