@@ -1,0 +1,53 @@
+---
+title: useMobile
+description: Detect if the current device is a mobile device with the useMobile hook, providing a responsive way to adapt your UI.
+preview: true
+---
+
+<ComponentTabs name='use-mobile-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-mobile.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-mobile.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-mobile.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-mobile.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-mobile" />
+  </TabsContent>
+</ShadcnTabs>

@@ -1,0 +1,17 @@
+{
+  "name": "use-mobile",
+  "type": "registry:hook",
+  "registryDependencies": [],
+  "dependencies": [
+    "react",
+    "lodash/debounce"
+  ],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "use-mobile.tsx",
+      "content": "import { useLayoutEffect, useState } from \"react\";\r\n\r\nimport debounce from \"lodash/debounce\";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = useState(false);\r\n\r\n  useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener(\"resize\", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener(\"resize\", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n",
+      "type": "registry:hook"
+    }
+  ]
+}

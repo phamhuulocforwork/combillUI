@@ -1,0 +1,16 @@
+{
+  "name": "use-boolean",
+  "type": "registry:hook",
+  "registryDependencies": [],
+  "dependencies": [
+    "react"
+  ],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "use-boolean.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== \"boolean\") {\r\n    throw new Error(\"defaultValue must be `true` or `false`\");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n",
+      "type": "registry:hook"
+    }
+  ]
+}

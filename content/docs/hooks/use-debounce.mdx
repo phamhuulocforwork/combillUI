@@ -1,0 +1,53 @@
+---
+title: useDebounce
+description: Delay the execution of a function or update of a value until after a specified delay with the useDebounce hook.
+preview: true
+---
+
+<ComponentTabs name='use-debounce-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-debounce.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-debounce.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-debounce.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-debounce.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-debounce" />
+  </TabsContent>
+</ShadcnTabs>

@@ -121,4 +121,34 @@ export const examples: Registry = [
       },
     ],
   },
+  {
+    name: "use-boolean-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-boolean-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "use-debounce-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-debounce-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "use-mobile-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-mobile-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

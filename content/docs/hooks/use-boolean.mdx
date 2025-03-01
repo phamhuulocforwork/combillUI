@@ -1,0 +1,53 @@
+---
+title: useBoolean
+description: Manage a boolean state with the useBoolean hook, providing methods to set it to true, false, or toggle between them.
+preview: true
+---
+
+<ComponentTabs name='use-boolean-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-boolean.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add button 'https://combillui.vercel.app/registry/use-boolean.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add button 'https://combillui.vercel.app/registry/use-boolean.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add button 'https://combillui.vercel.app/registry/use-boolean.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-boolean" />
+  </TabsContent>
+</ShadcnTabs>
