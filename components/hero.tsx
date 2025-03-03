@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 
 import { siteConfig } from "@/config/site";
 
+import { HeroCards } from "./hero-cards";
+
 const Hero = () => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 py-10 md:gap-0 gap-10'>
@@ -51,15 +53,10 @@ const Hero = () => {
         </div>
       </div>
       <div
-        className='relative w-full bg-accent rounded-xl aspect-square animate-fade-up'
+        className='relative w-full hidden lg:block rounded-xl aspect-square animate-fade-up'
         style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
       >
-        <Image
-          src='/images/me.jpg'
-          fill
-          alt=''
-          className='object-cover rounded-xl'
-        />
+        <HeroCards />
       </div>
     </div>
   );
