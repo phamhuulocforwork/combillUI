@@ -1,0 +1,95 @@
+---
+title: Animated Label Input
+description: A input component that animates when it is focused.
+preview: true
+---
+
+<ComponentTabs name='animated-label-input-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/animated-label-input.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/animated-label-input.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/animated-label-input.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/animated-label-input.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install input and label component
+        ```bash
+        npx shadcn@latest add label
+        ```
+        ```bash
+        npx shadcn@latest add input
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="animated-label-input" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import {
+  AnimatedInput,
+  AnimatedLabel,
+  AnimatedLabelInput, // If you want to use the component as a whole
+} from "@/components/ui/animated-label-input";
+```
+
+### Default
+
+```tsx
+<AnimatedLabelInput label='Animated Label' />
+```
+
+### Customize
+
+```tsx
+<AnimatedInput id="animated-label-input-demo" />
+<AnimatedLabel htmlFor="animated-label-input-demo">Animated Label</AnimatedLabel>
+```
+
+## Example
+
+### With Form
+
+<ComponentTabs name='animated-label-input-with-form' />

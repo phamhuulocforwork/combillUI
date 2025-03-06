@@ -11,7 +11,7 @@ export const hooks: Registry = [
       {
         path: "registry/default/hooks/use-boolean.tsx",
         content:
-          '"use client";\r\n\r\nimport * as React from "react";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== "boolean") {\r\n    throw new Error("defaultValue must be `true` or `false`");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n',
+          '"use client";\n\nimport * as React from "react";\n\ntype UseBooleanReturn = {\n  value: boolean;\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\n  setTrue: () => void;\n  setFalse: () => void;\n  toggle: () => void;\n};\n\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\n  if (typeof defaultValue !== "boolean") {\n    throw new Error("defaultValue must be `true` or `false`");\n  }\n  const [value, setValue] = React.useState(defaultValue);\n\n  const toggle = React.useCallback(() => {\n    setValue((x) => !x);\n  }, []);\n\n  const setTrue = React.useCallback(() => {\n    setValue(true);\n  }, []);\n\n  const setFalse = React.useCallback(() => {\n    setValue(false);\n  }, []);\n\n  return { value, setValue, setTrue, setFalse, toggle };\n}\n',
         type: "registry:hook",
       },
     ],
@@ -26,7 +26,7 @@ export const hooks: Registry = [
       {
         path: "registry/default/hooks/use-debounce.ts",
         content:
-          'import * as React from "react";\r\n\r\nexport function useDebounce<T>(value: T, delay?: number): T {\r\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\r\n\r\n  React.useEffect(() => {\r\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\r\n    return () => clearTimeout(timer);\r\n  }, [value, delay]);\r\n\r\n  return debouncedValue;\r\n}\r\n',
+          'import * as React from "react";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\n    return () => clearTimeout(timer);\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n',
         type: "registry:hook",
       },
     ],
@@ -41,7 +41,7 @@ export const hooks: Registry = [
       {
         path: "registry/default/hooks/use-mobile.tsx",
         content:
-          'import { useLayoutEffect, useState } from "react";\r\n\r\nimport debounce from "lodash.debounce";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = useState(false);\r\n\r\n  useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener("resize", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener("resize", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n',
+          'import { useLayoutEffect, useState } from "react";\n\nimport debounce from "lodash.debounce";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = useState(false);\n\n  useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener("resize", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener("resize", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n',
         type: "registry:hook",
       },
     ],

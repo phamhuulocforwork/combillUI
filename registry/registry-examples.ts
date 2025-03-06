@@ -2,6 +2,26 @@ import type { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
   {
+    name: "animated-label-input-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/animated-label-input-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-label-input-with-form",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/animated-label-input-with-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-tooltip-default",
     type: "registry:example",
     files: [

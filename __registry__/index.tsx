@@ -5,6 +5,23 @@ import * as React from "react";
 
 export const Index: Record<string, any> = {
   default: {
+    "animated-label-input": {
+      name: "animated-label-input",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/ui/animated-label-input.tsx",
+          content:
+            'import * as React from "react";\n\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedLabel = React.forwardRef<\n  React.ElementRef<typeof Label>,\n  React.ComponentPropsWithoutRef<typeof Label>\n>(({ className, ...props }, ref) => {\n  return (\n    <Label\n      className={cn(\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\n        className,\n      )}\n      ref={ref}\n      {...props}\n    />\n  );\n});\nAnimatedLabel.displayName = "AnimatedLabel";\n\ntype AnimatedLabelInputProps = InputProps & { label?: string };\n\nconst AnimatedLabelInput = React.forwardRef<\n  React.ElementRef<typeof AnimatedInput>,\n  React.PropsWithoutRef<AnimatedLabelInputProps>\n>(({ id, label, ...props }, ref) => {\n  return (\n    <div className=\'relative\'>\n      <AnimatedInput ref={ref} id={id} {...props} />\n      <AnimatedLabel htmlFor={id}>{label}</AnimatedLabel>\n    </div>\n  );\n});\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <Input\n        placeholder=\' \'\n        className={cn("peer", className)}\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nAnimatedInput.displayName = "AnimatedInput";\n\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/ui/animated-label-input.tsx"),
+      ),
+    },
+
     "animated-tooltip": {
       name: "animated-tooltip",
       description: "",
@@ -70,6 +87,40 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/ui/tel-input.tsx"),
+      ),
+    },
+
+    "animated-label-input-default": {
+      name: "animated-label-input-default",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/animated-label-input-default.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/example/animated-label-input-default.tsx"),
+      ),
+    },
+
+    "animated-label-input-with-form": {
+      name: "animated-label-input-with-form",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/animated-label-input-with-form.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/example/animated-label-input-with-form.tsx"
+          ),
       ),
     },
 
@@ -419,7 +470,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/hooks/use-boolean.tsx",
           content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== "boolean") {\r\n    throw new Error("defaultValue must be `true` or `false`");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n',
+            '"use client";\n\nimport * as React from "react";\n\ntype UseBooleanReturn = {\n  value: boolean;\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\n  setTrue: () => void;\n  setFalse: () => void;\n  toggle: () => void;\n};\n\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\n  if (typeof defaultValue !== "boolean") {\n    throw new Error("defaultValue must be `true` or `false`");\n  }\n  const [value, setValue] = React.useState(defaultValue);\n\n  const toggle = React.useCallback(() => {\n    setValue((x) => !x);\n  }, []);\n\n  const setTrue = React.useCallback(() => {\n    setValue(true);\n  }, []);\n\n  const setFalse = React.useCallback(() => {\n    setValue(false);\n  }, []);\n\n  return { value, setValue, setTrue, setFalse, toggle };\n}\n',
           type: "registry:hook",
         },
       ],
@@ -436,7 +487,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/hooks/use-debounce.ts",
           content:
-            'import * as React from "react";\r\n\r\nexport function useDebounce<T>(value: T, delay?: number): T {\r\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\r\n\r\n  React.useEffect(() => {\r\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\r\n    return () => clearTimeout(timer);\r\n  }, [value, delay]);\r\n\r\n  return debouncedValue;\r\n}\r\n',
+            'import * as React from "react";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\n    return () => clearTimeout(timer);\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n',
           type: "registry:hook",
         },
       ],
@@ -453,7 +504,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/hooks/use-mobile.tsx",
           content:
-            'import { useLayoutEffect, useState } from "react";\r\n\r\nimport debounce from "lodash/debounce";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = useState(false);\r\n\r\n  useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener("resize", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener("resize", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n',
+            'import { useLayoutEffect, useState } from "react";\n\nimport debounce from "lodash.debounce";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = useState(false);\n\n  useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener("resize", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener("resize", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n',
           type: "registry:hook",
         },
       ],

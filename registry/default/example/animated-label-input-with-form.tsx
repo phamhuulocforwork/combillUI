@@ -13,56 +13,62 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 
 import { useToast } from "@/hooks/use-toast";
 
-import { LabeledSwitch } from "@/registry/default/ui/labeled-switch";
+import { AnimatedLabelInput } from "@/registry/default/ui/animated-label-input";
 
 const formSchema = z.object({
-  consent: z.boolean({
-    required_error: "You must accept the terms and conditions",
-  }),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function LabeledSwitchWithForm() {
+export default function AnimatedLabelInputWithForm() {
   const { toast } = useToast();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      consent: false,
+      email: "",
+      password: "",
     },
   });
 
   function onSubmit(data: FormValues) {
     toast({
       title: "Form submitted!",
-      description: `Consent: ${data.consent ? "Accepted" : "Not accepted"}`,
+      description: `Email: ${data.email}`,
     });
   }
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className='max-w-xs space-y-4'
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-4'>
         <FormField
           control={form.control}
-          name='consent'
+          name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Terms and Conditions</FormLabel>
               <FormControl>
-                <LabeledSwitch
-                  firstLabel='Decline'
-                  secondLabel='Accept'
-                  selected={field.value}
-                  onToggle={field.onChange}
+                <AnimatedLabelInput label='Email' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <AnimatedLabelInput
+                  label='Password'
+                  type='password'
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
