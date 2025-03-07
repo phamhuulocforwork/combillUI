@@ -28,10 +28,22 @@ const AnimatedLabelInput = React.forwardRef<
   React.ElementRef<typeof AnimatedInput>,
   React.PropsWithoutRef<AnimatedLabelInputProps>
 >(({ id, label, ...props }, ref) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useImperativeHandle(ref, () => inputRef.current!);
+
+  const handleLabelClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div className='relative'>
-      <AnimatedInput ref={ref} id={id} {...props} />
-      <AnimatedLabel htmlFor={id}>{label}</AnimatedLabel>
+      <AnimatedInput ref={inputRef} id={id} {...props} />
+      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>
+        {label}
+      </AnimatedLabel>
     </div>
   );
 });
