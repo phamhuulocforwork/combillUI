@@ -13,7 +13,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/ui/animated-label-input.tsx",
           content:
-            'import * as React from "react";\n\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedLabel = React.forwardRef<\n  React.ElementRef<typeof Label>,\n  React.ComponentPropsWithoutRef<typeof Label>\n>(({ className, ...props }, ref) => {\n  return (\n    <Label\n      className={cn(\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\n        className,\n      )}\n      ref={ref}\n      {...props}\n    />\n  );\n});\nAnimatedLabel.displayName = "AnimatedLabel";\n\ntype AnimatedLabelInputProps = InputProps & { label?: string };\n\nconst AnimatedLabelInput = React.forwardRef<\n  React.ElementRef<typeof AnimatedInput>,\n  React.PropsWithoutRef<AnimatedLabelInputProps>\n>(({ id, label, ...props }, ref) => {\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  React.useImperativeHandle(ref, () => inputRef.current!);\n\n  const handleLabelClick = () => {\n    if (inputRef.current) {\n      inputRef.current.focus();\n    }\n  };\n\n  return (\n    <div className=\'relative\'>\n      <AnimatedInput ref={inputRef} id={id} {...props} />\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\n        {label}\n      </AnimatedLabel>\n    </div>\n  );\n});\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <Input\n        placeholder=\' \'\n        className={cn("peer", className)}\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nAnimatedInput.displayName = "AnimatedInput";\n\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\n',
+            'import * as React from "react";\r\n\r\nimport { Input } from "@/components/ui/input";\r\nimport { Label } from "@/components/ui/label";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst AnimatedLabel = React.forwardRef<\r\n  React.ElementRef<typeof Label>,\r\n  React.ComponentPropsWithoutRef<typeof Label>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <Label\r\n      className={cn(\r\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\r\n        className,\r\n      )}\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nAnimatedLabel.displayName = "AnimatedLabel";\r\n\r\ntype AnimatedLabelInputProps = InputProps & { label?: string };\r\n\r\nconst AnimatedLabelInput = React.forwardRef<\r\n  React.ElementRef<typeof AnimatedInput>,\r\n  React.PropsWithoutRef<AnimatedLabelInputProps>\r\n>(({ id, label, ...props }, ref) => {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n\r\n  React.useImperativeHandle(ref, () => inputRef.current!);\r\n\r\n  const handleLabelClick = () => {\r\n    if (inputRef.current) {\r\n      inputRef.current.focus();\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div className=\'relative\'>\r\n      <AnimatedInput ref={inputRef} id={id} {...props} />\r\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\r\n        {label}\r\n      </AnimatedLabel>\r\n    </div>\r\n  );\r\n});\r\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\r\n\r\nexport interface InputProps\r\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\r\n\r\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\r\n  ({ className, ...props }, ref) => {\r\n    return (\r\n      <Input\r\n        placeholder=\' \'\r\n        className={cn("peer", className)}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  },\r\n);\r\nAnimatedInput.displayName = "AnimatedInput";\r\n\r\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r\n',
           type: "registry:ui",
         },
       ],
@@ -459,6 +459,23 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/snippets/avatar-with-status.tsx"),
+      ),
+    },
+
+    "tooltip-with-arrow": {
+      name: "tooltip-with-arrow",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/tooltip-with-arrow.tsx",
+          content:
+            'import { Button } from "@/components/ui/button";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from "@/components/ui/tooltip";\r\nimport { TooltipArrow } from "@radix-ui/react-tooltip";\r\n\r\nexport default function WithArrowTooltipDemo() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant="outline">Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className="fill-foreground" />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/snippets/tooltip-with-arrow.tsx"),
       ),
     },
 

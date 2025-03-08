@@ -73,4 +73,16 @@ export const snippets: Registry = [
       },
     ],
   },
+  {
+    name: "tooltip-with-arrow",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/tooltip-with-arrow.tsx",
+        content:
+          'import { Button } from "@/components/ui/button";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from "@/components/ui/tooltip";\r\nimport { TooltipArrow } from "@radix-ui/react-tooltip";\r\n\r\nexport default function WithArrowTooltipDemo() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant="outline">Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className="fill-foreground" />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
 ];
