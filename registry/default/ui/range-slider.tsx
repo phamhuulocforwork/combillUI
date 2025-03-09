@@ -71,14 +71,14 @@ const RangeSlider = React.forwardRef<
               {label && (
                 <span
                   className={cn(
-                    "absolute flex text-xs justify-center",
+                    "absolute flex text-xs justify-center font-medium",
                     orientation === "horizontal"
                       ? labelPosition === "top"
-                        ? "-top-5"
-                        : "top-5"
+                        ? "-left-2 -top-5"
+                        : "-left-2 top-5"
                       : labelPosition === "top"
                         ? "-translate-x-full -translate-y-1/2 -left-2"
-                        : "translate-x-full -translate-y-1/2 left-2",
+                        : "translate-x-full -translate-y-1/2",
                   )}
                 >
                   {label(value)}

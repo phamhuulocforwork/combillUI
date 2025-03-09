@@ -1,0 +1,87 @@
+---
+title: Range Slider
+description: A range slider component that allows you to select a range of values.
+preview: true
+---
+
+<ComponentTabs name='range-slider-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/range-slider.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/range-slider.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/range-slider.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/range-slider.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies
+        ```bash
+        npm install @radix-ui/react-slider
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="range-slider" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { RangeSlider } from "@/components/ui/range-slider";
+```
+
+```tsx
+<RangeSlider />
+```
+
+## Examples
+
+### Default
+
+<ComponentTabs name='range-slider-default' />
+
+### With Labels
+
+<ComponentTabs name='range-slider-with-label' />
+
+### Vertical
+
+<ComponentTabs name='range-slider-vertical' />

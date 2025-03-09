@@ -80,7 +80,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/tooltip-with-arrow.tsx",
         content:
-          'import { Button } from "@/components/ui/button";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from "@/components/ui/tooltip";\r\nimport { TooltipArrow } from "@radix-ui/react-tooltip";\r\n\r\nexport default function WithArrowTooltipDemo() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant="outline">Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className="fill-foreground" />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n',
+          'import { TooltipArrow } from "@radix-ui/react-tooltip";\n\nimport { Button } from "@/components/ui/button";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from "@/components/ui/tooltip";\n\nexport default function WithArrowTooltip() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\'outline\'>Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Tooltip with arrow</p>\n          <TooltipArrow className=\'fill-foreground\' />\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}\n',
         type: "registry:snippet",
       },
     ],

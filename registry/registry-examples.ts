@@ -52,6 +52,36 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "range-slider-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/range-slider-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "range-slider-vertical",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/range-slider-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "range-slider-with-label",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/range-slider-with-label.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "responsive-textarea-default",
     type: "registry:example",
     files: [

@@ -13,7 +13,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/ui/animated-label-input.tsx",
           content:
-            'import * as React from "react";\r\n\r\nimport { Input } from "@/components/ui/input";\r\nimport { Label } from "@/components/ui/label";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst AnimatedLabel = React.forwardRef<\r\n  React.ElementRef<typeof Label>,\r\n  React.ComponentPropsWithoutRef<typeof Label>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <Label\r\n      className={cn(\r\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\r\n        className,\r\n      )}\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nAnimatedLabel.displayName = "AnimatedLabel";\r\n\r\ntype AnimatedLabelInputProps = InputProps & { label?: string };\r\n\r\nconst AnimatedLabelInput = React.forwardRef<\r\n  React.ElementRef<typeof AnimatedInput>,\r\n  React.PropsWithoutRef<AnimatedLabelInputProps>\r\n>(({ id, label, ...props }, ref) => {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n\r\n  React.useImperativeHandle(ref, () => inputRef.current!);\r\n\r\n  const handleLabelClick = () => {\r\n    if (inputRef.current) {\r\n      inputRef.current.focus();\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div className=\'relative\'>\r\n      <AnimatedInput ref={inputRef} id={id} {...props} />\r\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\r\n        {label}\r\n      </AnimatedLabel>\r\n    </div>\r\n  );\r\n});\r\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\r\n\r\nexport interface InputProps\r\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\r\n\r\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\r\n  ({ className, ...props }, ref) => {\r\n    return (\r\n      <Input\r\n        placeholder=\' \'\r\n        className={cn("peer", className)}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  },\r\n);\r\nAnimatedInput.displayName = "AnimatedInput";\r\n\r\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r\n',
+            'import * as React from "react";\n\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedLabel = React.forwardRef<\n  React.ElementRef<typeof Label>,\n  React.ComponentPropsWithoutRef<typeof Label>\n>(({ className, ...props }, ref) => {\n  return (\n    <Label\n      className={cn(\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\n        className,\n      )}\n      ref={ref}\n      {...props}\n    />\n  );\n});\nAnimatedLabel.displayName = "AnimatedLabel";\n\ntype AnimatedLabelInputProps = InputProps & { label?: string };\n\nconst AnimatedLabelInput = React.forwardRef<\n  React.ElementRef<typeof AnimatedInput>,\n  React.PropsWithoutRef<AnimatedLabelInputProps>\n>(({ id, label, ...props }, ref) => {\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  React.useImperativeHandle(ref, () => inputRef.current!);\n\n  const handleLabelClick = () => {\n    if (inputRef.current) {\n      inputRef.current.focus();\n    }\n  };\n\n  return (\n    <div className=\'relative\'>\n      <AnimatedInput ref={inputRef} id={id} {...props} />\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\n        {label}\n      </AnimatedLabel>\n    </div>\n  );\n});\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <Input\n        placeholder=\' \'\n        className={cn("peer", className)}\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nAnimatedInput.displayName = "AnimatedInput";\n\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\n',
           type: "registry:ui",
         },
       ],
@@ -53,6 +53,23 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/ui/labeled-switch.tsx"),
+      ),
+    },
+
+    "range-slider": {
+      name: "range-slider",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/ui/range-slider.tsx",
+          content:
+            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as SliderPrimitive from "@radix-ui/react-slider";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ninterface RangeSliderProps\r\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\r\n  labelPosition?: "top" | "bottom";\r\n  label?: (value: number | undefined) => React.ReactNode;\r\n  orientation?: "horizontal" | "vertical";\r\n}\r\n\r\nconst RangeSlider = React.forwardRef<\r\n  React.ElementRef<typeof SliderPrimitive.Root>,\r\n  RangeSliderProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      label,\r\n      labelPosition = "top",\r\n      orientation = "horizontal",\r\n      ...props\r\n    },\r\n    ref,\r\n  ) => {\r\n    const initialValue = Array.isArray(props.value)\r\n      ? props.value\r\n      : [props.min, props.max];\r\n\r\n    return (\r\n      <SliderPrimitive.Root\r\n        ref={ref}\r\n        orientation={orientation}\r\n        className={cn(\r\n          orientation === "horizontal"\r\n            ? "relative flex w-full touch-none select-none items-center"\r\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        <SliderPrimitive.Track\r\n          className={cn(\r\n            orientation === "horizontal"\r\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\r\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\r\n          )}\r\n        >\r\n          <SliderPrimitive.Range\r\n            className={cn(\r\n              orientation === "horizontal"\r\n                ? "absolute h-full bg-primary"\r\n                : "absolute w-full bg-primary",\r\n            )}\r\n          />\r\n        </SliderPrimitive.Track>\r\n        {initialValue.map((value, index) => (\r\n          <React.Fragment key={index}>\r\n            <SliderPrimitive.Thumb\r\n              className={cn(\r\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\r\n                orientation === "horizontal"\r\n                  ? "h-5 w-2 rounded-sm"\r\n                  : "h-2 w-5 rounded-sm",\r\n              )}\r\n            >\r\n              {label && (\r\n                <span\r\n                  className={cn(\r\n                    "absolute flex text-xs justify-center font-medium",\r\n                    orientation === "horizontal"\r\n                      ? labelPosition === "top"\r\n                        ? "-left-2 -top-5"\r\n                        : "-left-2 top-5"\r\n                      : labelPosition === "top"\r\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\r\n                        : "translate-x-full -translate-y-1/2",\r\n                  )}\r\n                >\r\n                  {label(value)}\r\n                </span>\r\n              )}\r\n            </SliderPrimitive.Thumb>\r\n          </React.Fragment>\r\n        ))}\r\n      </SliderPrimitive.Root>\r\n    );\r\n  },\r\n);\r\nRangeSlider.displayName = "RangeSlider";\r\n\r\nexport { RangeSlider };\r\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/ui/range-slider.tsx"),
       ),
     },
 
@@ -166,6 +183,51 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/example/labeled-switch-with-form.tsx"),
+      ),
+    },
+
+    "range-slider-default": {
+      name: "range-slider-default",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/range-slider-default.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/example/range-slider-default.tsx"),
+      ),
+    },
+
+    "range-slider-vertical": {
+      name: "range-slider-vertical",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/range-slider-vertical.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/example/range-slider-vertical.tsx"),
+      ),
+    },
+
+    "range-slider-with-label": {
+      name: "range-slider-with-label",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/range-slider-with-label.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/example/range-slider-with-label.tsx"),
       ),
     },
 
@@ -470,7 +532,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/tooltip-with-arrow.tsx",
           content:
-            'import { Button } from "@/components/ui/button";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from "@/components/ui/tooltip";\r\nimport { TooltipArrow } from "@radix-ui/react-tooltip";\r\n\r\nexport default function WithArrowTooltipDemo() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant="outline">Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className="fill-foreground" />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n',
+            'import { TooltipArrow } from "@radix-ui/react-tooltip";\n\nimport { Button } from "@/components/ui/button";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from "@/components/ui/tooltip";\n\nexport default function WithArrowTooltip() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\'outline\'>Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Tooltip with arrow</p>\n          <TooltipArrow className=\'fill-foreground\' />\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}\n',
           type: "registry:snippet",
         },
       ],
