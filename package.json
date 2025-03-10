@@ -36,6 +36,7 @@
     "@eslint/eslintrc": "^3",
     "@shikijs/compat": "^2.2.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/lodash.template": "^4.5.3",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20",

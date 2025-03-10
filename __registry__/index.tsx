@@ -423,6 +423,21 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "use-element-size-default": {
+      name: "use-element-size-default",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/use-element-size-default.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/example/use-element-size-default.tsx"),
+      ),
+    },
+
     "use-mobile-default": {
       name: "use-mobile-default",
       description: "",
@@ -582,7 +597,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/hooks/use-click-outside.tsx",
           content:
-            'import { useEffect, useRef } from "react";\r\n\r\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\r\n\r\nexport function useClickOutside<T extends HTMLElement = any>(\r\n  handler: () => void,\r\n  events?: string[] | null,\r\n  nodes?: (HTMLElement | null)[],\r\n) {\r\n  const ref = useRef<T>(null);\r\n\r\n  useEffect(() => {\r\n    const listener = (event: any) => {\r\n      const { target } = event ?? {};\r\n      if (Array.isArray(nodes)) {\r\n        const shouldIgnore =\r\n          target?.hasAttribute("data-ignore-outside-clicks") ||\r\n          (!document.body.contains(target) && target.tagName !== "HTML");\r\n        const shouldTrigger = nodes.every(\r\n          (node) => !!node && !event.composedPath().includes(node),\r\n        );\r\n        shouldTrigger && !shouldIgnore && handler();\r\n      } else if (ref.current && !ref.current.contains(target)) {\r\n        handler();\r\n      }\r\n    };\r\n\r\n    (events || DEFAULT_EVENTS).forEach((fn) =>\r\n      document.addEventListener(fn, listener),\r\n    );\r\n\r\n    return () => {\r\n      (events || DEFAULT_EVENTS).forEach((fn) =>\r\n        document.removeEventListener(fn, listener),\r\n      );\r\n    };\r\n  }, [ref, handler, nodes]);\r\n\r\n  return ref;\r\n}\r\n',
+            'import * as React from "react";\n\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\n\nexport function useClickOutside<T extends HTMLElement = any>(\n  handler: () => void,\n  events?: string[] | null,\n  nodes?: (HTMLElement | null)[],\n) {\n  const ref = React.useRef<T>(null);\n\n  React.useEffect(() => {\n    const listener = (event: any) => {\n      const { target } = event ?? {};\n      if (Array.isArray(nodes)) {\n        const shouldIgnore =\n          target?.hasAttribute("data-ignore-outside-clicks") ||\n          (!document.body.contains(target) && target.tagName !== "HTML");\n        const shouldTrigger = nodes.every(\n          (node) => !!node && !event.composedPath().includes(node),\n        );\n        shouldTrigger && !shouldIgnore && handler();\n      } else if (ref.current && !ref.current.contains(target)) {\n        handler();\n      }\n    };\n\n    (events || DEFAULT_EVENTS).forEach((fn) =>\n      document.addEventListener(fn, listener),\n    );\n\n    return () => {\n      (events || DEFAULT_EVENTS).forEach((fn) =>\n        document.removeEventListener(fn, listener),\n      );\n    };\n  }, [ref, handler, nodes]);\n\n  return ref;\n}\n',
           type: "registry:hook",
         },
       ],
@@ -608,6 +623,23 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "use-element-size": {
+      name: "use-element-size",
+      description: "",
+      type: "registry:hook",
+      files: [
+        {
+          path: "registry/default/hooks/use-element-size.ts",
+          content:
+            'import * as React from "react";\r\n\r\ntype ObserverRect = Omit<DOMRectReadOnly, "toJSON">;\r\n\r\nconst defaultState: ObserverRect = {\r\n  x: 0,\r\n  y: 0,\r\n  width: 0,\r\n  height: 0,\r\n  top: 0,\r\n  left: 0,\r\n  bottom: 0,\r\n  right: 0,\r\n};\r\n\r\nexport function useResizeObserver<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const frameID = React.useRef(0);\r\n  const ref = React.useRef<T>(null);\r\n\r\n  const [rect, setRect] = React.useState<ObserverRect>(defaultState);\r\n\r\n  const observer = React.useMemo(\r\n    () =>\r\n      typeof window !== "undefined"\r\n        ? new ResizeObserver((entries: any) => {\r\n            const entry = entries[0];\r\n\r\n            if (entry) {\r\n              cancelAnimationFrame(frameID.current);\r\n\r\n              frameID.current = requestAnimationFrame(() => {\r\n                if (ref.current) {\r\n                  setRect(entry.contentRect);\r\n                }\r\n              });\r\n            }\r\n          })\r\n        : null,\r\n    [],\r\n  );\r\n\r\n  React.useEffect(() => {\r\n    if (ref.current) {\r\n      observer?.observe(ref.current, options);\r\n    }\r\n\r\n    return () => {\r\n      observer?.disconnect();\r\n\r\n      if (frameID.current) {\r\n        cancelAnimationFrame(frameID.current);\r\n      }\r\n    };\r\n  }, [ref.current]);\r\n\r\n  return [ref, rect] as const;\r\n}\r\n\r\nexport function useElementSize<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const [ref, { width, height }] = useResizeObserver<T>(options);\r\n  return { ref, width, height };\r\n}\r\n',
+          type: "registry:hook",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/hooks/use-element-size.ts"),
+      ),
+    },
+
     "use-mobile": {
       name: "use-mobile",
       description: "",
@@ -616,7 +648,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/hooks/use-mobile.tsx",
           content:
-            'import { useLayoutEffect, useState } from "react";\n\nimport debounce from "lodash.debounce";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = useState(false);\n\n  useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener("resize", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener("resize", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n',
+            'import * as React from "react";\n\nimport debounce from "lodash/debounce";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener("resize", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener("resize", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n',
           type: "registry:hook",
         },
       ],

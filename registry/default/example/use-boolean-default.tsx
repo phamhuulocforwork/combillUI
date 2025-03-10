@@ -11,7 +11,7 @@ import {
 
 import { useBoolean } from "@/registry/default/hooks/use-boolean";
 
-export default function UseBooleanDemo() {
+export default function UseBooleanDefault() {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false);
 
   const customToggle = () => {

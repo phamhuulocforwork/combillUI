@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 
 import { useDebounce } from "@/registry/default/hooks/use-debounce";
 
-export default function UseDebounceDemo() {
+export default function UseDebounceDefault() {
   const [inputValue, setInputValue] = useState("");
   const debouncedValue = useDebounce(inputValue, 500);
 

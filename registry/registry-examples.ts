@@ -202,6 +202,16 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "use-element-size-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-element-size-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "use-mobile-default",
     type: "registry:example",
     files: [
