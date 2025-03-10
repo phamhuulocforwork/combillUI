@@ -212,6 +212,26 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "use-fullscreen-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-fullscreen-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "use-fullscreen-with-target",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-fullscreen-with-target.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "use-mobile-default",
     type: "registry:example",
     files: [

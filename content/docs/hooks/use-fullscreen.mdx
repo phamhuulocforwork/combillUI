@@ -1,0 +1,69 @@
+---
+title: useFullscreen
+description: Enter/exit fullscreen mode with given element or entire page.
+preview: true
+---
+
+<ComponentTabs name='use-fullscreen-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-fullscreen.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-fullscreen.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-fullscreen.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-fullscreen.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-fullscreen" />
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { useFullscreen } from "@/hooks/use-fullscreen";
+```
+
+```tsx
+const { toggle, fullscreen } = useFullscreen();
+```
+
+## Example
+
+### With Target
+
+<ComponentTabs name='use-fullscreen-with-target' />
