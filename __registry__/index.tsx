@@ -64,7 +64,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/ui/range-slider.tsx",
           content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as SliderPrimitive from "@radix-ui/react-slider";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ninterface RangeSliderProps\r\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\r\n  labelPosition?: "top" | "bottom";\r\n  label?: (value: number | undefined) => React.ReactNode;\r\n  orientation?: "horizontal" | "vertical";\r\n}\r\n\r\nconst RangeSlider = React.forwardRef<\r\n  React.ElementRef<typeof SliderPrimitive.Root>,\r\n  RangeSliderProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      label,\r\n      labelPosition = "top",\r\n      orientation = "horizontal",\r\n      ...props\r\n    },\r\n    ref,\r\n  ) => {\r\n    const initialValue = Array.isArray(props.value)\r\n      ? props.value\r\n      : [props.min, props.max];\r\n\r\n    return (\r\n      <SliderPrimitive.Root\r\n        ref={ref}\r\n        orientation={orientation}\r\n        className={cn(\r\n          orientation === "horizontal"\r\n            ? "relative flex w-full touch-none select-none items-center"\r\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        <SliderPrimitive.Track\r\n          className={cn(\r\n            orientation === "horizontal"\r\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\r\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\r\n          )}\r\n        >\r\n          <SliderPrimitive.Range\r\n            className={cn(\r\n              orientation === "horizontal"\r\n                ? "absolute h-full bg-primary"\r\n                : "absolute w-full bg-primary",\r\n            )}\r\n          />\r\n        </SliderPrimitive.Track>\r\n        {initialValue.map((value, index) => (\r\n          <React.Fragment key={index}>\r\n            <SliderPrimitive.Thumb\r\n              className={cn(\r\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\r\n                orientation === "horizontal"\r\n                  ? "h-5 w-2 rounded-sm"\r\n                  : "h-2 w-5 rounded-sm",\r\n              )}\r\n            >\r\n              {label && (\r\n                <span\r\n                  className={cn(\r\n                    "absolute flex text-xs justify-center font-medium",\r\n                    orientation === "horizontal"\r\n                      ? labelPosition === "top"\r\n                        ? "-left-2 -top-5"\r\n                        : "-left-2 top-5"\r\n                      : labelPosition === "top"\r\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\r\n                        : "translate-x-full -translate-y-1/2",\r\n                  )}\r\n                >\r\n                  {label(value)}\r\n                </span>\r\n              )}\r\n            </SliderPrimitive.Thumb>\r\n          </React.Fragment>\r\n        ))}\r\n      </SliderPrimitive.Root>\r\n    );\r\n  },\r\n);\r\nRangeSlider.displayName = "RangeSlider";\r\n\r\nexport { RangeSlider };\r\n',
+            '"use client";\n\nimport * as React from "react";\n\nimport * as SliderPrimitive from "@radix-ui/react-slider";\n\nimport { cn } from "@/lib/utils";\n\ninterface RangeSliderProps\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\n  labelPosition?: "top" | "bottom";\n  label?: (value: number | undefined) => React.ReactNode;\n  orientation?: "horizontal" | "vertical";\n}\n\nconst RangeSlider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  RangeSliderProps\n>(\n  (\n    {\n      className,\n      label,\n      labelPosition = "top",\n      orientation = "horizontal",\n      ...props\n    },\n    ref,\n  ) => {\n    const initialValue = Array.isArray(props.value)\n      ? props.value\n      : [props.min, props.max];\n\n    return (\n      <SliderPrimitive.Root\n        ref={ref}\n        orientation={orientation}\n        className={cn(\n          orientation === "horizontal"\n            ? "relative flex w-full touch-none select-none items-center"\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\n          className,\n        )}\n        {...props}\n      >\n        <SliderPrimitive.Track\n          className={cn(\n            orientation === "horizontal"\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\n          )}\n        >\n          <SliderPrimitive.Range\n            className={cn(\n              orientation === "horizontal"\n                ? "absolute h-full bg-primary"\n                : "absolute w-full bg-primary",\n            )}\n          />\n        </SliderPrimitive.Track>\n        {initialValue.map((value, index) => (\n          <React.Fragment key={index}>\n            <SliderPrimitive.Thumb\n              className={cn(\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\n                orientation === "horizontal"\n                  ? "h-5 w-2 rounded-sm"\n                  : "h-2 w-5 rounded-sm",\n              )}\n            >\n              {label && (\n                <span\n                  className={cn(\n                    "absolute flex text-xs justify-center font-medium",\n                    orientation === "horizontal"\n                      ? labelPosition === "top"\n                        ? "-left-2 -top-5"\n                        : "-left-2 top-5"\n                      : labelPosition === "top"\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\n                        : "translate-x-full -translate-y-1/2",\n                  )}\n                >\n                  {label(value)}\n                </span>\n              )}\n            </SliderPrimitive.Thumb>\n          </React.Fragment>\n        ))}\n      </SliderPrimitive.Root>\n    );\n  },\n);\nRangeSlider.displayName = "RangeSlider";\n\nexport { RangeSlider };\n',
           type: "registry:ui",
         },
       ],
@@ -392,6 +392,22 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "use-click-outside-default": {
+      name: "use-click-outside-default",
+      description: "",
+      type: "registry:example",
+      files: [
+        {
+          path: "registry/default/example/use-click-outside-default.tsx",
+          type: "registry:example",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/example/use-click-outside-default.tsx"),
+      ),
+    },
+
     "use-debounce-default": {
       name: "use-debounce-default",
       description: "",
@@ -555,6 +571,23 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/hooks/use-boolean.tsx"),
+      ),
+    },
+
+    "use-click-outside": {
+      name: "use-click-outside",
+      description: "",
+      type: "registry:hook",
+      files: [
+        {
+          path: "registry/default/hooks/use-click-outside.tsx",
+          content:
+            'import { useEffect, useRef } from "react";\r\n\r\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\r\n\r\nexport function useClickOutside<T extends HTMLElement = any>(\r\n  handler: () => void,\r\n  events?: string[] | null,\r\n  nodes?: (HTMLElement | null)[],\r\n) {\r\n  const ref = useRef<T>(null);\r\n\r\n  useEffect(() => {\r\n    const listener = (event: any) => {\r\n      const { target } = event ?? {};\r\n      if (Array.isArray(nodes)) {\r\n        const shouldIgnore =\r\n          target?.hasAttribute("data-ignore-outside-clicks") ||\r\n          (!document.body.contains(target) && target.tagName !== "HTML");\r\n        const shouldTrigger = nodes.every(\r\n          (node) => !!node && !event.composedPath().includes(node),\r\n        );\r\n        shouldTrigger && !shouldIgnore && handler();\r\n      } else if (ref.current && !ref.current.contains(target)) {\r\n        handler();\r\n      }\r\n    };\r\n\r\n    (events || DEFAULT_EVENTS).forEach((fn) =>\r\n      document.addEventListener(fn, listener),\r\n    );\r\n\r\n    return () => {\r\n      (events || DEFAULT_EVENTS).forEach((fn) =>\r\n        document.removeEventListener(fn, listener),\r\n      );\r\n    };\r\n  }, [ref, handler, nodes]);\r\n\r\n  return ref;\r\n}\r\n',
+          type: "registry:hook",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/hooks/use-click-outside.tsx"),
       ),
     },
 

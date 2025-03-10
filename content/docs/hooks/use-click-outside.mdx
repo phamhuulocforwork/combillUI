@@ -1,0 +1,68 @@
+---
+title: useClickOutside
+description: Close a dropdown when clicking outside of it.
+preview: true
+---
+
+<ComponentTabs name='use-click-outside-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-click-outside.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-click-outside.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-click-outside.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-click-outside.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your projects.
+    <ComponentSource name="use-click-outside" />
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { useClickOutside } from "@/hooks/use-click-outside";
+```
+
+```tsx
+const [isOpen, setIsOpen] = React.useState(false);
+
+// Ref to the element you want to detect clicks outside of
+const ref = useClickOutside(() => {
+  setIsOpen(false);
+});
+```

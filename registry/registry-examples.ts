@@ -182,6 +182,16 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "use-click-outside-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/use-click-outside-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "use-debounce-default",
     type: "registry:example",
     files: [

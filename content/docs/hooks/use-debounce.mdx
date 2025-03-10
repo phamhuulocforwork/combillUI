@@ -1,6 +1,6 @@
 ---
 title: useDebounce
-description: Delay the execution of a function or update of a value until after a specified delay with the useDebounce hook.
+description: Debounce a value to avoid excessive renders.
 preview: true
 ---
 
@@ -51,3 +51,22 @@ preview: true
     <ComponentSource name="use-debounce" />
   </TabsContent>
 </ShadcnTabs>
+
+## Usage
+
+```tsx
+"use client";
+
+import { useDebounce } from "@/hooks/use-debounce";
+```
+
+```tsx
+const [searchTerm, setSearchTerm] = useState("");
+const debouncedSearchTerm = useDebounce(searchTerm, 500);
+```
+
+The hook:
+
+- Takes any value and an optional delay (default: 500ms)
+- Returns a debounced version of the value
+- Useful for search inputs, form validation, and API calls
