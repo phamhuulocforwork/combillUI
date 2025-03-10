@@ -23,6 +23,7 @@ export default function UseFullscreenWithTarget() {
         src='https://raw.githubusercontent.com/phamhuulocforwork/combillUI/master/public/images/demo.png'
         alt='demo'
         width={200}
+        className='rounded-md'
       />
       <Button onClick={toggle} variant={fullscreen ? "destructive" : "default"}>
         {fullscreen ? "Exit fullscreen" : "View in fullscreen"}
