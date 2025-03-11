@@ -91,4 +91,19 @@ export const hooks: Registry = [
       },
     ],
   },
+  {
+    name: "use-mounted",
+    type: "registry:hook",
+    registryDependencies: [],
+    dependencies: ["react"],
+    devDependencies: [],
+    files: [
+      {
+        path: "registry/default/hooks/use-mounted.ts",
+        content:
+          'import { useEffect, useState } from "react";\r\n\r\nexport function useMounted() {\r\n  const [mounted, setMounted] = useState(false);\r\n  useEffect(() => setMounted(true), []);\r\n  return mounted;\r\n}\r\n',
+        type: "registry:hook",
+      },
+    ],
+  },
 ];
