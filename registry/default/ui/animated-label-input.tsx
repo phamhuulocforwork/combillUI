@@ -39,7 +39,7 @@ const AnimatedLabelInput = React.forwardRef<
   };
 
   return (
-    <div className='relative'>
+    <div className='relative '>
       <AnimatedInput ref={inputRef} id={id} {...props} />
       <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>
         {label}
