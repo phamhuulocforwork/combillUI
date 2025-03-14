@@ -1,0 +1,16 @@
+{
+  "name": "use-callback-ref",
+  "type": "registry:hook",
+  "registryDependencies": [],
+  "dependencies": [
+    "react"
+  ],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "use-callback-ref.ts",
+      "content": "import * as React from \"react\";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n",
+      "type": "registry:hook"
+    }
+  ]
+}

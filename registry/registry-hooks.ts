@@ -17,6 +17,21 @@ export const hooks: Registry = [
     ],
   },
   {
+    name: "use-callback-ref",
+    type: "registry:hook",
+    registryDependencies: [],
+    dependencies: ["react"],
+    devDependencies: [],
+    files: [
+      {
+        path: "registry/default/hooks/use-callback-ref.ts",
+        content:
+          'import * as React from "react";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n',
+        type: "registry:hook",
+      },
+    ],
+  },
+  {
     name: "use-click-outside",
     type: "registry:hook",
     registryDependencies: [],
@@ -27,6 +42,21 @@ export const hooks: Registry = [
         path: "registry/default/hooks/use-click-outside.ts",
         content:
           'import * as React from "react";\n\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\n\nexport function useClickOutside<T extends HTMLElement = any>(\n  handler: () => void,\n  events?: string[] | null,\n  nodes?: (HTMLElement | null)[],\n) {\n  const ref = React.useRef<T>(null);\n\n  React.useEffect(() => {\n    const listener = (event: any) => {\n      const { target } = event ?? {};\n      if (Array.isArray(nodes)) {\n        const shouldIgnore =\n          target?.hasAttribute("data-ignore-outside-clicks") ||\n          (!document.body.contains(target) && target.tagName !== "HTML");\n        const shouldTrigger = nodes.every(\n          (node) => !!node && !event.composedPath().includes(node),\n        );\n        shouldTrigger && !shouldIgnore && handler();\n      } else if (ref.current && !ref.current.contains(target)) {\n        handler();\n      }\n    };\n\n    (events || DEFAULT_EVENTS).forEach((fn) =>\n      document.addEventListener(fn, listener),\n    );\n\n    return () => {\n      (events || DEFAULT_EVENTS).forEach((fn) =>\n        document.removeEventListener(fn, listener),\n      );\n    };\n  }, [ref, handler, nodes]);\n\n  return ref;\n}\n',
+        type: "registry:hook",
+      },
+    ],
+  },
+  {
+    name: "use-controllable-state",
+    type: "registry:hook",
+    registryDependencies: [],
+    dependencies: ["react"],
+    devDependencies: [],
+    files: [
+      {
+        path: "registry/default/hooks/use-controllable-state.ts",
+        content:
+          'import * as React from "react";\r\n\r\nimport { useCallbackRef } from "@/registry/default/hooks/use-callback-ref";\r\n\r\ntype UseControllableStateParams<T> = {\r\n  prop?: T | undefined;\r\n  defaultProp?: T | undefined;\r\n  onChange?: (state: T) => void;\r\n};\r\n\r\ntype SetStateFn<T> = (prevState?: T) => T;\r\n\r\nfunction useControllableState<T>({\r\n  prop,\r\n  defaultProp,\r\n  onChange = () => {},\r\n}: UseControllableStateParams<T>) {\r\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\r\n    defaultProp,\r\n    onChange,\r\n  });\r\n  const isControlled = prop !== undefined;\r\n  const value = isControlled ? prop : uncontrolledProp;\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\r\n    React.useCallback(\r\n      (nextValue) => {\r\n        if (isControlled) {\r\n          const setter = nextValue as SetStateFn<T>;\r\n          const value =\r\n            typeof nextValue === "function" ? setter(prop) : nextValue;\r\n          if (value !== prop) handleChange(value as T);\r\n        } else {\r\n          setUncontrolledProp(nextValue);\r\n        }\r\n      },\r\n      [isControlled, prop, setUncontrolledProp, handleChange],\r\n    );\r\n\r\n  return [value, setValue] as const;\r\n}\r\n\r\nfunction useUncontrolledState<T>({\r\n  defaultProp,\r\n  onChange,\r\n}: Omit<UseControllableStateParams<T>, "prop">) {\r\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\r\n  const [value] = uncontrolledState;\r\n  const prevValueRef = React.useRef(value);\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  React.useEffect(() => {\r\n    if (prevValueRef.current !== value) {\r\n      handleChange(value as T);\r\n      prevValueRef.current = value;\r\n    }\r\n  }, [value, prevValueRef, handleChange]);\r\n\r\n  return uncontrolledState;\r\n}\r\n\r\nexport { useControllableState };\r\n',
         type: "registry:hook",
       },
     ],
@@ -101,7 +131,7 @@ export const hooks: Registry = [
       {
         path: "registry/default/hooks/use-mounted.ts",
         content:
-          'import { useEffect, useState } from "react";\r\n\r\nexport function useMounted() {\r\n  const [mounted, setMounted] = useState(false);\r\n  useEffect(() => setMounted(true), []);\r\n  return mounted;\r\n}\r\n',
+          'import { useEffect, useState } from "react";\n\nexport function useMounted() {\n  const [mounted, setMounted] = useState(false);\n  useEffect(() => setMounted(true), []);\n  return mounted;\n}\n',
         type: "registry:hook",
       },
     ],

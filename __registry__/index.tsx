@@ -13,7 +13,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/ui/animated-label-input.tsx",
           content:
-            'import * as React from "react";\n\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedLabel = React.forwardRef<\n  React.ElementRef<typeof Label>,\n  React.ComponentPropsWithoutRef<typeof Label>\n>(({ className, ...props }, ref) => {\n  return (\n    <Label\n      className={cn(\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\n        className,\n      )}\n      ref={ref}\n      {...props}\n    />\n  );\n});\nAnimatedLabel.displayName = "AnimatedLabel";\n\ntype AnimatedLabelInputProps = InputProps & { label?: string };\n\nconst AnimatedLabelInput = React.forwardRef<\n  React.ElementRef<typeof AnimatedInput>,\n  React.PropsWithoutRef<AnimatedLabelInputProps>\n>(({ id, label, ...props }, ref) => {\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  React.useImperativeHandle(ref, () => inputRef.current!);\n\n  const handleLabelClick = () => {\n    if (inputRef.current) {\n      inputRef.current.focus();\n    }\n  };\n\n  return (\n    <div className=\'relative\'>\n      <AnimatedInput ref={inputRef} id={id} {...props} />\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\n        {label}\n      </AnimatedLabel>\n    </div>\n  );\n});\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <Input\n        placeholder=\' \'\n        className={cn("peer", className)}\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nAnimatedInput.displayName = "AnimatedInput";\n\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\n',
+            'import * as React from "react";\n\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedLabel = React.forwardRef<\n  React.ElementRef<typeof Label>,\n  React.ComponentPropsWithoutRef<typeof Label>\n>(({ className, ...props }, ref) => {\n  return (\n    <Label\n      className={cn(\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\n        className,\n      )}\n      ref={ref}\n      {...props}\n    />\n  );\n});\nAnimatedLabel.displayName = "AnimatedLabel";\n\ntype AnimatedLabelInputProps = InputProps & { label?: string };\n\nconst AnimatedLabelInput = React.forwardRef<\n  React.ElementRef<typeof AnimatedInput>,\n  React.PropsWithoutRef<AnimatedLabelInputProps>\n>(({ id, label, ...props }, ref) => {\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  React.useImperativeHandle(ref, () => inputRef.current!);\n\n  const handleLabelClick = () => {\n    if (inputRef.current) {\n      inputRef.current.focus();\n    }\n  };\n\n  return (\n    <div className=\'relative \'>\n      <AnimatedInput ref={inputRef} id={id} {...props} />\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\n        {label}\n      </AnimatedLabel>\n    </div>\n  );\n});\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <Input\n        placeholder=\' \'\n        className={cn("peer", className)}\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nAnimatedInput.displayName = "AnimatedInput";\n\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\n',
           type: "registry:ui",
         },
       ],
@@ -620,6 +620,23 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "use-callback-ref": {
+      name: "use-callback-ref",
+      description: "",
+      type: "registry:hook",
+      files: [
+        {
+          path: "registry/default/hooks/use-callback-ref.ts",
+          content:
+            'import * as React from "react";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n',
+          type: "registry:hook",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/hooks/use-callback-ref.ts"),
+      ),
+    },
+
     "use-click-outside": {
       name: "use-click-outside",
       description: "",
@@ -634,6 +651,23 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/hooks/use-click-outside.ts"),
+      ),
+    },
+
+    "use-controllable-state": {
+      name: "use-controllable-state",
+      description: "",
+      type: "registry:hook",
+      files: [
+        {
+          path: "registry/default/hooks/use-controllable-state.ts",
+          content:
+            'import * as React from "react";\r\n\r\nimport { useCallbackRef } from "@/registry/default/hooks/use-callback-ref";\r\n\r\ntype UseControllableStateParams<T> = {\r\n  prop?: T | undefined;\r\n  defaultProp?: T | undefined;\r\n  onChange?: (state: T) => void;\r\n};\r\n\r\ntype SetStateFn<T> = (prevState?: T) => T;\r\n\r\nfunction useControllableState<T>({\r\n  prop,\r\n  defaultProp,\r\n  onChange = () => {},\r\n}: UseControllableStateParams<T>) {\r\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\r\n    defaultProp,\r\n    onChange,\r\n  });\r\n  const isControlled = prop !== undefined;\r\n  const value = isControlled ? prop : uncontrolledProp;\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\r\n    React.useCallback(\r\n      (nextValue) => {\r\n        if (isControlled) {\r\n          const setter = nextValue as SetStateFn<T>;\r\n          const value =\r\n            typeof nextValue === "function" ? setter(prop) : nextValue;\r\n          if (value !== prop) handleChange(value as T);\r\n        } else {\r\n          setUncontrolledProp(nextValue);\r\n        }\r\n      },\r\n      [isControlled, prop, setUncontrolledProp, handleChange],\r\n    );\r\n\r\n  return [value, setValue] as const;\r\n}\r\n\r\nfunction useUncontrolledState<T>({\r\n  defaultProp,\r\n  onChange,\r\n}: Omit<UseControllableStateParams<T>, "prop">) {\r\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\r\n  const [value] = uncontrolledState;\r\n  const prevValueRef = React.useRef(value);\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  React.useEffect(() => {\r\n    if (prevValueRef.current !== value) {\r\n      handleChange(value as T);\r\n      prevValueRef.current = value;\r\n    }\r\n  }, [value, prevValueRef, handleChange]);\r\n\r\n  return uncontrolledState;\r\n}\r\n\r\nexport { useControllableState };\r\n',
+          type: "registry:hook",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/hooks/use-controllable-state.ts"),
       ),
     },
 
@@ -702,6 +736,23 @@ export const Index: Record<string, any> = {
       ],
       component: React.lazy(
         () => import("@/registry/default/hooks/use-mobile.ts"),
+      ),
+    },
+
+    "use-mounted": {
+      name: "use-mounted",
+      description: "",
+      type: "registry:hook",
+      files: [
+        {
+          path: "registry/default/hooks/use-mounted.ts",
+          content:
+            'import { useEffect, useState } from "react";\n\nexport function useMounted() {\n  const [mounted, setMounted] = useState(false);\n  useEffect(() => setMounted(true), []);\n  return mounted;\n}\n',
+          type: "registry:hook",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/hooks/use-mounted.ts"),
       ),
     },
   },

@@ -1,0 +1,68 @@
+---
+title: useCallbackRef
+description: Create a stable callback ref to prevent unnecessary re-renders.
+preview: true
+---
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-callback-ref.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-callback-ref.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-callback-ref.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-callback-ref.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-callback-ref" />
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { useCallbackRef } from "@/hooks/use-callback-ref";
+
+const callback = useCallbackRef((value) => {
+  // Handle callback here
+});
+```
+
+This hook:
+
+- Takes a callback function as input
+- Returns a stable callback function
+- Prevents unnecessary re-renders when the callback changes
+- Useful for cases where callbacks need to be passed as props

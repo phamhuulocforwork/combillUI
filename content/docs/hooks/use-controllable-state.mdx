@@ -1,0 +1,87 @@
+---
+title: useControllableState
+description: Manage both controlled and uncontrolled state with a single API.
+preview: true
+---
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/use-controllable-state.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-controllable-state.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/use-controllable-state.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/use-controllable-state.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    Copy and paste the following code into your project.
+    <ComponentSource name="use-controllable-state" />
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { useControllableState } from "@/hooks/use-controllable-state";
+
+// Controlled state
+const [value, setValue] = useControllableState({
+  prop: controlledValue,
+  onChange: (newValue) => {
+    // Handle value change
+  }
+});
+
+// Uncontrolled state
+const [value, setValue] = useControllableState({
+  defaultProp: defaultValue,
+  onChange: (newValue) => {
+    // Handle value change
+  }
+});
+```
+
+This hook:
+
+- Allows managing state in both controlled and uncontrolled modes
+- Automatically handles switching between modes
+- Provides a unified API for both cases
+- Useful for components that need to support both controlled and uncontrolled state
+- Automatically calls the onChange callback when the value changes
+
+## Props
+
+- `prop`: Controlled value (if any)
+- `defaultProp`: Default value for uncontrolled state
+- `onChange`: Callback called when the value changes
