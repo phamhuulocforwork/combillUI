@@ -1,0 +1,181 @@
+---
+title: Combobox Input
+description: A searchable input component with a dropdown list of options.
+component: true
+---
+
+<ComponentTabs name='combobox-input-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList >
+    <TabsTrigger  value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger  value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent  value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/combobox-input.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/combobox-input.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/combobox-input.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/combobox-input.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent  value='manual'>
+    <Steps>
+      <Step>
+        Install the required dependencies
+        ```bash
+        npm install react-popper
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="combobox-input" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { ComboboxInput } from "@/components/ui/combobox-input";
+
+export default function ComboboxInputExample() {
+  const options = [
+    { label: "Option 1", value: "option-1" },
+    { label: "Option 2", value: "option-2" },
+    { label: "Option 3", value: "option-3" },
+  ];
+
+  return <ComboboxInput placeholder='Search options...' options={options} />;
+}
+```
+
+## Controlled Usage
+
+```tsx
+import { useState } from "react";
+
+import { ComboboxInput } from "@/components/ui/combobox-input";
+
+import { type Option } from "@/types";
+
+export default function ControlledComboboxInputExample() {
+  const [input, setInput] = useState("");
+  const [value, setValue] = useState<Option | undefined>();
+
+  const options = [
+    { label: "Option 1", value: "option-1" },
+    { label: "Option 2", value: "option-2" },
+    { label: "Option 3", value: "option-3" },
+  ];
+
+  return (
+    <ComboboxInput
+      placeholder='Search options...'
+      options={options}
+      input={input}
+      onInputChange={setInput}
+      value={value}
+      onValueChange={setValue}
+    />
+  );
+}
+```
+
+## Loading State
+
+```tsx
+import { ComboboxInput } from "@/components/ui/combobox-input";
+
+export default function LoadingComboboxInputExample() {
+  const options = [
+    { label: "Option 1", value: "option-1" },
+    { label: "Option 2", value: "option-2" },
+    { label: "Option 3", value: "option-3" },
+  ];
+
+  return (
+    <ComboboxInput
+      placeholder='Search options...'
+      options={options}
+      loading={true}
+    />
+  );
+}
+```
+
+## Types
+
+The ComboboxInput component uses the `Option` type from `@/types`:
+
+```tsx
+export interface Option {
+  label: string; // The text displayed in the dropdown
+  value: string; // The unique identifier for the option
+  icon?: React.ComponentType<{ className?: string }>; // Optional icon component
+  withCount?: boolean; // Optional flag to indicate if the option should display a count
+}
+```
+
+## API Reference
+
+### ComboboxInput
+
+| Prop            | Type                                    | Default              | Description                                                                              |
+| --------------- | --------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------- |
+| `options`       | `Option[]`                              | Required             | The list of options available for selection.                                             |
+| `input`         | `string`                                | -                    | The value of the input field.                                                            |
+| `onInputChange` | `(value: string) => void`               | -                    | Callback function that is called when the input value changes.                           |
+| `defaultValue`  | `Option`                                | -                    | The default selected option.                                                             |
+| `value`         | `Option`                                | -                    | The selected option.                                                                     |
+| `onValueChange` | `(option: Option) => void`              | -                    | Callback function that is called when the selected option changes.                       |
+| `emptyMessage`  | `string`                                | `"No results found"` | Message to display when no results are found.                                            |
+| `immediate`     | `boolean`                               | `false`              | Indicates whether the options should be displayed immediately when the input is focused. |
+| `placement`     | `PopperProps<HTMLElement>["placement"]` | `"bottom-start"`     | The placement of the options list relative to the input.                                 |
+| `alignOffset`   | `number`                                | `0`                  | Horizontal distance in pixels between the options list and the input.                    |
+| `sideOffset`    | `number`                                | `4`                  | Vertical distance in pixels between the options list and the input.                      |
+| `loading`       | `boolean`                               | `false`              | Indicates whether the component is in a loading state.                                   |
+
+## Accessibility
+
+The ComboboxInput component follows the [WAI-ARIA Combobox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) for accessibility.
+
+### Keyboard Interactions
+
+| Key          | Description                                                                                                                                                                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Enter`      | When the input field is not empty, selects the option whose label matches the current input value.                                                                                                                                                        |
+| `Escape`     | If the input value matches the current option's label, closes the options list. If no option is selected or the input value does not match the current option, clears the input value, closes the options list, and sets the current option to undefined. |
+| `Backspace`  | When the input field is empty and the options list is closed, closes the options list.                                                                                                                                                                    |
+| `Arrow Down` | Moves focus to the next option in the list.                                                                                                                                                                                                               |
+| `Arrow Up`   | Moves focus to the previous option in the list.                                                                                                                                                                                                           |
+| `Home`       | Moves focus to the first option in the list.                                                                                                                                                                                                              |
+| `End`        | Moves focus to the last option in the list.                                                                                                                                                                                                               |
