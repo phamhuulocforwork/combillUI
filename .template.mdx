@@ -1,0 +1,134 @@
+---
+title: Component Name
+description: Mô tả ngắn gọn về component và chức năng của nó.
+preview: true
+---
+
+<ComponentTabs name='component-name-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList>
+    <TabsTrigger value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/component-name.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/component-name.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/component-name.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/component-name.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+
+  <TabsContent value='manual'>
+    <Steps>
+      <Step>
+        Install dependencies (if any)
+        ```bash
+        npx shadcn@latest add dependency-1
+        ```
+        ```bash
+        npx shadcn@latest add dependency-2
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="component-name" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import {
+  ComponentName,
+  ComponentSubPart1,
+  ComponentSubPart2,
+} from "@/components/ui/component-name";
+```
+
+### Default
+
+```tsx
+<ComponentName />
+```
+
+### Variants
+
+#### Variant 1
+
+```tsx
+<ComponentName variant='variant1' />
+```
+
+#### Variant 2
+
+```tsx
+<ComponentName variant='variant2' />
+```
+
+### Customization
+
+```tsx
+<ComponentSubPart1 className="custom-class" />
+<ComponentSubPart2>Custom content</ComponentSubPart2>
+```
+
+## API Reference
+
+### ComponentName
+
+| Prop      | Type                                    | Default     | Description          |
+| --------- | --------------------------------------- | ----------- | -------------------- |
+| `prop1`   | `string`                                | `"default"` | Description of prop1 |
+| `prop2`   | `boolean`                               | `false`     | Description of prop2 |
+| `variant` | `"default" \| "variant1" \| "variant2"` | `"default"` | Component variant    |
+
+### ComponentSubPart1
+
+| Prop       | Type     | Default | Description             |
+| ---------- | -------- | ------- | ----------------------- |
+| `subProp1` | `string` | `""`    | Description of subProp1 |
+
+## Examples
+
+### Basic Example
+
+<ComponentTabs name='component-name-basic' />
+
+### With Form
+
+<ComponentTabs name='component-name-with-form' />
+
+### Custom Example
+
+<ComponentTabs name='component-name-custom' />

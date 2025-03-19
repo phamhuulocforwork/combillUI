@@ -1,6 +1,6 @@
 ---
 title: Tel Input
-description: Tel Input component based on react-phone-number-input.
+description: A phone number input component based on react-phone-number-input with country selection.
 preview: true
 ---
 
@@ -9,37 +9,34 @@ preview: true
 ## Installation
 
 <ShadcnTabs defaultValue='cli'>
-  <TabsList >
-    <TabsTrigger  value='cli'>
+  <TabsList>
+    <TabsTrigger value='cli'>
       CLI
     </TabsTrigger>
-    <TabsTrigger  value='manual'>
+    <TabsTrigger value='manual'>
       Manual
     </TabsTrigger>
   </TabsList>
 
-  <TabsContent  value='cli'>
+  <TabsContent value='cli'>
     <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
       <Tab value="npm">
         ```bash
         npx shadcn@latest add 'https://combillui.vercel.app/registry/tel-input.json';
         ```
-
       </Tab>
-
+      
       <Tab value="pnpm">
-        ```bash
+        ```bash 
         pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/tel-input.json';
         ```
       </Tab>
-
 
       <Tab value="yarn">
         ```bash
         npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/tel-input.json';
         ```
       </Tab>
-
 
       <Tab value="bun">
         ```bash
@@ -49,7 +46,8 @@ preview: true
     </Tabs>
 
   </TabsContent>
-  <TabsContent  value='manual'>
+
+  <TabsContent value='manual'>
     <Steps>
       <Step>
         Install the required dependencies
@@ -63,8 +61,13 @@ preview: true
       </Step>
     </Steps>
   </TabsContent>
-
 </ShadcnTabs>
+
+## Usage
+
+```tsx
+import { TelInput } from "@/components/ui/tel-input";
+```
 
 ## Examples
 
@@ -83,3 +86,27 @@ preview: true
 ### With Form
 
 <ComponentTabs name='tel-input-with-form' />
+
+## API Reference
+
+### TelInput
+
+TelInput component extends the props from react-phone-number-input with some customizations.
+
+| Prop                         | Type                                   | Default     | Description                                             |
+| ---------------------------- | -------------------------------------- | ----------- | ------------------------------------------------------- |
+| `value`                      | `E.164 string`                         | `undefined` | Phone number in E.164 format                            |
+| `onChange`                   | `(value: string \| undefined) => void` | `undefined` | Called when phone number value changes                  |
+| `defaultCountry`             | `string`                               | `undefined` | Two-letter country code for initial selection           |
+| `international`              | `boolean`                              | `false`     | Whether to show the international format                |
+| `countryCallingCodeEditable` | `boolean`                              | `true`      | Whether the country calling code part is editable       |
+| `disabled`                   | `boolean`                              | `false`     | Disables both the country select and phone number input |
+| `className`                  | `string`                               | `""`        | Additional CSS class for the component                  |
+| `placeholder`                | `string`                               | `undefined` | Placeholder for the phone number input                  |
+| `...rest`                    | `PhoneNumberInput.Props`               | -           | All other props from react-phone-number-input           |
+
+## Accessibility
+
+- The country select dropdown is fully keyboard navigable
+- The component uses proper ARIA attributes for improved screen reader support
+- The flag icons have appropriate alt text for accessibility
