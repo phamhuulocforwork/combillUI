@@ -11,6 +11,8 @@ import {
 
 import { useMDXComponents } from "@/components/mdx-components";
 
+import "@/styles/mdx.css";
+
 import { source } from "@/app/source";
 
 export default async function Page({

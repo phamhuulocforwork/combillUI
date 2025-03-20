@@ -5,5 +5,5 @@
     "react-compiler/react-compiler": "error",
     "@typescript-eslint/no-explicit-any": "off"
   },
-  "ignorePatterns": ["**/components/ui/**"]
+  "ignorePatterns": ["**/components/ui/**", "**/registry/**"]
 }
