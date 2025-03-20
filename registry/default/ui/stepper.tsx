@@ -162,7 +162,7 @@ const defineStepper = <const Steps extends Stepperize.Step[]>(
         return (
           <li
             className={cn(
-              " flex shrink-0 items-center gap-4 rounded-md transition-colors",
+              "flex shrink-0 items-center gap-4 rounded-md transition-colors",
               className,
             )}
           >
@@ -170,7 +170,7 @@ const defineStepper = <const Steps extends Stepperize.Step[]>(
               currentStep={stepIndex + 1}
               totalSteps={steps.length}
             />
-            <div className=' flex flex-col items-start gap-1'>
+            <div className='flex flex-col items-start gap-1'>
               {title}
               {description}
             </div>
@@ -182,7 +182,7 @@ const defineStepper = <const Steps extends Stepperize.Step[]>(
         <>
           <li
             className={cn([
-              " group peer relative flex items-center gap-2",
+              "group peer relative flex items-center gap-2",
               "data-[variant=vertical]:flex-row",
               "data-[label-orientation=vertical]:w-full",
               "data-[label-orientation=vertical]:flex-col",
@@ -295,7 +295,7 @@ const StepperTitle = ({
   const Comp = asChild ? Slot : "h4";
 
   return (
-    <Comp className={cn(" text-base font-medium", className)} {...props}>
+    <Comp className={cn("text-base font-medium m-0", className)} {...props}>
       {children}
     </Comp>
   );
@@ -310,10 +310,7 @@ const StepperDescription = ({
   const Comp = asChild ? Slot : "p";
 
   return (
-    <Comp
-      className={cn(" text-sm text-muted-foreground", className)}
-      {...props}
-    >
+    <Comp className={cn("text-sm text-muted-foreground", className)} {...props}>
       {children}
     </Comp>
   );
