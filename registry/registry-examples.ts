@@ -132,6 +132,56 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "star-rating-customized",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/star-rating-customized.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "star-rating-default",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/star-rating-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "star-rating-interactive",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/star-rating-interactive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "star-rating-readonly",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/star-rating-readonly.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "star-rating-with-form",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/star-rating-with-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "stepper-demo",
     type: "registry:example",
     files: [

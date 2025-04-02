@@ -1,0 +1,134 @@
+---
+title: Star Rating
+description: A star rating component that supports decimal ratings with partial stars.
+preview: true
+---
+
+<ComponentTabs name='star-rating-default' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList>
+    <TabsTrigger value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/star-rating.json';
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/star-rating.json';
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/star-rating.json';
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/star-rating.json';
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+
+  <TabsContent value='manual'>
+    <Steps>
+      <Step>
+        Install dependencies
+        ```bash
+        npm install lucide-react
+        ```
+      </Step>
+      <Step>
+        Copy and paste the following code into your project.
+        <ComponentSource name="star-rating" />
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import StarRating from "@/components/ui/star-rating";
+```
+
+## Examples
+
+### Basic Example
+
+<ComponentTabs name='star-rating-default' />
+
+### Interactive Example
+
+Use the component with interactivity, allowing users to select a rating.
+
+<ComponentTabs name='star-rating-interactive' />
+
+### Customization Options
+
+Customize the color, size, and number of stars.
+
+<ComponentTabs name='star-rating-customized' />
+
+### Read-only Mode
+
+Use to display ratings without allowing user interaction.
+
+<ComponentTabs name='star-rating-readonly' />
+
+### With Form Integration
+
+Integrate the component with React Hook Form.
+
+<ComponentTabs name='star-rating-with-form' />
+
+## API Reference
+
+### StarRating
+
+| Prop        | Type                      | Default     | Description                                                                                                      |
+| ----------- | ------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| `value`     | `number`                  | Required    | The current rating value. Can be decimal to display partial stars.                                               |
+| `onChange`  | `(value: number) => void` | -           | Callback called when the user changes the rating. If not provided, the component will operate in read-only mode. |
+| `className` | `string`                  | -           | Custom CSS class to apply to the container.                                                                      |
+| `size`      | `number`                  | `24`        | Size of the star icons in pixels.                                                                                |
+| `maxStars`  | `number`                  | `5`         | Maximum number of stars to display.                                                                              |
+| `readOnly`  | `boolean`                 | `false`     | If `true`, the component will be in read-only mode and non-interactive.                                          |
+| `color`     | `string`                  | `"#e4c616"` | Color of the stars (CSS color format).                                                                           |
+
+## Accessibility
+
+The StarRating component can be interacted with using a mouse and supports:
+
+- Visual feedback when hovering over stars
+- Accurate rating display using gradients for decimal values
+- Color transitions and hover effects to improve UX
+
+## Best Practices
+
+1. **Use readOnly mode** when displaying ratings from other users or system data.
+
+2. **Customize colors** to match your application's theme.
+
+3. **Validate input values** when used in forms. The `value` should be within the range of 0 to `maxStars`.
+
+4. **Provide visual feedback** to let users know they have successfully changed a rating.
+
+5. **Consider appropriate sizing** for your design and responsive UI.
