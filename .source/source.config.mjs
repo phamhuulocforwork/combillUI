@@ -4336,81 +4336,83 @@ var Index = {
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/animated-label-input.tsx",
-          "content": `import * as React from "react";\r
-\r
-import { Input } from "@/components/ui/input";\r
-import { Label } from "@/components/ui/label";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-const AnimatedLabel = React.forwardRef<\r
-  React.ElementRef<typeof Label>,\r
-  React.ComponentPropsWithoutRef<typeof Label>\r
->(({ className, ...props }, ref) => {\r
-  return (\r
-    <Label\r
-      className={cn(\r
-        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\r
-        className,\r
-      )}\r
-      ref={ref}\r
-      {...props}\r
-    />\r
-  );\r
-});\r
-AnimatedLabel.displayName = "AnimatedLabel";\r
-\r
-type AnimatedLabelInputProps = InputProps & { label?: string };\r
-\r
-const AnimatedLabelInput = React.forwardRef<\r
-  React.ElementRef<typeof AnimatedInput>,\r
-  React.PropsWithoutRef<AnimatedLabelInputProps>\r
->(({ id, label, ...props }, ref) => {\r
-  const inputRef = React.useRef<HTMLInputElement>(null);\r
-\r
-  React.useImperativeHandle(ref, () => inputRef.current!);\r
-\r
-  const handleLabelClick = () => {\r
-    if (inputRef.current) {\r
-      inputRef.current.focus();\r
-    }\r
-  };\r
-\r
-  return (\r
-    <div className='relative '>\r
-      <AnimatedInput ref={inputRef} id={id} {...props} />\r
-      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\r
-        {label}\r
-      </AnimatedLabel>\r
-    </div>\r
-  );\r
-});\r
-AnimatedLabelInput.displayName = "AnimatedLabelInput";\r
-\r
-export interface InputProps\r
-  extends React.InputHTMLAttributes<HTMLInputElement> {}\r
-\r
-const AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\r
-  ({ className, ...props }, ref) => {\r
-    return (\r
-      <Input\r
-        placeholder=' '\r
-        className={cn("peer", className)}\r
-        ref={ref}\r
-        {...props}\r
-      />\r
-    );\r
-  },\r
-);\r
-AnimatedInput.displayName = "AnimatedInput";\r
-\r
-export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r
+          path: "registry/default/ui/animated-label-input.tsx",
+          content: `import * as React from "react";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+import { cn } from "@/lib/utils";
+
+const AnimatedLabel = React.forwardRef<
+  React.ElementRef<typeof Label>,
+  React.ComponentPropsWithoutRef<typeof Label>
+>(({ className, ...props }, ref) => {
+  return (
+    <Label
+      className={cn(
+        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    />
+  );
+});
+AnimatedLabel.displayName = "AnimatedLabel";
+
+type AnimatedLabelInputProps = InputProps & { label?: string };
+
+const AnimatedLabelInput = React.forwardRef<
+  React.ElementRef<typeof AnimatedInput>,
+  React.PropsWithoutRef<AnimatedLabelInputProps>
+>(({ id, label, ...props }, ref) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useImperativeHandle(ref, () => inputRef.current!);
+
+  const handleLabelClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div className='relative '>
+      <AnimatedInput ref={inputRef} id={id} {...props} />
+      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>
+        {label}
+      </AnimatedLabel>
+    </div>
+  );
+});
+AnimatedLabelInput.displayName = "AnimatedLabelInput";
+
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <Input
+        placeholder=' '
+        className={cn("peer", className)}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+AnimatedInput.displayName = "AnimatedInput";
+
+export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports))
+      )
     },
     "animated-tooltip": {
       name: "animated-tooltip",
@@ -4418,12 +4420,14 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/animated-tooltip.tsx",
-          "content": '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as TooltipPrimitive from "@radix-ui/react-tooltip";\r\nimport { motion, useMotionValue, useSpring, useTransform } from "framer-motion";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst AnimatedTooltipProvider = TooltipPrimitive.Provider;\r\nconst AnimatedTooltip = TooltipPrimitive.Root;\r\nconst AnimatedTooltipTrigger = TooltipPrimitive.Trigger;\r\n\r\nconst springConfig = { stiffness: 100, damping: 5 };\r\n\r\nconst AnimatedTooltipContent = React.forwardRef<\r\n  React.ElementRef<typeof TooltipPrimitive.Content>,\r\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\r\n>(({ className, sideOffset = 4, ...props }, ref) => {\r\n  const x = useMotionValue(0);\r\n  const rotate = useSpring(\r\n    useTransform(x, [-100, 100], [-45, 45]),\r\n    springConfig,\r\n  );\r\n  const translateX = useSpring(\r\n    useTransform(x, [-100, 100], [-50, 50]),\r\n    springConfig,\r\n  );\r\n\r\n  const handleMouseMove = (event: any) => {\r\n    const halfWidth = event.currentTarget.offsetWidth / 2;\r\n    x.set(event.nativeEvent.offsetX - halfWidth);\r\n  };\r\n\r\n  return (\r\n    <TooltipPrimitive.Portal>\r\n      <TooltipPrimitive.Content ref={ref} sideOffset={sideOffset} {...props}>\r\n        <motion.div\r\n          onMouseMove={handleMouseMove}\r\n          initial={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          animate={{\r\n            opacity: 1,\r\n            y: 0,\r\n            scale: 1,\r\n            transition: {\r\n              type: "spring",\r\n              stiffness: 260,\r\n              damping: 10,\r\n            },\r\n          }}\r\n          exit={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          style={{\r\n            translateX: translateX,\r\n            rotate: rotate,\r\n          }}\r\n          className={cn(\r\n            "flex flex-col items-center justify-center rounded-md z-50 shadow-xl bg-primary px-3 py-1.5 text-primary-foreground ",\r\n            className,\r\n          )}\r\n        >\r\n          {props.children}\r\n        </motion.div>\r\n      </TooltipPrimitive.Content>\r\n    </TooltipPrimitive.Portal>\r\n  );\r\n});\r\nAnimatedTooltipContent.displayName = TooltipPrimitive.Content.displayName;\r\n\r\nexport {\r\n  AnimatedTooltip,\r\n  AnimatedTooltipTrigger,\r\n  AnimatedTooltipContent,\r\n  AnimatedTooltipProvider,\r\n};\r\n',
-          "type": "registry:ui"
+          path: "registry/default/ui/animated-tooltip.tsx",
+          content: '"use client";\n\nimport * as React from "react";\n\nimport * as TooltipPrimitive from "@radix-ui/react-tooltip";\nimport { motion, useMotionValue, useSpring, useTransform } from "framer-motion";\n\nimport { cn } from "@/lib/utils";\n\nconst AnimatedTooltipProvider = TooltipPrimitive.Provider;\nconst AnimatedTooltip = TooltipPrimitive.Root;\nconst AnimatedTooltipTrigger = TooltipPrimitive.Trigger;\n\nconst springConfig = { stiffness: 100, damping: 5 };\n\nconst AnimatedTooltipContent = React.forwardRef<\n  React.ElementRef<typeof TooltipPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 4, ...props }, ref) => {\n  const x = useMotionValue(0);\n  const rotate = useSpring(\n    useTransform(x, [-100, 100], [-45, 45]),\n    springConfig,\n  );\n  const translateX = useSpring(\n    useTransform(x, [-100, 100], [-50, 50]),\n    springConfig,\n  );\n\n  const handleMouseMove = (event: any) => {\n    const halfWidth = event.currentTarget.offsetWidth / 2;\n    x.set(event.nativeEvent.offsetX - halfWidth);\n  };\n\n  return (\n    <TooltipPrimitive.Portal>\n      <TooltipPrimitive.Content ref={ref} sideOffset={sideOffset} {...props}>\n        <motion.div\n          onMouseMove={handleMouseMove}\n          initial={{ opacity: 0, y: 20, scale: 0.6 }}\n          animate={{\n            opacity: 1,\n            y: 0,\n            scale: 1,\n            transition: {\n              type: "spring",\n              stiffness: 260,\n              damping: 10,\n            },\n          }}\n          exit={{ opacity: 0, y: 20, scale: 0.6 }}\n          style={{\n            translateX: translateX,\n            rotate: rotate,\n          }}\n          className={cn(\n            "flex flex-col items-center justify-center rounded-md z-50 shadow-xl bg-primary px-3 py-1.5 text-primary-foreground ",\n            className,\n          )}\n        >\n          {props.children}\n        </motion.div>\n      </TooltipPrimitive.Content>\n    </TooltipPrimitive.Portal>\n  );\n});\nAnimatedTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport {\n  AnimatedTooltip,\n  AnimatedTooltipTrigger,\n  AnimatedTooltipContent,\n  AnimatedTooltipProvider,\n};\n',
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports))
+      )
     },
     "combobox-input": {
       name: "combobox-input",
@@ -4431,246 +4435,248 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/combobox-input.tsx",
-          "content": `"use client";\r
-\r
-import * as React from "react";\r
-\r
-import { Check } from "lucide-react";\r
-import { type PopperProps, usePopper } from "react-popper";\r
-\r
-import {\r
-  Command,\r
-  CommandEmpty,\r
-  CommandGroup,\r
-  CommandInput,\r
-  CommandItem,\r
-  CommandList,\r
-  CommandLoading,\r
-} from "@/components/ui/command";\r
-import { Skeleton } from "@/components/ui/skeleton";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-import { useControllableState } from "@/registry/default/hooks/use-controllable-state";\r
-\r
-interface Option {\r
-  label: string;\r
-  value: string;\r
-  icon?: React.ComponentType<{ className?: string }>;\r
-  withCount?: boolean;\r
-}\r
-\r
-const nonPrintableKeys = [\r
-  "Tab",\r
-  "Control",\r
-  "Alt",\r
-  "Shift",\r
-  "Delete",\r
-  "Home",\r
-  "End",\r
-  "PageUp",\r
-  "PageDown",\r
-  "Insert",\r
-  "ArrowLeft",\r
-  "ArrowRight",\r
-];\r
-\r
-interface ComboboxInputProps\r
-  extends Omit<\r
-    React.ComponentPropsWithoutRef<typeof CommandInput>,\r
-    "defaultValue" | "value" | "onValueChange"\r
-  > {\r
-  options: Option[];\r
-  input?: string;\r
-  onInputChange?: (value: string) => void;\r
-  defaultValue?: Option;\r
-  value?: Option;\r
-  onValueChange?: (option: Option) => void;\r
-  emptyMessage?: string;\r
-  immediate?: boolean;\r
-  placement?: PopperProps<HTMLElement>["placement"];\r
-  alignOffset?: number;\r
-  sideOffset?: number;\r
-  loading?: boolean;\r
-}\r
-\r
-export function ComboboxInput({\r
-  options,\r
-  input,\r
-  onInputChange,\r
-  defaultValue,\r
-  value,\r
-  onValueChange,\r
-  placeholder,\r
-  emptyMessage = "No results found",\r
-  placement = "bottom-start",\r
-  alignOffset = 0,\r
-  sideOffset = 4,\r
-  immediate = false,\r
-  loading = false,\r
-  className,\r
-  ...props\r
-}: ComboboxInputProps) {\r
-  const inputRef = React.useRef<HTMLInputElement>(null);\r
-  const [open, setOpen] = React.useState(false);\r
-  const [controlledInput, setControlledInput] = useControllableState({\r
-    prop: input,\r
-    onChange: onInputChange,\r
-  });\r
-\r
-  const [currentOption, setCurrentOption] = useControllableState({\r
-    defaultProp: defaultValue,\r
-    prop: value,\r
-    onChange: onValueChange,\r
-  });\r
-\r
-  const [referenceElement, setReferenceElement] =\r
-    React.useState<HTMLDivElement | null>(null);\r
-  const [popperElement, setPopperElement] =\r
-    React.useState<HTMLDivElement | null>(null);\r
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {\r
-    modifiers: [\r
-      { name: "offset", options: { offset: [alignOffset, sideOffset] } },\r
-    ],\r
-    placement,\r
-  });\r
-\r
-  const onKeyDown = React.useCallback(\r
-    (event: React.KeyboardEvent<HTMLDivElement>) => {\r
-      const inputElement = inputRef.current;\r
-      if (!inputElement) return;\r
-\r
-      if (nonPrintableKeys.includes(event.key)) return;\r
-\r
-      if (event.key === "Backspace" && inputElement.value === "" && !open) {\r
-        if (open) setOpen(false);\r
-        return;\r
-      }\r
-\r
-      if (event.key === "Escape") {\r
-        if (currentOption && inputElement.value === currentOption.label) {\r
-          if (open) setOpen(false);\r
-          return;\r
-        }\r
-\r
-        if (inputElement.value === "") {\r
-          if (open) setOpen(false);\r
-          return;\r
-        }\r
-\r
-        setControlledInput("");\r
-        setOpen(false);\r
-        setCurrentOption(undefined);\r
-        inputRef.current?.focus();\r
-      }\r
-\r
-      if (event.key === "Enter" && inputElement.value !== "") {\r
-        const selectedOption = options.find(\r
-          (option) => option.label === inputElement.value,\r
-        );\r
-        setCurrentOption(selectedOption);\r
-      }\r
-\r
-      if (!open) setOpen(true);\r
-    },\r
-    [currentOption, open, options, setControlledInput, setCurrentOption],\r
-  );\r
-\r
-  const onBlur = React.useCallback(() => {\r
-    setOpen(false);\r
-    setControlledInput(currentOption?.label ?? "");\r
-  }, [currentOption?.label, setControlledInput]);\r
-\r
-  const onSelect = React.useCallback(\r
-    (selectedOption: Option) => {\r
-      setControlledInput(selectedOption.label);\r
-      setCurrentOption(selectedOption);\r
-      setOpen(false);\r
-    },\r
-    [setControlledInput, setCurrentOption],\r
-  );\r
-\r
-  return (\r
-    <Command\r
-      ref={setReferenceElement}\r
-      className='relative overflow-visible [&_[cmdk-input-wrapper]]:rounded-md [&_[cmdk-input-wrapper]]:border'\r
-      onKeyDown={onKeyDown}\r
-      {...attributes.reference}\r
-    >\r
-      <CommandInput\r
-        ref={inputRef}\r
-        value={controlledInput}\r
-        onValueChange={(value) => {\r
-          if (loading) return;\r
-\r
-          setControlledInput(value);\r
-          if (value === "") {\r
-            setCurrentOption(undefined);\r
-          }\r
-        }}\r
-        onBlur={onBlur}\r
-        onFocus={() => {\r
-          if (immediate) {\r
-            setOpen(true);\r
-          }\r
-        }}\r
-        placeholder={placeholder}\r
-        className={cn("border-b-0", className)}\r
-        {...props}\r
-      />\r
-      <CommandList\r
-        ref={setPopperElement}\r
-        data-state={open ? "open" : "closed"}\r
-        style={styles.popper}\r
-        className={cn(\r
-          "z-50 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none data-[state=open]:visible data-[state=closed]:invisible data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",\r
-          "data-[popper-placement=bottom-end]:translate-x-1/2 data-[popper-placement=bottom-start]:-translate-x-1/2 data-[popper-placement=left-end]:translate-y-1/2 data-[popper-placement=left-start]:-translate-y-1/2 data-[popper-placement=right-end]:translate-y-1/2 data-[popper-placement=right-start]:-translate-y-1/2 data-[popper-placement=top-end]:translate-x-1/2 data-[popper-placement=top-start]:-translate-x-1/2 data-[popper-placement=bottom-end]:slide-in-from-top-2 data-[popper-placement=bottom-start]:slide-in-from-top-2 data-[popper-placement=bottom]:slide-in-from-top-2 data-[popper-placement=left-end]:slide-in-from-right-2 data-[popper-placement=left-start]:slide-in-from-right-2 data-[popper-placement=left]:slide-in-from-right-2 data-[popper-placement=right-end]:slide-in-from-left-2 data-[popper-placement=right-start]:slide-in-from-left-2 data-[popper-placement=right]:slide-in-from-left-2 data-[popper-placement=top-end]:slide-in-from-bottom-2 data-[popper-placement=top-start]:slide-in-from-bottom-2 data-[popper-placement=top]:slide-in-from-bottom-2",\r
-        )}\r
-        {...attributes.popper}\r
-      >\r
-        {loading ? (\r
-          <CommandLoading className='p-1'>\r
-            <Skeleton className='h-8 w-full' />\r
-          </CommandLoading>\r
-        ) : null}\r
-        {options.length > 0 && !loading ? (\r
-          <CommandGroup>\r
-            {options.map((option) => {\r
-              const isSelected = currentOption?.value === option.value;\r
-\r
-              return (\r
-                <CommandItem\r
-                  key={option.value}\r
-                  value={option.label}\r
-                  onMouseDown={(event) => {\r
-                    event.preventDefault();\r
-                    event.stopPropagation();\r
-                  }}\r
-                  onSelect={() => onSelect(option)}\r
-                  className={cn("flex w-full items-center gap-2", {\r
-                    "pl-8": !isSelected,\r
-                  })}\r
-                >\r
-                  {isSelected ? (\r
-                    <Check className='w-4' aria-hidden='true' />\r
-                  ) : null}\r
-                  {option.label}\r
-                </CommandItem>\r
-              );\r
-            })}\r
-          </CommandGroup>\r
-        ) : null}\r
-        {loading ? null : <CommandEmpty>{emptyMessage}</CommandEmpty>}\r
-      </CommandList>\r
-    </Command>\r
-  );\r
-}\r
+          path: "registry/default/ui/combobox-input.tsx",
+          content: `"use client";
+
+import * as React from "react";
+
+import { Check } from "lucide-react";
+import { type PopperProps, usePopper } from "react-popper";
+
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandLoading,
+} from "@/components/ui/command";
+import { Skeleton } from "@/components/ui/skeleton";
+
+import { cn } from "@/lib/utils";
+
+import { useControllableState } from "@/registry/default/hooks/use-controllable-state";
+
+interface Option {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<{ className?: string }>;
+  withCount?: boolean;
+}
+
+const nonPrintableKeys = [
+  "Tab",
+  "Control",
+  "Alt",
+  "Shift",
+  "Delete",
+  "Home",
+  "End",
+  "PageUp",
+  "PageDown",
+  "Insert",
+  "ArrowLeft",
+  "ArrowRight",
+];
+
+interface ComboboxInputProps
+  extends Omit<
+    React.ComponentPropsWithoutRef<typeof CommandInput>,
+    "defaultValue" | "value" | "onValueChange"
+  > {
+  options: Option[];
+  input?: string;
+  onInputChange?: (value: string) => void;
+  defaultValue?: Option;
+  value?: Option;
+  onValueChange?: (option: Option) => void;
+  emptyMessage?: string;
+  immediate?: boolean;
+  placement?: PopperProps<HTMLElement>["placement"];
+  alignOffset?: number;
+  sideOffset?: number;
+  loading?: boolean;
+}
+
+export function ComboboxInput({
+  options,
+  input,
+  onInputChange,
+  defaultValue,
+  value,
+  onValueChange,
+  placeholder,
+  emptyMessage = "No results found",
+  placement = "bottom-start",
+  alignOffset = 0,
+  sideOffset = 4,
+  immediate = false,
+  loading = false,
+  className,
+  ...props
+}: ComboboxInputProps) {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const [controlledInput, setControlledInput] = useControllableState({
+    prop: input,
+    onChange: onInputChange,
+  });
+
+  const [currentOption, setCurrentOption] = useControllableState({
+    defaultProp: defaultValue,
+    prop: value,
+    onChange: onValueChange,
+  });
+
+  const [referenceElement, setReferenceElement] =
+    React.useState<HTMLDivElement | null>(null);
+  const [popperElement, setPopperElement] =
+    React.useState<HTMLDivElement | null>(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [
+      { name: "offset", options: { offset: [alignOffset, sideOffset] } },
+    ],
+    placement,
+  });
+
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      const inputElement = inputRef.current;
+      if (!inputElement) return;
+
+      if (nonPrintableKeys.includes(event.key)) return;
+
+      if (event.key === "Backspace" && inputElement.value === "" && !open) {
+        if (open) setOpen(false);
+        return;
+      }
+
+      if (event.key === "Escape") {
+        if (currentOption && inputElement.value === currentOption.label) {
+          if (open) setOpen(false);
+          return;
+        }
+
+        if (inputElement.value === "") {
+          if (open) setOpen(false);
+          return;
+        }
+
+        setControlledInput("");
+        setOpen(false);
+        setCurrentOption(undefined);
+        inputRef.current?.focus();
+      }
+
+      if (event.key === "Enter" && inputElement.value !== "") {
+        const selectedOption = options.find(
+          (option) => option.label === inputElement.value,
+        );
+        setCurrentOption(selectedOption);
+      }
+
+      if (!open) setOpen(true);
+    },
+    [currentOption, open, options, setControlledInput, setCurrentOption],
+  );
+
+  const onBlur = React.useCallback(() => {
+    setOpen(false);
+    setControlledInput(currentOption?.label ?? "");
+  }, [currentOption?.label, setControlledInput]);
+
+  const onSelect = React.useCallback(
+    (selectedOption: Option) => {
+      setControlledInput(selectedOption.label);
+      setCurrentOption(selectedOption);
+      setOpen(false);
+    },
+    [setControlledInput, setCurrentOption],
+  );
+
+  return (
+    <Command
+      ref={setReferenceElement}
+      className='relative overflow-visible [&_[cmdk-input-wrapper]]:rounded-md [&_[cmdk-input-wrapper]]:border'
+      onKeyDown={onKeyDown}
+      {...attributes.reference}
+    >
+      <CommandInput
+        ref={inputRef}
+        value={controlledInput}
+        onValueChange={(value) => {
+          if (loading) return;
+
+          setControlledInput(value);
+          if (value === "") {
+            setCurrentOption(undefined);
+          }
+        }}
+        onBlur={onBlur}
+        onFocus={() => {
+          if (immediate) {
+            setOpen(true);
+          }
+        }}
+        placeholder={placeholder}
+        className={cn("border-b-0", className)}
+        {...props}
+      />
+      <CommandList
+        ref={setPopperElement}
+        data-state={open ? "open" : "closed"}
+        style={styles.popper}
+        className={cn(
+          "z-50 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none data-[state=open]:visible data-[state=closed]:invisible data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "data-[popper-placement=bottom-end]:translate-x-1/2 data-[popper-placement=bottom-start]:-translate-x-1/2 data-[popper-placement=left-end]:translate-y-1/2 data-[popper-placement=left-start]:-translate-y-1/2 data-[popper-placement=right-end]:translate-y-1/2 data-[popper-placement=right-start]:-translate-y-1/2 data-[popper-placement=top-end]:translate-x-1/2 data-[popper-placement=top-start]:-translate-x-1/2 data-[popper-placement=bottom-end]:slide-in-from-top-2 data-[popper-placement=bottom-start]:slide-in-from-top-2 data-[popper-placement=bottom]:slide-in-from-top-2 data-[popper-placement=left-end]:slide-in-from-right-2 data-[popper-placement=left-start]:slide-in-from-right-2 data-[popper-placement=left]:slide-in-from-right-2 data-[popper-placement=right-end]:slide-in-from-left-2 data-[popper-placement=right-start]:slide-in-from-left-2 data-[popper-placement=right]:slide-in-from-left-2 data-[popper-placement=top-end]:slide-in-from-bottom-2 data-[popper-placement=top-start]:slide-in-from-bottom-2 data-[popper-placement=top]:slide-in-from-bottom-2",
+        )}
+        {...attributes.popper}
+      >
+        {loading ? (
+          <CommandLoading className='p-1'>
+            <Skeleton className='h-8 w-full' />
+          </CommandLoading>
+        ) : null}
+        {options.length > 0 && !loading ? (
+          <CommandGroup>
+            {options.map((option) => {
+              const isSelected = currentOption?.value === option.value;
+
+              return (
+                <CommandItem
+                  key={option.value}
+                  value={option.label}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }}
+                  onSelect={() => onSelect(option)}
+                  className={cn("flex w-full items-center gap-2", {
+                    "pl-8": !isSelected,
+                  })}
+                >
+                  {isSelected ? (
+                    <Check className='w-4' aria-hidden='true' />
+                  ) : null}
+                  {option.label}
+                </CommandItem>
+              );
+            })}
+          </CommandGroup>
+        ) : null}
+        {loading ? null : <CommandEmpty>{emptyMessage}</CommandEmpty>}
+      </CommandList>
+    </Command>
+  );
+}
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_combobox_input(), combobox_input_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_combobox_input(), combobox_input_exports))
+      )
     },
     "labeled-switch": {
       name: "labeled-switch",
@@ -4678,89 +4684,91 @@ export function ComboboxInput({\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/labeled-switch.tsx",
-          "content": `"use client";\r
-\r
-import * as React from "react";\r
-\r
-import * as SwitchPrimitives from "@radix-ui/react-switch";\r
-import { motion } from "framer-motion";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-interface LabeledSwitchProps {\r
-  firstLabel: React.ReactNode;\r
-  secondLabel: React.ReactNode;\r
-  selected: boolean;\r
-  onToggle: (checked: boolean) => void;\r
-  className?: string;\r
-}\r
-\r
-const LabeledSwitch = React.forwardRef<\r
-  React.ElementRef<typeof SwitchPrimitives.Root>,\r
-  LabeledSwitchProps\r
->(\r
-  (\r
-    { className, firstLabel, secondLabel, selected, onToggle, ...props },\r
-    ref,\r
-  ) => {\r
-    return (\r
-      <SwitchPrimitives.Root\r
-        className={cn(\r
-          "relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors",\r
-          className,\r
-        )}\r
-        ref={ref}\r
-        checked={selected}\r
-        onCheckedChange={onToggle}\r
-      >\r
-        <LabeledSwitchButton selected={selected}>\r
-          {firstLabel}\r
-        </LabeledSwitchButton>\r
-        <LabeledSwitchButton selected={!selected}>\r
-          {secondLabel}\r
-        </LabeledSwitchButton>\r
-        <SwitchPrimitives.Thumb\r
-          className={cn(\r
-            "absolute inset-0 w-full z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end",\r
-          )}\r
-        >\r
-          <motion.span\r
-            layout\r
-            transition={{ type: "spring", damping: 15, stiffness: 250 }}\r
-            className='h-full w-1/2 rounded-full bg-muted'\r
-          />\r
-        </SwitchPrimitives.Thumb>\r
-      </SwitchPrimitives.Root>\r
-    );\r
-  },\r
-);\r
-LabeledSwitch.displayName = "LabeledSwitch";\r
-\r
-const LabeledSwitchButton = ({\r
-  children,\r
-  selected,\r
-}: {\r
-  children: React.ReactNode;\r
-  selected: boolean;\r
-}) => (\r
-  <div\r
-    className={cn(\r
-      "relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5",\r
-      selected ? "text-primary" : "text-muted-foreground",\r
-    )}\r
-    onMouseDown={(e) => e.preventDefault()}\r
-  >\r
-    <span className='relative z-10'>{children}</span>\r
-  </div>\r
-);\r
-\r
-export { LabeledSwitch };\r
+          path: "registry/default/ui/labeled-switch.tsx",
+          content: `"use client";
+
+import * as React from "react";
+
+import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
+
+interface LabeledSwitchProps {
+  firstLabel: React.ReactNode;
+  secondLabel: React.ReactNode;
+  selected: boolean;
+  onToggle: (checked: boolean) => void;
+  className?: string;
+}
+
+const LabeledSwitch = React.forwardRef<
+  React.ElementRef<typeof SwitchPrimitives.Root>,
+  LabeledSwitchProps
+>(
+  (
+    { className, firstLabel, secondLabel, selected, onToggle, ...props },
+    ref,
+  ) => {
+    return (
+      <SwitchPrimitives.Root
+        className={cn(
+          "relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors",
+          className,
+        )}
+        ref={ref}
+        checked={selected}
+        onCheckedChange={onToggle}
+      >
+        <LabeledSwitchButton selected={selected}>
+          {firstLabel}
+        </LabeledSwitchButton>
+        <LabeledSwitchButton selected={!selected}>
+          {secondLabel}
+        </LabeledSwitchButton>
+        <SwitchPrimitives.Thumb
+          className={cn(
+            "absolute inset-0 w-full z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end",
+          )}
+        >
+          <motion.span
+            layout
+            transition={{ type: "spring", damping: 15, stiffness: 250 }}
+            className='h-full w-1/2 rounded-full bg-muted'
+          />
+        </SwitchPrimitives.Thumb>
+      </SwitchPrimitives.Root>
+    );
+  },
+);
+LabeledSwitch.displayName = "LabeledSwitch";
+
+const LabeledSwitchButton = ({
+  children,
+  selected,
+}: {
+  children: React.ReactNode;
+  selected: boolean;
+}) => (
+  <div
+    className={cn(
+      "relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5",
+      selected ? "text-primary" : "text-muted-foreground",
+    )}
+    onMouseDown={(e) => e.preventDefault()}
+  >
+    <span className='relative z-10'>{children}</span>
+  </div>
+);
+
+export { LabeledSwitch };
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports))
+      )
     },
     "range-slider": {
       name: "range-slider",
@@ -4768,12 +4776,14 @@ export { LabeledSwitch };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/range-slider.tsx",
-          "content": '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as SliderPrimitive from "@radix-ui/react-slider";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ninterface RangeSliderProps\r\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\r\n  labelPosition?: "top" | "bottom";\r\n  label?: (value: number | undefined) => React.ReactNode;\r\n  orientation?: "horizontal" | "vertical";\r\n}\r\n\r\nconst RangeSlider = React.forwardRef<\r\n  React.ElementRef<typeof SliderPrimitive.Root>,\r\n  RangeSliderProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      label,\r\n      labelPosition = "top",\r\n      orientation = "horizontal",\r\n      ...props\r\n    },\r\n    ref,\r\n  ) => {\r\n    const initialValue = Array.isArray(props.value)\r\n      ? props.value\r\n      : [props.min, props.max];\r\n\r\n    return (\r\n      <SliderPrimitive.Root\r\n        ref={ref}\r\n        orientation={orientation}\r\n        className={cn(\r\n          orientation === "horizontal"\r\n            ? "relative flex w-full touch-none select-none items-center"\r\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        <SliderPrimitive.Track\r\n          className={cn(\r\n            orientation === "horizontal"\r\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\r\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\r\n          )}\r\n        >\r\n          <SliderPrimitive.Range\r\n            className={cn(\r\n              orientation === "horizontal"\r\n                ? "absolute h-full bg-primary"\r\n                : "absolute w-full bg-primary",\r\n            )}\r\n          />\r\n        </SliderPrimitive.Track>\r\n        {initialValue.map((value, index) => (\r\n          <React.Fragment key={index}>\r\n            <SliderPrimitive.Thumb\r\n              className={cn(\r\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\r\n                orientation === "horizontal"\r\n                  ? "h-5 w-2 rounded-sm"\r\n                  : "h-2 w-5 rounded-sm",\r\n              )}\r\n            >\r\n              {label && (\r\n                <span\r\n                  className={cn(\r\n                    "absolute flex text-xs justify-center font-medium",\r\n                    orientation === "horizontal"\r\n                      ? labelPosition === "top"\r\n                        ? "-left-2 -top-5"\r\n                        : "-left-2 top-5"\r\n                      : labelPosition === "top"\r\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\r\n                        : "translate-x-full -translate-y-1/2",\r\n                  )}\r\n                >\r\n                  {label(value)}\r\n                </span>\r\n              )}\r\n            </SliderPrimitive.Thumb>\r\n          </React.Fragment>\r\n        ))}\r\n      </SliderPrimitive.Root>\r\n    );\r\n  },\r\n);\r\nRangeSlider.displayName = "RangeSlider";\r\n\r\nexport { RangeSlider };\r\n',
-          "type": "registry:ui"
+          path: "registry/default/ui/range-slider.tsx",
+          content: '"use client";\n\nimport * as React from "react";\n\nimport * as SliderPrimitive from "@radix-ui/react-slider";\n\nimport { cn } from "@/lib/utils";\n\ninterface RangeSliderProps\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\n  labelPosition?: "top" | "bottom";\n  label?: (value: number | undefined) => React.ReactNode;\n  orientation?: "horizontal" | "vertical";\n}\n\nconst RangeSlider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  RangeSliderProps\n>(\n  (\n    {\n      className,\n      label,\n      labelPosition = "top",\n      orientation = "horizontal",\n      ...props\n    },\n    ref,\n  ) => {\n    const initialValue = Array.isArray(props.value)\n      ? props.value\n      : [props.min, props.max];\n\n    return (\n      <SliderPrimitive.Root\n        ref={ref}\n        orientation={orientation}\n        className={cn(\n          orientation === "horizontal"\n            ? "relative flex w-full touch-none select-none items-center"\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\n          className,\n        )}\n        {...props}\n      >\n        <SliderPrimitive.Track\n          className={cn(\n            orientation === "horizontal"\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\n          )}\n        >\n          <SliderPrimitive.Range\n            className={cn(\n              orientation === "horizontal"\n                ? "absolute h-full bg-primary"\n                : "absolute w-full bg-primary",\n            )}\n          />\n        </SliderPrimitive.Track>\n        {initialValue.map((value, index) => (\n          <React.Fragment key={index}>\n            <SliderPrimitive.Thumb\n              className={cn(\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\n                orientation === "horizontal"\n                  ? "h-5 w-2 rounded-sm"\n                  : "h-2 w-5 rounded-sm",\n              )}\n            >\n              {label && (\n                <span\n                  className={cn(\n                    "absolute flex text-xs justify-center font-medium",\n                    orientation === "horizontal"\n                      ? labelPosition === "top"\n                        ? "-left-2 -top-5"\n                        : "-left-2 top-5"\n                      : labelPosition === "top"\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\n                        : "translate-x-full -translate-y-1/2",\n                  )}\n                >\n                  {label(value)}\n                </span>\n              )}\n            </SliderPrimitive.Thumb>\n          </React.Fragment>\n        ))}\n      </SliderPrimitive.Root>\n    );\n  },\n);\nRangeSlider.displayName = "RangeSlider";\n\nexport { RangeSlider };\n',
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_range_slider(), range_slider_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_range_slider(), range_slider_exports))
+      )
     },
     "responsive-textarea": {
       name: "responsive-textarea",
@@ -4781,12 +4791,14 @@ export { LabeledSwitch };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/responsive-textarea.tsx",
-          "content": '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst ResponsiveTextarea = React.forwardRef<\r\n  HTMLTextAreaElement,\r\n  React.ComponentProps<"textarea">\r\n>(({ className, ...props }, ref) => {\r\n  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);\r\n  const [val, setVal] = React.useState<string>("");\r\n\r\n  React.useEffect(() => {\r\n    if (textAreaRef.current) {\r\n      textAreaRef.current.style.height = "auto";\r\n      textAreaRef.current.style.height =\r\n        textAreaRef.current.scrollHeight + "px";\r\n    }\r\n  }, [val]);\r\n\r\n  return (\r\n    <textarea\r\n      className={cn(\r\n        "placeholder:text-muted-foreground flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",\r\n        className,\r\n      )}\r\n      ref={textAreaRef}\r\n      onChange={(e) => setVal(e.target.value)}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nResponsiveTextarea.displayName = "ResponsiveTextarea";\r\n\r\nexport { ResponsiveTextarea };\r\n',
-          "type": "registry:ui"
+          path: "registry/default/ui/responsive-textarea.tsx",
+          content: '"use client";\n\nimport * as React from "react";\n\nimport { cn } from "@/lib/utils";\n\nconst ResponsiveTextarea = React.forwardRef<\n  HTMLTextAreaElement,\n  React.ComponentProps<"textarea">\n>(({ className, ...props }, ref) => {\n  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);\n  const [val, setVal] = React.useState<string>("");\n\n  React.useEffect(() => {\n    if (textAreaRef.current) {\n      textAreaRef.current.style.height = "auto";\n      textAreaRef.current.style.height =\n        textAreaRef.current.scrollHeight + "px";\n    }\n  }, [val]);\n\n  return (\n    <textarea\n      className={cn(\n        "placeholder:text-muted-foreground flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",\n        className,\n      )}\n      ref={textAreaRef}\n      onChange={(e) => setVal(e.target.value)}\n      {...props}\n    />\n  );\n});\nResponsiveTextarea.displayName = "ResponsiveTextarea";\n\nexport { ResponsiveTextarea };\n',
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports))
+      )
     },
     "star-rating": {
       name: "star-rating",
@@ -4794,693 +4806,695 @@ export { LabeledSwitch };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/star-rating.tsx",
-          "content": `"use client";\r
-\r
-import * as React from "react";\r
-\r
-import { Star } from "lucide-react";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-let nextId = 0;\r
-const generateStarIds = (count: number) =>\r
-  Array.from({ length: count }, () => \`star-\${nextId++}\`);\r
-\r
-interface StarRatingProps {\r
-  value: number;\r
-  onChange?: (value: number) => void;\r
-  className?: string;\r
-  size?: number;\r
-  maxStars?: number;\r
-  readOnly?: boolean;\r
-  color?: string;\r
-}\r
-\r
-const StarIcon = React.memo(\r
-  ({\r
-    size,\r
-    index,\r
-    isInteractive,\r
-    onClick,\r
-    onMouseMove,\r
-    style,\r
-  }: {\r
-    index: number;\r
-    style: React.CSSProperties;\r
-    size: number;\r
-    onClick: (e: React.MouseEvent<SVGElement>) => void;\r
-    onMouseMove: (e: React.MouseEvent<SVGElement>) => void;\r
-    isInteractive: boolean;\r
-  }) => (\r
-    <Star\r
-      key={index}\r
-      size={size}\r
-      fill={style.fill}\r
-      color={style.color}\r
-      onClick={onClick}\r
-      onMouseMove={onMouseMove}\r
-      className={cn(\r
-        "transition-colors duration-200",\r
-        isInteractive && "cursor-pointer hover:scale-110",\r
-      )}\r
-      style={style}\r
-    />\r
-  ),\r
-);\r
-StarIcon.displayName = "StarIcon";\r
-\r
-const StarRating = ({\r
-  className,\r
-  color = "#e4c616",\r
-  size = 24,\r
-  maxStars = 5,\r
-  onChange,\r
-  readOnly = false,\r
-  value,\r
-}: StarRatingProps) => {\r
-  const [hoverRating, setHoverRating] = React.useState<number | null>(null);\r
-  const [starIds] = React.useState(() => generateStarIds(maxStars));\r
-\r
-  const handleStarClick = React.useCallback(\r
-    (index: number, event: React.MouseEvent<SVGElement>) => {\r
-      if (readOnly || !onChange) return;\r
-      const newRating = index + 1;\r
-      onChange(newRating);\r
-    },\r
-    [readOnly, onChange],\r
-  );\r
-\r
-  const handleStarHover = React.useCallback(\r
-    (index: number, event: React.MouseEvent<SVGElement>) => {\r
-      if (!readOnly) {\r
-        setHoverRating(index + 1);\r
-      }\r
-    },\r
-    [readOnly],\r
-  );\r
-\r
-  const handleMouseLeave = React.useCallback(() => {\r
-    if (!readOnly) {\r
-      setHoverRating(null);\r
-    }\r
-  }, [readOnly]);\r
-\r
-  const getStarStyle = React.useCallback(\r
-    (index: number) => {\r
-      const ratingToUse =\r
-        !readOnly && hoverRating !== null ? hoverRating : value;\r
-\r
-      const difference = ratingToUse - index;\r
-\r
-      if (difference <= 0) return { color: "gray", fill: "transparent" };\r
-      if (difference >= 1) return { color: color, fill: color };\r
-\r
-      return {\r
-        color: color,\r
-        fill: \`url(#\${starIds[index]})\`,\r
-      } as React.CSSProperties;\r
-    },\r
-    [readOnly, hoverRating, value, color, starIds],\r
-  );\r
-\r
-  const renderGradientDefs = () => {\r
-    if (!readOnly && hoverRating !== null) return null;\r
-\r
-    const partialStarIndex = Math.floor(value);\r
-    const partialFill = (value % 1) * 100;\r
-\r
-    if (partialFill > 0) {\r
-      return (\r
-        <linearGradient\r
-          id={starIds[partialStarIndex]}\r
-          x1='0%'\r
-          y1='0%'\r
-          x2='100%'\r
-          y2='0%'\r
-        >\r
-          <stop offset={\`\${partialFill}%\`} stopColor={color} />\r
-          <stop offset={\`\${partialFill}%\`} stopColor='transparent' />\r
-        </linearGradient>\r
-      );\r
-    }\r
-    return null;\r
-  };\r
-\r
-  const stars = React.useMemo(() => {\r
-    return Array.from({ length: maxStars }).map((_, index) => {\r
-      const style = getStarStyle(index);\r
-      return (\r
-        <StarIcon\r
-          key={index}\r
-          index={index}\r
-          style={style}\r
-          size={size}\r
-          onClick={(e) => handleStarClick(index, e)}\r
-          onMouseMove={(e) => handleStarHover(index, e)}\r
-          isInteractive={!readOnly}\r
-        />\r
-      );\r
-    });\r
-  }, [\r
-    maxStars,\r
-    getStarStyle,\r
-    size,\r
-    handleStarClick,\r
-    handleStarHover,\r
-    readOnly,\r
-  ]);\r
-\r
-  return (\r
-    <div\r
-      className={cn("relative flex items-center gap-x-0.5", className)}\r
-      onMouseLeave={handleMouseLeave}\r
-    >\r
-      <svg width='0' height='0' style={{ position: "absolute" }}>\r
-        <defs>{renderGradientDefs()}</defs>\r
-      </svg>\r
-      {stars}\r
-    </div>\r
-  );\r
-};\r
-\r
-export default StarRating;\r
+          path: "registry/default/ui/star-rating.tsx",
+          content: `"use client";
+
+import * as React from "react";
+
+import { Star } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+let nextId = 0;
+const generateStarIds = (count: number) =>
+  Array.from({ length: count }, () => \`star-\${nextId++}\`);
+
+interface StarRatingProps {
+  value: number;
+  onChange?: (value: number) => void;
+  className?: string;
+  size?: number;
+  maxStars?: number;
+  readOnly?: boolean;
+  color?: string;
+}
+
+const StarIcon = React.memo(
+  ({
+    size,
+    index,
+    isInteractive,
+    onClick,
+    onMouseMove,
+    style,
+  }: {
+    index: number;
+    style: React.CSSProperties;
+    size: number;
+    onClick: (e: React.MouseEvent<SVGElement>) => void;
+    onMouseMove: (e: React.MouseEvent<SVGElement>) => void;
+    isInteractive: boolean;
+  }) => (
+    <Star
+      key={index}
+      size={size}
+      fill={style.fill}
+      color={style.color}
+      onClick={onClick}
+      onMouseMove={onMouseMove}
+      className={cn(
+        "transition-colors duration-200",
+        isInteractive && "cursor-pointer hover:scale-110",
+      )}
+      style={style}
+    />
+  ),
+);
+StarIcon.displayName = "StarIcon";
+
+const StarRating = ({
+  className,
+  color = "#e4c616",
+  size = 24,
+  maxStars = 5,
+  onChange,
+  readOnly = false,
+  value,
+}: StarRatingProps) => {
+  const [hoverRating, setHoverRating] = React.useState<number | null>(null);
+  const [starIds] = React.useState(() => generateStarIds(maxStars));
+
+  const handleStarClick = React.useCallback(
+    (index: number, event: React.MouseEvent<SVGElement>) => {
+      if (readOnly || !onChange) return;
+      const newRating = index + 1;
+      onChange(newRating);
+    },
+    [readOnly, onChange],
+  );
+
+  const handleStarHover = React.useCallback(
+    (index: number, event: React.MouseEvent<SVGElement>) => {
+      if (!readOnly) {
+        setHoverRating(index + 1);
+      }
+    },
+    [readOnly],
+  );
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (!readOnly) {
+      setHoverRating(null);
+    }
+  }, [readOnly]);
+
+  const getStarStyle = React.useCallback(
+    (index: number) => {
+      const ratingToUse =
+        !readOnly && hoverRating !== null ? hoverRating : value;
+
+      const difference = ratingToUse - index;
+
+      if (difference <= 0) return { color: "gray", fill: "transparent" };
+      if (difference >= 1) return { color: color, fill: color };
+
+      return {
+        color: color,
+        fill: \`url(#\${starIds[index]})\`,
+      } as React.CSSProperties;
+    },
+    [readOnly, hoverRating, value, color, starIds],
+  );
+
+  const renderGradientDefs = () => {
+    if (!readOnly && hoverRating !== null) return null;
+
+    const partialStarIndex = Math.floor(value);
+    const partialFill = (value % 1) * 100;
+
+    if (partialFill > 0) {
+      return (
+        <linearGradient
+          id={starIds[partialStarIndex]}
+          x1='0%'
+          y1='0%'
+          x2='100%'
+          y2='0%'
+        >
+          <stop offset={\`\${partialFill}%\`} stopColor={color} />
+          <stop offset={\`\${partialFill}%\`} stopColor='transparent' />
+        </linearGradient>
+      );
+    }
+    return null;
+  };
+
+  const stars = React.useMemo(() => {
+    return Array.from({ length: maxStars }).map((_, index) => {
+      const style = getStarStyle(index);
+      return (
+        <StarIcon
+          key={index}
+          index={index}
+          style={style}
+          size={size}
+          onClick={(e) => handleStarClick(index, e)}
+          onMouseMove={(e) => handleStarHover(index, e)}
+          isInteractive={!readOnly}
+        />
+      );
+    });
+  }, [
+    maxStars,
+    getStarStyle,
+    size,
+    handleStarClick,
+    handleStarHover,
+    readOnly,
+  ]);
+
+  return (
+    <div
+      className={cn("relative flex items-center gap-x-0.5", className)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <svg width='0' height='0' style={{ position: "absolute" }}>
+        <defs>{renderGradientDefs()}</defs>
+      </svg>
+      {stars}
+    </div>
+  );
+};
+
+export default StarRating;
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating(), star_rating_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating(), star_rating_exports))
+      )
     },
-    "stepper": {
+    stepper: {
       name: "stepper",
       description: "",
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/stepper.tsx",
-          "content": `import * as React from "react";\r
-\r
-import * as Stepperize from "@stepperize/react";\r
-import { Slot } from "@radix-ui/react-slot";\r
-import { type VariantProps, cva } from "class-variance-authority";\r
-\r
-import { Button } from "@/components/ui/button";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-type StepperVariant = "horizontal" | "vertical" | "circle";\r
-type StepperLabelOrientation = "horizontal" | "vertical";\r
-\r
-type StepperConfig = {\r
-  variant?: StepperVariant;\r
-  labelOrientation?: StepperLabelOrientation;\r
-  tracking?: boolean;\r
-};\r
-\r
-type DefineStepperProps<Steps extends Stepperize.Step[]> = Omit<\r
-  Stepperize.StepperReturn<Steps>,\r
-  "Scoped"\r
-> & {\r
-  StepperProvider: (\r
-    props: Omit<Stepperize.ScopedProps<Steps>, "children"> &\r
-      Omit<React.ComponentProps<"div">, "children"> &\r
-      StepperConfig & {\r
-        children:\r
-          | React.ReactNode\r
-          | ((props: {\r
-              methods: Stepperize.Stepper<Steps>;\r
-            }) => React.ReactNode);\r
-      },\r
-  ) => React.ReactElement;\r
-  StepperNavigation: (props: React.ComponentProps<"nav">) => React.ReactElement;\r
-  StepperStep: (\r
-    props: React.ComponentProps<"button"> & {\r
-      of: Stepperize.Get.Id<Steps>;\r
-      icon?: React.ReactNode;\r
-    },\r
-  ) => React.ReactElement;\r
-  StepperTitle: (\r
-    props: React.ComponentProps<"h4"> & { asChild?: boolean },\r
-  ) => React.ReactElement;\r
-  StepperDescription: (\r
-    props: React.ComponentProps<"p"> & { asChild?: boolean },\r
-  ) => React.ReactElement;\r
-  StepperPanel: (\r
-    props: React.ComponentProps<"div"> & { asChild?: boolean },\r
-  ) => React.ReactElement;\r
-  StepperControls: (\r
-    props: React.ComponentProps<"div"> & { asChild?: boolean },\r
-  ) => React.ReactElement;\r
-};\r
-\r
-type CircleStepIndicatorProps = {\r
-  currentStep: number;\r
-  totalSteps: number;\r
-  size?: number;\r
-  strokeWidth?: number;\r
-};\r
-\r
-const StepperContext = React.createContext<StepperConfig | null>(null);\r
-\r
-const useStepperProvider = (): StepperConfig => {\r
-  const context = React.useContext(StepperContext);\r
-  if (!context) {\r
-    throw new Error("useStepper must be used within a StepperProvider.");\r
-  }\r
-  return context;\r
-};\r
-\r
-const defineStepper = <const Steps extends Stepperize.Step[]>(\r
-  ...steps: Steps\r
-): DefineStepperProps<Steps> => {\r
-  const { Scoped, useStepper, ...rest } = Stepperize.defineStepper(...steps);\r
-\r
-  const StepperContainer = ({\r
-    children,\r
-    className,\r
-    ...props\r
-  }: Omit<React.ComponentProps<"div">, "children"> & {\r
-    children:\r
-      | React.ReactNode\r
-      | ((props: { methods: Stepperize.Stepper<Steps> }) => React.ReactNode);\r
-  }) => {\r
-    const methods = useStepper();\r
-\r
-    return (\r
-      <div className={cn("w-full", className)} {...props}>\r
-        {typeof children === "function" ? children({ methods }) : children}\r
-      </div>\r
-    );\r
-  };\r
-\r
-  return {\r
-    ...rest,\r
-    useStepper,\r
-    StepperProvider: ({\r
-      variant = "horizontal",\r
-      labelOrientation = "horizontal",\r
-      tracking = false,\r
-      children,\r
-      className,\r
-      ...props\r
-    }) => {\r
-      return (\r
-        <StepperContext.Provider\r
-          value={{ variant, labelOrientation, tracking }}\r
-        >\r
-          <Scoped\r
-            initialStep={props.initialStep}\r
-            initialMetadata={props.initialMetadata}\r
-          >\r
-            <StepperContainer className={className} {...props}>\r
-              {children}\r
-            </StepperContainer>\r
-          </Scoped>\r
-        </StepperContext.Provider>\r
-      );\r
-    },\r
-    StepperNavigation: ({\r
-      children,\r
-      className,\r
-      "aria-label": ariaLabel = "Stepper Navigation",\r
-      ...props\r
-    }) => {\r
-      const { variant } = useStepperProvider();\r
-      return (\r
-        <nav\r
-          aria-label={ariaLabel}\r
-          role='tablist'\r
-          className={cn("stepper-navigation", className)}\r
-          {...props}\r
-        >\r
-          <ol className={listVariants({ variant: variant })}>{children}</ol>\r
-        </nav>\r
-      );\r
-    },\r
-    StepperStep: ({ children, className, icon, ...props }) => {\r
-      const { variant, labelOrientation } = useStepperProvider();\r
-      const { current } = useStepper();\r
-\r
-      const utils = rest.utils;\r
-      const steps = rest.steps;\r
-\r
-      const stepIndex = utils.getIndex(props.of);\r
-      const step = steps[stepIndex];\r
-      const currentIndex = utils.getIndex(current.id);\r
-\r
-      const isLast = utils.getLast().id === props.of;\r
-      const isActive = current.id === props.of;\r
-\r
-      const dataState = getStepState(currentIndex, stepIndex);\r
-      const childMap = useStepChildren(children);\r
-\r
-      const title = childMap.get("title");\r
-      const description = childMap.get("description");\r
-      const panel = childMap.get("panel");\r
-\r
-      if (variant === "circle") {\r
-        return (\r
-          <li\r
-            className={cn(\r
-              "flex shrink-0 items-center gap-4 rounded-md transition-colors",\r
-              className,\r
-            )}\r
-          >\r
-            <CircleStepIndicator\r
-              currentStep={stepIndex + 1}\r
-              totalSteps={steps.length}\r
-            />\r
-            <div className='flex flex-col items-start gap-1'>\r
-              {title}\r
-              {description}\r
-            </div>\r
-          </li>\r
-        );\r
-      }\r
-\r
-      return (\r
-        <>\r
-          <li\r
-            className={cn([\r
-              "group peer relative flex items-center gap-2",\r
-              "data-[variant=vertical]:flex-row",\r
-              "data-[label-orientation=vertical]:w-full",\r
-              "data-[label-orientation=vertical]:flex-col",\r
-              "data-[label-orientation=vertical]:justify-center",\r
-            ])}\r
-            data-variant={variant}\r
-            data-label-orientation={labelOrientation}\r
-            data-state={dataState}\r
-            data-disabled={props.disabled}\r
-          >\r
-            <Button\r
-              id={\`step-\${step.id}\`}\r
-              type='button'\r
-              role='tab'\r
-              tabIndex={dataState !== "inactive" ? 0 : -1}\r
-              className='rounded-full'\r
-              variant={dataState !== "inactive" ? "default" : "secondary"}\r
-              size='icon'\r
-              aria-controls={\`step-panel-\${props.of}\`}\r
-              aria-current={isActive ? "step" : undefined}\r
-              aria-posinset={stepIndex + 1}\r
-              aria-setsize={steps.length}\r
-              aria-selected={isActive}\r
-              onKeyDown={(e) =>\r
-                onStepKeyDown(\r
-                  e,\r
-                  utils.getNext(props.of),\r
-                  utils.getPrev(props.of),\r
-                )\r
-              }\r
-              {...props}\r
-            >\r
-              {icon ?? stepIndex + 1}\r
-            </Button>\r
-            {variant === "horizontal" && labelOrientation === "vertical" && (\r
-              <StepperSeparator\r
-                orientation='horizontal'\r
-                labelOrientation={labelOrientation}\r
-                isLast={isLast}\r
-                state={dataState}\r
-                disabled={props.disabled}\r
-              />\r
-            )}\r
-            <div className='flex flex-col items-start'>\r
-              {title}\r
-              {description}\r
-            </div>\r
-          </li>\r
-\r
-          {variant === "horizontal" && labelOrientation === "horizontal" && (\r
-            <StepperSeparator\r
-              orientation='horizontal'\r
-              isLast={isLast}\r
-              state={dataState}\r
-              disabled={props.disabled}\r
-            />\r
-          )}\r
-\r
-          {variant === "vertical" && (\r
-            <div className='flex gap-4'>\r
-              {!isLast && (\r
-                <div className='flex justify-center ps-5'>\r
-                  <StepperSeparator\r
-                    orientation='vertical'\r
-                    isLast={isLast}\r
-                    state={dataState}\r
-                    disabled={props.disabled}\r
-                  />\r
-                </div>\r
-              )}\r
-              <div className='my-3 flex-1 ps-4'>{panel}</div>\r
-            </div>\r
-          )}\r
-        </>\r
-      );\r
-    },\r
-    StepperTitle,\r
-    StepperDescription,\r
-    StepperPanel: ({ children, className, asChild, ...props }) => {\r
-      const Comp = asChild ? Slot : "div";\r
-      const { tracking } = useStepperProvider();\r
-\r
-      return (\r
-        <Comp\r
-          className={className}\r
-          ref={(node) => scrollIntoStepperPanel(node, tracking)}\r
-          {...props}\r
-        >\r
-          {children}\r
-        </Comp>\r
-      );\r
-    },\r
-    StepperControls: ({ children, className, asChild, ...props }) => {\r
-      const Comp = asChild ? Slot : "div";\r
-      return (\r
-        <Comp className={cn(" flex justify-end gap-4", className)} {...props}>\r
-          {children}\r
-        </Comp>\r
-      );\r
-    },\r
-  };\r
-};\r
-\r
-const StepperTitle = ({\r
-  children,\r
-  className,\r
-  asChild,\r
-  ...props\r
-}: React.ComponentProps<"h4"> & { asChild?: boolean }) => {\r
-  const Comp = asChild ? Slot : "h4";\r
-\r
-  return (\r
-    <Comp className={cn("text-base font-medium m-0", className)} {...props}>\r
-      {children}\r
-    </Comp>\r
-  );\r
-};\r
-\r
-const StepperDescription = ({\r
-  children,\r
-  className,\r
-  asChild,\r
-  ...props\r
-}: React.ComponentProps<"p"> & { asChild?: boolean }) => {\r
-  const Comp = asChild ? Slot : "p";\r
-\r
-  return (\r
-    <Comp className={cn("text-sm text-muted-foreground", className)} {...props}>\r
-      {children}\r
-    </Comp>\r
-  );\r
-};\r
-\r
-const StepperSeparator = ({\r
-  orientation,\r
-  isLast,\r
-  labelOrientation,\r
-  state,\r
-  disabled,\r
-}: {\r
-  isLast: boolean;\r
-  state: string;\r
-  disabled?: boolean;\r
-} & VariantProps<typeof classForSeparator>) => {\r
-  if (isLast) {\r
-    return null;\r
-  }\r
-  return (\r
-    <div\r
-      data-orientation={orientation}\r
-      data-state={state}\r
-      data-disabled={disabled}\r
-      role='separator'\r
-      tabIndex={-1}\r
-      className={classForSeparator({ orientation, labelOrientation })}\r
-    />\r
-  );\r
-};\r
-\r
-const CircleStepIndicator = ({\r
-  currentStep,\r
-  totalSteps,\r
-  size = 80,\r
-  strokeWidth = 6,\r
-}: CircleStepIndicatorProps) => {\r
-  const radius = (size - strokeWidth) / 2;\r
-  const circumference = radius * 2 * Math.PI;\r
-  const fillPercentage = (currentStep / totalSteps) * 100;\r
-  const dashOffset = circumference - (circumference * fillPercentage) / 100;\r
-  return (\r
-    <div\r
-      role='progressbar'\r
-      aria-valuenow={currentStep}\r
-      aria-valuemin={1}\r
-      aria-valuemax={totalSteps}\r
-      tabIndex={-1}\r
-      className='relative inline-flex items-center justify-center'\r
-    >\r
-      <svg width={size} height={size}>\r
-        <title>Step Indicator</title>\r
-        <circle\r
-          cx={size / 2}\r
-          cy={size / 2}\r
-          r={radius}\r
-          fill='none'\r
-          stroke='currentColor'\r
-          strokeWidth={strokeWidth}\r
-          className='text-muted-foreground'\r
-        />\r
-        <circle\r
-          cx={size / 2}\r
-          cy={size / 2}\r
-          r={radius}\r
-          fill='none'\r
-          stroke='currentColor'\r
-          strokeWidth={strokeWidth}\r
-          strokeDasharray={circumference}\r
-          strokeDashoffset={dashOffset}\r
-          className='text-primary transition-all duration-300 ease-in-out'\r
-          transform={\`rotate(-90 \${size / 2} \${size / 2})\`}\r
-        />\r
-      </svg>\r
-      <div className='absolute inset-0 flex items-center justify-center'>\r
-        <span className='text-sm font-medium' aria-live='polite'>\r
-          {currentStep} of {totalSteps}\r
-        </span>\r
-      </div>\r
-    </div>\r
-  );\r
-};\r
-\r
-const listVariants = cva(" flex gap-2", {\r
-  variants: {\r
-    variant: {\r
-      horizontal: "flex-row items-center justify-between",\r
-      vertical: "flex-col",\r
-      circle: "flex-row items-center justify-between",\r
-    },\r
-  },\r
-});\r
-\r
-const classForSeparator = cva(\r
-  [\r
-    "bg-muted",\r
-    "data-[state=completed]:bg-primary data-[disabled]:opacity-50",\r
-    "transition-all duration-300 ease-in-out",\r
-  ],\r
-  {\r
-    variants: {\r
-      orientation: {\r
-        horizontal: "h-0.5 flex-1",\r
-        vertical: "h-full w-0.5",\r
-      },\r
-      labelOrientation: {\r
-        vertical:\r
-          "absolute left-[calc(50%+30px)] right-[calc(-50%+20px)] top-5 block shrink-0",\r
-      },\r
-    },\r
-  },\r
-);\r
-\r
-function scrollIntoStepperPanel(\r
-  node: HTMLDivElement | null,\r
-  tracking?: boolean,\r
-) {\r
-  if (tracking) {\r
-    node?.scrollIntoView({ behavior: "smooth", block: "center" });\r
-  }\r
-}\r
-\r
-const useStepChildren = (children: React.ReactNode) => {\r
-  return React.useMemo(() => extractChildren(children), [children]);\r
-};\r
-\r
-const extractChildren = (children: React.ReactNode) => {\r
-  const childrenArray = React.Children.toArray(children);\r
-  const map = new Map<string, React.ReactNode>();\r
-\r
-  for (const child of childrenArray) {\r
-    if (React.isValidElement(child)) {\r
-      if (child.type === StepperTitle) {\r
-        map.set("title", child);\r
-      } else if (child.type === StepperDescription) {\r
-        map.set("description", child);\r
-      } else {\r
-        map.set("panel", child);\r
-      }\r
-    }\r
-  }\r
-\r
-  return map;\r
-};\r
-\r
-const onStepKeyDown = (\r
-  e: React.KeyboardEvent<HTMLButtonElement>,\r
-  nextStep: Stepperize.Step,\r
-  prevStep: Stepperize.Step,\r
-) => {\r
-  const { key } = e;\r
-  const directions = {\r
-    next: ["ArrowRight", "ArrowDown"],\r
-    prev: ["ArrowLeft", "ArrowUp"],\r
-  };\r
-\r
-  if (directions.next.includes(key) || directions.prev.includes(key)) {\r
-    const direction = directions.next.includes(key) ? "next" : "prev";\r
-    const step = direction === "next" ? nextStep : prevStep;\r
-\r
-    if (!step) {\r
-      return;\r
-    }\r
-\r
-    const stepElement = document.getElementById(\`step-\${step.id}\`);\r
-    if (!stepElement) {\r
-      return;\r
-    }\r
-\r
-    const isActive =\r
-      stepElement.parentElement?.getAttribute("data-state") !== "inactive";\r
-    if (isActive || direction === "prev") {\r
-      stepElement.focus();\r
-    }\r
-  }\r
-};\r
-\r
-const getStepState = (currentIndex: number, stepIndex: number) => {\r
-  if (currentIndex === stepIndex) {\r
-    return "active";\r
-  }\r
-  if (currentIndex > stepIndex) {\r
-    return "completed";\r
-  }\r
-  return "inactive";\r
-};\r
-\r
-export { defineStepper };\r
+          path: "registry/default/ui/stepper.tsx",
+          content: `import * as React from "react";
+
+import * as Stepperize from "@stepperize/react";
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+
+import { Button } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
+
+type StepperVariant = "horizontal" | "vertical" | "circle";
+type StepperLabelOrientation = "horizontal" | "vertical";
+
+type StepperConfig = {
+  variant?: StepperVariant;
+  labelOrientation?: StepperLabelOrientation;
+  tracking?: boolean;
+};
+
+type DefineStepperProps<Steps extends Stepperize.Step[]> = Omit<
+  Stepperize.StepperReturn<Steps>,
+  "Scoped"
+> & {
+  StepperProvider: (
+    props: Omit<Stepperize.ScopedProps<Steps>, "children"> &
+      Omit<React.ComponentProps<"div">, "children"> &
+      StepperConfig & {
+        children:
+          | React.ReactNode
+          | ((props: {
+              methods: Stepperize.Stepper<Steps>;
+            }) => React.ReactNode);
+      },
+  ) => React.ReactElement;
+  StepperNavigation: (props: React.ComponentProps<"nav">) => React.ReactElement;
+  StepperStep: (
+    props: React.ComponentProps<"button"> & {
+      of: Stepperize.Get.Id<Steps>;
+      icon?: React.ReactNode;
+    },
+  ) => React.ReactElement;
+  StepperTitle: (
+    props: React.ComponentProps<"h4"> & { asChild?: boolean },
+  ) => React.ReactElement;
+  StepperDescription: (
+    props: React.ComponentProps<"p"> & { asChild?: boolean },
+  ) => React.ReactElement;
+  StepperPanel: (
+    props: React.ComponentProps<"div"> & { asChild?: boolean },
+  ) => React.ReactElement;
+  StepperControls: (
+    props: React.ComponentProps<"div"> & { asChild?: boolean },
+  ) => React.ReactElement;
+};
+
+type CircleStepIndicatorProps = {
+  currentStep: number;
+  totalSteps: number;
+  size?: number;
+  strokeWidth?: number;
+};
+
+const StepperContext = React.createContext<StepperConfig | null>(null);
+
+const useStepperProvider = (): StepperConfig => {
+  const context = React.useContext(StepperContext);
+  if (!context) {
+    throw new Error("useStepper must be used within a StepperProvider.");
+  }
+  return context;
+};
+
+const defineStepper = <const Steps extends Stepperize.Step[]>(
+  ...steps: Steps
+): DefineStepperProps<Steps> => {
+  const { Scoped, useStepper, ...rest } = Stepperize.defineStepper(...steps);
+
+  const StepperContainer = ({
+    children,
+    className,
+    ...props
+  }: Omit<React.ComponentProps<"div">, "children"> & {
+    children:
+      | React.ReactNode
+      | ((props: { methods: Stepperize.Stepper<Steps> }) => React.ReactNode);
+  }) => {
+    const methods = useStepper();
+
+    return (
+      <div className={cn("w-full", className)} {...props}>
+        {typeof children === "function" ? children({ methods }) : children}
+      </div>
+    );
+  };
+
+  return {
+    ...rest,
+    useStepper,
+    StepperProvider: ({
+      variant = "horizontal",
+      labelOrientation = "horizontal",
+      tracking = false,
+      children,
+      className,
+      ...props
+    }) => {
+      return (
+        <StepperContext.Provider
+          value={{ variant, labelOrientation, tracking }}
+        >
+          <Scoped
+            initialStep={props.initialStep}
+            initialMetadata={props.initialMetadata}
+          >
+            <StepperContainer className={className} {...props}>
+              {children}
+            </StepperContainer>
+          </Scoped>
+        </StepperContext.Provider>
+      );
+    },
+    StepperNavigation: ({
+      children,
+      className,
+      "aria-label": ariaLabel = "Stepper Navigation",
+      ...props
+    }) => {
+      const { variant } = useStepperProvider();
+      return (
+        <nav
+          aria-label={ariaLabel}
+          role='tablist'
+          className={cn("stepper-navigation", className)}
+          {...props}
+        >
+          <ol className={listVariants({ variant: variant })}>{children}</ol>
+        </nav>
+      );
+    },
+    StepperStep: ({ children, className, icon, ...props }) => {
+      const { variant, labelOrientation } = useStepperProvider();
+      const { current } = useStepper();
+
+      const utils = rest.utils;
+      const steps = rest.steps;
+
+      const stepIndex = utils.getIndex(props.of);
+      const step = steps[stepIndex];
+      const currentIndex = utils.getIndex(current.id);
+
+      const isLast = utils.getLast().id === props.of;
+      const isActive = current.id === props.of;
+
+      const dataState = getStepState(currentIndex, stepIndex);
+      const childMap = useStepChildren(children);
+
+      const title = childMap.get("title");
+      const description = childMap.get("description");
+      const panel = childMap.get("panel");
+
+      if (variant === "circle") {
+        return (
+          <li
+            className={cn(
+              "flex shrink-0 items-center gap-4 rounded-md transition-colors",
+              className,
+            )}
+          >
+            <CircleStepIndicator
+              currentStep={stepIndex + 1}
+              totalSteps={steps.length}
+            />
+            <div className='flex flex-col items-start gap-1'>
+              {title}
+              {description}
+            </div>
+          </li>
+        );
+      }
+
+      return (
+        <>
+          <li
+            className={cn([
+              "group peer relative flex items-center gap-2",
+              "data-[variant=vertical]:flex-row",
+              "data-[label-orientation=vertical]:w-full",
+              "data-[label-orientation=vertical]:flex-col",
+              "data-[label-orientation=vertical]:justify-center",
+            ])}
+            data-variant={variant}
+            data-label-orientation={labelOrientation}
+            data-state={dataState}
+            data-disabled={props.disabled}
+          >
+            <Button
+              id={\`step-\${step.id}\`}
+              type='button'
+              role='tab'
+              tabIndex={dataState !== "inactive" ? 0 : -1}
+              className='rounded-full'
+              variant={dataState !== "inactive" ? "default" : "secondary"}
+              size='icon'
+              aria-controls={\`step-panel-\${props.of}\`}
+              aria-current={isActive ? "step" : undefined}
+              aria-posinset={stepIndex + 1}
+              aria-setsize={steps.length}
+              aria-selected={isActive}
+              onKeyDown={(e) =>
+                onStepKeyDown(
+                  e,
+                  utils.getNext(props.of),
+                  utils.getPrev(props.of),
+                )
+              }
+              {...props}
+            >
+              {icon ?? stepIndex + 1}
+            </Button>
+            {variant === "horizontal" && labelOrientation === "vertical" && (
+              <StepperSeparator
+                orientation='horizontal'
+                labelOrientation={labelOrientation}
+                isLast={isLast}
+                state={dataState}
+                disabled={props.disabled}
+              />
+            )}
+            <div className='flex flex-col items-start'>
+              {title}
+              {description}
+            </div>
+          </li>
+
+          {variant === "horizontal" && labelOrientation === "horizontal" && (
+            <StepperSeparator
+              orientation='horizontal'
+              isLast={isLast}
+              state={dataState}
+              disabled={props.disabled}
+            />
+          )}
+
+          {variant === "vertical" && (
+            <div className='flex gap-4'>
+              {!isLast && (
+                <div className='flex justify-center ps-5'>
+                  <StepperSeparator
+                    orientation='vertical'
+                    isLast={isLast}
+                    state={dataState}
+                    disabled={props.disabled}
+                  />
+                </div>
+              )}
+              <div className='my-3 flex-1 ps-4'>{panel}</div>
+            </div>
+          )}
+        </>
+      );
+    },
+    StepperTitle,
+    StepperDescription,
+    StepperPanel: ({ children, className, asChild, ...props }) => {
+      const Comp = asChild ? Slot : "div";
+      const { tracking } = useStepperProvider();
+
+      return (
+        <Comp
+          className={className}
+          ref={(node) => scrollIntoStepperPanel(node, tracking)}
+          {...props}
+        >
+          {children}
+        </Comp>
+      );
+    },
+    StepperControls: ({ children, className, asChild, ...props }) => {
+      const Comp = asChild ? Slot : "div";
+      return (
+        <Comp className={cn(" flex justify-end gap-4", className)} {...props}>
+          {children}
+        </Comp>
+      );
+    },
+  };
+};
+
+const StepperTitle = ({
+  children,
+  className,
+  asChild,
+  ...props
+}: React.ComponentProps<"h4"> & { asChild?: boolean }) => {
+  const Comp = asChild ? Slot : "h4";
+
+  return (
+    <Comp className={cn("text-base font-medium m-0", className)} {...props}>
+      {children}
+    </Comp>
+  );
+};
+
+const StepperDescription = ({
+  children,
+  className,
+  asChild,
+  ...props
+}: React.ComponentProps<"p"> & { asChild?: boolean }) => {
+  const Comp = asChild ? Slot : "p";
+
+  return (
+    <Comp className={cn("text-sm text-muted-foreground", className)} {...props}>
+      {children}
+    </Comp>
+  );
+};
+
+const StepperSeparator = ({
+  orientation,
+  isLast,
+  labelOrientation,
+  state,
+  disabled,
+}: {
+  isLast: boolean;
+  state: string;
+  disabled?: boolean;
+} & VariantProps<typeof classForSeparator>) => {
+  if (isLast) {
+    return null;
+  }
+  return (
+    <div
+      data-orientation={orientation}
+      data-state={state}
+      data-disabled={disabled}
+      role='separator'
+      tabIndex={-1}
+      className={classForSeparator({ orientation, labelOrientation })}
+    />
+  );
+};
+
+const CircleStepIndicator = ({
+  currentStep,
+  totalSteps,
+  size = 80,
+  strokeWidth = 6,
+}: CircleStepIndicatorProps) => {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const fillPercentage = (currentStep / totalSteps) * 100;
+  const dashOffset = circumference - (circumference * fillPercentage) / 100;
+  return (
+    <div
+      role='progressbar'
+      aria-valuenow={currentStep}
+      aria-valuemin={1}
+      aria-valuemax={totalSteps}
+      tabIndex={-1}
+      className='relative inline-flex items-center justify-center'
+    >
+      <svg width={size} height={size}>
+        <title>Step Indicator</title>
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill='none'
+          stroke='currentColor'
+          strokeWidth={strokeWidth}
+          className='text-muted-foreground'
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill='none'
+          stroke='currentColor'
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset={dashOffset}
+          className='text-primary transition-all duration-300 ease-in-out'
+          transform={\`rotate(-90 \${size / 2} \${size / 2})\`}
+        />
+      </svg>
+      <div className='absolute inset-0 flex items-center justify-center'>
+        <span className='text-sm font-medium' aria-live='polite'>
+          {currentStep} of {totalSteps}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const listVariants = cva(" flex gap-2", {
+  variants: {
+    variant: {
+      horizontal: "flex-row items-center justify-between",
+      vertical: "flex-col",
+      circle: "flex-row items-center justify-between",
+    },
+  },
+});
+
+const classForSeparator = cva(
+  [
+    "bg-muted",
+    "data-[state=completed]:bg-primary data-[disabled]:opacity-50",
+    "transition-all duration-300 ease-in-out",
+  ],
+  {
+    variants: {
+      orientation: {
+        horizontal: "h-0.5 flex-1",
+        vertical: "h-full w-0.5",
+      },
+      labelOrientation: {
+        vertical:
+          "absolute left-[calc(50%+30px)] right-[calc(-50%+20px)] top-5 block shrink-0",
+      },
+    },
+  },
+);
+
+function scrollIntoStepperPanel(
+  node: HTMLDivElement | null,
+  tracking?: boolean,
+) {
+  if (tracking) {
+    node?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+}
+
+const useStepChildren = (children: React.ReactNode) => {
+  return React.useMemo(() => extractChildren(children), [children]);
+};
+
+const extractChildren = (children: React.ReactNode) => {
+  const childrenArray = React.Children.toArray(children);
+  const map = new Map<string, React.ReactNode>();
+
+  for (const child of childrenArray) {
+    if (React.isValidElement(child)) {
+      if (child.type === StepperTitle) {
+        map.set("title", child);
+      } else if (child.type === StepperDescription) {
+        map.set("description", child);
+      } else {
+        map.set("panel", child);
+      }
+    }
+  }
+
+  return map;
+};
+
+const onStepKeyDown = (
+  e: React.KeyboardEvent<HTMLButtonElement>,
+  nextStep: Stepperize.Step,
+  prevStep: Stepperize.Step,
+) => {
+  const { key } = e;
+  const directions = {
+    next: ["ArrowRight", "ArrowDown"],
+    prev: ["ArrowLeft", "ArrowUp"],
+  };
+
+  if (directions.next.includes(key) || directions.prev.includes(key)) {
+    const direction = directions.next.includes(key) ? "next" : "prev";
+    const step = direction === "next" ? nextStep : prevStep;
+
+    if (!step) {
+      return;
+    }
+
+    const stepElement = document.getElementById(\`step-\${step.id}\`);
+    if (!stepElement) {
+      return;
+    }
+
+    const isActive =
+      stepElement.parentElement?.getAttribute("data-state") !== "inactive";
+    if (isActive || direction === "prev") {
+      stepElement.focus();
+    }
+  }
+};
+
+const getStepState = (currentIndex: number, stepIndex: number) => {
+  if (currentIndex === stepIndex) {
+    return "active";
+  }
+  if (currentIndex > stepIndex) {
+    return "completed";
+  }
+  return "inactive";
+};
+
+export { defineStepper };
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
       component: React66.lazy(() => Promise.resolve().then(() => (init_stepper(), stepper_exports)))
@@ -5491,185 +5505,187 @@ export { defineStepper };\r
       type: "registry:ui",
       files: [
         {
-          "path": "registry/default/ui/tel-input.tsx",
-          "content": `import * as React from "react";\r
-\r
-import * as PhoneNumberInput from "react-phone-number-input";\r
-import { CheckIcon, ChevronsUpDown } from "lucide-react";\r
-import flags from "react-phone-number-input/flags";\r
-\r
-import { Button } from "@/components/ui/button";\r
-import {\r
-  Command,\r
-  CommandEmpty,\r
-  CommandGroup,\r
-  CommandInput,\r
-  CommandItem,\r
-  CommandList,\r
-} from "@/components/ui/command";\r
-import { Input } from "@/components/ui/input";\r
-import {\r
-  Popover,\r
-  PopoverContent,\r
-  PopoverTrigger,\r
-} from "@/components/ui/popover";\r
-import { ScrollArea } from "@/components/ui/scroll-area";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-type CountryEntry = {\r
-  label: string;\r
-  value: PhoneNumberInput.Country | undefined;\r
-};\r
-\r
-type CountrySelectProps = {\r
-  disabled?: boolean;\r
-  value: PhoneNumberInput.Country;\r
-  options: CountryEntry[];\r
-  onChange: (country: PhoneNumberInput.Country) => void;\r
-};\r
-\r
-interface CountrySelectOptionProps extends PhoneNumberInput.FlagProps {\r
-  selectedCountry: PhoneNumberInput.Country;\r
-  onChange: (country: PhoneNumberInput.Country) => void;\r
-}\r
-\r
-type TelInputProps = Omit<\r
-  React.ComponentProps<"input">,\r
-  "onChange" | "value" | "ref"\r
-> &\r
-  Omit<PhoneNumberInput.Props<typeof PhoneNumberInput.default>, "onChange"> & {\r
-    onChange?: (value: PhoneNumberInput.Value) => void;\r
-  };\r
-\r
-const FlagComponent = ({\r
-  country,\r
-  countryName,\r
-}: PhoneNumberInput.FlagProps) => {\r
-  const Flag = flags[country];\r
-\r
-  return (\r
-    <span className='flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg]:size-full'>\r
-      {Flag && <Flag title={countryName} />}\r
-    </span>\r
-  );\r
-};\r
-\r
-const CountrySelectOption = ({\r
-  country,\r
-  countryName,\r
-  selectedCountry,\r
-  onChange,\r
-}: CountrySelectOptionProps) => {\r
-  return (\r
-    <CommandItem\r
-      className='gap-2 cursor-pointer'\r
-      onSelect={() => onChange(country)}\r
-    >\r
-      <FlagComponent country={country} countryName={countryName} />\r
-      <span className='flex-1 text-sm'>{countryName}</span>\r
-      <span className='text-sm text-foreground/50'>{\`+\${PhoneNumberInput.getCountryCallingCode(country)}\`}</span>\r
-      <CheckIcon\r
-        className={\`ml-auto size-4 \${country === selectedCountry ? "opacity-100" : "opacity-0"}\`}\r
-      />\r
-    </CommandItem>\r
-  );\r
-};\r
-\r
-const InputComponent = React.forwardRef<\r
-  HTMLInputElement,\r
-  React.ComponentProps<"input">\r
->(({ className, ...props }, ref) => (\r
-  <Input\r
-    className={cn("rounded-e-lg rounded-s-none", className)}\r
-    {...props}\r
-    ref={ref}\r
-  />\r
-));\r
-InputComponent.displayName = "InputComponent";\r
-\r
-const CountrySelect = ({\r
-  disabled,\r
-  value: selectedCountry,\r
-  options: countryList,\r
-  onChange,\r
-}: CountrySelectProps) => {\r
-  return (\r
-    <Popover>\r
-      <PopoverTrigger asChild>\r
-        <Button\r
-          type='button'\r
-          variant='outline'\r
-          className='flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10'\r
-          disabled={disabled}\r
-        >\r
-          <FlagComponent\r
-            country={selectedCountry}\r
-            countryName={selectedCountry}\r
-          />\r
-          <ChevronsUpDown\r
-            className={cn(\r
-              "-mr-2 size-4 opacity-50",\r
-              disabled ? "hidden" : "opacity-100",\r
-            )}\r
-          />\r
-        </Button>\r
-      </PopoverTrigger>\r
-      <PopoverContent className='w-[300px] p-0'>\r
-        <Command>\r
-          <CommandInput placeholder='Search country...' />\r
-          <CommandList>\r
-            <ScrollArea className='h-72'>\r
-              <CommandEmpty>No country found.</CommandEmpty>\r
-              <CommandGroup>\r
-                {countryList.map(({ value, label }) =>\r
-                  value ? (\r
-                    <CountrySelectOption\r
-                      key={value}\r
-                      country={value}\r
-                      countryName={label}\r
-                      selectedCountry={selectedCountry}\r
-                      onChange={onChange}\r
-                    />\r
-                  ) : null,\r
-                )}\r
-              </CommandGroup>\r
-            </ScrollArea>\r
-          </CommandList>\r
-        </Command>\r
-      </PopoverContent>\r
-    </Popover>\r
-  );\r
-};\r
-\r
-const TelInput: React.ForwardRefExoticComponent<TelInputProps> =\r
-  React.forwardRef<\r
-    React.ElementRef<typeof PhoneNumberInput.default>,\r
-    TelInputProps\r
-  >(({ className, onChange, ...props }, ref) => {\r
-    return (\r
-      <PhoneNumberInput.default\r
-        ref={ref}\r
-        className={cn("flex", className)}\r
-        flagComponent={FlagComponent}\r
-        countrySelectComponent={CountrySelect}\r
-        inputComponent={InputComponent}\r
-        smartCaret={false}\r
-        onChange={(value) =>\r
-          onChange?.(value || ("" as PhoneNumberInput.Value))\r
-        }\r
-        {...props}\r
-      />\r
-    );\r
-  });\r
-TelInput.displayName = "TelInput";\r
-\r
-export { TelInput };\r
+          path: "registry/default/ui/tel-input.tsx",
+          content: `import * as React from "react";
+
+import * as PhoneNumberInput from "react-phone-number-input";
+import { CheckIcon, ChevronsUpDown } from "lucide-react";
+import flags from "react-phone-number-input/flags";
+
+import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+import { cn } from "@/lib/utils";
+
+type CountryEntry = {
+  label: string;
+  value: PhoneNumberInput.Country | undefined;
+};
+
+type CountrySelectProps = {
+  disabled?: boolean;
+  value: PhoneNumberInput.Country;
+  options: CountryEntry[];
+  onChange: (country: PhoneNumberInput.Country) => void;
+};
+
+interface CountrySelectOptionProps extends PhoneNumberInput.FlagProps {
+  selectedCountry: PhoneNumberInput.Country;
+  onChange: (country: PhoneNumberInput.Country) => void;
+}
+
+type TelInputProps = Omit<
+  React.ComponentProps<"input">,
+  "onChange" | "value" | "ref"
+> &
+  Omit<PhoneNumberInput.Props<typeof PhoneNumberInput.default>, "onChange"> & {
+    onChange?: (value: PhoneNumberInput.Value) => void;
+  };
+
+const FlagComponent = ({
+  country,
+  countryName,
+}: PhoneNumberInput.FlagProps) => {
+  const Flag = flags[country];
+
+  return (
+    <span className='flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg]:size-full'>
+      {Flag && <Flag title={countryName} />}
+    </span>
+  );
+};
+
+const CountrySelectOption = ({
+  country,
+  countryName,
+  selectedCountry,
+  onChange,
+}: CountrySelectOptionProps) => {
+  return (
+    <CommandItem
+      className='gap-2 cursor-pointer'
+      onSelect={() => onChange(country)}
+    >
+      <FlagComponent country={country} countryName={countryName} />
+      <span className='flex-1 text-sm'>{countryName}</span>
+      <span className='text-sm text-foreground/50'>{\`+\${PhoneNumberInput.getCountryCallingCode(country)}\`}</span>
+      <CheckIcon
+        className={\`ml-auto size-4 \${country === selectedCountry ? "opacity-100" : "opacity-0"}\`}
+      />
+    </CommandItem>
+  );
+};
+
+const InputComponent = React.forwardRef<
+  HTMLInputElement,
+  React.ComponentProps<"input">
+>(({ className, ...props }, ref) => (
+  <Input
+    className={cn("rounded-e-lg rounded-s-none", className)}
+    {...props}
+    ref={ref}
+  />
+));
+InputComponent.displayName = "InputComponent";
+
+const CountrySelect = ({
+  disabled,
+  value: selectedCountry,
+  options: countryList,
+  onChange,
+}: CountrySelectProps) => {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          type='button'
+          variant='outline'
+          className='flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10'
+          disabled={disabled}
+        >
+          <FlagComponent
+            country={selectedCountry}
+            countryName={selectedCountry}
+          />
+          <ChevronsUpDown
+            className={cn(
+              "-mr-2 size-4 opacity-50",
+              disabled ? "hidden" : "opacity-100",
+            )}
+          />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className='w-[300px] p-0'>
+        <Command>
+          <CommandInput placeholder='Search country...' />
+          <CommandList>
+            <ScrollArea className='h-72'>
+              <CommandEmpty>No country found.</CommandEmpty>
+              <CommandGroup>
+                {countryList.map(({ value, label }) =>
+                  value ? (
+                    <CountrySelectOption
+                      key={value}
+                      country={value}
+                      countryName={label}
+                      selectedCountry={selectedCountry}
+                      onChange={onChange}
+                    />
+                  ) : null,
+                )}
+              </CommandGroup>
+            </ScrollArea>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
+const TelInput: React.ForwardRefExoticComponent<TelInputProps> =
+  React.forwardRef<
+    React.ElementRef<typeof PhoneNumberInput.default>,
+    TelInputProps
+  >(({ className, onChange, ...props }, ref) => {
+    return (
+      <PhoneNumberInput.default
+        ref={ref}
+        className={cn("flex", className)}
+        flagComponent={FlagComponent}
+        countrySelectComponent={CountrySelect}
+        inputComponent={InputComponent}
+        smartCaret={false}
+        onChange={(value) =>
+          onChange?.(value || ("" as PhoneNumberInput.Value))
+        }
+        {...props}
+      />
+    );
+  });
+TelInput.displayName = "TelInput";
+
+export { TelInput };
 `,
-          "type": "registry:ui"
+          type: "registry:ui"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input(), tel_input_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input(), tel_input_exports))
+      )
     },
     "animated-label-input-default": {
       name: "animated-label-input-default",
@@ -5677,11 +5693,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/animated-label-input-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/animated-label-input-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports))
+      )
     },
     "animated-label-input-with-form": {
       name: "animated-label-input-with-form",
@@ -5689,11 +5707,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/animated-label-input-with-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/animated-label-input-with-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports))
+      )
     },
     "animated-tooltip-default": {
       name: "animated-tooltip-default",
@@ -5701,11 +5721,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/animated-tooltip-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/animated-tooltip-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports))
+      )
     },
     "combobox-input-default": {
       name: "combobox-input-default",
@@ -5713,11 +5735,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/combobox-input-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/combobox-input-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_combobox_input_default(), combobox_input_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_combobox_input_default(), combobox_input_default_exports))
+      )
     },
     "labeled-switch-default": {
       name: "labeled-switch-default",
@@ -5725,11 +5749,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/labeled-switch-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/labeled-switch-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports))
+      )
     },
     "labeled-switch-with-form": {
       name: "labeled-switch-with-form",
@@ -5737,11 +5763,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/labeled-switch-with-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/labeled-switch-with-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports))
+      )
     },
     "range-slider-default": {
       name: "range-slider-default",
@@ -5749,11 +5777,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/range-slider-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/range-slider-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports))
+      )
     },
     "range-slider-vertical": {
       name: "range-slider-vertical",
@@ -5761,11 +5791,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/range-slider-vertical.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/range-slider-vertical.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports))
+      )
     },
     "range-slider-with-label": {
       name: "range-slider-with-label",
@@ -5773,11 +5805,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/range-slider-with-label.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/range-slider-with-label.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports))
+      )
     },
     "responsive-textarea-default": {
       name: "responsive-textarea-default",
@@ -5785,11 +5819,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/responsive-textarea-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/responsive-textarea-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports))
+      )
     },
     "responsive-textarea-with-form": {
       name: "responsive-textarea-with-form",
@@ -5797,11 +5833,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/responsive-textarea-with-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/responsive-textarea-with-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports))
+      )
     },
     "responsive-textarea-with-label": {
       name: "responsive-textarea-with-label",
@@ -5809,11 +5847,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/responsive-textarea-with-label.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/responsive-textarea-with-label.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports))
+      )
     },
     "responsive-textarea-with-text": {
       name: "responsive-textarea-with-text",
@@ -5821,11 +5861,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/responsive-textarea-with-text.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/responsive-textarea-with-text.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports))
+      )
     },
     "star-rating-customized": {
       name: "star-rating-customized",
@@ -5833,11 +5875,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/star-rating-customized.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/star-rating-customized.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports))
+      )
     },
     "star-rating-default": {
       name: "star-rating-default",
@@ -5845,11 +5889,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/star-rating-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/star-rating-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports))
+      )
     },
     "star-rating-interactive": {
       name: "star-rating-interactive",
@@ -5857,11 +5903,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/star-rating-interactive.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/star-rating-interactive.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports))
+      )
     },
     "star-rating-readonly": {
       name: "star-rating-readonly",
@@ -5869,11 +5917,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/star-rating-readonly.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/star-rating-readonly.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports))
+      )
     },
     "star-rating-with-form": {
       name: "star-rating-with-form",
@@ -5881,11 +5931,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/star-rating-with-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/star-rating-with-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports))
+      )
     },
     "stepper-demo": {
       name: "stepper-demo",
@@ -5893,11 +5945,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-demo.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-demo.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports))
+      )
     },
     "stepper-description": {
       name: "stepper-description",
@@ -5905,11 +5959,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-description.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-description.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports))
+      )
     },
     "stepper-form": {
       name: "stepper-form",
@@ -5917,11 +5973,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports))
+      )
     },
     "stepper-icon": {
       name: "stepper-icon",
@@ -5929,11 +5987,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-icon.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-icon.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports))
+      )
     },
     "stepper-label-orientation": {
       name: "stepper-label-orientation",
@@ -5941,11 +6001,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-label-orientation.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-label-orientation.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports))
+      )
     },
     "stepper-responsive-variant": {
       name: "stepper-responsive-variant",
@@ -5953,11 +6015,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-responsive-variant.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-responsive-variant.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports))
+      )
     },
     "stepper-tracking": {
       name: "stepper-tracking",
@@ -5965,11 +6029,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-tracking.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-tracking.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports))
+      )
     },
     "stepper-variants": {
       name: "stepper-variants",
@@ -5977,11 +6043,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/stepper-variants.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/stepper-variants.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports))
+      )
     },
     "tel-input-custom-labels": {
       name: "tel-input-custom-labels",
@@ -5989,11 +6057,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/tel-input-custom-labels.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/tel-input-custom-labels.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports))
+      )
     },
     "tel-input-default-country": {
       name: "tel-input-default-country",
@@ -6001,11 +6071,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/tel-input-default-country.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/tel-input-default-country.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports))
+      )
     },
     "tel-input-default": {
       name: "tel-input-default",
@@ -6013,11 +6085,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/tel-input-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/tel-input-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports))
+      )
     },
     "tel-input-international": {
       name: "tel-input-international",
@@ -6025,11 +6099,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/tel-input-international.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/tel-input-international.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports))
+      )
     },
     "tel-input-with-form": {
       name: "tel-input-with-form",
@@ -6037,11 +6113,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/tel-input-with-form.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/tel-input-with-form.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports))
+      )
     },
     "use-boolean-default": {
       name: "use-boolean-default",
@@ -6049,11 +6127,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-boolean-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-boolean-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports))
+      )
     },
     "use-click-outside-default": {
       name: "use-click-outside-default",
@@ -6061,11 +6141,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-click-outside-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-click-outside-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports))
+      )
     },
     "use-debounce-default": {
       name: "use-debounce-default",
@@ -6073,11 +6155,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-debounce-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-debounce-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports))
+      )
     },
     "use-element-size-default": {
       name: "use-element-size-default",
@@ -6085,11 +6169,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-element-size-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-element-size-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports))
+      )
     },
     "use-fullscreen-default": {
       name: "use-fullscreen-default",
@@ -6097,11 +6183,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-fullscreen-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-fullscreen-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports))
+      )
     },
     "use-fullscreen-with-target": {
       name: "use-fullscreen-with-target",
@@ -6109,11 +6197,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-fullscreen-with-target.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-fullscreen-with-target.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports))
+      )
     },
     "use-mobile-default": {
       name: "use-mobile-default",
@@ -6121,11 +6211,13 @@ export { TelInput };\r
       type: "registry:example",
       files: [
         {
-          "path": "registry/default/example/use-mobile-default.tsx",
-          "type": "registry:example"
+          path: "registry/default/example/use-mobile-default.tsx",
+          type: "registry:example"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports))
+      )
     },
     "avatar-default": {
       name: "avatar-default",
@@ -6133,25 +6225,27 @@ export { TelInput };\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-default.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-\r
-export default function AvatarDefault() {\r
-  return (\r
-    <Avatar>\r
-      <AvatarImage\r
-        src='https://github.com/phamhuulocforwork.png'\r
-        alt='@phamhuulocforwork'\r
-      />\r
-      <AvatarFallback>HL</AvatarFallback>\r
-    </Avatar>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-default.tsx",
+          content: `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+export default function AvatarDefault() {
+  return (
+    <Avatar>
+      <AvatarImage
+        src='https://github.com/phamhuulocforwork.png'
+        alt='@phamhuulocforwork'
+      />
+      <AvatarFallback>HL</AvatarFallback>
+    </Avatar>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_default(), avatar_default_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_default(), avatar_default_exports))
+      )
     },
     "avatar-group-max": {
       name: "avatar-group-max",
@@ -6159,89 +6253,91 @@ export default function AvatarDefault() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-group-max.tsx",
-          "content": `import * as React from "react";\r
-\r
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-type AvatarProps = React.ComponentProps<typeof Avatar>;\r
-\r
-interface AvatarGroupProps extends React.ComponentProps<"div"> {\r
-  children: React.ReactElement<AvatarProps>[];\r
-  max?: number;\r
-}\r
-\r
-const AvatarGroup = ({\r
-  children,\r
-  max,\r
-  className,\r
-  ...props\r
-}: AvatarGroupProps) => {\r
-  const totalAvatars = React.Children.count(children);\r
-  const displayedAvatars = React.Children.toArray(children)\r
-    .slice(0, max)\r
-    .reverse();\r
-  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r
-\r
-  return (\r
-    <div\r
-      className={cn("flex items-center flex-row-reverse", className)}\r
-      {...props}\r
-    >\r
-      {remainingAvatars > 0 && (\r
-        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r
-          <AvatarFallback className='bg-muted-foreground text-white'>\r
-            +{remainingAvatars}\r
-          </AvatarFallback>\r
-        </Avatar>\r
-      )}\r
-      {displayedAvatars.map((avatar, index) => {\r
-        if (!React.isValidElement(avatar)) return null;\r
-\r
-        return (\r
-          <div key={index} className='-ml-2 hover:z-10 relative'>\r
-            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r
-              className: "ring-2 ring-background",\r
-            })}\r
-          </div>\r
-        );\r
-      })}\r
-    </div>\r
-  );\r
-};\r
-\r
-export default function AvatarGroupMaxAvatarDemo() {\r
-  return (\r
-    <AvatarGroup className='flex items-center' max={3}>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarImage\r
-          src='https://github.com/phamhuulocforwork.png'\r
-          alt='@phamhuulocforwork'\r
-        />\r
-        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>\r
-      </Avatar>\r
-    </AvatarGroup>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-group-max.tsx",
+          content: `import * as React from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { cn } from "@/lib/utils";
+
+type AvatarProps = React.ComponentProps<typeof Avatar>;
+
+interface AvatarGroupProps extends React.ComponentProps<"div"> {
+  children: React.ReactElement<AvatarProps>[];
+  max?: number;
+}
+
+const AvatarGroup = ({
+  children,
+  max,
+  className,
+  ...props
+}: AvatarGroupProps) => {
+  const totalAvatars = React.Children.count(children);
+  const displayedAvatars = React.Children.toArray(children)
+    .slice(0, max)
+    .reverse();
+  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
+
+  return (
+    <div
+      className={cn("flex items-center flex-row-reverse", className)}
+      {...props}
+    >
+      {remainingAvatars > 0 && (
+        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>
+          <AvatarFallback className='bg-muted-foreground text-white'>
+            +{remainingAvatars}
+          </AvatarFallback>
+        </Avatar>
+      )}
+      {displayedAvatars.map((avatar, index) => {
+        if (!React.isValidElement(avatar)) return null;
+
+        return (
+          <div key={index} className='-ml-2 hover:z-10 relative'>
+            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {
+              className: "ring-2 ring-background",
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default function AvatarGroupMaxAvatarDemo() {
+  return (
+    <AvatarGroup className='flex items-center' max={3}>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarImage
+          src='https://github.com/phamhuulocforwork.png'
+          alt='@phamhuulocforwork'
+        />
+        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_group_max(), avatar_group_max_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_group_max(), avatar_group_max_exports))
+      )
     },
     "avatar-group": {
       name: "avatar-group",
@@ -6249,83 +6345,85 @@ export default function AvatarGroupMaxAvatarDemo() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-group.tsx",
-          "content": `import * as React from "react";\r
-\r
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-\r
-import { cn } from "@/lib/utils";\r
-\r
-type AvatarProps = React.ComponentProps<typeof Avatar>;\r
-\r
-interface AvatarGroupProps extends React.ComponentProps<"div"> {\r
-  children: React.ReactElement<AvatarProps>[];\r
-  max?: number;\r
-}\r
-\r
-const AvatarGroup = ({\r
-  children,\r
-  max,\r
-  className,\r
-  ...props\r
-}: AvatarGroupProps) => {\r
-  const totalAvatars = React.Children.count(children);\r
-  const displayedAvatars = React.Children.toArray(children)\r
-    .slice(0, max)\r
-    .reverse();\r
-  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r
-\r
-  return (\r
-    <div\r
-      className={cn("flex items-center flex-row-reverse", className)}\r
-      {...props}\r
-    >\r
-      {remainingAvatars > 0 && (\r
-        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r
-          <AvatarFallback className='bg-muted-foreground text-white'>\r
-            +{remainingAvatars}\r
-          </AvatarFallback>\r
-        </Avatar>\r
-      )}\r
-      {displayedAvatars.map((avatar, index) => {\r
-        if (!React.isValidElement(avatar)) return null;\r
-\r
-        return (\r
-          <div key={index} className='-ml-2 hover:z-10 relative'>\r
-            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r
-              className: "ring-2 ring-background",\r
-            })}\r
-          </div>\r
-        );\r
-      })}\r
-    </div>\r
-  );\r
-};\r
-\r
-export default function AvatarGroupDemo() {\r
-  return (\r
-    <AvatarGroup>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarImage\r
-          src='https://github.com/phamhuulocforwork.png'\r
-          alt='@phamhuulocforwork'\r
-        />\r
-        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r
-      </Avatar>\r
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
-        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r
-      </Avatar>\r
-    </AvatarGroup>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-group.tsx",
+          content: `import * as React from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { cn } from "@/lib/utils";
+
+type AvatarProps = React.ComponentProps<typeof Avatar>;
+
+interface AvatarGroupProps extends React.ComponentProps<"div"> {
+  children: React.ReactElement<AvatarProps>[];
+  max?: number;
+}
+
+const AvatarGroup = ({
+  children,
+  max,
+  className,
+  ...props
+}: AvatarGroupProps) => {
+  const totalAvatars = React.Children.count(children);
+  const displayedAvatars = React.Children.toArray(children)
+    .slice(0, max)
+    .reverse();
+  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
+
+  return (
+    <div
+      className={cn("flex items-center flex-row-reverse", className)}
+      {...props}
+    >
+      {remainingAvatars > 0 && (
+        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>
+          <AvatarFallback className='bg-muted-foreground text-white'>
+            +{remainingAvatars}
+          </AvatarFallback>
+        </Avatar>
+      )}
+      {displayedAvatars.map((avatar, index) => {
+        if (!React.isValidElement(avatar)) return null;
+
+        return (
+          <div key={index} className='-ml-2 hover:z-10 relative'>
+            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {
+              className: "ring-2 ring-background",
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default function AvatarGroupDemo() {
+  return (
+    <AvatarGroup>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarImage
+          src='https://github.com/phamhuulocforwork.png'
+          alt='@phamhuulocforwork'
+        />
+        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>
+      </Avatar>
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
+        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_group(), avatar_group_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_group(), avatar_group_exports))
+      )
     },
     "avatar-hover-card": {
       name: "avatar-hover-card",
@@ -6333,60 +6431,62 @@ export default function AvatarGroupDemo() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-hover-card.tsx",
-          "content": `import { CalendarIcon } from "lucide-react";\r
-\r
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-import {\r
-  HoverCard,\r
-  HoverCardContent,\r
-  HoverCardTrigger,\r
-} from "@/components/ui/hover-card";\r
-\r
-export default function AvatarHoverCard() {\r
-  return (\r
-    <HoverCard>\r
-      <HoverCardTrigger className='cursor-pointer'>\r
-        <Avatar>\r
-          <AvatarImage\r
-            src='https://github.com/phamhuulocforwork.png'\r
-            alt='@phamhuulocforwork'\r
-          />\r
-          <AvatarFallback>HL</AvatarFallback>\r
-        </Avatar>\r
-      </HoverCardTrigger>\r
-      <HoverCardContent className='w-full max-w-xs'>\r
-        <div className='flex justify-between space-x-4'>\r
-          <Avatar>\r
-            <AvatarImage\r
-              src='https://github.com/phamhuulocforwork.png'\r
-              alt='@phamhuulocforwork'\r
-            />\r
-            <AvatarFallback>HL</AvatarFallback>\r
-          </Avatar>\r
-          <div className='space-y-1'>\r
-            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>\r
-            <p className='text-sm'>\r
-              I'm currently studying at University (I stay up late and my hair\r
-              is getting thinner and thinner. Do you think I'm bald? xD)\r
-            </p>\r
-            <div className='flex items-center pt-2'>\r
-              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{" "}\r
-              <span className='text-xs text-muted-foreground'>\r
-                Joined February 2025\r
-              </span>\r
-            </div>\r
-          </div>\r
-        </div>\r
-      </HoverCardContent>\r
-    </HoverCard>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-hover-card.tsx",
+          content: `import { CalendarIcon } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
+export default function AvatarHoverCard() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger className='cursor-pointer'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>HL</AvatarFallback>
+        </Avatar>
+      </HoverCardTrigger>
+      <HoverCardContent className='w-full max-w-xs'>
+        <div className='flex justify-between space-x-4'>
+          <Avatar>
+            <AvatarImage
+              src='https://github.com/phamhuulocforwork.png'
+              alt='@phamhuulocforwork'
+            />
+            <AvatarFallback>HL</AvatarFallback>
+          </Avatar>
+          <div className='space-y-1'>
+            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>
+            <p className='text-sm'>
+              I'm currently studying at University (I stay up late and my hair
+              is getting thinner and thinner. Do you think I'm bald? xD)
+            </p>
+            <div className='flex items-center pt-2'>
+              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{" "}
+              <span className='text-xs text-muted-foreground'>
+                Joined February 2025
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_hover_card(), avatar_hover_card_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_hover_card(), avatar_hover_card_exports))
+      )
     },
     "avatar-with-ring": {
       name: "avatar-with-ring",
@@ -6394,25 +6494,27 @@ export default function AvatarHoverCard() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-with-ring.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-\r
-export default function AvatarWithRing() {\r
-  return (\r
-    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\r
-      <AvatarImage\r
-        src='https://github.com/phamhuulocforwork.png'\r
-        alt='@phamhuulocforwork'\r
-      />\r
-      <AvatarFallback>HL</AvatarFallback>\r
-    </Avatar>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-with-ring.tsx",
+          content: `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+export default function AvatarWithRing() {
+  return (
+    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>
+      <AvatarImage
+        src='https://github.com/phamhuulocforwork.png'
+        alt='@phamhuulocforwork'
+      />
+      <AvatarFallback>HL</AvatarFallback>
+    </Avatar>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_with_ring(), avatar_with_ring_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_with_ring(), avatar_with_ring_exports))
+      )
     },
     "avatar-with-status": {
       name: "avatar-with-status",
@@ -6420,67 +6522,69 @@ export default function AvatarWithRing() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-with-status.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
-\r
-export default function AvatarWithStatus() {\r
-  return (\r
-    <div className='flex items-center gap-3'>\r
-      {/* Online */}\r
-      <div className='relative'>\r
-        <Avatar>\r
-          <AvatarImage\r
-            src='https://github.com/phamhuulocforwork.png'\r
-            alt='@phamhuulocforwork'\r
-          />\r
-          <AvatarFallback>CN</AvatarFallback>\r
-        </Avatar>\r
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>\r
-      </div>\r
-\r
-      {/* DND */}\r
-      <div className='relative'>\r
-        <Avatar>\r
-          <AvatarImage\r
-            src='https://github.com/phamhuulocforwork.png'\r
-            alt='@phamhuulocforwork'\r
-          />\r
-          <AvatarFallback>CN</AvatarFallback>\r
-        </Avatar>\r
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>\r
-      </div>\r
-\r
-      {/* Busy */}\r
-      <div className='relative'>\r
-        <Avatar>\r
-          <AvatarImage\r
-            src='https://github.com/phamhuulocforwork.png'\r
-            alt='@phamhuulocforwork'\r
-          />\r
-          <AvatarFallback>CN</AvatarFallback>\r
-        </Avatar>\r
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>\r
-      </div>\r
-\r
-      {/* Offline */}\r
-      <div className='relative'>\r
-        <Avatar>\r
-          <AvatarImage\r
-            src='https://github.com/phamhuulocforwork.png'\r
-            alt='@phamhuulocforwork'\r
-          />\r
-          <AvatarFallback>CN</AvatarFallback>\r
-        </Avatar>\r
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>\r
-      </div>\r
-    </div>\r
-  );\r
-}\r
+          path: "registry/default/snippets/avatar-with-status.tsx",
+          content: `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+export default function AvatarWithStatus() {
+  return (
+    <div className='flex items-center gap-3'>
+      {/* Online */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* DND */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* Busy */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>
+      </div>
+
+      {/* Offline */}
+      <div className='relative'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/phamhuulocforwork.png'
+            alt='@phamhuulocforwork'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>
+      </div>
+    </div>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_avatar_with_status(), avatar_with_status_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_avatar_with_status(), avatar_with_status_exports))
+      )
     },
     "tooltip-with-arrow": {
       name: "tooltip-with-arrow",
@@ -6488,37 +6592,39 @@ export default function AvatarWithStatus() {\r
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/tooltip-with-arrow.tsx",
-          "content": `import { TooltipArrow } from "@radix-ui/react-tooltip";\r
-\r
-import { Button } from "@/components/ui/button";\r
-import {\r
-  Tooltip,\r
-  TooltipContent,\r
-  TooltipProvider,\r
-  TooltipTrigger,\r
-} from "@/components/ui/tooltip";\r
-\r
-export default function WithArrowTooltip() {\r
-  return (\r
-    <TooltipProvider>\r
-      <Tooltip>\r
-        <TooltipTrigger asChild>\r
-          <Button variant='outline'>Hover</Button>\r
-        </TooltipTrigger>\r
-        <TooltipContent>\r
-          <p>Tooltip with arrow</p>\r
-          <TooltipArrow className='fill-foreground' />\r
-        </TooltipContent>\r
-      </Tooltip>\r
-    </TooltipProvider>\r
-  );\r
-}\r
+          path: "registry/default/snippets/tooltip-with-arrow.tsx",
+          content: `import { TooltipArrow } from "@radix-ui/react-tooltip";
+
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+export default function WithArrowTooltip() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant='outline'>Hover</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Tooltip with arrow</p>
+          <TooltipArrow className='fill-foreground' />
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
 `,
-          "type": "registry:snippet"
+          type: "registry:snippet"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_tooltip_with_arrow(), tooltip_with_arrow_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_tooltip_with_arrow(), tooltip_with_arrow_exports))
+      )
     },
     "use-boolean": {
       name: "use-boolean",
@@ -6526,12 +6632,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-boolean.ts",
-          "content": 'import * as React from "react";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== "boolean") {\r\n    throw new Error("defaultValue must be `true` or `false`");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-boolean.ts",
+          content: 'import * as React from "react";\n\ntype UseBooleanReturn = {\n  value: boolean;\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\n  setTrue: () => void;\n  setFalse: () => void;\n  toggle: () => void;\n};\n\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\n  if (typeof defaultValue !== "boolean") {\n    throw new Error("defaultValue must be `true` or `false`");\n  }\n  const [value, setValue] = React.useState(defaultValue);\n\n  const toggle = React.useCallback(() => {\n    setValue((x) => !x);\n  }, []);\n\n  const setTrue = React.useCallback(() => {\n    setValue(true);\n  }, []);\n\n  const setFalse = React.useCallback(() => {\n    setValue(false);\n  }, []);\n\n  return { value, setValue, setTrue, setFalse, toggle };\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports))
+      )
     },
     "use-callback-ref": {
       name: "use-callback-ref",
@@ -6539,12 +6647,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-callback-ref.ts",
-          "content": 'import * as React from "react";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-callback-ref.ts",
+          content: 'import * as React from "react";\n\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\n  callback: T | undefined,\n): T {\n  const callbackRef = React.useRef(callback);\n\n  React.useEffect(() => {\n    callbackRef.current = callback;\n  });\n\n  return React.useMemo(\n    () => ((...args) => callbackRef.current?.(...args)) as T,\n    [],\n  );\n}\n\nexport { useCallbackRef };\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports))
+      )
     },
     "use-click-outside": {
       name: "use-click-outside",
@@ -6552,12 +6662,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-click-outside.ts",
-          "content": 'import * as React from "react";\r\n\r\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\r\n\r\nexport function useClickOutside<T extends HTMLElement = any>(\r\n  handler: () => void,\r\n  events?: string[] | null,\r\n  nodes?: (HTMLElement | null)[],\r\n) {\r\n  const ref = React.useRef<T>(null);\r\n\r\n  React.useEffect(() => {\r\n    const listener = (event: any) => {\r\n      const { target } = event ?? {};\r\n      if (Array.isArray(nodes)) {\r\n        const shouldIgnore =\r\n          target?.hasAttribute("data-ignore-outside-clicks") ||\r\n          (!document.body.contains(target) && target.tagName !== "HTML");\r\n        const shouldTrigger = nodes.every(\r\n          (node) => !!node && !event.composedPath().includes(node),\r\n        );\r\n        shouldTrigger && !shouldIgnore && handler();\r\n      } else if (ref.current && !ref.current.contains(target)) {\r\n        handler();\r\n      }\r\n    };\r\n\r\n    (events || DEFAULT_EVENTS).forEach((fn) =>\r\n      document.addEventListener(fn, listener),\r\n    );\r\n\r\n    return () => {\r\n      (events || DEFAULT_EVENTS).forEach((fn) =>\r\n        document.removeEventListener(fn, listener),\r\n      );\r\n    };\r\n  }, [ref, handler, nodes]);\r\n\r\n  return ref;\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-click-outside.ts",
+          content: 'import * as React from "react";\n\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\n\nexport function useClickOutside<T extends HTMLElement = any>(\n  handler: () => void,\n  events?: string[] | null,\n  nodes?: (HTMLElement | null)[],\n) {\n  const ref = React.useRef<T>(null);\n\n  React.useEffect(() => {\n    const listener = (event: any) => {\n      const { target } = event ?? {};\n      if (Array.isArray(nodes)) {\n        const shouldIgnore =\n          target?.hasAttribute("data-ignore-outside-clicks") ||\n          (!document.body.contains(target) && target.tagName !== "HTML");\n        const shouldTrigger = nodes.every(\n          (node) => !!node && !event.composedPath().includes(node),\n        );\n        shouldTrigger && !shouldIgnore && handler();\n      } else if (ref.current && !ref.current.contains(target)) {\n        handler();\n      }\n    };\n\n    (events || DEFAULT_EVENTS).forEach((fn) =>\n      document.addEventListener(fn, listener),\n    );\n\n    return () => {\n      (events || DEFAULT_EVENTS).forEach((fn) =>\n        document.removeEventListener(fn, listener),\n      );\n    };\n  }, [ref, handler, nodes]);\n\n  return ref;\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports))
+      )
     },
     "use-controllable-state": {
       name: "use-controllable-state",
@@ -6565,12 +6677,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-controllable-state.ts",
-          "content": 'import * as React from "react";\r\n\r\nimport { useCallbackRef } from "@/registry/default/hooks/use-callback-ref";\r\n\r\ntype UseControllableStateParams<T> = {\r\n  prop?: T | undefined;\r\n  defaultProp?: T | undefined;\r\n  onChange?: (state: T) => void;\r\n};\r\n\r\ntype SetStateFn<T> = (prevState?: T) => T;\r\n\r\nfunction useControllableState<T>({\r\n  prop,\r\n  defaultProp,\r\n  onChange = () => {},\r\n}: UseControllableStateParams<T>) {\r\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\r\n    defaultProp,\r\n    onChange,\r\n  });\r\n  const isControlled = prop !== undefined;\r\n  const value = isControlled ? prop : uncontrolledProp;\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\r\n    React.useCallback(\r\n      (nextValue) => {\r\n        if (isControlled) {\r\n          const setter = nextValue as SetStateFn<T>;\r\n          const value =\r\n            typeof nextValue === "function" ? setter(prop) : nextValue;\r\n          if (value !== prop) handleChange(value as T);\r\n        } else {\r\n          setUncontrolledProp(nextValue);\r\n        }\r\n      },\r\n      [isControlled, prop, setUncontrolledProp, handleChange],\r\n    );\r\n\r\n  return [value, setValue] as const;\r\n}\r\n\r\nfunction useUncontrolledState<T>({\r\n  defaultProp,\r\n  onChange,\r\n}: Omit<UseControllableStateParams<T>, "prop">) {\r\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\r\n  const [value] = uncontrolledState;\r\n  const prevValueRef = React.useRef(value);\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  React.useEffect(() => {\r\n    if (prevValueRef.current !== value) {\r\n      handleChange(value as T);\r\n      prevValueRef.current = value;\r\n    }\r\n  }, [value, prevValueRef, handleChange]);\r\n\r\n  return uncontrolledState;\r\n}\r\n\r\nexport { useControllableState };\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-controllable-state.ts",
+          content: 'import * as React from "react";\n\nimport { useCallbackRef } from "@/registry/default/hooks/use-callback-ref";\n\ntype UseControllableStateParams<T> = {\n  prop?: T | undefined;\n  defaultProp?: T | undefined;\n  onChange?: (state: T) => void;\n};\n\ntype SetStateFn<T> = (prevState?: T) => T;\n\nfunction useControllableState<T>({\n  prop,\n  defaultProp,\n  onChange = () => {},\n}: UseControllableStateParams<T>) {\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\n    defaultProp,\n    onChange,\n  });\n  const isControlled = prop !== undefined;\n  const value = isControlled ? prop : uncontrolledProp;\n  const handleChange = useCallbackRef(onChange);\n\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\n    React.useCallback(\n      (nextValue) => {\n        if (isControlled) {\n          const setter = nextValue as SetStateFn<T>;\n          const value =\n            typeof nextValue === "function" ? setter(prop) : nextValue;\n          if (value !== prop) handleChange(value as T);\n        } else {\n          setUncontrolledProp(nextValue);\n        }\n      },\n      [isControlled, prop, setUncontrolledProp, handleChange],\n    );\n\n  return [value, setValue] as const;\n}\n\nfunction useUncontrolledState<T>({\n  defaultProp,\n  onChange,\n}: Omit<UseControllableStateParams<T>, "prop">) {\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\n  const [value] = uncontrolledState;\n  const prevValueRef = React.useRef(value);\n  const handleChange = useCallbackRef(onChange);\n\n  React.useEffect(() => {\n    if (prevValueRef.current !== value) {\n      handleChange(value as T);\n      prevValueRef.current = value;\n    }\n  }, [value, prevValueRef, handleChange]);\n\n  return uncontrolledState;\n}\n\nexport { useControllableState };\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports))
+      )
     },
     "use-debounce": {
       name: "use-debounce",
@@ -6578,12 +6692,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-debounce.ts",
-          "content": 'import * as React from "react";\r\n\r\nexport function useDebounce<T>(value: T, delay?: number): T {\r\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\r\n\r\n  React.useEffect(() => {\r\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\r\n    return () => clearTimeout(timer);\r\n  }, [value, delay]);\r\n\r\n  return debouncedValue;\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-debounce.ts",
+          content: 'import * as React from "react";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\n    return () => clearTimeout(timer);\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports))
+      )
     },
     "use-element-size": {
       name: "use-element-size",
@@ -6591,12 +6707,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-element-size.ts",
-          "content": 'import * as React from "react";\r\n\r\ntype ObserverRect = Omit<DOMRectReadOnly, "toJSON">;\r\n\r\nconst defaultState: ObserverRect = {\r\n  x: 0,\r\n  y: 0,\r\n  width: 0,\r\n  height: 0,\r\n  top: 0,\r\n  left: 0,\r\n  bottom: 0,\r\n  right: 0,\r\n};\r\n\r\nexport function useResizeObserver<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const frameID = React.useRef(0);\r\n  const ref = React.useRef<T>(null);\r\n\r\n  const [rect, setRect] = React.useState<ObserverRect>(defaultState);\r\n\r\n  const observer = React.useMemo(\r\n    () =>\r\n      typeof window !== "undefined"\r\n        ? new ResizeObserver((entries: any) => {\r\n            const entry = entries[0];\r\n\r\n            if (entry) {\r\n              cancelAnimationFrame(frameID.current);\r\n\r\n              frameID.current = requestAnimationFrame(() => {\r\n                if (ref.current) {\r\n                  setRect(entry.contentRect);\r\n                }\r\n              });\r\n            }\r\n          })\r\n        : null,\r\n    [],\r\n  );\r\n\r\n  React.useEffect(() => {\r\n    if (ref.current) {\r\n      observer?.observe(ref.current, options);\r\n    }\r\n\r\n    return () => {\r\n      observer?.disconnect();\r\n\r\n      if (frameID.current) {\r\n        cancelAnimationFrame(frameID.current);\r\n      }\r\n    };\r\n  }, [ref.current]);\r\n\r\n  return [ref, rect] as const;\r\n}\r\n\r\nexport function useElementSize<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const [ref, { width, height }] = useResizeObserver<T>(options);\r\n  return { ref, width, height };\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-element-size.ts",
+          content: 'import * as React from "react";\n\ntype ObserverRect = Omit<DOMRectReadOnly, "toJSON">;\n\nconst defaultState: ObserverRect = {\n  x: 0,\n  y: 0,\n  width: 0,\n  height: 0,\n  top: 0,\n  left: 0,\n  bottom: 0,\n  right: 0,\n};\n\nexport function useResizeObserver<T extends HTMLElement = any>(\n  options?: ResizeObserverOptions,\n) {\n  const frameID = React.useRef(0);\n  const ref = React.useRef<T>(null);\n\n  const [rect, setRect] = React.useState<ObserverRect>(defaultState);\n\n  const observer = React.useMemo(\n    () =>\n      typeof window !== "undefined"\n        ? new ResizeObserver((entries: any) => {\n            const entry = entries[0];\n\n            if (entry) {\n              cancelAnimationFrame(frameID.current);\n\n              frameID.current = requestAnimationFrame(() => {\n                if (ref.current) {\n                  setRect(entry.contentRect);\n                }\n              });\n            }\n          })\n        : null,\n    [],\n  );\n\n  React.useEffect(() => {\n    if (ref.current) {\n      observer?.observe(ref.current, options);\n    }\n\n    return () => {\n      observer?.disconnect();\n\n      if (frameID.current) {\n        cancelAnimationFrame(frameID.current);\n      }\n    };\n  }, [ref.current]);\n\n  return [ref, rect] as const;\n}\n\nexport function useElementSize<T extends HTMLElement = any>(\n  options?: ResizeObserverOptions,\n) {\n  const [ref, { width, height }] = useResizeObserver<T>(options);\n  return { ref, width, height };\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports))
+      )
     },
     "use-fullscreen": {
       name: "use-fullscreen",
@@ -6604,12 +6722,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-fullscreen.ts",
-          "content": 'import * as React from "react";\r\n\r\nfunction getFullscreenElement(): HTMLElement | null {\r\n  const _document = window.document as any;\r\n\r\n  const fullscreenElement =\r\n    _document.fullscreenElement ||\r\n    _document.webkitFullscreenElement ||\r\n    _document.mozFullScreenElement ||\r\n    _document.msFullscreenElement;\r\n\r\n  return fullscreenElement;\r\n}\r\n\r\nfunction exitFullscreen() {\r\n  const _document = window.document as any;\r\n\r\n  if (typeof _document.exitFullscreen === "function") {\r\n    return _document.exitFullscreen();\r\n  }\r\n  if (typeof _document.msExitFullscreen === "function") {\r\n    return _document.msExitFullscreen();\r\n  }\r\n  if (typeof _document.webkitExitFullscreen === "function") {\r\n    return _document.webkitExitFullscreen();\r\n  }\r\n  if (typeof _document.mozCancelFullScreen === "function") {\r\n    return _document.mozCancelFullScreen();\r\n  }\r\n\r\n  return null;\r\n}\r\n\r\nfunction enterFullScreen(element: HTMLElement) {\r\n  const _element = element as any;\r\n\r\n  return (\r\n    _element.requestFullscreen?.() ||\r\n    _element.msRequestFullscreen?.() ||\r\n    _element.webkitEnterFullscreen?.() ||\r\n    _element.webkitRequestFullscreen?.() ||\r\n    _element.mozRequestFullscreen?.()\r\n  );\r\n}\r\n\r\nconst prefixes = ["", "webkit", "moz", "ms"];\r\n\r\nfunction addEvents(\r\n  element: HTMLElement,\r\n  {\r\n    onFullScreen,\r\n    onError,\r\n  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void },\r\n) {\r\n  prefixes.forEach((prefix) => {\r\n    element.addEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n    element.addEventListener(`${prefix}fullscreenerror`, onError);\r\n  });\r\n\r\n  return () => {\r\n    prefixes.forEach((prefix) => {\r\n      element.removeEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n      element.removeEventListener(`${prefix}fullscreenerror`, onError);\r\n    });\r\n  };\r\n}\r\n\r\nexport function useFullscreen<T extends HTMLElement = any>() {\r\n  const [fullscreen, setFullscreen] = React.useState<boolean>(false);\r\n\r\n  const _ref = React.useRef<T>(null);\r\n\r\n  const handleFullscreenChange = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(event.target === getFullscreenElement());\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const handleFullscreenError = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(false);\r\n      // eslint-disable-next-line no-console\r\n      console.error(\r\n        `[@mantine/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,\r\n      );\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const toggle = React.useCallback(async () => {\r\n    if (!getFullscreenElement()) {\r\n      await enterFullScreen(_ref.current!);\r\n    } else {\r\n      await exitFullscreen();\r\n    }\r\n  }, []);\r\n\r\n  const ref = React.useCallback((element: T | null) => {\r\n    if (element === null) {\r\n      _ref.current = window.document.documentElement as T;\r\n    } else {\r\n      _ref.current = element;\r\n    }\r\n  }, []);\r\n\r\n  React.useEffect(() => {\r\n    if (!_ref.current && window.document) {\r\n      _ref.current = window.document.documentElement as T;\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    if (_ref.current) {\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    return undefined;\r\n  }, [_ref.current]);\r\n\r\n  return { ref, toggle, fullscreen } as const;\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-fullscreen.ts",
+          content: 'import * as React from "react";\n\nfunction getFullscreenElement(): HTMLElement | null {\n  const _document = window.document as any;\n\n  const fullscreenElement =\n    _document.fullscreenElement ||\n    _document.webkitFullscreenElement ||\n    _document.mozFullScreenElement ||\n    _document.msFullscreenElement;\n\n  return fullscreenElement;\n}\n\nfunction exitFullscreen() {\n  const _document = window.document as any;\n\n  if (typeof _document.exitFullscreen === "function") {\n    return _document.exitFullscreen();\n  }\n  if (typeof _document.msExitFullscreen === "function") {\n    return _document.msExitFullscreen();\n  }\n  if (typeof _document.webkitExitFullscreen === "function") {\n    return _document.webkitExitFullscreen();\n  }\n  if (typeof _document.mozCancelFullScreen === "function") {\n    return _document.mozCancelFullScreen();\n  }\n\n  return null;\n}\n\nfunction enterFullScreen(element: HTMLElement) {\n  const _element = element as any;\n\n  return (\n    _element.requestFullscreen?.() ||\n    _element.msRequestFullscreen?.() ||\n    _element.webkitEnterFullscreen?.() ||\n    _element.webkitRequestFullscreen?.() ||\n    _element.mozRequestFullscreen?.()\n  );\n}\n\nconst prefixes = ["", "webkit", "moz", "ms"];\n\nfunction addEvents(\n  element: HTMLElement,\n  {\n    onFullScreen,\n    onError,\n  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void },\n) {\n  prefixes.forEach((prefix) => {\n    element.addEventListener(`${prefix}fullscreenchange`, onFullScreen);\n    element.addEventListener(`${prefix}fullscreenerror`, onError);\n  });\n\n  return () => {\n    prefixes.forEach((prefix) => {\n      element.removeEventListener(`${prefix}fullscreenchange`, onFullScreen);\n      element.removeEventListener(`${prefix}fullscreenerror`, onError);\n    });\n  };\n}\n\nexport function useFullscreen<T extends HTMLElement = any>() {\n  const [fullscreen, setFullscreen] = React.useState<boolean>(false);\n\n  const _ref = React.useRef<T>(null);\n\n  const handleFullscreenChange = React.useCallback(\n    (event: Event) => {\n      setFullscreen(event.target === getFullscreenElement());\n    },\n    [setFullscreen],\n  );\n\n  const handleFullscreenError = React.useCallback(\n    (event: Event) => {\n      setFullscreen(false);\n      // eslint-disable-next-line no-console\n      console.error(\n        `[@mantine/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,\n      );\n    },\n    [setFullscreen],\n  );\n\n  const toggle = React.useCallback(async () => {\n    if (!getFullscreenElement()) {\n      await enterFullScreen(_ref.current!);\n    } else {\n      await exitFullscreen();\n    }\n  }, []);\n\n  const ref = React.useCallback((element: T | null) => {\n    if (element === null) {\n      _ref.current = window.document.documentElement as T;\n    } else {\n      _ref.current = element;\n    }\n  }, []);\n\n  React.useEffect(() => {\n    if (!_ref.current && window.document) {\n      _ref.current = window.document.documentElement as T;\n      return addEvents(_ref.current, {\n        onFullScreen: handleFullscreenChange,\n        onError: handleFullscreenError,\n      });\n    }\n\n    if (_ref.current) {\n      return addEvents(_ref.current, {\n        onFullScreen: handleFullscreenChange,\n        onError: handleFullscreenError,\n      });\n    }\n\n    return undefined;\n  }, [_ref.current]);\n\n  return { ref, toggle, fullscreen } as const;\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports))
+      )
     },
     "use-mobile": {
       name: "use-mobile",
@@ -6617,12 +6737,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-mobile.ts",
-          "content": 'import * as React from "react";\r\n\r\nimport debounce from "lodash.debounce";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = React.useState(false);\r\n\r\n  React.useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener("resize", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener("resize", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-mobile.ts",
+          content: 'import * as React from "react";\n\nimport debounce from "lodash.debounce";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener("resize", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener("resize", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports))
+      )
     },
     "use-mounted": {
       name: "use-mounted",
@@ -6630,12 +6752,14 @@ export default function WithArrowTooltip() {\r
       type: "registry:hook",
       files: [
         {
-          "path": "registry/default/hooks/use-mounted.ts",
-          "content": 'import { useEffect, useState } from "react";\r\n\r\nexport function useMounted() {\r\n  const [mounted, setMounted] = useState(false);\r\n  useEffect(() => setMounted(true), []);\r\n  return mounted;\r\n}\r\n',
-          "type": "registry:hook"
+          path: "registry/default/hooks/use-mounted.ts",
+          content: 'import { useEffect, useState } from "react";\n\nexport function useMounted() {\n  const [mounted, setMounted] = useState(false);\n  useEffect(() => setMounted(true), []);\n  return mounted;\n}\n',
+          type: "registry:hook"
         }
       ],
-      component: React66.lazy(() => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports)))
+      component: React66.lazy(
+        () => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports))
+      )
     }
   }
 };
