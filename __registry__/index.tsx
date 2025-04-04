@@ -5,21 +5,19 @@ import * as React from "react";
 
 export const Index: Record<string, any> = {
   default: {
+    
     "animated-label-input": {
       name: "animated-label-input",
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/animated-label-input.tsx",
-          content:
-            'import * as React from "react";\r\n\r\nimport { Input } from "@/components/ui/input";\r\nimport { Label } from "@/components/ui/label";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst AnimatedLabel = React.forwardRef<\r\n  React.ElementRef<typeof Label>,\r\n  React.ComponentPropsWithoutRef<typeof Label>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <Label\r\n      className={cn(\r\n        "peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text",\r\n        className,\r\n      )}\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nAnimatedLabel.displayName = "AnimatedLabel";\r\n\r\ntype AnimatedLabelInputProps = InputProps & { label?: string };\r\n\r\nconst AnimatedLabelInput = React.forwardRef<\r\n  React.ElementRef<typeof AnimatedInput>,\r\n  React.PropsWithoutRef<AnimatedLabelInputProps>\r\n>(({ id, label, ...props }, ref) => {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n\r\n  React.useImperativeHandle(ref, () => inputRef.current!);\r\n\r\n  const handleLabelClick = () => {\r\n    if (inputRef.current) {\r\n      inputRef.current.focus();\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div className=\'relative \'>\r\n      <AnimatedInput ref={inputRef} id={id} {...props} />\r\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\r\n        {label}\r\n      </AnimatedLabel>\r\n    </div>\r\n  );\r\n});\r\nAnimatedLabelInput.displayName = "AnimatedLabelInput";\r\n\r\nexport interface InputProps\r\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\r\n\r\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\r\n  ({ className, ...props }, ref) => {\r\n    return (\r\n      <Input\r\n        placeholder=\' \'\r\n        className={cn("peer", className)}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  },\r\n);\r\nAnimatedInput.displayName = "AnimatedInput";\r\n\r\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/animated-label-input.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/animated-label-input.tsx",
+    "content": "import * as React from \"react\";\r\n\r\nimport { Input } from \"@/components/ui/input\";\r\nimport { Label } from \"@/components/ui/label\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst AnimatedLabel = React.forwardRef<\r\n  React.ElementRef<typeof Label>,\r\n  React.ComponentPropsWithoutRef<typeof Label>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <Label\r\n      className={cn(\r\n        \"peer-focus:secondary peer-focus:dark:secondary absolute start-2 top-1.5 z-10 origin-[0] -translate-y-4 scale-[0.85] transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-[0.85] peer-focus:px-2 dark:bg-background rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4 cursor-text\",\r\n        className,\r\n      )}\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nAnimatedLabel.displayName = \"AnimatedLabel\";\r\n\r\ntype AnimatedLabelInputProps = InputProps & { label?: string };\r\n\r\nconst AnimatedLabelInput = React.forwardRef<\r\n  React.ElementRef<typeof AnimatedInput>,\r\n  React.PropsWithoutRef<AnimatedLabelInputProps>\r\n>(({ id, label, ...props }, ref) => {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n\r\n  React.useImperativeHandle(ref, () => inputRef.current!);\r\n\r\n  const handleLabelClick = () => {\r\n    if (inputRef.current) {\r\n      inputRef.current.focus();\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div className='relative '>\r\n      <AnimatedInput ref={inputRef} id={id} {...props} />\r\n      <AnimatedLabel htmlFor={id} onClick={handleLabelClick}>\r\n        {label}\r\n      </AnimatedLabel>\r\n    </div>\r\n  );\r\n});\r\nAnimatedLabelInput.displayName = \"AnimatedLabelInput\";\r\n\r\nexport interface InputProps\r\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\r\n\r\nconst AnimatedInput = React.forwardRef<HTMLInputElement, InputProps>(\r\n  ({ className, ...props }, ref) => {\r\n    return (\r\n      <Input\r\n        placeholder=' '\r\n        className={cn(\"peer\", className)}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  },\r\n);\r\nAnimatedInput.displayName = \"AnimatedInput\";\r\n\r\nexport { AnimatedLabelInput, AnimatedLabel, AnimatedInput };\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/animated-label-input.tsx")),
     },
 
     "animated-tooltip": {
@@ -27,16 +25,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/animated-tooltip.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as TooltipPrimitive from "@radix-ui/react-tooltip";\r\nimport { motion, useMotionValue, useSpring, useTransform } from "framer-motion";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst AnimatedTooltipProvider = TooltipPrimitive.Provider;\r\nconst AnimatedTooltip = TooltipPrimitive.Root;\r\nconst AnimatedTooltipTrigger = TooltipPrimitive.Trigger;\r\n\r\nconst springConfig = { stiffness: 100, damping: 5 };\r\n\r\nconst AnimatedTooltipContent = React.forwardRef<\r\n  React.ElementRef<typeof TooltipPrimitive.Content>,\r\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\r\n>(({ className, sideOffset = 4, ...props }, ref) => {\r\n  const x = useMotionValue(0);\r\n  const rotate = useSpring(\r\n    useTransform(x, [-100, 100], [-45, 45]),\r\n    springConfig,\r\n  );\r\n  const translateX = useSpring(\r\n    useTransform(x, [-100, 100], [-50, 50]),\r\n    springConfig,\r\n  );\r\n\r\n  const handleMouseMove = (event: any) => {\r\n    const halfWidth = event.currentTarget.offsetWidth / 2;\r\n    x.set(event.nativeEvent.offsetX - halfWidth);\r\n  };\r\n\r\n  return (\r\n    <TooltipPrimitive.Portal>\r\n      <TooltipPrimitive.Content ref={ref} sideOffset={sideOffset} {...props}>\r\n        <motion.div\r\n          onMouseMove={handleMouseMove}\r\n          initial={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          animate={{\r\n            opacity: 1,\r\n            y: 0,\r\n            scale: 1,\r\n            transition: {\r\n              type: "spring",\r\n              stiffness: 260,\r\n              damping: 10,\r\n            },\r\n          }}\r\n          exit={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          style={{\r\n            translateX: translateX,\r\n            rotate: rotate,\r\n          }}\r\n          className={cn(\r\n            "flex flex-col items-center justify-center rounded-md z-50 shadow-xl bg-primary px-3 py-1.5 text-primary-foreground ",\r\n            className,\r\n          )}\r\n        >\r\n          {props.children}\r\n        </motion.div>\r\n      </TooltipPrimitive.Content>\r\n    </TooltipPrimitive.Portal>\r\n  );\r\n});\r\nAnimatedTooltipContent.displayName = TooltipPrimitive.Content.displayName;\r\n\r\nexport {\r\n  AnimatedTooltip,\r\n  AnimatedTooltipTrigger,\r\n  AnimatedTooltipContent,\r\n  AnimatedTooltipProvider,\r\n};\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/animated-tooltip.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/animated-tooltip.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport * as TooltipPrimitive from \"@radix-ui/react-tooltip\";\r\nimport { motion, useMotionValue, useSpring, useTransform } from \"framer-motion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst AnimatedTooltipProvider = TooltipPrimitive.Provider;\r\nconst AnimatedTooltip = TooltipPrimitive.Root;\r\nconst AnimatedTooltipTrigger = TooltipPrimitive.Trigger;\r\n\r\nconst springConfig = { stiffness: 100, damping: 5 };\r\n\r\nconst AnimatedTooltipContent = React.forwardRef<\r\n  React.ElementRef<typeof TooltipPrimitive.Content>,\r\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\r\n>(({ className, sideOffset = 4, ...props }, ref) => {\r\n  const x = useMotionValue(0);\r\n  const rotate = useSpring(\r\n    useTransform(x, [-100, 100], [-45, 45]),\r\n    springConfig,\r\n  );\r\n  const translateX = useSpring(\r\n    useTransform(x, [-100, 100], [-50, 50]),\r\n    springConfig,\r\n  );\r\n\r\n  const handleMouseMove = (event: any) => {\r\n    const halfWidth = event.currentTarget.offsetWidth / 2;\r\n    x.set(event.nativeEvent.offsetX - halfWidth);\r\n  };\r\n\r\n  return (\r\n    <TooltipPrimitive.Portal>\r\n      <TooltipPrimitive.Content ref={ref} sideOffset={sideOffset} {...props}>\r\n        <motion.div\r\n          onMouseMove={handleMouseMove}\r\n          initial={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          animate={{\r\n            opacity: 1,\r\n            y: 0,\r\n            scale: 1,\r\n            transition: {\r\n              type: \"spring\",\r\n              stiffness: 260,\r\n              damping: 10,\r\n            },\r\n          }}\r\n          exit={{ opacity: 0, y: 20, scale: 0.6 }}\r\n          style={{\r\n            translateX: translateX,\r\n            rotate: rotate,\r\n          }}\r\n          className={cn(\r\n            \"flex flex-col items-center justify-center rounded-md z-50 shadow-xl bg-primary px-3 py-1.5 text-primary-foreground \",\r\n            className,\r\n          )}\r\n        >\r\n          {props.children}\r\n        </motion.div>\r\n      </TooltipPrimitive.Content>\r\n    </TooltipPrimitive.Portal>\r\n  );\r\n});\r\nAnimatedTooltipContent.displayName = TooltipPrimitive.Content.displayName;\r\n\r\nexport {\r\n  AnimatedTooltip,\r\n  AnimatedTooltipTrigger,\r\n  AnimatedTooltipContent,\r\n  AnimatedTooltipProvider,\r\n};\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/animated-tooltip.tsx")),
     },
 
     "combobox-input": {
@@ -44,16 +39,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/combobox-input.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { Check } from "lucide-react";\r\nimport { type PopperProps, usePopper } from "react-popper";\r\n\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n  CommandLoading,\r\n} from "@/components/ui/command";\r\nimport { Skeleton } from "@/components/ui/skeleton";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nimport { useControllableState } from "@/registry/default/hooks/use-controllable-state";\r\n\r\ninterface Option {\r\n  label: string;\r\n  value: string;\r\n  icon?: React.ComponentType<{ className?: string }>;\r\n  withCount?: boolean;\r\n}\r\n\r\nconst nonPrintableKeys = [\r\n  "Tab",\r\n  "Control",\r\n  "Alt",\r\n  "Shift",\r\n  "Delete",\r\n  "Home",\r\n  "End",\r\n  "PageUp",\r\n  "PageDown",\r\n  "Insert",\r\n  "ArrowLeft",\r\n  "ArrowRight",\r\n];\r\n\r\ninterface ComboboxInputProps\r\n  extends Omit<\r\n    React.ComponentPropsWithoutRef<typeof CommandInput>,\r\n    "defaultValue" | "value" | "onValueChange"\r\n  > {\r\n  options: Option[];\r\n  input?: string;\r\n  onInputChange?: (value: string) => void;\r\n  defaultValue?: Option;\r\n  value?: Option;\r\n  onValueChange?: (option: Option) => void;\r\n  emptyMessage?: string;\r\n  immediate?: boolean;\r\n  placement?: PopperProps<HTMLElement>["placement"];\r\n  alignOffset?: number;\r\n  sideOffset?: number;\r\n  loading?: boolean;\r\n}\r\n\r\nexport function ComboboxInput({\r\n  options,\r\n  input,\r\n  onInputChange,\r\n  defaultValue,\r\n  value,\r\n  onValueChange,\r\n  placeholder,\r\n  emptyMessage = "No results found",\r\n  placement = "bottom-start",\r\n  alignOffset = 0,\r\n  sideOffset = 4,\r\n  immediate = false,\r\n  loading = false,\r\n  className,\r\n  ...props\r\n}: ComboboxInputProps) {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n  const [open, setOpen] = React.useState(false);\r\n  const [controlledInput, setControlledInput] = useControllableState({\r\n    prop: input,\r\n    onChange: onInputChange,\r\n  });\r\n\r\n  const [currentOption, setCurrentOption] = useControllableState({\r\n    defaultProp: defaultValue,\r\n    prop: value,\r\n    onChange: onValueChange,\r\n  });\r\n\r\n  const [referenceElement, setReferenceElement] =\r\n    React.useState<HTMLDivElement | null>(null);\r\n  const [popperElement, setPopperElement] =\r\n    React.useState<HTMLDivElement | null>(null);\r\n  const { styles, attributes } = usePopper(referenceElement, popperElement, {\r\n    modifiers: [\r\n      { name: "offset", options: { offset: [alignOffset, sideOffset] } },\r\n    ],\r\n    placement,\r\n  });\r\n\r\n  const onKeyDown = React.useCallback(\r\n    (event: React.KeyboardEvent<HTMLDivElement>) => {\r\n      const inputElement = inputRef.current;\r\n      if (!inputElement) return;\r\n\r\n      if (nonPrintableKeys.includes(event.key)) return;\r\n\r\n      if (event.key === "Backspace" && inputElement.value === "" && !open) {\r\n        if (open) setOpen(false);\r\n        return;\r\n      }\r\n\r\n      if (event.key === "Escape") {\r\n        if (currentOption && inputElement.value === currentOption.label) {\r\n          if (open) setOpen(false);\r\n          return;\r\n        }\r\n\r\n        if (inputElement.value === "") {\r\n          if (open) setOpen(false);\r\n          return;\r\n        }\r\n\r\n        setControlledInput("");\r\n        setOpen(false);\r\n        setCurrentOption(undefined);\r\n        inputRef.current?.focus();\r\n      }\r\n\r\n      if (event.key === "Enter" && inputElement.value !== "") {\r\n        const selectedOption = options.find(\r\n          (option) => option.label === inputElement.value,\r\n        );\r\n        setCurrentOption(selectedOption);\r\n      }\r\n\r\n      if (!open) setOpen(true);\r\n    },\r\n    [currentOption, open, options, setControlledInput, setCurrentOption],\r\n  );\r\n\r\n  const onBlur = React.useCallback(() => {\r\n    setOpen(false);\r\n    setControlledInput(currentOption?.label ?? "");\r\n  }, [currentOption?.label, setControlledInput]);\r\n\r\n  const onSelect = React.useCallback(\r\n    (selectedOption: Option) => {\r\n      setControlledInput(selectedOption.label);\r\n      setCurrentOption(selectedOption);\r\n      setOpen(false);\r\n    },\r\n    [setControlledInput, setCurrentOption],\r\n  );\r\n\r\n  return (\r\n    <Command\r\n      ref={setReferenceElement}\r\n      className=\'relative overflow-visible [&_[cmdk-input-wrapper]]:rounded-md [&_[cmdk-input-wrapper]]:border\'\r\n      onKeyDown={onKeyDown}\r\n      {...attributes.reference}\r\n    >\r\n      <CommandInput\r\n        ref={inputRef}\r\n        value={controlledInput}\r\n        onValueChange={(value) => {\r\n          if (loading) return;\r\n\r\n          setControlledInput(value);\r\n          if (value === "") {\r\n            setCurrentOption(undefined);\r\n          }\r\n        }}\r\n        onBlur={onBlur}\r\n        onFocus={() => {\r\n          if (immediate) {\r\n            setOpen(true);\r\n          }\r\n        }}\r\n        placeholder={placeholder}\r\n        className={cn("border-b-0", className)}\r\n        {...props}\r\n      />\r\n      <CommandList\r\n        ref={setPopperElement}\r\n        data-state={open ? "open" : "closed"}\r\n        style={styles.popper}\r\n        className={cn(\r\n          "z-50 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none data-[state=open]:visible data-[state=closed]:invisible data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",\r\n          "data-[popper-placement=bottom-end]:translate-x-1/2 data-[popper-placement=bottom-start]:-translate-x-1/2 data-[popper-placement=left-end]:translate-y-1/2 data-[popper-placement=left-start]:-translate-y-1/2 data-[popper-placement=right-end]:translate-y-1/2 data-[popper-placement=right-start]:-translate-y-1/2 data-[popper-placement=top-end]:translate-x-1/2 data-[popper-placement=top-start]:-translate-x-1/2 data-[popper-placement=bottom-end]:slide-in-from-top-2 data-[popper-placement=bottom-start]:slide-in-from-top-2 data-[popper-placement=bottom]:slide-in-from-top-2 data-[popper-placement=left-end]:slide-in-from-right-2 data-[popper-placement=left-start]:slide-in-from-right-2 data-[popper-placement=left]:slide-in-from-right-2 data-[popper-placement=right-end]:slide-in-from-left-2 data-[popper-placement=right-start]:slide-in-from-left-2 data-[popper-placement=right]:slide-in-from-left-2 data-[popper-placement=top-end]:slide-in-from-bottom-2 data-[popper-placement=top-start]:slide-in-from-bottom-2 data-[popper-placement=top]:slide-in-from-bottom-2",\r\n        )}\r\n        {...attributes.popper}\r\n      >\r\n        {loading ? (\r\n          <CommandLoading className=\'p-1\'>\r\n            <Skeleton className=\'h-8 w-full\' />\r\n          </CommandLoading>\r\n        ) : null}\r\n        {options.length > 0 && !loading ? (\r\n          <CommandGroup>\r\n            {options.map((option) => {\r\n              const isSelected = currentOption?.value === option.value;\r\n\r\n              return (\r\n                <CommandItem\r\n                  key={option.value}\r\n                  value={option.label}\r\n                  onMouseDown={(event) => {\r\n                    event.preventDefault();\r\n                    event.stopPropagation();\r\n                  }}\r\n                  onSelect={() => onSelect(option)}\r\n                  className={cn("flex w-full items-center gap-2", {\r\n                    "pl-8": !isSelected,\r\n                  })}\r\n                >\r\n                  {isSelected ? (\r\n                    <Check className=\'w-4\' aria-hidden=\'true\' />\r\n                  ) : null}\r\n                  {option.label}\r\n                </CommandItem>\r\n              );\r\n            })}\r\n          </CommandGroup>\r\n        ) : null}\r\n        {loading ? null : <CommandEmpty>{emptyMessage}</CommandEmpty>}\r\n      </CommandList>\r\n    </Command>\r\n  );\r\n}\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/combobox-input.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/combobox-input.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Check } from \"lucide-react\";\r\nimport { type PopperProps, usePopper } from \"react-popper\";\r\n\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n  CommandLoading,\r\n} from \"@/components/ui/command\";\r\nimport { Skeleton } from \"@/components/ui/skeleton\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nimport { useControllableState } from \"@/registry/default/hooks/use-controllable-state\";\r\n\r\ninterface Option {\r\n  label: string;\r\n  value: string;\r\n  icon?: React.ComponentType<{ className?: string }>;\r\n  withCount?: boolean;\r\n}\r\n\r\nconst nonPrintableKeys = [\r\n  \"Tab\",\r\n  \"Control\",\r\n  \"Alt\",\r\n  \"Shift\",\r\n  \"Delete\",\r\n  \"Home\",\r\n  \"End\",\r\n  \"PageUp\",\r\n  \"PageDown\",\r\n  \"Insert\",\r\n  \"ArrowLeft\",\r\n  \"ArrowRight\",\r\n];\r\n\r\ninterface ComboboxInputProps\r\n  extends Omit<\r\n    React.ComponentPropsWithoutRef<typeof CommandInput>,\r\n    \"defaultValue\" | \"value\" | \"onValueChange\"\r\n  > {\r\n  options: Option[];\r\n  input?: string;\r\n  onInputChange?: (value: string) => void;\r\n  defaultValue?: Option;\r\n  value?: Option;\r\n  onValueChange?: (option: Option) => void;\r\n  emptyMessage?: string;\r\n  immediate?: boolean;\r\n  placement?: PopperProps<HTMLElement>[\"placement\"];\r\n  alignOffset?: number;\r\n  sideOffset?: number;\r\n  loading?: boolean;\r\n}\r\n\r\nexport function ComboboxInput({\r\n  options,\r\n  input,\r\n  onInputChange,\r\n  defaultValue,\r\n  value,\r\n  onValueChange,\r\n  placeholder,\r\n  emptyMessage = \"No results found\",\r\n  placement = \"bottom-start\",\r\n  alignOffset = 0,\r\n  sideOffset = 4,\r\n  immediate = false,\r\n  loading = false,\r\n  className,\r\n  ...props\r\n}: ComboboxInputProps) {\r\n  const inputRef = React.useRef<HTMLInputElement>(null);\r\n  const [open, setOpen] = React.useState(false);\r\n  const [controlledInput, setControlledInput] = useControllableState({\r\n    prop: input,\r\n    onChange: onInputChange,\r\n  });\r\n\r\n  const [currentOption, setCurrentOption] = useControllableState({\r\n    defaultProp: defaultValue,\r\n    prop: value,\r\n    onChange: onValueChange,\r\n  });\r\n\r\n  const [referenceElement, setReferenceElement] =\r\n    React.useState<HTMLDivElement | null>(null);\r\n  const [popperElement, setPopperElement] =\r\n    React.useState<HTMLDivElement | null>(null);\r\n  const { styles, attributes } = usePopper(referenceElement, popperElement, {\r\n    modifiers: [\r\n      { name: \"offset\", options: { offset: [alignOffset, sideOffset] } },\r\n    ],\r\n    placement,\r\n  });\r\n\r\n  const onKeyDown = React.useCallback(\r\n    (event: React.KeyboardEvent<HTMLDivElement>) => {\r\n      const inputElement = inputRef.current;\r\n      if (!inputElement) return;\r\n\r\n      if (nonPrintableKeys.includes(event.key)) return;\r\n\r\n      if (event.key === \"Backspace\" && inputElement.value === \"\" && !open) {\r\n        if (open) setOpen(false);\r\n        return;\r\n      }\r\n\r\n      if (event.key === \"Escape\") {\r\n        if (currentOption && inputElement.value === currentOption.label) {\r\n          if (open) setOpen(false);\r\n          return;\r\n        }\r\n\r\n        if (inputElement.value === \"\") {\r\n          if (open) setOpen(false);\r\n          return;\r\n        }\r\n\r\n        setControlledInput(\"\");\r\n        setOpen(false);\r\n        setCurrentOption(undefined);\r\n        inputRef.current?.focus();\r\n      }\r\n\r\n      if (event.key === \"Enter\" && inputElement.value !== \"\") {\r\n        const selectedOption = options.find(\r\n          (option) => option.label === inputElement.value,\r\n        );\r\n        setCurrentOption(selectedOption);\r\n      }\r\n\r\n      if (!open) setOpen(true);\r\n    },\r\n    [currentOption, open, options, setControlledInput, setCurrentOption],\r\n  );\r\n\r\n  const onBlur = React.useCallback(() => {\r\n    setOpen(false);\r\n    setControlledInput(currentOption?.label ?? \"\");\r\n  }, [currentOption?.label, setControlledInput]);\r\n\r\n  const onSelect = React.useCallback(\r\n    (selectedOption: Option) => {\r\n      setControlledInput(selectedOption.label);\r\n      setCurrentOption(selectedOption);\r\n      setOpen(false);\r\n    },\r\n    [setControlledInput, setCurrentOption],\r\n  );\r\n\r\n  return (\r\n    <Command\r\n      ref={setReferenceElement}\r\n      className='relative overflow-visible [&_[cmdk-input-wrapper]]:rounded-md [&_[cmdk-input-wrapper]]:border'\r\n      onKeyDown={onKeyDown}\r\n      {...attributes.reference}\r\n    >\r\n      <CommandInput\r\n        ref={inputRef}\r\n        value={controlledInput}\r\n        onValueChange={(value) => {\r\n          if (loading) return;\r\n\r\n          setControlledInput(value);\r\n          if (value === \"\") {\r\n            setCurrentOption(undefined);\r\n          }\r\n        }}\r\n        onBlur={onBlur}\r\n        onFocus={() => {\r\n          if (immediate) {\r\n            setOpen(true);\r\n          }\r\n        }}\r\n        placeholder={placeholder}\r\n        className={cn(\"border-b-0\", className)}\r\n        {...props}\r\n      />\r\n      <CommandList\r\n        ref={setPopperElement}\r\n        data-state={open ? \"open\" : \"closed\"}\r\n        style={styles.popper}\r\n        className={cn(\r\n          \"z-50 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none data-[state=open]:visible data-[state=closed]:invisible data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\r\n          \"data-[popper-placement=bottom-end]:translate-x-1/2 data-[popper-placement=bottom-start]:-translate-x-1/2 data-[popper-placement=left-end]:translate-y-1/2 data-[popper-placement=left-start]:-translate-y-1/2 data-[popper-placement=right-end]:translate-y-1/2 data-[popper-placement=right-start]:-translate-y-1/2 data-[popper-placement=top-end]:translate-x-1/2 data-[popper-placement=top-start]:-translate-x-1/2 data-[popper-placement=bottom-end]:slide-in-from-top-2 data-[popper-placement=bottom-start]:slide-in-from-top-2 data-[popper-placement=bottom]:slide-in-from-top-2 data-[popper-placement=left-end]:slide-in-from-right-2 data-[popper-placement=left-start]:slide-in-from-right-2 data-[popper-placement=left]:slide-in-from-right-2 data-[popper-placement=right-end]:slide-in-from-left-2 data-[popper-placement=right-start]:slide-in-from-left-2 data-[popper-placement=right]:slide-in-from-left-2 data-[popper-placement=top-end]:slide-in-from-bottom-2 data-[popper-placement=top-start]:slide-in-from-bottom-2 data-[popper-placement=top]:slide-in-from-bottom-2\",\r\n        )}\r\n        {...attributes.popper}\r\n      >\r\n        {loading ? (\r\n          <CommandLoading className='p-1'>\r\n            <Skeleton className='h-8 w-full' />\r\n          </CommandLoading>\r\n        ) : null}\r\n        {options.length > 0 && !loading ? (\r\n          <CommandGroup>\r\n            {options.map((option) => {\r\n              const isSelected = currentOption?.value === option.value;\r\n\r\n              return (\r\n                <CommandItem\r\n                  key={option.value}\r\n                  value={option.label}\r\n                  onMouseDown={(event) => {\r\n                    event.preventDefault();\r\n                    event.stopPropagation();\r\n                  }}\r\n                  onSelect={() => onSelect(option)}\r\n                  className={cn(\"flex w-full items-center gap-2\", {\r\n                    \"pl-8\": !isSelected,\r\n                  })}\r\n                >\r\n                  {isSelected ? (\r\n                    <Check className='w-4' aria-hidden='true' />\r\n                  ) : null}\r\n                  {option.label}\r\n                </CommandItem>\r\n              );\r\n            })}\r\n          </CommandGroup>\r\n        ) : null}\r\n        {loading ? null : <CommandEmpty>{emptyMessage}</CommandEmpty>}\r\n      </CommandList>\r\n    </Command>\r\n  );\r\n}\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/combobox-input.tsx")),
     },
 
     "labeled-switch": {
@@ -61,16 +53,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/labeled-switch.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as SwitchPrimitives from "@radix-ui/react-switch";\r\nimport { motion } from "framer-motion";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ninterface LabeledSwitchProps {\r\n  firstLabel: React.ReactNode;\r\n  secondLabel: React.ReactNode;\r\n  selected: boolean;\r\n  onToggle: (checked: boolean) => void;\r\n  className?: string;\r\n}\r\n\r\nconst LabeledSwitch = React.forwardRef<\r\n  React.ElementRef<typeof SwitchPrimitives.Root>,\r\n  LabeledSwitchProps\r\n>(\r\n  (\r\n    { className, firstLabel, secondLabel, selected, onToggle, ...props },\r\n    ref,\r\n  ) => {\r\n    return (\r\n      <SwitchPrimitives.Root\r\n        className={cn(\r\n          "relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors",\r\n          className,\r\n        )}\r\n        ref={ref}\r\n        checked={selected}\r\n        onCheckedChange={onToggle}\r\n      >\r\n        <LabeledSwitchButton selected={selected}>\r\n          {firstLabel}\r\n        </LabeledSwitchButton>\r\n        <LabeledSwitchButton selected={!selected}>\r\n          {secondLabel}\r\n        </LabeledSwitchButton>\r\n        <SwitchPrimitives.Thumb\r\n          className={cn(\r\n            "absolute inset-0 w-full z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end",\r\n          )}\r\n        >\r\n          <motion.span\r\n            layout\r\n            transition={{ type: "spring", damping: 15, stiffness: 250 }}\r\n            className=\'h-full w-1/2 rounded-full bg-muted\'\r\n          />\r\n        </SwitchPrimitives.Thumb>\r\n      </SwitchPrimitives.Root>\r\n    );\r\n  },\r\n);\r\nLabeledSwitch.displayName = "LabeledSwitch";\r\n\r\nconst LabeledSwitchButton = ({\r\n  children,\r\n  selected,\r\n}: {\r\n  children: React.ReactNode;\r\n  selected: boolean;\r\n}) => (\r\n  <div\r\n    className={cn(\r\n      "relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5",\r\n      selected ? "text-primary" : "text-muted-foreground",\r\n    )}\r\n    onMouseDown={(e) => e.preventDefault()}\r\n  >\r\n    <span className=\'relative z-10\'>{children}</span>\r\n  </div>\r\n);\r\n\r\nexport { LabeledSwitch };\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/labeled-switch.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/labeled-switch.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport * as SwitchPrimitives from \"@radix-ui/react-switch\";\r\nimport { motion } from \"framer-motion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface LabeledSwitchProps {\r\n  firstLabel: React.ReactNode;\r\n  secondLabel: React.ReactNode;\r\n  selected: boolean;\r\n  onToggle: (checked: boolean) => void;\r\n  className?: string;\r\n}\r\n\r\nconst LabeledSwitch = React.forwardRef<\r\n  React.ElementRef<typeof SwitchPrimitives.Root>,\r\n  LabeledSwitchProps\r\n>(\r\n  (\r\n    { className, firstLabel, secondLabel, selected, onToggle, ...props },\r\n    ref,\r\n  ) => {\r\n    return (\r\n      <SwitchPrimitives.Root\r\n        className={cn(\r\n          \"relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors\",\r\n          className,\r\n        )}\r\n        ref={ref}\r\n        checked={selected}\r\n        onCheckedChange={onToggle}\r\n      >\r\n        <LabeledSwitchButton selected={selected}>\r\n          {firstLabel}\r\n        </LabeledSwitchButton>\r\n        <LabeledSwitchButton selected={!selected}>\r\n          {secondLabel}\r\n        </LabeledSwitchButton>\r\n        <SwitchPrimitives.Thumb\r\n          className={cn(\r\n            \"absolute inset-0 w-full z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end\",\r\n          )}\r\n        >\r\n          <motion.span\r\n            layout\r\n            transition={{ type: \"spring\", damping: 15, stiffness: 250 }}\r\n            className='h-full w-1/2 rounded-full bg-muted'\r\n          />\r\n        </SwitchPrimitives.Thumb>\r\n      </SwitchPrimitives.Root>\r\n    );\r\n  },\r\n);\r\nLabeledSwitch.displayName = \"LabeledSwitch\";\r\n\r\nconst LabeledSwitchButton = ({\r\n  children,\r\n  selected,\r\n}: {\r\n  children: React.ReactNode;\r\n  selected: boolean;\r\n}) => (\r\n  <div\r\n    className={cn(\r\n      \"relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5\",\r\n      selected ? \"text-primary\" : \"text-muted-foreground\",\r\n    )}\r\n    onMouseDown={(e) => e.preventDefault()}\r\n  >\r\n    <span className='relative z-10'>{children}</span>\r\n  </div>\r\n);\r\n\r\nexport { LabeledSwitch };\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/labeled-switch.tsx")),
     },
 
     "range-slider": {
@@ -78,16 +67,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/range-slider.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport * as SliderPrimitive from "@radix-ui/react-slider";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ninterface RangeSliderProps\r\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\r\n  labelPosition?: "top" | "bottom";\r\n  label?: (value: number | undefined) => React.ReactNode;\r\n  orientation?: "horizontal" | "vertical";\r\n}\r\n\r\nconst RangeSlider = React.forwardRef<\r\n  React.ElementRef<typeof SliderPrimitive.Root>,\r\n  RangeSliderProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      label,\r\n      labelPosition = "top",\r\n      orientation = "horizontal",\r\n      ...props\r\n    },\r\n    ref,\r\n  ) => {\r\n    const initialValue = Array.isArray(props.value)\r\n      ? props.value\r\n      : [props.min, props.max];\r\n\r\n    return (\r\n      <SliderPrimitive.Root\r\n        ref={ref}\r\n        orientation={orientation}\r\n        className={cn(\r\n          orientation === "horizontal"\r\n            ? "relative flex w-full touch-none select-none items-center"\r\n            : "relative flex h-full min-h-[200px] touch-none select-none flex-col items-center",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        <SliderPrimitive.Track\r\n          className={cn(\r\n            orientation === "horizontal"\r\n              ? "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"\r\n              : "relative w-2 h-full grow overflow-hidden rounded-full bg-secondary",\r\n          )}\r\n        >\r\n          <SliderPrimitive.Range\r\n            className={cn(\r\n              orientation === "horizontal"\r\n                ? "absolute h-full bg-primary"\r\n                : "absolute w-full bg-primary",\r\n            )}\r\n          />\r\n        </SliderPrimitive.Track>\r\n        {initialValue.map((value, index) => (\r\n          <React.Fragment key={index}>\r\n            <SliderPrimitive.Thumb\r\n              className={cn(\r\n                "relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",\r\n                orientation === "horizontal"\r\n                  ? "h-5 w-2 rounded-sm"\r\n                  : "h-2 w-5 rounded-sm",\r\n              )}\r\n            >\r\n              {label && (\r\n                <span\r\n                  className={cn(\r\n                    "absolute flex text-xs justify-center font-medium",\r\n                    orientation === "horizontal"\r\n                      ? labelPosition === "top"\r\n                        ? "-left-2 -top-5"\r\n                        : "-left-2 top-5"\r\n                      : labelPosition === "top"\r\n                        ? "-translate-x-full -translate-y-1/2 -left-2"\r\n                        : "translate-x-full -translate-y-1/2",\r\n                  )}\r\n                >\r\n                  {label(value)}\r\n                </span>\r\n              )}\r\n            </SliderPrimitive.Thumb>\r\n          </React.Fragment>\r\n        ))}\r\n      </SliderPrimitive.Root>\r\n    );\r\n  },\r\n);\r\nRangeSlider.displayName = "RangeSlider";\r\n\r\nexport { RangeSlider };\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/range-slider.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/range-slider.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport * as SliderPrimitive from \"@radix-ui/react-slider\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface RangeSliderProps\r\n  extends React.ComponentProps<typeof SliderPrimitive.Root> {\r\n  labelPosition?: \"top\" | \"bottom\";\r\n  label?: (value: number | undefined) => React.ReactNode;\r\n  orientation?: \"horizontal\" | \"vertical\";\r\n}\r\n\r\nconst RangeSlider = React.forwardRef<\r\n  React.ElementRef<typeof SliderPrimitive.Root>,\r\n  RangeSliderProps\r\n>(\r\n  (\r\n    {\r\n      className,\r\n      label,\r\n      labelPosition = \"top\",\r\n      orientation = \"horizontal\",\r\n      ...props\r\n    },\r\n    ref,\r\n  ) => {\r\n    const initialValue = Array.isArray(props.value)\r\n      ? props.value\r\n      : [props.min, props.max];\r\n\r\n    return (\r\n      <SliderPrimitive.Root\r\n        ref={ref}\r\n        orientation={orientation}\r\n        className={cn(\r\n          orientation === \"horizontal\"\r\n            ? \"relative flex w-full touch-none select-none items-center\"\r\n            : \"relative flex h-full min-h-[200px] touch-none select-none flex-col items-center\",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        <SliderPrimitive.Track\r\n          className={cn(\r\n            orientation === \"horizontal\"\r\n              ? \"relative h-2 w-full grow overflow-hidden rounded-full bg-secondary\"\r\n              : \"relative w-2 h-full grow overflow-hidden rounded-full bg-secondary\",\r\n          )}\r\n        >\r\n          <SliderPrimitive.Range\r\n            className={cn(\r\n              orientation === \"horizontal\"\r\n                ? \"absolute h-full bg-primary\"\r\n                : \"absolute w-full bg-primary\",\r\n            )}\r\n          />\r\n        </SliderPrimitive.Track>\r\n        {initialValue.map((value, index) => (\r\n          <React.Fragment key={index}>\r\n            <SliderPrimitive.Thumb\r\n              className={cn(\r\n                \"relative block border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\r\n                orientation === \"horizontal\"\r\n                  ? \"h-5 w-2 rounded-sm\"\r\n                  : \"h-2 w-5 rounded-sm\",\r\n              )}\r\n            >\r\n              {label && (\r\n                <span\r\n                  className={cn(\r\n                    \"absolute flex text-xs justify-center font-medium\",\r\n                    orientation === \"horizontal\"\r\n                      ? labelPosition === \"top\"\r\n                        ? \"-left-2 -top-5\"\r\n                        : \"-left-2 top-5\"\r\n                      : labelPosition === \"top\"\r\n                        ? \"-translate-x-full -translate-y-1/2 -left-2\"\r\n                        : \"translate-x-full -translate-y-1/2\",\r\n                  )}\r\n                >\r\n                  {label(value)}\r\n                </span>\r\n              )}\r\n            </SliderPrimitive.Thumb>\r\n          </React.Fragment>\r\n        ))}\r\n      </SliderPrimitive.Root>\r\n    );\r\n  },\r\n);\r\nRangeSlider.displayName = \"RangeSlider\";\r\n\r\nexport { RangeSlider };\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/range-slider.tsx")),
     },
 
     "responsive-textarea": {
@@ -95,16 +81,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/responsive-textarea.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst ResponsiveTextarea = React.forwardRef<\r\n  HTMLTextAreaElement,\r\n  React.ComponentProps<"textarea">\r\n>(({ className, ...props }, ref) => {\r\n  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);\r\n  const [val, setVal] = React.useState<string>("");\r\n\r\n  React.useEffect(() => {\r\n    if (textAreaRef.current) {\r\n      textAreaRef.current.style.height = "auto";\r\n      textAreaRef.current.style.height =\r\n        textAreaRef.current.scrollHeight + "px";\r\n    }\r\n  }, [val]);\r\n\r\n  return (\r\n    <textarea\r\n      className={cn(\r\n        "placeholder:text-muted-foreground flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",\r\n        className,\r\n      )}\r\n      ref={textAreaRef}\r\n      onChange={(e) => setVal(e.target.value)}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nResponsiveTextarea.displayName = "ResponsiveTextarea";\r\n\r\nexport { ResponsiveTextarea };\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/responsive-textarea.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/responsive-textarea.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst ResponsiveTextarea = React.forwardRef<\r\n  HTMLTextAreaElement,\r\n  React.ComponentProps<\"textarea\">\r\n>(({ className, ...props }, ref) => {\r\n  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);\r\n  const [val, setVal] = React.useState<string>(\"\");\r\n\r\n  React.useEffect(() => {\r\n    if (textAreaRef.current) {\r\n      textAreaRef.current.style.height = \"auto\";\r\n      textAreaRef.current.style.height =\r\n        textAreaRef.current.scrollHeight + \"px\";\r\n    }\r\n  }, [val]);\r\n\r\n  return (\r\n    <textarea\r\n      className={cn(\r\n        \"placeholder:text-muted-foreground flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\r\n        className,\r\n      )}\r\n      ref={textAreaRef}\r\n      onChange={(e) => setVal(e.target.value)}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nResponsiveTextarea.displayName = \"ResponsiveTextarea\";\r\n\r\nexport { ResponsiveTextarea };\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/responsive-textarea.tsx")),
     },
 
     "star-rating": {
@@ -112,30 +95,26 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/star-rating.tsx",
-          content:
-            '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { Star } from "lucide-react";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nlet nextId = 0;\r\nconst generateStarIds = (count: number) =>\r\n  Array.from({ length: count }, () => `star-${nextId++}`);\r\n\r\ninterface StarRatingProps {\r\n  value: number;\r\n  onChange?: (value: number) => void;\r\n  className?: string;\r\n  size?: number;\r\n  maxStars?: number;\r\n  readOnly?: boolean;\r\n  color?: string;\r\n}\r\n\r\nconst StarIcon = React.memo(\r\n  ({\r\n    size,\r\n    index,\r\n    isInteractive,\r\n    onClick,\r\n    onMouseMove,\r\n    style,\r\n  }: {\r\n    index: number;\r\n    style: React.CSSProperties;\r\n    size: number;\r\n    onClick: (e: React.MouseEvent<SVGElement>) => void;\r\n    onMouseMove: (e: React.MouseEvent<SVGElement>) => void;\r\n    isInteractive: boolean;\r\n  }) => (\r\n    <Star\r\n      key={index}\r\n      size={size}\r\n      fill={style.fill}\r\n      color={style.color}\r\n      onClick={onClick}\r\n      onMouseMove={onMouseMove}\r\n      className={cn(\r\n        "transition-colors duration-200",\r\n        isInteractive && "cursor-pointer hover:scale-110",\r\n      )}\r\n      style={style}\r\n    />\r\n  ),\r\n);\r\nStarIcon.displayName = "StarIcon";\r\n\r\nconst StarRating = ({\r\n  className,\r\n  color = "#e4c616",\r\n  size = 24,\r\n  maxStars = 5,\r\n  onChange,\r\n  readOnly = false,\r\n  value,\r\n}: StarRatingProps) => {\r\n  const [hoverRating, setHoverRating] = React.useState<number | null>(null);\r\n  const [starIds] = React.useState(() => generateStarIds(maxStars));\r\n\r\n  const handleStarClick = React.useCallback(\r\n    (index: number, event: React.MouseEvent<SVGElement>) => {\r\n      if (readOnly || !onChange) return;\r\n      const newRating = index + 1;\r\n      onChange(newRating);\r\n    },\r\n    [readOnly, onChange],\r\n  );\r\n\r\n  const handleStarHover = React.useCallback(\r\n    (index: number, event: React.MouseEvent<SVGElement>) => {\r\n      if (!readOnly) {\r\n        setHoverRating(index + 1);\r\n      }\r\n    },\r\n    [readOnly],\r\n  );\r\n\r\n  const handleMouseLeave = React.useCallback(() => {\r\n    if (!readOnly) {\r\n      setHoverRating(null);\r\n    }\r\n  }, [readOnly]);\r\n\r\n  const getStarStyle = React.useCallback(\r\n    (index: number) => {\r\n      const ratingToUse =\r\n        !readOnly && hoverRating !== null ? hoverRating : value;\r\n\r\n      const difference = ratingToUse - index;\r\n\r\n      if (difference <= 0) return { color: "gray", fill: "transparent" };\r\n      if (difference >= 1) return { color: color, fill: color };\r\n\r\n      return {\r\n        color: color,\r\n        fill: `url(#${starIds[index]})`,\r\n      } as React.CSSProperties;\r\n    },\r\n    [readOnly, hoverRating, value, color, starIds],\r\n  );\r\n\r\n  const renderGradientDefs = () => {\r\n    if (!readOnly && hoverRating !== null) return null;\r\n\r\n    const partialStarIndex = Math.floor(value);\r\n    const partialFill = (value % 1) * 100;\r\n\r\n    if (partialFill > 0) {\r\n      return (\r\n        <linearGradient\r\n          id={starIds[partialStarIndex]}\r\n          x1=\'0%\'\r\n          y1=\'0%\'\r\n          x2=\'100%\'\r\n          y2=\'0%\'\r\n        >\r\n          <stop offset={`${partialFill}%`} stopColor={color} />\r\n          <stop offset={`${partialFill}%`} stopColor=\'transparent\' />\r\n        </linearGradient>\r\n      );\r\n    }\r\n    return null;\r\n  };\r\n\r\n  const stars = React.useMemo(() => {\r\n    return Array.from({ length: maxStars }).map((_, index) => {\r\n      const style = getStarStyle(index);\r\n      return (\r\n        <StarIcon\r\n          key={index}\r\n          index={index}\r\n          style={style}\r\n          size={size}\r\n          onClick={(e) => handleStarClick(index, e)}\r\n          onMouseMove={(e) => handleStarHover(index, e)}\r\n          isInteractive={!readOnly}\r\n        />\r\n      );\r\n    });\r\n  }, [\r\n    maxStars,\r\n    getStarStyle,\r\n    size,\r\n    handleStarClick,\r\n    handleStarHover,\r\n    readOnly,\r\n  ]);\r\n\r\n  return (\r\n    <div\r\n      className={cn("relative flex items-center gap-x-0.5", className)}\r\n      onMouseLeave={handleMouseLeave}\r\n    >\r\n      <svg width=\'0\' height=\'0\' style={{ position: "absolute" }}>\r\n        <defs>{renderGradientDefs()}</defs>\r\n      </svg>\r\n      {stars}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default StarRating;\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/star-rating.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/star-rating.tsx",
+    "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Star } from \"lucide-react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nlet nextId = 0;\r\nconst generateStarIds = (count: number) =>\r\n  Array.from({ length: count }, () => `star-${nextId++}`);\r\n\r\ninterface StarRatingProps {\r\n  value: number;\r\n  onChange?: (value: number) => void;\r\n  className?: string;\r\n  size?: number;\r\n  maxStars?: number;\r\n  readOnly?: boolean;\r\n  color?: string;\r\n}\r\n\r\nconst StarIcon = React.memo(\r\n  ({\r\n    size,\r\n    index,\r\n    isInteractive,\r\n    onClick,\r\n    onMouseMove,\r\n    style,\r\n  }: {\r\n    index: number;\r\n    style: React.CSSProperties;\r\n    size: number;\r\n    onClick: (e: React.MouseEvent<SVGElement>) => void;\r\n    onMouseMove: (e: React.MouseEvent<SVGElement>) => void;\r\n    isInteractive: boolean;\r\n  }) => (\r\n    <Star\r\n      key={index}\r\n      size={size}\r\n      fill={style.fill}\r\n      color={style.color}\r\n      onClick={onClick}\r\n      onMouseMove={onMouseMove}\r\n      className={cn(\r\n        \"transition-colors duration-200\",\r\n        isInteractive && \"cursor-pointer hover:scale-110\",\r\n      )}\r\n      style={style}\r\n    />\r\n  ),\r\n);\r\nStarIcon.displayName = \"StarIcon\";\r\n\r\nconst StarRating = ({\r\n  className,\r\n  color = \"#e4c616\",\r\n  size = 24,\r\n  maxStars = 5,\r\n  onChange,\r\n  readOnly = false,\r\n  value,\r\n}: StarRatingProps) => {\r\n  const [hoverRating, setHoverRating] = React.useState<number | null>(null);\r\n  const [starIds] = React.useState(() => generateStarIds(maxStars));\r\n\r\n  const handleStarClick = React.useCallback(\r\n    (index: number, event: React.MouseEvent<SVGElement>) => {\r\n      if (readOnly || !onChange) return;\r\n      const newRating = index + 1;\r\n      onChange(newRating);\r\n    },\r\n    [readOnly, onChange],\r\n  );\r\n\r\n  const handleStarHover = React.useCallback(\r\n    (index: number, event: React.MouseEvent<SVGElement>) => {\r\n      if (!readOnly) {\r\n        setHoverRating(index + 1);\r\n      }\r\n    },\r\n    [readOnly],\r\n  );\r\n\r\n  const handleMouseLeave = React.useCallback(() => {\r\n    if (!readOnly) {\r\n      setHoverRating(null);\r\n    }\r\n  }, [readOnly]);\r\n\r\n  const getStarStyle = React.useCallback(\r\n    (index: number) => {\r\n      const ratingToUse =\r\n        !readOnly && hoverRating !== null ? hoverRating : value;\r\n\r\n      const difference = ratingToUse - index;\r\n\r\n      if (difference <= 0) return { color: \"gray\", fill: \"transparent\" };\r\n      if (difference >= 1) return { color: color, fill: color };\r\n\r\n      return {\r\n        color: color,\r\n        fill: `url(#${starIds[index]})`,\r\n      } as React.CSSProperties;\r\n    },\r\n    [readOnly, hoverRating, value, color, starIds],\r\n  );\r\n\r\n  const renderGradientDefs = () => {\r\n    if (!readOnly && hoverRating !== null) return null;\r\n\r\n    const partialStarIndex = Math.floor(value);\r\n    const partialFill = (value % 1) * 100;\r\n\r\n    if (partialFill > 0) {\r\n      return (\r\n        <linearGradient\r\n          id={starIds[partialStarIndex]}\r\n          x1='0%'\r\n          y1='0%'\r\n          x2='100%'\r\n          y2='0%'\r\n        >\r\n          <stop offset={`${partialFill}%`} stopColor={color} />\r\n          <stop offset={`${partialFill}%`} stopColor='transparent' />\r\n        </linearGradient>\r\n      );\r\n    }\r\n    return null;\r\n  };\r\n\r\n  const stars = React.useMemo(() => {\r\n    return Array.from({ length: maxStars }).map((_, index) => {\r\n      const style = getStarStyle(index);\r\n      return (\r\n        <StarIcon\r\n          key={index}\r\n          index={index}\r\n          style={style}\r\n          size={size}\r\n          onClick={(e) => handleStarClick(index, e)}\r\n          onMouseMove={(e) => handleStarHover(index, e)}\r\n          isInteractive={!readOnly}\r\n        />\r\n      );\r\n    });\r\n  }, [\r\n    maxStars,\r\n    getStarStyle,\r\n    size,\r\n    handleStarClick,\r\n    handleStarHover,\r\n    readOnly,\r\n  ]);\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"relative flex items-center gap-x-0.5\", className)}\r\n      onMouseLeave={handleMouseLeave}\r\n    >\r\n      <svg width='0' height='0' style={{ position: \"absolute\" }}>\r\n        <defs>{renderGradientDefs()}</defs>\r\n      </svg>\r\n      {stars}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default StarRating;\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/star-rating.tsx")),
     },
 
-    stepper: {
+    "stepper": {
       name: "stepper",
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/stepper.tsx",
-          content:
-            'import * as React from "react";\r\n\r\nimport * as Stepperize from "@stepperize/react";\r\nimport { Slot } from "@radix-ui/react-slot";\r\nimport { type VariantProps, cva } from "class-variance-authority";\r\n\r\nimport { Button } from "@/components/ui/button";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ntype StepperVariant = "horizontal" | "vertical" | "circle";\r\ntype StepperLabelOrientation = "horizontal" | "vertical";\r\n\r\ntype StepperConfig = {\r\n  variant?: StepperVariant;\r\n  labelOrientation?: StepperLabelOrientation;\r\n  tracking?: boolean;\r\n};\r\n\r\ntype DefineStepperProps<Steps extends Stepperize.Step[]> = Omit<\r\n  Stepperize.StepperReturn<Steps>,\r\n  "Scoped"\r\n> & {\r\n  StepperProvider: (\r\n    props: Omit<Stepperize.ScopedProps<Steps>, "children"> &\r\n      Omit<React.ComponentProps<"div">, "children"> &\r\n      StepperConfig & {\r\n        children:\r\n          | React.ReactNode\r\n          | ((props: {\r\n              methods: Stepperize.Stepper<Steps>;\r\n            }) => React.ReactNode);\r\n      },\r\n  ) => React.ReactElement;\r\n  StepperNavigation: (props: React.ComponentProps<"nav">) => React.ReactElement;\r\n  StepperStep: (\r\n    props: React.ComponentProps<"button"> & {\r\n      of: Stepperize.Get.Id<Steps>;\r\n      icon?: React.ReactNode;\r\n    },\r\n  ) => React.ReactElement;\r\n  StepperTitle: (\r\n    props: React.ComponentProps<"h4"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperDescription: (\r\n    props: React.ComponentProps<"p"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperPanel: (\r\n    props: React.ComponentProps<"div"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperControls: (\r\n    props: React.ComponentProps<"div"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n};\r\n\r\ntype CircleStepIndicatorProps = {\r\n  currentStep: number;\r\n  totalSteps: number;\r\n  size?: number;\r\n  strokeWidth?: number;\r\n};\r\n\r\nconst StepperContext = React.createContext<StepperConfig | null>(null);\r\n\r\nconst useStepperProvider = (): StepperConfig => {\r\n  const context = React.useContext(StepperContext);\r\n  if (!context) {\r\n    throw new Error("useStepper must be used within a StepperProvider.");\r\n  }\r\n  return context;\r\n};\r\n\r\nconst defineStepper = <const Steps extends Stepperize.Step[]>(\r\n  ...steps: Steps\r\n): DefineStepperProps<Steps> => {\r\n  const { Scoped, useStepper, ...rest } = Stepperize.defineStepper(...steps);\r\n\r\n  const StepperContainer = ({\r\n    children,\r\n    className,\r\n    ...props\r\n  }: Omit<React.ComponentProps<"div">, "children"> & {\r\n    children:\r\n      | React.ReactNode\r\n      | ((props: { methods: Stepperize.Stepper<Steps> }) => React.ReactNode);\r\n  }) => {\r\n    const methods = useStepper();\r\n\r\n    return (\r\n      <div className={cn("w-full", className)} {...props}>\r\n        {typeof children === "function" ? children({ methods }) : children}\r\n      </div>\r\n    );\r\n  };\r\n\r\n  return {\r\n    ...rest,\r\n    useStepper,\r\n    StepperProvider: ({\r\n      variant = "horizontal",\r\n      labelOrientation = "horizontal",\r\n      tracking = false,\r\n      children,\r\n      className,\r\n      ...props\r\n    }) => {\r\n      return (\r\n        <StepperContext.Provider\r\n          value={{ variant, labelOrientation, tracking }}\r\n        >\r\n          <Scoped\r\n            initialStep={props.initialStep}\r\n            initialMetadata={props.initialMetadata}\r\n          >\r\n            <StepperContainer className={className} {...props}>\r\n              {children}\r\n            </StepperContainer>\r\n          </Scoped>\r\n        </StepperContext.Provider>\r\n      );\r\n    },\r\n    StepperNavigation: ({\r\n      children,\r\n      className,\r\n      "aria-label": ariaLabel = "Stepper Navigation",\r\n      ...props\r\n    }) => {\r\n      const { variant } = useStepperProvider();\r\n      return (\r\n        <nav\r\n          aria-label={ariaLabel}\r\n          role=\'tablist\'\r\n          className={cn("stepper-navigation", className)}\r\n          {...props}\r\n        >\r\n          <ol className={listVariants({ variant: variant })}>{children}</ol>\r\n        </nav>\r\n      );\r\n    },\r\n    StepperStep: ({ children, className, icon, ...props }) => {\r\n      const { variant, labelOrientation } = useStepperProvider();\r\n      const { current } = useStepper();\r\n\r\n      const utils = rest.utils;\r\n      const steps = rest.steps;\r\n\r\n      const stepIndex = utils.getIndex(props.of);\r\n      const step = steps[stepIndex];\r\n      const currentIndex = utils.getIndex(current.id);\r\n\r\n      const isLast = utils.getLast().id === props.of;\r\n      const isActive = current.id === props.of;\r\n\r\n      const dataState = getStepState(currentIndex, stepIndex);\r\n      const childMap = useStepChildren(children);\r\n\r\n      const title = childMap.get("title");\r\n      const description = childMap.get("description");\r\n      const panel = childMap.get("panel");\r\n\r\n      if (variant === "circle") {\r\n        return (\r\n          <li\r\n            className={cn(\r\n              "flex shrink-0 items-center gap-4 rounded-md transition-colors",\r\n              className,\r\n            )}\r\n          >\r\n            <CircleStepIndicator\r\n              currentStep={stepIndex + 1}\r\n              totalSteps={steps.length}\r\n            />\r\n            <div className=\'flex flex-col items-start gap-1\'>\r\n              {title}\r\n              {description}\r\n            </div>\r\n          </li>\r\n        );\r\n      }\r\n\r\n      return (\r\n        <>\r\n          <li\r\n            className={cn([\r\n              "group peer relative flex items-center gap-2",\r\n              "data-[variant=vertical]:flex-row",\r\n              "data-[label-orientation=vertical]:w-full",\r\n              "data-[label-orientation=vertical]:flex-col",\r\n              "data-[label-orientation=vertical]:justify-center",\r\n            ])}\r\n            data-variant={variant}\r\n            data-label-orientation={labelOrientation}\r\n            data-state={dataState}\r\n            data-disabled={props.disabled}\r\n          >\r\n            <Button\r\n              id={`step-${step.id}`}\r\n              type=\'button\'\r\n              role=\'tab\'\r\n              tabIndex={dataState !== "inactive" ? 0 : -1}\r\n              className=\'rounded-full\'\r\n              variant={dataState !== "inactive" ? "default" : "secondary"}\r\n              size=\'icon\'\r\n              aria-controls={`step-panel-${props.of}`}\r\n              aria-current={isActive ? "step" : undefined}\r\n              aria-posinset={stepIndex + 1}\r\n              aria-setsize={steps.length}\r\n              aria-selected={isActive}\r\n              onKeyDown={(e) =>\r\n                onStepKeyDown(\r\n                  e,\r\n                  utils.getNext(props.of),\r\n                  utils.getPrev(props.of),\r\n                )\r\n              }\r\n              {...props}\r\n            >\r\n              {icon ?? stepIndex + 1}\r\n            </Button>\r\n            {variant === "horizontal" && labelOrientation === "vertical" && (\r\n              <StepperSeparator\r\n                orientation=\'horizontal\'\r\n                labelOrientation={labelOrientation}\r\n                isLast={isLast}\r\n                state={dataState}\r\n                disabled={props.disabled}\r\n              />\r\n            )}\r\n            <div className=\'flex flex-col items-start\'>\r\n              {title}\r\n              {description}\r\n            </div>\r\n          </li>\r\n\r\n          {variant === "horizontal" && labelOrientation === "horizontal" && (\r\n            <StepperSeparator\r\n              orientation=\'horizontal\'\r\n              isLast={isLast}\r\n              state={dataState}\r\n              disabled={props.disabled}\r\n            />\r\n          )}\r\n\r\n          {variant === "vertical" && (\r\n            <div className=\'flex gap-4\'>\r\n              {!isLast && (\r\n                <div className=\'flex justify-center ps-5\'>\r\n                  <StepperSeparator\r\n                    orientation=\'vertical\'\r\n                    isLast={isLast}\r\n                    state={dataState}\r\n                    disabled={props.disabled}\r\n                  />\r\n                </div>\r\n              )}\r\n              <div className=\'my-3 flex-1 ps-4\'>{panel}</div>\r\n            </div>\r\n          )}\r\n        </>\r\n      );\r\n    },\r\n    StepperTitle,\r\n    StepperDescription,\r\n    StepperPanel: ({ children, className, asChild, ...props }) => {\r\n      const Comp = asChild ? Slot : "div";\r\n      const { tracking } = useStepperProvider();\r\n\r\n      return (\r\n        <Comp\r\n          className={className}\r\n          ref={(node) => scrollIntoStepperPanel(node, tracking)}\r\n          {...props}\r\n        >\r\n          {children}\r\n        </Comp>\r\n      );\r\n    },\r\n    StepperControls: ({ children, className, asChild, ...props }) => {\r\n      const Comp = asChild ? Slot : "div";\r\n      return (\r\n        <Comp className={cn(" flex justify-end gap-4", className)} {...props}>\r\n          {children}\r\n        </Comp>\r\n      );\r\n    },\r\n  };\r\n};\r\n\r\nconst StepperTitle = ({\r\n  children,\r\n  className,\r\n  asChild,\r\n  ...props\r\n}: React.ComponentProps<"h4"> & { asChild?: boolean }) => {\r\n  const Comp = asChild ? Slot : "h4";\r\n\r\n  return (\r\n    <Comp className={cn("text-base font-medium m-0", className)} {...props}>\r\n      {children}\r\n    </Comp>\r\n  );\r\n};\r\n\r\nconst StepperDescription = ({\r\n  children,\r\n  className,\r\n  asChild,\r\n  ...props\r\n}: React.ComponentProps<"p"> & { asChild?: boolean }) => {\r\n  const Comp = asChild ? Slot : "p";\r\n\r\n  return (\r\n    <Comp className={cn("text-sm text-muted-foreground", className)} {...props}>\r\n      {children}\r\n    </Comp>\r\n  );\r\n};\r\n\r\nconst StepperSeparator = ({\r\n  orientation,\r\n  isLast,\r\n  labelOrientation,\r\n  state,\r\n  disabled,\r\n}: {\r\n  isLast: boolean;\r\n  state: string;\r\n  disabled?: boolean;\r\n} & VariantProps<typeof classForSeparator>) => {\r\n  if (isLast) {\r\n    return null;\r\n  }\r\n  return (\r\n    <div\r\n      data-orientation={orientation}\r\n      data-state={state}\r\n      data-disabled={disabled}\r\n      role=\'separator\'\r\n      tabIndex={-1}\r\n      className={classForSeparator({ orientation, labelOrientation })}\r\n    />\r\n  );\r\n};\r\n\r\nconst CircleStepIndicator = ({\r\n  currentStep,\r\n  totalSteps,\r\n  size = 80,\r\n  strokeWidth = 6,\r\n}: CircleStepIndicatorProps) => {\r\n  const radius = (size - strokeWidth) / 2;\r\n  const circumference = radius * 2 * Math.PI;\r\n  const fillPercentage = (currentStep / totalSteps) * 100;\r\n  const dashOffset = circumference - (circumference * fillPercentage) / 100;\r\n  return (\r\n    <div\r\n      role=\'progressbar\'\r\n      aria-valuenow={currentStep}\r\n      aria-valuemin={1}\r\n      aria-valuemax={totalSteps}\r\n      tabIndex={-1}\r\n      className=\'relative inline-flex items-center justify-center\'\r\n    >\r\n      <svg width={size} height={size}>\r\n        <title>Step Indicator</title>\r\n        <circle\r\n          cx={size / 2}\r\n          cy={size / 2}\r\n          r={radius}\r\n          fill=\'none\'\r\n          stroke=\'currentColor\'\r\n          strokeWidth={strokeWidth}\r\n          className=\'text-muted-foreground\'\r\n        />\r\n        <circle\r\n          cx={size / 2}\r\n          cy={size / 2}\r\n          r={radius}\r\n          fill=\'none\'\r\n          stroke=\'currentColor\'\r\n          strokeWidth={strokeWidth}\r\n          strokeDasharray={circumference}\r\n          strokeDashoffset={dashOffset}\r\n          className=\'text-primary transition-all duration-300 ease-in-out\'\r\n          transform={`rotate(-90 ${size / 2} ${size / 2})`}\r\n        />\r\n      </svg>\r\n      <div className=\'absolute inset-0 flex items-center justify-center\'>\r\n        <span className=\'text-sm font-medium\' aria-live=\'polite\'>\r\n          {currentStep} of {totalSteps}\r\n        </span>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nconst listVariants = cva(" flex gap-2", {\r\n  variants: {\r\n    variant: {\r\n      horizontal: "flex-row items-center justify-between",\r\n      vertical: "flex-col",\r\n      circle: "flex-row items-center justify-between",\r\n    },\r\n  },\r\n});\r\n\r\nconst classForSeparator = cva(\r\n  [\r\n    "bg-muted",\r\n    "data-[state=completed]:bg-primary data-[disabled]:opacity-50",\r\n    "transition-all duration-300 ease-in-out",\r\n  ],\r\n  {\r\n    variants: {\r\n      orientation: {\r\n        horizontal: "h-0.5 flex-1",\r\n        vertical: "h-full w-0.5",\r\n      },\r\n      labelOrientation: {\r\n        vertical:\r\n          "absolute left-[calc(50%+30px)] right-[calc(-50%+20px)] top-5 block shrink-0",\r\n      },\r\n    },\r\n  },\r\n);\r\n\r\nfunction scrollIntoStepperPanel(\r\n  node: HTMLDivElement | null,\r\n  tracking?: boolean,\r\n) {\r\n  if (tracking) {\r\n    node?.scrollIntoView({ behavior: "smooth", block: "center" });\r\n  }\r\n}\r\n\r\nconst useStepChildren = (children: React.ReactNode) => {\r\n  return React.useMemo(() => extractChildren(children), [children]);\r\n};\r\n\r\nconst extractChildren = (children: React.ReactNode) => {\r\n  const childrenArray = React.Children.toArray(children);\r\n  const map = new Map<string, React.ReactNode>();\r\n\r\n  for (const child of childrenArray) {\r\n    if (React.isValidElement(child)) {\r\n      if (child.type === StepperTitle) {\r\n        map.set("title", child);\r\n      } else if (child.type === StepperDescription) {\r\n        map.set("description", child);\r\n      } else {\r\n        map.set("panel", child);\r\n      }\r\n    }\r\n  }\r\n\r\n  return map;\r\n};\r\n\r\nconst onStepKeyDown = (\r\n  e: React.KeyboardEvent<HTMLButtonElement>,\r\n  nextStep: Stepperize.Step,\r\n  prevStep: Stepperize.Step,\r\n) => {\r\n  const { key } = e;\r\n  const directions = {\r\n    next: ["ArrowRight", "ArrowDown"],\r\n    prev: ["ArrowLeft", "ArrowUp"],\r\n  };\r\n\r\n  if (directions.next.includes(key) || directions.prev.includes(key)) {\r\n    const direction = directions.next.includes(key) ? "next" : "prev";\r\n    const step = direction === "next" ? nextStep : prevStep;\r\n\r\n    if (!step) {\r\n      return;\r\n    }\r\n\r\n    const stepElement = document.getElementById(`step-${step.id}`);\r\n    if (!stepElement) {\r\n      return;\r\n    }\r\n\r\n    const isActive =\r\n      stepElement.parentElement?.getAttribute("data-state") !== "inactive";\r\n    if (isActive || direction === "prev") {\r\n      stepElement.focus();\r\n    }\r\n  }\r\n};\r\n\r\nconst getStepState = (currentIndex: number, stepIndex: number) => {\r\n  if (currentIndex === stepIndex) {\r\n    return "active";\r\n  }\r\n  if (currentIndex > stepIndex) {\r\n    return "completed";\r\n  }\r\n  return "inactive";\r\n};\r\n\r\nexport { defineStepper };\r\n',
-          type: "registry:ui",
-        },
-      ],
+  {
+    "path": "registry/default/ui/stepper.tsx",
+    "content": "import * as React from \"react\";\r\n\r\nimport * as Stepperize from \"@stepperize/react\";\r\nimport { Slot } from \"@radix-ui/react-slot\";\r\nimport { type VariantProps, cva } from \"class-variance-authority\";\r\n\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype StepperVariant = \"horizontal\" | \"vertical\" | \"circle\";\r\ntype StepperLabelOrientation = \"horizontal\" | \"vertical\";\r\n\r\ntype StepperConfig = {\r\n  variant?: StepperVariant;\r\n  labelOrientation?: StepperLabelOrientation;\r\n  tracking?: boolean;\r\n};\r\n\r\ntype DefineStepperProps<Steps extends Stepperize.Step[]> = Omit<\r\n  Stepperize.StepperReturn<Steps>,\r\n  \"Scoped\"\r\n> & {\r\n  StepperProvider: (\r\n    props: Omit<Stepperize.ScopedProps<Steps>, \"children\"> &\r\n      Omit<React.ComponentProps<\"div\">, \"children\"> &\r\n      StepperConfig & {\r\n        children:\r\n          | React.ReactNode\r\n          | ((props: {\r\n              methods: Stepperize.Stepper<Steps>;\r\n            }) => React.ReactNode);\r\n      },\r\n  ) => React.ReactElement;\r\n  StepperNavigation: (props: React.ComponentProps<\"nav\">) => React.ReactElement;\r\n  StepperStep: (\r\n    props: React.ComponentProps<\"button\"> & {\r\n      of: Stepperize.Get.Id<Steps>;\r\n      icon?: React.ReactNode;\r\n    },\r\n  ) => React.ReactElement;\r\n  StepperTitle: (\r\n    props: React.ComponentProps<\"h4\"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperDescription: (\r\n    props: React.ComponentProps<\"p\"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperPanel: (\r\n    props: React.ComponentProps<\"div\"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n  StepperControls: (\r\n    props: React.ComponentProps<\"div\"> & { asChild?: boolean },\r\n  ) => React.ReactElement;\r\n};\r\n\r\ntype CircleStepIndicatorProps = {\r\n  currentStep: number;\r\n  totalSteps: number;\r\n  size?: number;\r\n  strokeWidth?: number;\r\n};\r\n\r\nconst StepperContext = React.createContext<StepperConfig | null>(null);\r\n\r\nconst useStepperProvider = (): StepperConfig => {\r\n  const context = React.useContext(StepperContext);\r\n  if (!context) {\r\n    throw new Error(\"useStepper must be used within a StepperProvider.\");\r\n  }\r\n  return context;\r\n};\r\n\r\nconst defineStepper = <const Steps extends Stepperize.Step[]>(\r\n  ...steps: Steps\r\n): DefineStepperProps<Steps> => {\r\n  const { Scoped, useStepper, ...rest } = Stepperize.defineStepper(...steps);\r\n\r\n  const StepperContainer = ({\r\n    children,\r\n    className,\r\n    ...props\r\n  }: Omit<React.ComponentProps<\"div\">, \"children\"> & {\r\n    children:\r\n      | React.ReactNode\r\n      | ((props: { methods: Stepperize.Stepper<Steps> }) => React.ReactNode);\r\n  }) => {\r\n    const methods = useStepper();\r\n\r\n    return (\r\n      <div className={cn(\"w-full\", className)} {...props}>\r\n        {typeof children === \"function\" ? children({ methods }) : children}\r\n      </div>\r\n    );\r\n  };\r\n\r\n  return {\r\n    ...rest,\r\n    useStepper,\r\n    StepperProvider: ({\r\n      variant = \"horizontal\",\r\n      labelOrientation = \"horizontal\",\r\n      tracking = false,\r\n      children,\r\n      className,\r\n      ...props\r\n    }) => {\r\n      return (\r\n        <StepperContext.Provider\r\n          value={{ variant, labelOrientation, tracking }}\r\n        >\r\n          <Scoped\r\n            initialStep={props.initialStep}\r\n            initialMetadata={props.initialMetadata}\r\n          >\r\n            <StepperContainer className={className} {...props}>\r\n              {children}\r\n            </StepperContainer>\r\n          </Scoped>\r\n        </StepperContext.Provider>\r\n      );\r\n    },\r\n    StepperNavigation: ({\r\n      children,\r\n      className,\r\n      \"aria-label\": ariaLabel = \"Stepper Navigation\",\r\n      ...props\r\n    }) => {\r\n      const { variant } = useStepperProvider();\r\n      return (\r\n        <nav\r\n          aria-label={ariaLabel}\r\n          role='tablist'\r\n          className={cn(\"stepper-navigation\", className)}\r\n          {...props}\r\n        >\r\n          <ol className={listVariants({ variant: variant })}>{children}</ol>\r\n        </nav>\r\n      );\r\n    },\r\n    StepperStep: ({ children, className, icon, ...props }) => {\r\n      const { variant, labelOrientation } = useStepperProvider();\r\n      const { current } = useStepper();\r\n\r\n      const utils = rest.utils;\r\n      const steps = rest.steps;\r\n\r\n      const stepIndex = utils.getIndex(props.of);\r\n      const step = steps[stepIndex];\r\n      const currentIndex = utils.getIndex(current.id);\r\n\r\n      const isLast = utils.getLast().id === props.of;\r\n      const isActive = current.id === props.of;\r\n\r\n      const dataState = getStepState(currentIndex, stepIndex);\r\n      const childMap = useStepChildren(children);\r\n\r\n      const title = childMap.get(\"title\");\r\n      const description = childMap.get(\"description\");\r\n      const panel = childMap.get(\"panel\");\r\n\r\n      if (variant === \"circle\") {\r\n        return (\r\n          <li\r\n            className={cn(\r\n              \"flex shrink-0 items-center gap-4 rounded-md transition-colors\",\r\n              className,\r\n            )}\r\n          >\r\n            <CircleStepIndicator\r\n              currentStep={stepIndex + 1}\r\n              totalSteps={steps.length}\r\n            />\r\n            <div className='flex flex-col items-start gap-1'>\r\n              {title}\r\n              {description}\r\n            </div>\r\n          </li>\r\n        );\r\n      }\r\n\r\n      return (\r\n        <>\r\n          <li\r\n            className={cn([\r\n              \"group peer relative flex items-center gap-2\",\r\n              \"data-[variant=vertical]:flex-row\",\r\n              \"data-[label-orientation=vertical]:w-full\",\r\n              \"data-[label-orientation=vertical]:flex-col\",\r\n              \"data-[label-orientation=vertical]:justify-center\",\r\n            ])}\r\n            data-variant={variant}\r\n            data-label-orientation={labelOrientation}\r\n            data-state={dataState}\r\n            data-disabled={props.disabled}\r\n          >\r\n            <Button\r\n              id={`step-${step.id}`}\r\n              type='button'\r\n              role='tab'\r\n              tabIndex={dataState !== \"inactive\" ? 0 : -1}\r\n              className='rounded-full'\r\n              variant={dataState !== \"inactive\" ? \"default\" : \"secondary\"}\r\n              size='icon'\r\n              aria-controls={`step-panel-${props.of}`}\r\n              aria-current={isActive ? \"step\" : undefined}\r\n              aria-posinset={stepIndex + 1}\r\n              aria-setsize={steps.length}\r\n              aria-selected={isActive}\r\n              onKeyDown={(e) =>\r\n                onStepKeyDown(\r\n                  e,\r\n                  utils.getNext(props.of),\r\n                  utils.getPrev(props.of),\r\n                )\r\n              }\r\n              {...props}\r\n            >\r\n              {icon ?? stepIndex + 1}\r\n            </Button>\r\n            {variant === \"horizontal\" && labelOrientation === \"vertical\" && (\r\n              <StepperSeparator\r\n                orientation='horizontal'\r\n                labelOrientation={labelOrientation}\r\n                isLast={isLast}\r\n                state={dataState}\r\n                disabled={props.disabled}\r\n              />\r\n            )}\r\n            <div className='flex flex-col items-start'>\r\n              {title}\r\n              {description}\r\n            </div>\r\n          </li>\r\n\r\n          {variant === \"horizontal\" && labelOrientation === \"horizontal\" && (\r\n            <StepperSeparator\r\n              orientation='horizontal'\r\n              isLast={isLast}\r\n              state={dataState}\r\n              disabled={props.disabled}\r\n            />\r\n          )}\r\n\r\n          {variant === \"vertical\" && (\r\n            <div className='flex gap-4'>\r\n              {!isLast && (\r\n                <div className='flex justify-center ps-5'>\r\n                  <StepperSeparator\r\n                    orientation='vertical'\r\n                    isLast={isLast}\r\n                    state={dataState}\r\n                    disabled={props.disabled}\r\n                  />\r\n                </div>\r\n              )}\r\n              <div className='my-3 flex-1 ps-4'>{panel}</div>\r\n            </div>\r\n          )}\r\n        </>\r\n      );\r\n    },\r\n    StepperTitle,\r\n    StepperDescription,\r\n    StepperPanel: ({ children, className, asChild, ...props }) => {\r\n      const Comp = asChild ? Slot : \"div\";\r\n      const { tracking } = useStepperProvider();\r\n\r\n      return (\r\n        <Comp\r\n          className={className}\r\n          ref={(node) => scrollIntoStepperPanel(node, tracking)}\r\n          {...props}\r\n        >\r\n          {children}\r\n        </Comp>\r\n      );\r\n    },\r\n    StepperControls: ({ children, className, asChild, ...props }) => {\r\n      const Comp = asChild ? Slot : \"div\";\r\n      return (\r\n        <Comp className={cn(\" flex justify-end gap-4\", className)} {...props}>\r\n          {children}\r\n        </Comp>\r\n      );\r\n    },\r\n  };\r\n};\r\n\r\nconst StepperTitle = ({\r\n  children,\r\n  className,\r\n  asChild,\r\n  ...props\r\n}: React.ComponentProps<\"h4\"> & { asChild?: boolean }) => {\r\n  const Comp = asChild ? Slot : \"h4\";\r\n\r\n  return (\r\n    <Comp className={cn(\"text-base font-medium m-0\", className)} {...props}>\r\n      {children}\r\n    </Comp>\r\n  );\r\n};\r\n\r\nconst StepperDescription = ({\r\n  children,\r\n  className,\r\n  asChild,\r\n  ...props\r\n}: React.ComponentProps<\"p\"> & { asChild?: boolean }) => {\r\n  const Comp = asChild ? Slot : \"p\";\r\n\r\n  return (\r\n    <Comp className={cn(\"text-sm text-muted-foreground\", className)} {...props}>\r\n      {children}\r\n    </Comp>\r\n  );\r\n};\r\n\r\nconst StepperSeparator = ({\r\n  orientation,\r\n  isLast,\r\n  labelOrientation,\r\n  state,\r\n  disabled,\r\n}: {\r\n  isLast: boolean;\r\n  state: string;\r\n  disabled?: boolean;\r\n} & VariantProps<typeof classForSeparator>) => {\r\n  if (isLast) {\r\n    return null;\r\n  }\r\n  return (\r\n    <div\r\n      data-orientation={orientation}\r\n      data-state={state}\r\n      data-disabled={disabled}\r\n      role='separator'\r\n      tabIndex={-1}\r\n      className={classForSeparator({ orientation, labelOrientation })}\r\n    />\r\n  );\r\n};\r\n\r\nconst CircleStepIndicator = ({\r\n  currentStep,\r\n  totalSteps,\r\n  size = 80,\r\n  strokeWidth = 6,\r\n}: CircleStepIndicatorProps) => {\r\n  const radius = (size - strokeWidth) / 2;\r\n  const circumference = radius * 2 * Math.PI;\r\n  const fillPercentage = (currentStep / totalSteps) * 100;\r\n  const dashOffset = circumference - (circumference * fillPercentage) / 100;\r\n  return (\r\n    <div\r\n      role='progressbar'\r\n      aria-valuenow={currentStep}\r\n      aria-valuemin={1}\r\n      aria-valuemax={totalSteps}\r\n      tabIndex={-1}\r\n      className='relative inline-flex items-center justify-center'\r\n    >\r\n      <svg width={size} height={size}>\r\n        <title>Step Indicator</title>\r\n        <circle\r\n          cx={size / 2}\r\n          cy={size / 2}\r\n          r={radius}\r\n          fill='none'\r\n          stroke='currentColor'\r\n          strokeWidth={strokeWidth}\r\n          className='text-muted-foreground'\r\n        />\r\n        <circle\r\n          cx={size / 2}\r\n          cy={size / 2}\r\n          r={radius}\r\n          fill='none'\r\n          stroke='currentColor'\r\n          strokeWidth={strokeWidth}\r\n          strokeDasharray={circumference}\r\n          strokeDashoffset={dashOffset}\r\n          className='text-primary transition-all duration-300 ease-in-out'\r\n          transform={`rotate(-90 ${size / 2} ${size / 2})`}\r\n        />\r\n      </svg>\r\n      <div className='absolute inset-0 flex items-center justify-center'>\r\n        <span className='text-sm font-medium' aria-live='polite'>\r\n          {currentStep} of {totalSteps}\r\n        </span>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nconst listVariants = cva(\" flex gap-2\", {\r\n  variants: {\r\n    variant: {\r\n      horizontal: \"flex-row items-center justify-between\",\r\n      vertical: \"flex-col\",\r\n      circle: \"flex-row items-center justify-between\",\r\n    },\r\n  },\r\n});\r\n\r\nconst classForSeparator = cva(\r\n  [\r\n    \"bg-muted\",\r\n    \"data-[state=completed]:bg-primary data-[disabled]:opacity-50\",\r\n    \"transition-all duration-300 ease-in-out\",\r\n  ],\r\n  {\r\n    variants: {\r\n      orientation: {\r\n        horizontal: \"h-0.5 flex-1\",\r\n        vertical: \"h-full w-0.5\",\r\n      },\r\n      labelOrientation: {\r\n        vertical:\r\n          \"absolute left-[calc(50%+30px)] right-[calc(-50%+20px)] top-5 block shrink-0\",\r\n      },\r\n    },\r\n  },\r\n);\r\n\r\nfunction scrollIntoStepperPanel(\r\n  node: HTMLDivElement | null,\r\n  tracking?: boolean,\r\n) {\r\n  if (tracking) {\r\n    node?.scrollIntoView({ behavior: \"smooth\", block: \"center\" });\r\n  }\r\n}\r\n\r\nconst useStepChildren = (children: React.ReactNode) => {\r\n  return React.useMemo(() => extractChildren(children), [children]);\r\n};\r\n\r\nconst extractChildren = (children: React.ReactNode) => {\r\n  const childrenArray = React.Children.toArray(children);\r\n  const map = new Map<string, React.ReactNode>();\r\n\r\n  for (const child of childrenArray) {\r\n    if (React.isValidElement(child)) {\r\n      if (child.type === StepperTitle) {\r\n        map.set(\"title\", child);\r\n      } else if (child.type === StepperDescription) {\r\n        map.set(\"description\", child);\r\n      } else {\r\n        map.set(\"panel\", child);\r\n      }\r\n    }\r\n  }\r\n\r\n  return map;\r\n};\r\n\r\nconst onStepKeyDown = (\r\n  e: React.KeyboardEvent<HTMLButtonElement>,\r\n  nextStep: Stepperize.Step,\r\n  prevStep: Stepperize.Step,\r\n) => {\r\n  const { key } = e;\r\n  const directions = {\r\n    next: [\"ArrowRight\", \"ArrowDown\"],\r\n    prev: [\"ArrowLeft\", \"ArrowUp\"],\r\n  };\r\n\r\n  if (directions.next.includes(key) || directions.prev.includes(key)) {\r\n    const direction = directions.next.includes(key) ? \"next\" : \"prev\";\r\n    const step = direction === \"next\" ? nextStep : prevStep;\r\n\r\n    if (!step) {\r\n      return;\r\n    }\r\n\r\n    const stepElement = document.getElementById(`step-${step.id}`);\r\n    if (!stepElement) {\r\n      return;\r\n    }\r\n\r\n    const isActive =\r\n      stepElement.parentElement?.getAttribute(\"data-state\") !== \"inactive\";\r\n    if (isActive || direction === \"prev\") {\r\n      stepElement.focus();\r\n    }\r\n  }\r\n};\r\n\r\nconst getStepState = (currentIndex: number, stepIndex: number) => {\r\n  if (currentIndex === stepIndex) {\r\n    return \"active\";\r\n  }\r\n  if (currentIndex > stepIndex) {\r\n    return \"completed\";\r\n  }\r\n  return \"inactive\";\r\n};\r\n\r\nexport { defineStepper };\r\n",
+    "type": "registry:ui"
+  }
+],
       component: React.lazy(() => import("@/registry/default/ui/stepper.tsx")),
     },
 
@@ -144,16 +123,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:ui",
       files: [
-        {
-          path: "registry/default/ui/tel-input.tsx",
-          content:
-            'import * as React from "react";\r\n\r\nimport * as PhoneNumberInput from "react-phone-number-input";\r\nimport { CheckIcon, ChevronsUpDown } from "lucide-react";\r\nimport flags from "react-phone-number-input/flags";\r\n\r\nimport { Button } from "@/components/ui/button";\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n} from "@/components/ui/command";\r\nimport { Input } from "@/components/ui/input";\r\nimport {\r\n  Popover,\r\n  PopoverContent,\r\n  PopoverTrigger,\r\n} from "@/components/ui/popover";\r\nimport { ScrollArea } from "@/components/ui/scroll-area";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\ntype CountryEntry = {\r\n  label: string;\r\n  value: PhoneNumberInput.Country | undefined;\r\n};\r\n\r\ntype CountrySelectProps = {\r\n  disabled?: boolean;\r\n  value: PhoneNumberInput.Country;\r\n  options: CountryEntry[];\r\n  onChange: (country: PhoneNumberInput.Country) => void;\r\n};\r\n\r\ninterface CountrySelectOptionProps extends PhoneNumberInput.FlagProps {\r\n  selectedCountry: PhoneNumberInput.Country;\r\n  onChange: (country: PhoneNumberInput.Country) => void;\r\n}\r\n\r\ntype TelInputProps = Omit<\r\n  React.ComponentProps<"input">,\r\n  "onChange" | "value" | "ref"\r\n> &\r\n  Omit<PhoneNumberInput.Props<typeof PhoneNumberInput.default>, "onChange"> & {\r\n    onChange?: (value: PhoneNumberInput.Value) => void;\r\n  };\r\n\r\nconst FlagComponent = ({\r\n  country,\r\n  countryName,\r\n}: PhoneNumberInput.FlagProps) => {\r\n  const Flag = flags[country];\r\n\r\n  return (\r\n    <span className=\'flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg]:size-full\'>\r\n      {Flag && <Flag title={countryName} />}\r\n    </span>\r\n  );\r\n};\r\n\r\nconst CountrySelectOption = ({\r\n  country,\r\n  countryName,\r\n  selectedCountry,\r\n  onChange,\r\n}: CountrySelectOptionProps) => {\r\n  return (\r\n    <CommandItem\r\n      className=\'gap-2 cursor-pointer\'\r\n      onSelect={() => onChange(country)}\r\n    >\r\n      <FlagComponent country={country} countryName={countryName} />\r\n      <span className=\'flex-1 text-sm\'>{countryName}</span>\r\n      <span className=\'text-sm text-foreground/50\'>{`+${PhoneNumberInput.getCountryCallingCode(country)}`}</span>\r\n      <CheckIcon\r\n        className={`ml-auto size-4 ${country === selectedCountry ? "opacity-100" : "opacity-0"}`}\r\n      />\r\n    </CommandItem>\r\n  );\r\n};\r\n\r\nconst InputComponent = React.forwardRef<\r\n  HTMLInputElement,\r\n  React.ComponentProps<"input">\r\n>(({ className, ...props }, ref) => (\r\n  <Input\r\n    className={cn("rounded-e-lg rounded-s-none", className)}\r\n    {...props}\r\n    ref={ref}\r\n  />\r\n));\r\nInputComponent.displayName = "InputComponent";\r\n\r\nconst CountrySelect = ({\r\n  disabled,\r\n  value: selectedCountry,\r\n  options: countryList,\r\n  onChange,\r\n}: CountrySelectProps) => {\r\n  return (\r\n    <Popover>\r\n      <PopoverTrigger asChild>\r\n        <Button\r\n          type=\'button\'\r\n          variant=\'outline\'\r\n          className=\'flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10\'\r\n          disabled={disabled}\r\n        >\r\n          <FlagComponent\r\n            country={selectedCountry}\r\n            countryName={selectedCountry}\r\n          />\r\n          <ChevronsUpDown\r\n            className={cn(\r\n              "-mr-2 size-4 opacity-50",\r\n              disabled ? "hidden" : "opacity-100",\r\n            )}\r\n          />\r\n        </Button>\r\n      </PopoverTrigger>\r\n      <PopoverContent className=\'w-[300px] p-0\'>\r\n        <Command>\r\n          <CommandInput placeholder=\'Search country...\' />\r\n          <CommandList>\r\n            <ScrollArea className=\'h-72\'>\r\n              <CommandEmpty>No country found.</CommandEmpty>\r\n              <CommandGroup>\r\n                {countryList.map(({ value, label }) =>\r\n                  value ? (\r\n                    <CountrySelectOption\r\n                      key={value}\r\n                      country={value}\r\n                      countryName={label}\r\n                      selectedCountry={selectedCountry}\r\n                      onChange={onChange}\r\n                    />\r\n                  ) : null,\r\n                )}\r\n              </CommandGroup>\r\n            </ScrollArea>\r\n          </CommandList>\r\n        </Command>\r\n      </PopoverContent>\r\n    </Popover>\r\n  );\r\n};\r\n\r\nconst TelInput: React.ForwardRefExoticComponent<TelInputProps> =\r\n  React.forwardRef<\r\n    React.ElementRef<typeof PhoneNumberInput.default>,\r\n    TelInputProps\r\n  >(({ className, onChange, ...props }, ref) => {\r\n    return (\r\n      <PhoneNumberInput.default\r\n        ref={ref}\r\n        className={cn("flex", className)}\r\n        flagComponent={FlagComponent}\r\n        countrySelectComponent={CountrySelect}\r\n        inputComponent={InputComponent}\r\n        smartCaret={false}\r\n        onChange={(value) =>\r\n          onChange?.(value || ("" as PhoneNumberInput.Value))\r\n        }\r\n        {...props}\r\n      />\r\n    );\r\n  });\r\nTelInput.displayName = "TelInput";\r\n\r\nexport { TelInput };\r\n',
-          type: "registry:ui",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/ui/tel-input.tsx"),
-      ),
+  {
+    "path": "registry/default/ui/tel-input.tsx",
+    "content": "import * as React from \"react\";\r\n\r\nimport * as PhoneNumberInput from \"react-phone-number-input\";\r\nimport { CheckIcon, ChevronsUpDown } from \"lucide-react\";\r\nimport flags from \"react-phone-number-input/flags\";\r\n\r\nimport { Button } from \"@/components/ui/button\";\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n} from \"@/components/ui/command\";\r\nimport { Input } from \"@/components/ui/input\";\r\nimport {\r\n  Popover,\r\n  PopoverContent,\r\n  PopoverTrigger,\r\n} from \"@/components/ui/popover\";\r\nimport { ScrollArea } from \"@/components/ui/scroll-area\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype CountryEntry = {\r\n  label: string;\r\n  value: PhoneNumberInput.Country | undefined;\r\n};\r\n\r\ntype CountrySelectProps = {\r\n  disabled?: boolean;\r\n  value: PhoneNumberInput.Country;\r\n  options: CountryEntry[];\r\n  onChange: (country: PhoneNumberInput.Country) => void;\r\n};\r\n\r\ninterface CountrySelectOptionProps extends PhoneNumberInput.FlagProps {\r\n  selectedCountry: PhoneNumberInput.Country;\r\n  onChange: (country: PhoneNumberInput.Country) => void;\r\n}\r\n\r\ntype TelInputProps = Omit<\r\n  React.ComponentProps<\"input\">,\r\n  \"onChange\" | \"value\" | \"ref\"\r\n> &\r\n  Omit<PhoneNumberInput.Props<typeof PhoneNumberInput.default>, \"onChange\"> & {\r\n    onChange?: (value: PhoneNumberInput.Value) => void;\r\n  };\r\n\r\nconst FlagComponent = ({\r\n  country,\r\n  countryName,\r\n}: PhoneNumberInput.FlagProps) => {\r\n  const Flag = flags[country];\r\n\r\n  return (\r\n    <span className='flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg]:size-full'>\r\n      {Flag && <Flag title={countryName} />}\r\n    </span>\r\n  );\r\n};\r\n\r\nconst CountrySelectOption = ({\r\n  country,\r\n  countryName,\r\n  selectedCountry,\r\n  onChange,\r\n}: CountrySelectOptionProps) => {\r\n  return (\r\n    <CommandItem\r\n      className='gap-2 cursor-pointer'\r\n      onSelect={() => onChange(country)}\r\n    >\r\n      <FlagComponent country={country} countryName={countryName} />\r\n      <span className='flex-1 text-sm'>{countryName}</span>\r\n      <span className='text-sm text-foreground/50'>{`+${PhoneNumberInput.getCountryCallingCode(country)}`}</span>\r\n      <CheckIcon\r\n        className={`ml-auto size-4 ${country === selectedCountry ? \"opacity-100\" : \"opacity-0\"}`}\r\n      />\r\n    </CommandItem>\r\n  );\r\n};\r\n\r\nconst InputComponent = React.forwardRef<\r\n  HTMLInputElement,\r\n  React.ComponentProps<\"input\">\r\n>(({ className, ...props }, ref) => (\r\n  <Input\r\n    className={cn(\"rounded-e-lg rounded-s-none\", className)}\r\n    {...props}\r\n    ref={ref}\r\n  />\r\n));\r\nInputComponent.displayName = \"InputComponent\";\r\n\r\nconst CountrySelect = ({\r\n  disabled,\r\n  value: selectedCountry,\r\n  options: countryList,\r\n  onChange,\r\n}: CountrySelectProps) => {\r\n  return (\r\n    <Popover>\r\n      <PopoverTrigger asChild>\r\n        <Button\r\n          type='button'\r\n          variant='outline'\r\n          className='flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10'\r\n          disabled={disabled}\r\n        >\r\n          <FlagComponent\r\n            country={selectedCountry}\r\n            countryName={selectedCountry}\r\n          />\r\n          <ChevronsUpDown\r\n            className={cn(\r\n              \"-mr-2 size-4 opacity-50\",\r\n              disabled ? \"hidden\" : \"opacity-100\",\r\n            )}\r\n          />\r\n        </Button>\r\n      </PopoverTrigger>\r\n      <PopoverContent className='w-[300px] p-0'>\r\n        <Command>\r\n          <CommandInput placeholder='Search country...' />\r\n          <CommandList>\r\n            <ScrollArea className='h-72'>\r\n              <CommandEmpty>No country found.</CommandEmpty>\r\n              <CommandGroup>\r\n                {countryList.map(({ value, label }) =>\r\n                  value ? (\r\n                    <CountrySelectOption\r\n                      key={value}\r\n                      country={value}\r\n                      countryName={label}\r\n                      selectedCountry={selectedCountry}\r\n                      onChange={onChange}\r\n                    />\r\n                  ) : null,\r\n                )}\r\n              </CommandGroup>\r\n            </ScrollArea>\r\n          </CommandList>\r\n        </Command>\r\n      </PopoverContent>\r\n    </Popover>\r\n  );\r\n};\r\n\r\nconst TelInput: React.ForwardRefExoticComponent<TelInputProps> =\r\n  React.forwardRef<\r\n    React.ElementRef<typeof PhoneNumberInput.default>,\r\n    TelInputProps\r\n  >(({ className, onChange, ...props }, ref) => {\r\n    return (\r\n      <PhoneNumberInput.default\r\n        ref={ref}\r\n        className={cn(\"flex\", className)}\r\n        flagComponent={FlagComponent}\r\n        countrySelectComponent={CountrySelect}\r\n        inputComponent={InputComponent}\r\n        smartCaret={false}\r\n        onChange={(value) =>\r\n          onChange?.(value || (\"\" as PhoneNumberInput.Value))\r\n        }\r\n        {...props}\r\n      />\r\n    );\r\n  });\r\nTelInput.displayName = \"TelInput\";\r\n\r\nexport { TelInput };\r\n",
+    "type": "registry:ui"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/ui/tel-input.tsx")),
     },
 
     "animated-label-input-default": {
@@ -161,15 +137,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/animated-label-input-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/animated-label-input-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/animated-label-input-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/animated-label-input-default.tsx")),
     },
 
     "animated-label-input-with-form": {
@@ -177,17 +150,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/animated-label-input-with-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import(
-            "@/registry/default/example/animated-label-input-with-form.tsx"
-          ),
-      ),
+  {
+    "path": "registry/default/example/animated-label-input-with-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/animated-label-input-with-form.tsx")),
     },
 
     "animated-tooltip-default": {
@@ -195,14 +163,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/animated-tooltip-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/animated-tooltip-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/animated-tooltip-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/animated-tooltip-default.tsx")),
     },
 
     "combobox-input-default": {
@@ -210,14 +176,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/combobox-input-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/combobox-input-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/combobox-input-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/combobox-input-default.tsx")),
     },
 
     "labeled-switch-default": {
@@ -225,14 +189,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/labeled-switch-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/labeled-switch-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/labeled-switch-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/labeled-switch-default.tsx")),
     },
 
     "labeled-switch-with-form": {
@@ -240,14 +202,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/labeled-switch-with-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/labeled-switch-with-form.tsx"),
-      ),
+  {
+    "path": "registry/default/example/labeled-switch-with-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/labeled-switch-with-form.tsx")),
     },
 
     "range-slider-default": {
@@ -255,14 +215,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/range-slider-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/range-slider-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/range-slider-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/range-slider-default.tsx")),
     },
 
     "range-slider-vertical": {
@@ -270,14 +228,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/range-slider-vertical.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/range-slider-vertical.tsx"),
-      ),
+  {
+    "path": "registry/default/example/range-slider-vertical.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/range-slider-vertical.tsx")),
     },
 
     "range-slider-with-label": {
@@ -285,14 +241,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/range-slider-with-label.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/range-slider-with-label.tsx"),
-      ),
+  {
+    "path": "registry/default/example/range-slider-with-label.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/range-slider-with-label.tsx")),
     },
 
     "responsive-textarea-default": {
@@ -300,15 +254,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/responsive-textarea-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/responsive-textarea-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/responsive-textarea-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/responsive-textarea-default.tsx")),
     },
 
     "responsive-textarea-with-form": {
@@ -316,17 +267,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/responsive-textarea-with-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import(
-            "@/registry/default/example/responsive-textarea-with-form.tsx"
-          ),
-      ),
+  {
+    "path": "registry/default/example/responsive-textarea-with-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/responsive-textarea-with-form.tsx")),
     },
 
     "responsive-textarea-with-label": {
@@ -334,17 +280,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/responsive-textarea-with-label.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import(
-            "@/registry/default/example/responsive-textarea-with-label.tsx"
-          ),
-      ),
+  {
+    "path": "registry/default/example/responsive-textarea-with-label.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/responsive-textarea-with-label.tsx")),
     },
 
     "responsive-textarea-with-text": {
@@ -352,17 +293,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/responsive-textarea-with-text.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import(
-            "@/registry/default/example/responsive-textarea-with-text.tsx"
-          ),
-      ),
+  {
+    "path": "registry/default/example/responsive-textarea-with-text.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/responsive-textarea-with-text.tsx")),
     },
 
     "star-rating-customized": {
@@ -370,14 +306,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/star-rating-customized.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/star-rating-customized.tsx"),
-      ),
+  {
+    "path": "registry/default/example/star-rating-customized.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/star-rating-customized.tsx")),
     },
 
     "star-rating-default": {
@@ -385,14 +319,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/star-rating-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/star-rating-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/star-rating-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/star-rating-default.tsx")),
     },
 
     "star-rating-interactive": {
@@ -400,14 +332,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/star-rating-interactive.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/star-rating-interactive.tsx"),
-      ),
+  {
+    "path": "registry/default/example/star-rating-interactive.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/star-rating-interactive.tsx")),
     },
 
     "star-rating-readonly": {
@@ -415,14 +345,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/star-rating-readonly.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/star-rating-readonly.tsx"),
-      ),
+  {
+    "path": "registry/default/example/star-rating-readonly.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/star-rating-readonly.tsx")),
     },
 
     "star-rating-with-form": {
@@ -430,14 +358,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/star-rating-with-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/star-rating-with-form.tsx"),
-      ),
+  {
+    "path": "registry/default/example/star-rating-with-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/star-rating-with-form.tsx")),
     },
 
     "stepper-demo": {
@@ -445,14 +371,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-demo.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-demo.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-demo.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-demo.tsx")),
     },
 
     "stepper-description": {
@@ -460,14 +384,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-description.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-description.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-description.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-description.tsx")),
     },
 
     "stepper-form": {
@@ -475,14 +397,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-form.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-form.tsx")),
     },
 
     "stepper-icon": {
@@ -490,14 +410,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-icon.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-icon.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-icon.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-icon.tsx")),
     },
 
     "stepper-label-orientation": {
@@ -505,15 +423,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-label-orientation.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/stepper-label-orientation.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-label-orientation.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-label-orientation.tsx")),
     },
 
     "stepper-responsive-variant": {
@@ -521,15 +436,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-responsive-variant.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/stepper-responsive-variant.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-responsive-variant.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-responsive-variant.tsx")),
     },
 
     "stepper-tracking": {
@@ -537,14 +449,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-tracking.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-tracking.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-tracking.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-tracking.tsx")),
     },
 
     "stepper-variants": {
@@ -552,14 +462,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/stepper-variants.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/stepper-variants.tsx"),
-      ),
+  {
+    "path": "registry/default/example/stepper-variants.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/stepper-variants.tsx")),
     },
 
     "tel-input-custom-labels": {
@@ -567,14 +475,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/tel-input-custom-labels.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/tel-input-custom-labels.tsx"),
-      ),
+  {
+    "path": "registry/default/example/tel-input-custom-labels.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/tel-input-custom-labels.tsx")),
     },
 
     "tel-input-default-country": {
@@ -582,15 +488,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/tel-input-default-country.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/tel-input-default-country.tsx"),
-      ),
+  {
+    "path": "registry/default/example/tel-input-default-country.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/tel-input-default-country.tsx")),
     },
 
     "tel-input-default": {
@@ -598,14 +501,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/tel-input-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/tel-input-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/tel-input-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/tel-input-default.tsx")),
     },
 
     "tel-input-international": {
@@ -613,14 +514,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/tel-input-international.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/tel-input-international.tsx"),
-      ),
+  {
+    "path": "registry/default/example/tel-input-international.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/tel-input-international.tsx")),
     },
 
     "tel-input-with-form": {
@@ -628,14 +527,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/tel-input-with-form.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/tel-input-with-form.tsx"),
-      ),
+  {
+    "path": "registry/default/example/tel-input-with-form.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/tel-input-with-form.tsx")),
     },
 
     "use-boolean-default": {
@@ -643,14 +540,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-boolean-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/use-boolean-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-boolean-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-boolean-default.tsx")),
     },
 
     "use-click-outside-default": {
@@ -658,15 +553,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-click-outside-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/use-click-outside-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-click-outside-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-click-outside-default.tsx")),
     },
 
     "use-debounce-default": {
@@ -674,14 +566,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-debounce-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/use-debounce-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-debounce-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-debounce-default.tsx")),
     },
 
     "use-element-size-default": {
@@ -689,14 +579,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-element-size-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/use-element-size-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-element-size-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-element-size-default.tsx")),
     },
 
     "use-fullscreen-default": {
@@ -704,14 +592,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-fullscreen-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/use-fullscreen-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-fullscreen-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-fullscreen-default.tsx")),
     },
 
     "use-fullscreen-with-target": {
@@ -719,15 +605,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-fullscreen-with-target.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () =>
-          import("@/registry/default/example/use-fullscreen-with-target.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-fullscreen-with-target.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-fullscreen-with-target.tsx")),
     },
 
     "use-mobile-default": {
@@ -735,14 +618,12 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:example",
       files: [
-        {
-          path: "registry/default/example/use-mobile-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/use-mobile-default.tsx"),
-      ),
+  {
+    "path": "registry/default/example/use-mobile-default.tsx",
+    "type": "registry:example"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/example/use-mobile-default.tsx")),
     },
 
     "avatar-default": {
@@ -750,16 +631,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-default.tsx",
-          content:
-            "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarDefault() {\r\n  return (\r\n    <Avatar>\r\n      <AvatarImage\r\n        src='https://github.com/phamhuulocforwork.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-default.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-default.tsx",
+    "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarDefault() {\r\n  return (\r\n    <Avatar>\r\n      <AvatarImage\r\n        src='https://github.com/phamhuulocforwork.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-default.tsx")),
     },
 
     "avatar-group-max": {
@@ -767,16 +645,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-group-max.tsx",
-          content:
-            "import * as React from \"react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype AvatarProps = React.ComponentProps<typeof Avatar>;\r\n\r\ninterface AvatarGroupProps extends React.ComponentProps<\"div\"> {\r\n  children: React.ReactElement<AvatarProps>[];\r\n  max?: number;\r\n}\r\n\r\nconst AvatarGroup = ({\r\n  children,\r\n  max,\r\n  className,\r\n  ...props\r\n}: AvatarGroupProps) => {\r\n  const totalAvatars = React.Children.count(children);\r\n  const displayedAvatars = React.Children.toArray(children)\r\n    .slice(0, max)\r\n    .reverse();\r\n  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"flex items-center flex-row-reverse\", className)}\r\n      {...props}\r\n    >\r\n      {remainingAvatars > 0 && (\r\n        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r\n          <AvatarFallback className='bg-muted-foreground text-white'>\r\n            +{remainingAvatars}\r\n          </AvatarFallback>\r\n        </Avatar>\r\n      )}\r\n      {displayedAvatars.map((avatar, index) => {\r\n        if (!React.isValidElement(avatar)) return null;\r\n\r\n        return (\r\n          <div key={index} className='-ml-2 hover:z-10 relative'>\r\n            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r\n              className: \"ring-2 ring-background\",\r\n            })}\r\n          </div>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default function AvatarGroupMaxAvatarDemo() {\r\n  return (\r\n    <AvatarGroup className='flex items-center' max={3}>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarImage\r\n          src='https://github.com/phamhuulocforwork.png'\r\n          alt='@phamhuulocforwork'\r\n        />\r\n        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>\r\n      </Avatar>\r\n    </AvatarGroup>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-group-max.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-group-max.tsx",
+    "content": "import * as React from \"react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype AvatarProps = React.ComponentProps<typeof Avatar>;\r\n\r\ninterface AvatarGroupProps extends React.ComponentProps<\"div\"> {\r\n  children: React.ReactElement<AvatarProps>[];\r\n  max?: number;\r\n}\r\n\r\nconst AvatarGroup = ({\r\n  children,\r\n  max,\r\n  className,\r\n  ...props\r\n}: AvatarGroupProps) => {\r\n  const totalAvatars = React.Children.count(children);\r\n  const displayedAvatars = React.Children.toArray(children)\r\n    .slice(0, max)\r\n    .reverse();\r\n  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"flex items-center flex-row-reverse\", className)}\r\n      {...props}\r\n    >\r\n      {remainingAvatars > 0 && (\r\n        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r\n          <AvatarFallback className='bg-muted-foreground text-white'>\r\n            +{remainingAvatars}\r\n          </AvatarFallback>\r\n        </Avatar>\r\n      )}\r\n      {displayedAvatars.map((avatar, index) => {\r\n        if (!React.isValidElement(avatar)) return null;\r\n\r\n        return (\r\n          <div key={index} className='-ml-2 hover:z-10 relative'>\r\n            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r\n              className: \"ring-2 ring-background\",\r\n            })}\r\n          </div>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default function AvatarGroupMaxAvatarDemo() {\r\n  return (\r\n    <AvatarGroup className='flex items-center' max={3}>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarImage\r\n          src='https://github.com/phamhuulocforwork.png'\r\n          alt='@phamhuulocforwork'\r\n        />\r\n        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>\r\n      </Avatar>\r\n    </AvatarGroup>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-group-max.tsx")),
     },
 
     "avatar-group": {
@@ -784,16 +659,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-group.tsx",
-          content:
-            "import * as React from \"react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype AvatarProps = React.ComponentProps<typeof Avatar>;\r\n\r\ninterface AvatarGroupProps extends React.ComponentProps<\"div\"> {\r\n  children: React.ReactElement<AvatarProps>[];\r\n  max?: number;\r\n}\r\n\r\nconst AvatarGroup = ({\r\n  children,\r\n  max,\r\n  className,\r\n  ...props\r\n}: AvatarGroupProps) => {\r\n  const totalAvatars = React.Children.count(children);\r\n  const displayedAvatars = React.Children.toArray(children)\r\n    .slice(0, max)\r\n    .reverse();\r\n  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"flex items-center flex-row-reverse\", className)}\r\n      {...props}\r\n    >\r\n      {remainingAvatars > 0 && (\r\n        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r\n          <AvatarFallback className='bg-muted-foreground text-white'>\r\n            +{remainingAvatars}\r\n          </AvatarFallback>\r\n        </Avatar>\r\n      )}\r\n      {displayedAvatars.map((avatar, index) => {\r\n        if (!React.isValidElement(avatar)) return null;\r\n\r\n        return (\r\n          <div key={index} className='-ml-2 hover:z-10 relative'>\r\n            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r\n              className: \"ring-2 ring-background\",\r\n            })}\r\n          </div>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default function AvatarGroupDemo() {\r\n  return (\r\n    <AvatarGroup>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarImage\r\n          src='https://github.com/phamhuulocforwork.png'\r\n          alt='@phamhuulocforwork'\r\n        />\r\n        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r\n      </Avatar>\r\n    </AvatarGroup>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-group.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-group.tsx",
+    "content": "import * as React from \"react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype AvatarProps = React.ComponentProps<typeof Avatar>;\r\n\r\ninterface AvatarGroupProps extends React.ComponentProps<\"div\"> {\r\n  children: React.ReactElement<AvatarProps>[];\r\n  max?: number;\r\n}\r\n\r\nconst AvatarGroup = ({\r\n  children,\r\n  max,\r\n  className,\r\n  ...props\r\n}: AvatarGroupProps) => {\r\n  const totalAvatars = React.Children.count(children);\r\n  const displayedAvatars = React.Children.toArray(children)\r\n    .slice(0, max)\r\n    .reverse();\r\n  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"flex items-center flex-row-reverse\", className)}\r\n      {...props}\r\n    >\r\n      {remainingAvatars > 0 && (\r\n        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r\n          <AvatarFallback className='bg-muted-foreground text-white'>\r\n            +{remainingAvatars}\r\n          </AvatarFallback>\r\n        </Avatar>\r\n      )}\r\n      {displayedAvatars.map((avatar, index) => {\r\n        if (!React.isValidElement(avatar)) return null;\r\n\r\n        return (\r\n          <div key={index} className='-ml-2 hover:z-10 relative'>\r\n            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r\n              className: \"ring-2 ring-background\",\r\n            })}\r\n          </div>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default function AvatarGroupDemo() {\r\n  return (\r\n    <AvatarGroup>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarImage\r\n          src='https://github.com/phamhuulocforwork.png'\r\n          alt='@phamhuulocforwork'\r\n        />\r\n        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r\n      </Avatar>\r\n      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r\n        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r\n      </Avatar>\r\n    </AvatarGroup>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-group.tsx")),
     },
 
     "avatar-hover-card": {
@@ -801,16 +673,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-hover-card.tsx",
-          content:
-            "import { CalendarIcon } from \"lucide-react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\nimport {\r\n  HoverCard,\r\n  HoverCardContent,\r\n  HoverCardTrigger,\r\n} from \"@/components/ui/hover-card\";\r\n\r\nexport default function AvatarHoverCard() {\r\n  return (\r\n    <HoverCard>\r\n      <HoverCardTrigger className='cursor-pointer'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>HL</AvatarFallback>\r\n        </Avatar>\r\n      </HoverCardTrigger>\r\n      <HoverCardContent className='w-full max-w-xs'>\r\n        <div className='flex justify-between space-x-4'>\r\n          <Avatar>\r\n            <AvatarImage\r\n              src='https://github.com/phamhuulocforwork.png'\r\n              alt='@phamhuulocforwork'\r\n            />\r\n            <AvatarFallback>HL</AvatarFallback>\r\n          </Avatar>\r\n          <div className='space-y-1'>\r\n            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>\r\n            <p className='text-sm'>\r\n              I'm currently studying at University (I stay up late and my hair\r\n              is getting thinner and thinner. Do you think I'm bald? xD)\r\n            </p>\r\n            <div className='flex items-center pt-2'>\r\n              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{\" \"}\r\n              <span className='text-xs text-muted-foreground'>\r\n                Joined February 2025\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </HoverCardContent>\r\n    </HoverCard>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-hover-card.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-hover-card.tsx",
+    "content": "import { CalendarIcon } from \"lucide-react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\nimport {\r\n  HoverCard,\r\n  HoverCardContent,\r\n  HoverCardTrigger,\r\n} from \"@/components/ui/hover-card\";\r\n\r\nexport default function AvatarHoverCard() {\r\n  return (\r\n    <HoverCard>\r\n      <HoverCardTrigger className='cursor-pointer'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>HL</AvatarFallback>\r\n        </Avatar>\r\n      </HoverCardTrigger>\r\n      <HoverCardContent className='w-full max-w-xs'>\r\n        <div className='flex justify-between space-x-4'>\r\n          <Avatar>\r\n            <AvatarImage\r\n              src='https://github.com/phamhuulocforwork.png'\r\n              alt='@phamhuulocforwork'\r\n            />\r\n            <AvatarFallback>HL</AvatarFallback>\r\n          </Avatar>\r\n          <div className='space-y-1'>\r\n            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>\r\n            <p className='text-sm'>\r\n              I'm currently studying at University (I stay up late and my hair\r\n              is getting thinner and thinner. Do you think I'm bald? xD)\r\n            </p>\r\n            <div className='flex items-center pt-2'>\r\n              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{\" \"}\r\n              <span className='text-xs text-muted-foreground'>\r\n                Joined February 2025\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </HoverCardContent>\r\n    </HoverCard>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-hover-card.tsx")),
     },
 
     "avatar-with-ring": {
@@ -818,16 +687,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-with-ring.tsx",
-          content:
-            "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithRing() {\r\n  return (\r\n    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\r\n      <AvatarImage\r\n        src='https://github.com/phamhuulocforwork.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-with-ring.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-with-ring.tsx",
+    "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithRing() {\r\n  return (\r\n    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\r\n      <AvatarImage\r\n        src='https://github.com/phamhuulocforwork.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-with-ring.tsx")),
     },
 
     "avatar-with-status": {
@@ -835,16 +701,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/avatar-with-status.tsx",
-          content:
-            "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithStatus() {\r\n  return (\r\n    <div className='flex items-center gap-3'>\r\n      {/* Online */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* DND */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Busy */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Offline */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/avatar-with-status.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/avatar-with-status.tsx",
+    "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithStatus() {\r\n  return (\r\n    <div className='flex items-center gap-3'>\r\n      {/* Online */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* DND */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Busy */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Offline */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/phamhuulocforwork.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/avatar-with-status.tsx")),
     },
 
     "tooltip-with-arrow": {
@@ -852,16 +715,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:snippet",
       files: [
-        {
-          path: "registry/default/snippets/tooltip-with-arrow.tsx",
-          content:
-            'import { TooltipArrow } from "@radix-ui/react-tooltip";\r\n\r\nimport { Button } from "@/components/ui/button";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from "@/components/ui/tooltip";\r\n\r\nexport default function WithArrowTooltip() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant=\'outline\'>Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className=\'fill-foreground\' />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n',
-          type: "registry:snippet",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/snippets/tooltip-with-arrow.tsx"),
-      ),
+  {
+    "path": "registry/default/snippets/tooltip-with-arrow.tsx",
+    "content": "import { TooltipArrow } from \"@radix-ui/react-tooltip\";\r\n\r\nimport { Button } from \"@/components/ui/button\";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipProvider,\r\n  TooltipTrigger,\r\n} from \"@/components/ui/tooltip\";\r\n\r\nexport default function WithArrowTooltip() {\r\n  return (\r\n    <TooltipProvider>\r\n      <Tooltip>\r\n        <TooltipTrigger asChild>\r\n          <Button variant='outline'>Hover</Button>\r\n        </TooltipTrigger>\r\n        <TooltipContent>\r\n          <p>Tooltip with arrow</p>\r\n          <TooltipArrow className='fill-foreground' />\r\n        </TooltipContent>\r\n      </Tooltip>\r\n    </TooltipProvider>\r\n  );\r\n}\r\n",
+    "type": "registry:snippet"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/snippets/tooltip-with-arrow.tsx")),
     },
 
     "use-boolean": {
@@ -869,16 +729,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-boolean.ts",
-          content:
-            'import * as React from "react";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== "boolean") {\r\n    throw new Error("defaultValue must be `true` or `false`");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-boolean.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-boolean.ts",
+    "content": "import * as React from \"react\";\r\n\r\ntype UseBooleanReturn = {\r\n  value: boolean;\r\n  setValue: React.Dispatch<React.SetStateAction<boolean>>;\r\n  setTrue: () => void;\r\n  setFalse: () => void;\r\n  toggle: () => void;\r\n};\r\n\r\nexport function useBoolean(defaultValue = false): UseBooleanReturn {\r\n  if (typeof defaultValue !== \"boolean\") {\r\n    throw new Error(\"defaultValue must be `true` or `false`\");\r\n  }\r\n  const [value, setValue] = React.useState(defaultValue);\r\n\r\n  const toggle = React.useCallback(() => {\r\n    setValue((x) => !x);\r\n  }, []);\r\n\r\n  const setTrue = React.useCallback(() => {\r\n    setValue(true);\r\n  }, []);\r\n\r\n  const setFalse = React.useCallback(() => {\r\n    setValue(false);\r\n  }, []);\r\n\r\n  return { value, setValue, setTrue, setFalse, toggle };\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-boolean.ts")),
     },
 
     "use-callback-ref": {
@@ -886,16 +743,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-callback-ref.ts",
-          content:
-            'import * as React from "react";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-callback-ref.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-callback-ref.ts",
+    "content": "import * as React from \"react\";\r\n\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(\r\n  callback: T | undefined,\r\n): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  return React.useMemo(\r\n    () => ((...args) => callbackRef.current?.(...args)) as T,\r\n    [],\r\n  );\r\n}\r\n\r\nexport { useCallbackRef };\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-callback-ref.ts")),
     },
 
     "use-click-outside": {
@@ -903,16 +757,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-click-outside.ts",
-          content:
-            'import * as React from "react";\r\n\r\nconst DEFAULT_EVENTS = ["mousedown", "touchstart"];\r\n\r\nexport function useClickOutside<T extends HTMLElement = any>(\r\n  handler: () => void,\r\n  events?: string[] | null,\r\n  nodes?: (HTMLElement | null)[],\r\n) {\r\n  const ref = React.useRef<T>(null);\r\n\r\n  React.useEffect(() => {\r\n    const listener = (event: any) => {\r\n      const { target } = event ?? {};\r\n      if (Array.isArray(nodes)) {\r\n        const shouldIgnore =\r\n          target?.hasAttribute("data-ignore-outside-clicks") ||\r\n          (!document.body.contains(target) && target.tagName !== "HTML");\r\n        const shouldTrigger = nodes.every(\r\n          (node) => !!node && !event.composedPath().includes(node),\r\n        );\r\n        shouldTrigger && !shouldIgnore && handler();\r\n      } else if (ref.current && !ref.current.contains(target)) {\r\n        handler();\r\n      }\r\n    };\r\n\r\n    (events || DEFAULT_EVENTS).forEach((fn) =>\r\n      document.addEventListener(fn, listener),\r\n    );\r\n\r\n    return () => {\r\n      (events || DEFAULT_EVENTS).forEach((fn) =>\r\n        document.removeEventListener(fn, listener),\r\n      );\r\n    };\r\n  }, [ref, handler, nodes]);\r\n\r\n  return ref;\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-click-outside.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-click-outside.ts",
+    "content": "import * as React from \"react\";\r\n\r\nconst DEFAULT_EVENTS = [\"mousedown\", \"touchstart\"];\r\n\r\nexport function useClickOutside<T extends HTMLElement = any>(\r\n  handler: () => void,\r\n  events?: string[] | null,\r\n  nodes?: (HTMLElement | null)[],\r\n) {\r\n  const ref = React.useRef<T>(null);\r\n\r\n  React.useEffect(() => {\r\n    const listener = (event: any) => {\r\n      const { target } = event ?? {};\r\n      if (Array.isArray(nodes)) {\r\n        const shouldIgnore =\r\n          target?.hasAttribute(\"data-ignore-outside-clicks\") ||\r\n          (!document.body.contains(target) && target.tagName !== \"HTML\");\r\n        const shouldTrigger = nodes.every(\r\n          (node) => !!node && !event.composedPath().includes(node),\r\n        );\r\n        shouldTrigger && !shouldIgnore && handler();\r\n      } else if (ref.current && !ref.current.contains(target)) {\r\n        handler();\r\n      }\r\n    };\r\n\r\n    (events || DEFAULT_EVENTS).forEach((fn) =>\r\n      document.addEventListener(fn, listener),\r\n    );\r\n\r\n    return () => {\r\n      (events || DEFAULT_EVENTS).forEach((fn) =>\r\n        document.removeEventListener(fn, listener),\r\n      );\r\n    };\r\n  }, [ref, handler, nodes]);\r\n\r\n  return ref;\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-click-outside.ts")),
     },
 
     "use-controllable-state": {
@@ -920,16 +771,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-controllable-state.ts",
-          content:
-            'import * as React from "react";\r\n\r\nimport { useCallbackRef } from "@/registry/default/hooks/use-callback-ref";\r\n\r\ntype UseControllableStateParams<T> = {\r\n  prop?: T | undefined;\r\n  defaultProp?: T | undefined;\r\n  onChange?: (state: T) => void;\r\n};\r\n\r\ntype SetStateFn<T> = (prevState?: T) => T;\r\n\r\nfunction useControllableState<T>({\r\n  prop,\r\n  defaultProp,\r\n  onChange = () => {},\r\n}: UseControllableStateParams<T>) {\r\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\r\n    defaultProp,\r\n    onChange,\r\n  });\r\n  const isControlled = prop !== undefined;\r\n  const value = isControlled ? prop : uncontrolledProp;\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\r\n    React.useCallback(\r\n      (nextValue) => {\r\n        if (isControlled) {\r\n          const setter = nextValue as SetStateFn<T>;\r\n          const value =\r\n            typeof nextValue === "function" ? setter(prop) : nextValue;\r\n          if (value !== prop) handleChange(value as T);\r\n        } else {\r\n          setUncontrolledProp(nextValue);\r\n        }\r\n      },\r\n      [isControlled, prop, setUncontrolledProp, handleChange],\r\n    );\r\n\r\n  return [value, setValue] as const;\r\n}\r\n\r\nfunction useUncontrolledState<T>({\r\n  defaultProp,\r\n  onChange,\r\n}: Omit<UseControllableStateParams<T>, "prop">) {\r\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\r\n  const [value] = uncontrolledState;\r\n  const prevValueRef = React.useRef(value);\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  React.useEffect(() => {\r\n    if (prevValueRef.current !== value) {\r\n      handleChange(value as T);\r\n      prevValueRef.current = value;\r\n    }\r\n  }, [value, prevValueRef, handleChange]);\r\n\r\n  return uncontrolledState;\r\n}\r\n\r\nexport { useControllableState };\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-controllable-state.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-controllable-state.ts",
+    "content": "import * as React from \"react\";\r\n\r\nimport { useCallbackRef } from \"@/registry/default/hooks/use-callback-ref\";\r\n\r\ntype UseControllableStateParams<T> = {\r\n  prop?: T | undefined;\r\n  defaultProp?: T | undefined;\r\n  onChange?: (state: T) => void;\r\n};\r\n\r\ntype SetStateFn<T> = (prevState?: T) => T;\r\n\r\nfunction useControllableState<T>({\r\n  prop,\r\n  defaultProp,\r\n  onChange = () => {},\r\n}: UseControllableStateParams<T>) {\r\n  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({\r\n    defaultProp,\r\n    onChange,\r\n  });\r\n  const isControlled = prop !== undefined;\r\n  const value = isControlled ? prop : uncontrolledProp;\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =\r\n    React.useCallback(\r\n      (nextValue) => {\r\n        if (isControlled) {\r\n          const setter = nextValue as SetStateFn<T>;\r\n          const value =\r\n            typeof nextValue === \"function\" ? setter(prop) : nextValue;\r\n          if (value !== prop) handleChange(value as T);\r\n        } else {\r\n          setUncontrolledProp(nextValue);\r\n        }\r\n      },\r\n      [isControlled, prop, setUncontrolledProp, handleChange],\r\n    );\r\n\r\n  return [value, setValue] as const;\r\n}\r\n\r\nfunction useUncontrolledState<T>({\r\n  defaultProp,\r\n  onChange,\r\n}: Omit<UseControllableStateParams<T>, \"prop\">) {\r\n  const uncontrolledState = React.useState<T | undefined>(defaultProp);\r\n  const [value] = uncontrolledState;\r\n  const prevValueRef = React.useRef(value);\r\n  const handleChange = useCallbackRef(onChange);\r\n\r\n  React.useEffect(() => {\r\n    if (prevValueRef.current !== value) {\r\n      handleChange(value as T);\r\n      prevValueRef.current = value;\r\n    }\r\n  }, [value, prevValueRef, handleChange]);\r\n\r\n  return uncontrolledState;\r\n}\r\n\r\nexport { useControllableState };\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-controllable-state.ts")),
     },
 
     "use-debounce": {
@@ -937,16 +785,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-debounce.ts",
-          content:
-            'import * as React from "react";\r\n\r\nexport function useDebounce<T>(value: T, delay?: number): T {\r\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\r\n\r\n  React.useEffect(() => {\r\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\r\n    return () => clearTimeout(timer);\r\n  }, [value, delay]);\r\n\r\n  return debouncedValue;\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-debounce.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-debounce.ts",
+    "content": "import * as React from \"react\";\r\n\r\nexport function useDebounce<T>(value: T, delay?: number): T {\r\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\r\n\r\n  React.useEffect(() => {\r\n    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);\r\n    return () => clearTimeout(timer);\r\n  }, [value, delay]);\r\n\r\n  return debouncedValue;\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-debounce.ts")),
     },
 
     "use-element-size": {
@@ -954,16 +799,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-element-size.ts",
-          content:
-            'import * as React from "react";\r\n\r\ntype ObserverRect = Omit<DOMRectReadOnly, "toJSON">;\r\n\r\nconst defaultState: ObserverRect = {\r\n  x: 0,\r\n  y: 0,\r\n  width: 0,\r\n  height: 0,\r\n  top: 0,\r\n  left: 0,\r\n  bottom: 0,\r\n  right: 0,\r\n};\r\n\r\nexport function useResizeObserver<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const frameID = React.useRef(0);\r\n  const ref = React.useRef<T>(null);\r\n\r\n  const [rect, setRect] = React.useState<ObserverRect>(defaultState);\r\n\r\n  const observer = React.useMemo(\r\n    () =>\r\n      typeof window !== "undefined"\r\n        ? new ResizeObserver((entries: any) => {\r\n            const entry = entries[0];\r\n\r\n            if (entry) {\r\n              cancelAnimationFrame(frameID.current);\r\n\r\n              frameID.current = requestAnimationFrame(() => {\r\n                if (ref.current) {\r\n                  setRect(entry.contentRect);\r\n                }\r\n              });\r\n            }\r\n          })\r\n        : null,\r\n    [],\r\n  );\r\n\r\n  React.useEffect(() => {\r\n    if (ref.current) {\r\n      observer?.observe(ref.current, options);\r\n    }\r\n\r\n    return () => {\r\n      observer?.disconnect();\r\n\r\n      if (frameID.current) {\r\n        cancelAnimationFrame(frameID.current);\r\n      }\r\n    };\r\n  }, [ref.current]);\r\n\r\n  return [ref, rect] as const;\r\n}\r\n\r\nexport function useElementSize<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const [ref, { width, height }] = useResizeObserver<T>(options);\r\n  return { ref, width, height };\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-element-size.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-element-size.ts",
+    "content": "import * as React from \"react\";\r\n\r\ntype ObserverRect = Omit<DOMRectReadOnly, \"toJSON\">;\r\n\r\nconst defaultState: ObserverRect = {\r\n  x: 0,\r\n  y: 0,\r\n  width: 0,\r\n  height: 0,\r\n  top: 0,\r\n  left: 0,\r\n  bottom: 0,\r\n  right: 0,\r\n};\r\n\r\nexport function useResizeObserver<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const frameID = React.useRef(0);\r\n  const ref = React.useRef<T>(null);\r\n\r\n  const [rect, setRect] = React.useState<ObserverRect>(defaultState);\r\n\r\n  const observer = React.useMemo(\r\n    () =>\r\n      typeof window !== \"undefined\"\r\n        ? new ResizeObserver((entries: any) => {\r\n            const entry = entries[0];\r\n\r\n            if (entry) {\r\n              cancelAnimationFrame(frameID.current);\r\n\r\n              frameID.current = requestAnimationFrame(() => {\r\n                if (ref.current) {\r\n                  setRect(entry.contentRect);\r\n                }\r\n              });\r\n            }\r\n          })\r\n        : null,\r\n    [],\r\n  );\r\n\r\n  React.useEffect(() => {\r\n    if (ref.current) {\r\n      observer?.observe(ref.current, options);\r\n    }\r\n\r\n    return () => {\r\n      observer?.disconnect();\r\n\r\n      if (frameID.current) {\r\n        cancelAnimationFrame(frameID.current);\r\n      }\r\n    };\r\n  }, [ref.current]);\r\n\r\n  return [ref, rect] as const;\r\n}\r\n\r\nexport function useElementSize<T extends HTMLElement = any>(\r\n  options?: ResizeObserverOptions,\r\n) {\r\n  const [ref, { width, height }] = useResizeObserver<T>(options);\r\n  return { ref, width, height };\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-element-size.ts")),
     },
 
     "use-fullscreen": {
@@ -971,16 +813,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-fullscreen.ts",
-          content:
-            'import * as React from "react";\r\n\r\nfunction getFullscreenElement(): HTMLElement | null {\r\n  const _document = window.document as any;\r\n\r\n  const fullscreenElement =\r\n    _document.fullscreenElement ||\r\n    _document.webkitFullscreenElement ||\r\n    _document.mozFullScreenElement ||\r\n    _document.msFullscreenElement;\r\n\r\n  return fullscreenElement;\r\n}\r\n\r\nfunction exitFullscreen() {\r\n  const _document = window.document as any;\r\n\r\n  if (typeof _document.exitFullscreen === "function") {\r\n    return _document.exitFullscreen();\r\n  }\r\n  if (typeof _document.msExitFullscreen === "function") {\r\n    return _document.msExitFullscreen();\r\n  }\r\n  if (typeof _document.webkitExitFullscreen === "function") {\r\n    return _document.webkitExitFullscreen();\r\n  }\r\n  if (typeof _document.mozCancelFullScreen === "function") {\r\n    return _document.mozCancelFullScreen();\r\n  }\r\n\r\n  return null;\r\n}\r\n\r\nfunction enterFullScreen(element: HTMLElement) {\r\n  const _element = element as any;\r\n\r\n  return (\r\n    _element.requestFullscreen?.() ||\r\n    _element.msRequestFullscreen?.() ||\r\n    _element.webkitEnterFullscreen?.() ||\r\n    _element.webkitRequestFullscreen?.() ||\r\n    _element.mozRequestFullscreen?.()\r\n  );\r\n}\r\n\r\nconst prefixes = ["", "webkit", "moz", "ms"];\r\n\r\nfunction addEvents(\r\n  element: HTMLElement,\r\n  {\r\n    onFullScreen,\r\n    onError,\r\n  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void },\r\n) {\r\n  prefixes.forEach((prefix) => {\r\n    element.addEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n    element.addEventListener(`${prefix}fullscreenerror`, onError);\r\n  });\r\n\r\n  return () => {\r\n    prefixes.forEach((prefix) => {\r\n      element.removeEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n      element.removeEventListener(`${prefix}fullscreenerror`, onError);\r\n    });\r\n  };\r\n}\r\n\r\nexport function useFullscreen<T extends HTMLElement = any>() {\r\n  const [fullscreen, setFullscreen] = React.useState<boolean>(false);\r\n\r\n  const _ref = React.useRef<T>(null);\r\n\r\n  const handleFullscreenChange = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(event.target === getFullscreenElement());\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const handleFullscreenError = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(false);\r\n      // eslint-disable-next-line no-console\r\n      console.error(\r\n        `[@mantine/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,\r\n      );\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const toggle = React.useCallback(async () => {\r\n    if (!getFullscreenElement()) {\r\n      await enterFullScreen(_ref.current!);\r\n    } else {\r\n      await exitFullscreen();\r\n    }\r\n  }, []);\r\n\r\n  const ref = React.useCallback((element: T | null) => {\r\n    if (element === null) {\r\n      _ref.current = window.document.documentElement as T;\r\n    } else {\r\n      _ref.current = element;\r\n    }\r\n  }, []);\r\n\r\n  React.useEffect(() => {\r\n    if (!_ref.current && window.document) {\r\n      _ref.current = window.document.documentElement as T;\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    if (_ref.current) {\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    return undefined;\r\n  }, [_ref.current]);\r\n\r\n  return { ref, toggle, fullscreen } as const;\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-fullscreen.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-fullscreen.ts",
+    "content": "import * as React from \"react\";\r\n\r\nfunction getFullscreenElement(): HTMLElement | null {\r\n  const _document = window.document as any;\r\n\r\n  const fullscreenElement =\r\n    _document.fullscreenElement ||\r\n    _document.webkitFullscreenElement ||\r\n    _document.mozFullScreenElement ||\r\n    _document.msFullscreenElement;\r\n\r\n  return fullscreenElement;\r\n}\r\n\r\nfunction exitFullscreen() {\r\n  const _document = window.document as any;\r\n\r\n  if (typeof _document.exitFullscreen === \"function\") {\r\n    return _document.exitFullscreen();\r\n  }\r\n  if (typeof _document.msExitFullscreen === \"function\") {\r\n    return _document.msExitFullscreen();\r\n  }\r\n  if (typeof _document.webkitExitFullscreen === \"function\") {\r\n    return _document.webkitExitFullscreen();\r\n  }\r\n  if (typeof _document.mozCancelFullScreen === \"function\") {\r\n    return _document.mozCancelFullScreen();\r\n  }\r\n\r\n  return null;\r\n}\r\n\r\nfunction enterFullScreen(element: HTMLElement) {\r\n  const _element = element as any;\r\n\r\n  return (\r\n    _element.requestFullscreen?.() ||\r\n    _element.msRequestFullscreen?.() ||\r\n    _element.webkitEnterFullscreen?.() ||\r\n    _element.webkitRequestFullscreen?.() ||\r\n    _element.mozRequestFullscreen?.()\r\n  );\r\n}\r\n\r\nconst prefixes = [\"\", \"webkit\", \"moz\", \"ms\"];\r\n\r\nfunction addEvents(\r\n  element: HTMLElement,\r\n  {\r\n    onFullScreen,\r\n    onError,\r\n  }: { onFullScreen: (event: Event) => void; onError: (event: Event) => void },\r\n) {\r\n  prefixes.forEach((prefix) => {\r\n    element.addEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n    element.addEventListener(`${prefix}fullscreenerror`, onError);\r\n  });\r\n\r\n  return () => {\r\n    prefixes.forEach((prefix) => {\r\n      element.removeEventListener(`${prefix}fullscreenchange`, onFullScreen);\r\n      element.removeEventListener(`${prefix}fullscreenerror`, onError);\r\n    });\r\n  };\r\n}\r\n\r\nexport function useFullscreen<T extends HTMLElement = any>() {\r\n  const [fullscreen, setFullscreen] = React.useState<boolean>(false);\r\n\r\n  const _ref = React.useRef<T>(null);\r\n\r\n  const handleFullscreenChange = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(event.target === getFullscreenElement());\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const handleFullscreenError = React.useCallback(\r\n    (event: Event) => {\r\n      setFullscreen(false);\r\n      // eslint-disable-next-line no-console\r\n      console.error(\r\n        `[@mantine/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,\r\n      );\r\n    },\r\n    [setFullscreen],\r\n  );\r\n\r\n  const toggle = React.useCallback(async () => {\r\n    if (!getFullscreenElement()) {\r\n      await enterFullScreen(_ref.current!);\r\n    } else {\r\n      await exitFullscreen();\r\n    }\r\n  }, []);\r\n\r\n  const ref = React.useCallback((element: T | null) => {\r\n    if (element === null) {\r\n      _ref.current = window.document.documentElement as T;\r\n    } else {\r\n      _ref.current = element;\r\n    }\r\n  }, []);\r\n\r\n  React.useEffect(() => {\r\n    if (!_ref.current && window.document) {\r\n      _ref.current = window.document.documentElement as T;\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    if (_ref.current) {\r\n      return addEvents(_ref.current, {\r\n        onFullScreen: handleFullscreenChange,\r\n        onError: handleFullscreenError,\r\n      });\r\n    }\r\n\r\n    return undefined;\r\n  }, [_ref.current]);\r\n\r\n  return { ref, toggle, fullscreen } as const;\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-fullscreen.ts")),
     },
 
     "use-mobile": {
@@ -988,16 +827,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-mobile.ts",
-          content:
-            'import * as React from "react";\r\n\r\nimport debounce from "lodash.debounce";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = React.useState(false);\r\n\r\n  React.useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener("resize", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener("resize", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-mobile.ts"),
-      ),
+  {
+    "path": "registry/default/hooks/use-mobile.ts",
+    "content": "import * as React from \"react\";\r\n\r\nimport debounce from \"lodash.debounce\";\r\n\r\nconst useIsMobile = (): boolean => {\r\n  const [isMobile, setIsMobile] = React.useState(false);\r\n\r\n  React.useLayoutEffect(() => {\r\n    const updateSize = (): void => {\r\n      setIsMobile(window.innerWidth < 768);\r\n    };\r\n    const debouncedUpdateSize = debounce(updateSize, 250);\r\n\r\n    updateSize();\r\n\r\n    window.addEventListener(\"resize\", debouncedUpdateSize);\r\n\r\n    return (): void =>\r\n      window.removeEventListener(\"resize\", debouncedUpdateSize);\r\n  }, []);\r\n\r\n  return isMobile;\r\n};\r\n\r\nexport default useIsMobile;\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-mobile.ts")),
     },
 
     "use-mounted": {
@@ -1005,16 +841,13 @@ export const Index: Record<string, any> = {
       description: "",
       type: "registry:hook",
       files: [
-        {
-          path: "registry/default/hooks/use-mounted.ts",
-          content:
-            'import { useEffect, useState } from "react";\r\n\r\nexport function useMounted() {\r\n  const [mounted, setMounted] = useState(false);\r\n  useEffect(() => setMounted(true), []);\r\n  return mounted;\r\n}\r\n',
-          type: "registry:hook",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/hooks/use-mounted.ts"),
-      ),
-    },
-  },
+  {
+    "path": "registry/default/hooks/use-mounted.ts",
+    "content": "import { useEffect, useState } from \"react\";\r\n\r\nexport function useMounted() {\r\n  const [mounted, setMounted] = useState(false);\r\n  useEffect(() => setMounted(true), []);\r\n  return mounted;\r\n}\r\n",
+    "type": "registry:hook"
+  }
+],
+      component: React.lazy(() => import("@/registry/default/hooks/use-mounted.ts")),
+    }
+  }
 };

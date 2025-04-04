@@ -1040,7 +1040,14 @@ var init_button = __esm({
     Button = React15.forwardRef(
       ({ className, variant, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button";
-        return /* @__PURE__ */ React15.createElement(Comp, { className: cn(buttonVariants({ variant, size, className })), ref, ...props });
+        return /* @__PURE__ */ React15.createElement(
+          Comp,
+          {
+            className: cn(buttonVariants({ variant, size, className })),
+            ref,
+            ...props
+          }
+        );
       }
     );
     Button.displayName = "Button";
@@ -4303,7 +4310,11 @@ var init_use_mounted = __esm({
 import { getHighlighter } from "@shikijs/compat";
 import { rehypeCode, remarkGfm } from "fumadocs-core/mdx-plugins";
 import { fileGenerator, remarkDocGen, remarkInstall } from "fumadocs-docgen";
-import { defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config";
+import {
+  defineConfig,
+  defineDocs,
+  frontmatterSchema
+} from "fumadocs-mdx/config";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
