@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowUpRight, Github } from "lucide-react";
@@ -8,11 +7,9 @@ import { Button } from "@/components/ui/button";
 
 import { siteConfig } from "@/config/site";
 
-import { HeroCards } from "./hero-cards";
-
-const Hero = () => {
+export default function Hero() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 py-10 md:gap-0 gap-10'>
+    <div className='grid grid-cols-1 md:grid-cols-2 p-4'>
       <div className='max-w-xl'>
         <Badge
           className='rounded-full py-1 border-none animate-fade-up text-balance'
@@ -52,14 +49,11 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-      <div
-        className='relative w-full hidden lg:block rounded-xl aspect-square animate-fade-up'
+      {/* <div
+        className='relative w-full hidden lg:block rounded-xl overflow-hidden animate-fade-up'
         style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
       >
-        <HeroCards />
-      </div>
+      </div> */}
     </div>
   );
-};
-
-export default Hero;
+}

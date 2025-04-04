@@ -11,8 +11,6 @@ import {
 
 import { useMDXComponents } from "@/components/mdx-components";
 
-import "@/styles/mdx.css";
-
 import { source } from "@/app/source";
 
 export default async function Page({
@@ -26,7 +24,13 @@ export default async function Page({
   const MDX = page.data.body;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      tableOfContent={{
+        style: "clerk",
+      }}
+    >
       <div className='flex flex-col gap-2'>
         <DocsTitle>{page.data.title}</DocsTitle>
         <DocsDescription className='mb-2.5'>
@@ -34,6 +38,7 @@ export default async function Page({
         </DocsDescription>
       </div>
       <DocsBody>
+        {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
         <MDX components={useMDXComponents({})} />
       </DocsBody>
     </DocsPage>
