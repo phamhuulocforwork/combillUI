@@ -40,7 +40,7 @@ export function CodeBlockWrapper({
       >
         <div
           className={cn(
-            "[&_figure]:my-0 [&_figure]:max-h-[640px] [&_figure]:pb-[20px]",
+            "[&_figure]:my-0 [&_figure]:pb-[20px]",
             !open ? "[&_figure]:overflow-hidden" : "[&_figure]:overflow-auto]",
           )}
         >

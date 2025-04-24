@@ -174,30 +174,6 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
-    border-radius: 5px;
-  }
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--border)) transparent;
-  }
-}
-
 @layer utilities {
   .animate-fade-up {
     animation: fade-up 0.5s ease-out forwards;
@@ -219,6 +195,104 @@
 
   .animate-stroke-dashoffset {
     animation: stroke-dashoffset 2s linear forwards;
+  }
+}
+
+@utility component-block {
+  & pre {
+    @apply max-h-[432.4px];
+  }
+
+  [data-rehype-pretty-code-figure] figure {
+    @apply my-4! rounded-none!;
+  }
+}
+
+@utility preview-block {
+  & kbd {
+    @apply border-none! shadow-none!;
+  }
+}
+
+@utility mdx {
+  & table {
+    @apply my-2.5 rounded-md;
+  }
+
+  & table tr {
+    @apply bg-transparent hover:bg-transparent;
+  }
+
+  & table th {
+    @apply bg-accent/50;
+  }
+}
+
+@utility auto-type-table {
+  & table {
+    @apply w-full rounded-md;
+  }
+
+  & table tr {
+    @apply bg-transparent hover:bg-transparent;
+  }
+
+  & table th {
+    @apply bg-accent/50;
+  }
+
+  & table td {
+    @apply align-top whitespace-pre-wrap;
+  }
+
+  & table td:nth-child(1),
+  & table th:nth-child(1) {
+    @apply w-[20%];
+  }
+
+  & table td:nth-child(2),
+  & table th:nth-child(2) {
+    @apply w-[40%];
+  }
+
+  & table td:nth-child(3),
+  & table th:nth-child(3) {
+    @apply w-[20%];
+  }
+}
+
+@utility data-table-container {
+  & table {
+    @apply my-0 rounded-none border-none;
+  }
+
+  & table td,
+  & table th {
+    @apply w-auto border-x-0 border-t-0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
   }
 }
 

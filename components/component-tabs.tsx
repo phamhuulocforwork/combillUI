@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { cn } from "@/lib/utils";
 
 import { Index } from "@/__registry__";
@@ -11,6 +13,7 @@ import { Index } from "@/__registry__";
 interface ComponentTabsProps extends React.ComponentPropsWithoutRef<"div"> {
   name: string;
   children: React.ReactNode;
+  align?: "start" | "center" | "end";
   preventPreviewFocus?: boolean;
   scalePreview?: boolean;
   fullPreview?: boolean;
@@ -19,6 +22,7 @@ interface ComponentTabsProps extends React.ComponentPropsWithoutRef<"div"> {
 export function ComponentTabs({
   name,
   children,
+  align = "center",
   preventPreviewFocus,
   scalePreview,
   fullPreview,
@@ -50,25 +54,30 @@ export function ComponentTabs({
       <Tab
         value='Preview'
         className={cn("preview-block", {
-          "focus-visible:outline-none focus-visible:ring-0":
+          "focus-visible:outline-hidden focus-visible:ring-0":
             preventPreviewFocus,
         })}
         tabIndex={preventPreviewFocus ? -1 : 0}
       >
         <div
           className={cn(
-            "flex h-[400px] w-full items-center justify-center p-10",
+            "flex h-[400px] w-full justify-center p-10",
             {
+              "items-start": align === "start",
+              "items-center": align === "center",
+              "items-end": align === "end",
               "h-full p-0": fullPreview,
               "sm:p-10": scalePreview,
             },
             className,
           )}
         >
-          {Preview}
+          <React.Suspense fallback={<Skeleton className='size-full' />}>
+            {Preview}
+          </React.Suspense>
         </div>
       </Tab>
-      <Tab value='Code' className='component-block'>
+      <Tab value='Code' className='component-block py-0'>
         {Code}
       </Tab>
     </Tabs>

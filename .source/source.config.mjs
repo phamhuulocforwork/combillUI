@@ -1744,7 +1744,7 @@ var init_form = __esm({
   }
 });
 
-// hooks/use-toast.tsx
+// hooks/use-toast.ts
 import * as React22 from "react";
 function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
@@ -1799,7 +1799,7 @@ function useToast() {
 }
 var TOAST_LIMIT, TOAST_REMOVE_DELAY, count, toastTimeouts, addToRemoveQueue, reducer, listeners, memoryState;
 var init_use_toast = __esm({
-  "hooks/use-toast.tsx"() {
+  "hooks/use-toast.ts"() {
     "use strict";
     "use client";
     TOAST_LIMIT = 1;
@@ -3009,7 +3009,7 @@ var init_stepper_label_orientation = __esm({
   }
 });
 
-// hooks/use-media-query.tsx
+// hooks/use-media-query.ts
 import * as React42 from "react";
 function useMediaQuery(query) {
   const [value, setValue] = React42.useState(false);
@@ -3025,7 +3025,7 @@ function useMediaQuery(query) {
   return value;
 }
 var init_use_media_query = __esm({
-  "hooks/use-media-query.tsx"() {
+  "hooks/use-media-query.ts"() {
     "use strict";
   }
 });
