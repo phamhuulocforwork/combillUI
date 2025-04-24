@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowUpRight, Github } from "lucide-react";
@@ -9,13 +10,13 @@ import { siteConfig } from "@/config/site";
 
 export default function Hero() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 p-4'>
-      <div className='max-w-xl'>
+    <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-auto'>
+      <div>
         <Badge
           className='rounded-full py-1 border-none animate-fade-up text-balance'
           style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
-          {siteConfig.version}
+          Just released {siteConfig.version}
         </Badge>
         <h1
           className='mt-6 max-w-[20ch] text-4xl xl:text-5xl font-bold !leading-[1.2] tracking-tight animate-fade-up text-balance'
@@ -49,11 +50,17 @@ export default function Hero() {
           </Button>
         </div>
       </div>
-      {/* <div
-        className='relative w-full hidden lg:block rounded-xl overflow-hidden animate-fade-up'
+      <div
+        className='relative w-full hidden lg:block rounded-xl bg-accent overflow-hidden animate-fade-up'
         style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
       >
-      </div> */}
+        <Image
+          src='/svgs/placeholder.svg'
+          fill
+          alt=''
+          className='object-cover rounded-xl'
+        />
+      </div>
     </div>
   );
 }
