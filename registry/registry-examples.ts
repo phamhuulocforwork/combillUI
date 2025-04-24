@@ -32,16 +32,6 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "combobox-input-default",
-    type: "registry:example",
-    files: [
-      {
-        path: "registry/default/example/combobox-input-default.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "labeled-switch-default",
     type: "registry:example",
     files: [

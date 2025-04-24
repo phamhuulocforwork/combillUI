@@ -188,21 +188,6 @@ export const Index: Record<string, any> = {
       ),
     },
 
-    "combobox-input-default": {
-      name: "combobox-input-default",
-      description: "",
-      type: "registry:example",
-      files: [
-        {
-          path: "registry/default/example/combobox-input-default.tsx",
-          type: "registry:example",
-        },
-      ],
-      component: React.lazy(
-        () => import("@/registry/default/example/combobox-input-default.tsx"),
-      ),
-    },
-
     "labeled-switch-default": {
       name: "labeled-switch-default",
       description: "",
