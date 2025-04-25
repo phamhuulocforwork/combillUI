@@ -10,7 +10,6 @@ import { Code } from "lucide-react";
 import CodeBlock, { highlight } from "@/components/code-block";
 import ComponentCli from "@/components/component-cli";
 import CopyButton from "@/components/copy-button";
-import OpenInV0 from "@/components/layout/open-in-v0";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -82,10 +81,6 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
 
   return (
     <div className='absolute -end-2 -top-2 flex items-center gap-2'>
-      <OpenInV0
-        sourceUrl={`${process.env.NEXT_PUBLIC_APP_URL}/registry/${component.name}.json`}
-        title={component.name}
-      />
       <Dialog>
         <TooltipProvider delayDuration={0}>
           <Tooltip>

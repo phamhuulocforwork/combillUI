@@ -9,7 +9,7 @@ import ComponentsGrid from "@/components/layout/components-grid";
 
 import { getComponentsByNames } from "@/lib/components";
 
-import { categories, getCategory } from "@/config/components";
+import { categories, getCategory } from "@/config/snippets";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -42,7 +42,7 @@ export async function generateMetadata(
       description: isSingleComponent
         ? `Elevate your UI with a Shadcn ${category.name.toLowerCase()} component, built using React and Tailwind CSS.`
         : `Elevate your UI with a growing collection of ${components.length}+ Shadcn ${category.name.toLowerCase()} components, built using React and Tailwind CSS.`,
-      url: `https://shadcnstudio.com/docs/components/${category.slug}`,
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/snippets/${category.slug}`,
       images: parentMetadata.openGraph?.images,
     },
     twitter: {
@@ -53,7 +53,7 @@ export async function generateMetadata(
         : `Elevate your UI with a growing collection of ${components.length}+ Shadcn ${category.name.toLowerCase()} components, built using React and Tailwind CSS.`,
     },
     alternates: {
-      canonical: `https://shadcnstudio.com/docs/components/${category.slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/snippets/${category.slug}`,
     },
   };
 }

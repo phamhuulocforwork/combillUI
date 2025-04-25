@@ -1035,9 +1035,10 @@ var init_dialog = __esm({
 
 // components/ui/command.tsx
 import * as React13 from "react";
+import { DialogTitle as DialogTitle2 } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
-var Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandSeparator, CommandItem, CommandLoading, CommandShortcut;
+var Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandSeparator, CommandItem, CommandShortcut;
 var init_command = __esm({
   "components/ui/command.tsx"() {
     "use strict";
@@ -1049,14 +1050,14 @@ var init_command = __esm({
       {
         ref,
         className: cn(
-          "flex size-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
+          "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
           className
         ),
         ...props
       }
     ));
     Command.displayName = CommandPrimitive.displayName;
-    CommandInput = React13.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ React13.createElement("div", { className: "flex items-center border-b px-3", "cmdk-input-wrapper": "" }, /* @__PURE__ */ React13.createElement(Search, { className: "mr-2 size-4 shrink-0 opacity-50" }), /* @__PURE__ */ React13.createElement(
+    CommandInput = React13.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ React13.createElement("div", { className: "flex items-center border-b px-3", "cmdk-input-wrapper": "" }, /* @__PURE__ */ React13.createElement(Search, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }), /* @__PURE__ */ React13.createElement(
       CommandPrimitive.Input,
       {
         ref,
@@ -1112,22 +1113,13 @@ var init_command = __esm({
       {
         ref,
         className: cn(
-          "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50",
+          "relative flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
           className
         ),
         ...props
       }
     ));
     CommandItem.displayName = CommandPrimitive.Item.displayName;
-    CommandLoading = React13.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ React13.createElement(
-      CommandPrimitive.Loading,
-      {
-        ref,
-        className: cn("flex justify-center", className),
-        ...props
-      }
-    ));
-    CommandLoading.displayName = CommandPrimitive.Loading.displayName;
     CommandShortcut = ({
       className,
       ...props
@@ -1463,7 +1455,7 @@ var init_form = __esm({
   }
 });
 
-// hooks/useToast.ts
+// hooks/use-toast.ts
 import * as React19 from "react";
 function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
@@ -1517,8 +1509,8 @@ function useToast() {
   };
 }
 var TOAST_LIMIT, TOAST_REMOVE_DELAY, count, toastTimeouts, addToRemoveQueue, reducer, listeners, memoryState;
-var init_useToast = __esm({
-  "hooks/useToast.ts"() {
+var init_use_toast = __esm({
+  "hooks/use-toast.ts"() {
     "use strict";
     "use client";
     TOAST_LIMIT = 1;
@@ -1644,7 +1636,7 @@ var init_animated_label_input_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_useToast();
+    init_use_toast();
     init_animated_label_input();
     formSchema = z.object({
       email: z.string().email("Invalid email address"),
@@ -1708,7 +1700,7 @@ function AnimatedTooltipDefault() {
   return /* @__PURE__ */ React22.createElement(AnimatedTooltipProvider, null, /* @__PURE__ */ React22.createElement(AnimatedTooltip, null, /* @__PURE__ */ React22.createElement(AnimatedTooltipTrigger, null, /* @__PURE__ */ React22.createElement(Avatar, { className: "ring-2 ring-green-500 ring-offset-[3px] ring-offset-background" }, /* @__PURE__ */ React22.createElement(
     AvatarImage,
     {
-      src: "https://github.com/phamhuulocforwork.png",
+      src: "https://github.com/shadcn.png",
       alt: "@phamhuulocforwork"
     }
   ), /* @__PURE__ */ React22.createElement(AvatarFallback, null, "HL"))), /* @__PURE__ */ React22.createElement(AnimatedTooltipContent, { className: "bg-black" }, /* @__PURE__ */ React22.createElement("span", { className: "font-bold text-white relative z-30 text-base" }, "Pham Huu Loc"), /* @__PURE__ */ React22.createElement("span", { className: "text-white text-xs" }, "Web Developer"))));
@@ -1803,7 +1795,7 @@ var init_labeled_switch_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_useToast();
+    init_use_toast();
     init_labeled_switch();
     formSchema2 = z2.object({
       consent: z2.boolean({
@@ -1978,7 +1970,7 @@ var init_responsive_textarea_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_useToast();
+    init_use_toast();
     init_responsive_textarea();
     formSchema3 = z3.object({
       message: z3.string().min(1, "Message is required")
@@ -2137,7 +2129,7 @@ var init_star_rating_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_useToast();
+    init_use_toast();
     init_star_rating();
     FormSchema = z4.object({
       rating: z4.number().min(1, {
@@ -2687,7 +2679,7 @@ var init_stepper_label_orientation = __esm({
   }
 });
 
-// hooks/useMediaQuery.ts
+// hooks/use-media-query.ts
 import * as React38 from "react";
 function useMediaQuery(query) {
   const [value, setValue] = React38.useState(false);
@@ -2702,8 +2694,8 @@ function useMediaQuery(query) {
   }, [query]);
   return value;
 }
-var init_useMediaQuery = __esm({
-  "hooks/useMediaQuery.ts"() {
+var init_use_media_query = __esm({
+  "hooks/use-media-query.ts"() {
     "use strict";
   }
 });
@@ -2751,7 +2743,7 @@ var init_stepper_responsive_variant = __esm({
   "registry/default/example/stepper-responsive-variant.tsx"() {
     "use strict";
     init_button();
-    init_useMediaQuery();
+    init_use_media_query();
     init_stepper();
     ({
       StepperProvider: StepperProvider6,
@@ -3119,7 +3111,7 @@ var init_tel_input_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_useToast();
+    init_use_toast();
     init_tel_input();
     formSchema4 = z6.object({
       phone: z6.string().min(1, "Phone number is required")
@@ -3688,18 +3680,252 @@ var init_use_mobile_default = __esm({
   }
 });
 
+// registry/default/snippets/avatar/avatar-default.tsx
+var avatar_default_exports = {};
+__export(avatar_default_exports, {
+  default: () => AvatarDefault
+});
+function AvatarDefault() {
+  return /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"));
+}
+var init_avatar_default = __esm({
+  "registry/default/snippets/avatar/avatar-default.tsx"() {
+    "use strict";
+    init_avatar();
+  }
+});
+
+// registry/default/snippets/avatar/avatar-group-max.tsx
+var avatar_group_max_exports = {};
+__export(avatar_group_max_exports, {
+  default: () => AvatarGroupMaxAvatarDemo
+});
+import * as React58 from "react";
+function AvatarGroupMaxAvatarDemo() {
+  return /* @__PURE__ */ React58.createElement(AvatarGroup, { className: "flex items-center", max: 3 }, /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "HL")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-green-600 text-white" }, "VN")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-red-500 text-white" }, "AB")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "VK")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-orange-500 text-white" }, "RS")));
+}
+var AvatarGroup;
+var init_avatar_group_max = __esm({
+  "registry/default/snippets/avatar/avatar-group-max.tsx"() {
+    "use strict";
+    init_avatar();
+    init_utils();
+    AvatarGroup = ({
+      children,
+      max,
+      className,
+      ...props
+    }) => {
+      const totalAvatars = React58.Children.count(children);
+      const displayedAvatars = React58.Children.toArray(children).slice(0, max).reverse();
+      const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
+      return /* @__PURE__ */ React58.createElement(
+        "div",
+        {
+          className: cn("flex items-center flex-row-reverse", className),
+          ...props
+        },
+        remainingAvatars > 0 && /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 hover:z-10 relative ring-2 ring-background" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-muted-foreground text-white" }, "+", remainingAvatars)),
+        displayedAvatars.map((avatar, index) => {
+          if (!React58.isValidElement(avatar)) return null;
+          return /* @__PURE__ */ React58.createElement("div", { key: index, className: "-ml-2 hover:z-10 relative" }, React58.cloneElement(avatar, {
+            className: "ring-2 ring-background"
+          }));
+        })
+      );
+    };
+  }
+});
+
+// registry/default/snippets/avatar/avatar-group.tsx
+var avatar_group_exports = {};
+__export(avatar_group_exports, {
+  default: () => AvatarGroupDemo
+});
+import * as React59 from "react";
+function AvatarGroupDemo() {
+  return /* @__PURE__ */ React59.createElement(AvatarGroup2, null, /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "HL")), /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-green-600 text-white" }, "VN")), /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-red-500 text-white" }, "AB")));
+}
+var AvatarGroup2;
+var init_avatar_group = __esm({
+  "registry/default/snippets/avatar/avatar-group.tsx"() {
+    "use strict";
+    init_avatar();
+    init_utils();
+    AvatarGroup2 = ({
+      children,
+      max,
+      className,
+      ...props
+    }) => {
+      const totalAvatars = React59.Children.count(children);
+      const displayedAvatars = React59.Children.toArray(children).slice(0, max).reverse();
+      const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
+      return /* @__PURE__ */ React59.createElement(
+        "div",
+        {
+          className: cn("flex items-center flex-row-reverse", className),
+          ...props
+        },
+        remainingAvatars > 0 && /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 hover:z-10 relative ring-2 ring-background" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-muted-foreground text-white" }, "+", remainingAvatars)),
+        displayedAvatars.map((avatar, index) => {
+          if (!React59.isValidElement(avatar)) return null;
+          return /* @__PURE__ */ React59.createElement("div", { key: index, className: "-ml-2 hover:z-10 relative" }, React59.cloneElement(avatar, {
+            className: "ring-2 ring-background"
+          }));
+        })
+      );
+    };
+  }
+});
+
+// components/ui/hover-card.tsx
+import * as React60 from "react";
+import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
+var HoverCard, HoverCardTrigger, HoverCardContent;
+var init_hover_card = __esm({
+  "components/ui/hover-card.tsx"() {
+    "use strict";
+    "use client";
+    init_utils();
+    HoverCard = HoverCardPrimitive.Root;
+    HoverCardTrigger = HoverCardPrimitive.Trigger;
+    HoverCardContent = React60.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ React60.createElement(
+      HoverCardPrimitive.Content,
+      {
+        ref,
+        align,
+        sideOffset,
+        className: cn(
+          "z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        ),
+        ...props
+      }
+    ));
+    HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
+  }
+});
+
+// registry/default/snippets/avatar/avatar-hover-card.tsx
+var avatar_hover_card_exports = {};
+__export(avatar_hover_card_exports, {
+  default: () => AvatarHoverCard
+});
+import { CalendarIcon } from "lucide-react";
+function AvatarHoverCard() {
+  return /* @__PURE__ */ React.createElement(HoverCard, null, /* @__PURE__ */ React.createElement(HoverCardTrigger, { className: "cursor-pointer" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"))), /* @__PURE__ */ React.createElement(HoverCardContent, { className: "w-full max-w-xs" }, /* @__PURE__ */ React.createElement("div", { className: "flex justify-between space-x-4" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL")), /* @__PURE__ */ React.createElement("div", { className: "space-y-1" }, /* @__PURE__ */ React.createElement("h4", { className: "text-sm font-semibold" }, "@phamhuulocforwork"), /* @__PURE__ */ React.createElement("p", { className: "text-sm" }, "I'm currently studying at University (I stay up late and my hair is getting thinner and thinner. Do you think I'm bald? xD)"), /* @__PURE__ */ React.createElement("div", { className: "flex items-center pt-2" }, /* @__PURE__ */ React.createElement(CalendarIcon, { className: "mr-2 h-4 w-4 opacity-70" }), " ", /* @__PURE__ */ React.createElement("span", { className: "text-xs text-muted-foreground" }, "Joined February 2025"))))));
+}
+var init_avatar_hover_card = __esm({
+  "registry/default/snippets/avatar/avatar-hover-card.tsx"() {
+    "use strict";
+    init_avatar();
+    init_hover_card();
+  }
+});
+
+// registry/default/snippets/avatar/avatar-with-ring.tsx
+var avatar_with_ring_exports = {};
+__export(avatar_with_ring_exports, {
+  default: () => AvatarWithRing
+});
+function AvatarWithRing() {
+  return /* @__PURE__ */ React.createElement(Avatar, { className: "ring-2 ring-green-500 ring-offset-[3px] ring-offset-background" }, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"));
+}
+var init_avatar_with_ring = __esm({
+  "registry/default/snippets/avatar/avatar-with-ring.tsx"() {
+    "use strict";
+    init_avatar();
+  }
+});
+
+// registry/default/snippets/avatar/avatar-with-status.tsx
+var avatar_with_status_exports = {};
+__export(avatar_with_status_exports, {
+  default: () => AvatarWithStatus
+});
+function AvatarWithStatus() {
+  return /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3" }, /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
+    AvatarImage,
+    {
+      src: "https://github.com/shadcn.png",
+      alt: "@phamhuulocforwork"
+    }
+  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0" })));
+}
+var init_avatar_with_status = __esm({
+  "registry/default/snippets/avatar/avatar-with-status.tsx"() {
+    "use strict";
+    init_avatar();
+  }
+});
+
 // registry/default/hooks/use-callback-ref.ts
 var use_callback_ref_exports = {};
 __export(use_callback_ref_exports, {
   useCallbackRef: () => useCallbackRef
 });
-import * as React58 from "react";
+import * as React61 from "react";
 function useCallbackRef(callback) {
-  const callbackRef = React58.useRef(callback);
-  React58.useEffect(() => {
+  const callbackRef = React61.useRef(callback);
+  React61.useEffect(() => {
     callbackRef.current = callback;
   });
-  return React58.useMemo(
+  return React61.useMemo(
     () => (...args) => callbackRef.current?.(...args),
     []
   );
@@ -3715,7 +3941,7 @@ var use_controllable_state_exports = {};
 __export(use_controllable_state_exports, {
   useControllableState: () => useControllableState
 });
-import * as React59 from "react";
+import * as React62 from "react";
 function useControllableState({
   prop,
   defaultProp,
@@ -3729,7 +3955,7 @@ function useControllableState({
   const isControlled = prop !== void 0;
   const value = isControlled ? prop : uncontrolledProp;
   const handleChange = useCallbackRef(onChange);
-  const setValue = React59.useCallback(
+  const setValue = React62.useCallback(
     (nextValue) => {
       if (isControlled) {
         const setter = nextValue;
@@ -3747,11 +3973,11 @@ function useUncontrolledState({
   defaultProp,
   onChange
 }) {
-  const uncontrolledState = React59.useState(defaultProp);
+  const uncontrolledState = React62.useState(defaultProp);
   const [value] = uncontrolledState;
-  const prevValueRef = React59.useRef(value);
+  const prevValueRef = React62.useRef(value);
   const handleChange = useCallbackRef(onChange);
-  React59.useEffect(() => {
+  React62.useEffect(() => {
     if (prevValueRef.current !== value) {
       handleChange(value);
       prevValueRef.current = value;
@@ -3804,7 +4030,7 @@ import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 
 // __registry__/index.tsx
-import * as React60 from "react";
+import * as React63 from "react";
 var Index = {
   default: {
     "animated-label-input": {
@@ -3887,7 +4113,7 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports)))
     },
     "animated-tooltip": {
       name: "animated-tooltip",
@@ -3900,7 +4126,7 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports)))
     },
     "labeled-switch": {
       name: "labeled-switch",
@@ -3990,7 +4216,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports)))
     },
     "range-slider": {
       name: "range-slider",
@@ -4003,7 +4229,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider(), range_slider_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_range_slider(), range_slider_exports)))
     },
     "responsive-textarea": {
       name: "responsive-textarea",
@@ -4016,7 +4242,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports)))
     },
     "star-rating": {
       name: "star-rating",
@@ -4199,7 +4425,7 @@ export default StarRating;
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating(), star_rating_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating(), star_rating_exports)))
     },
     "stepper": {
       name: "stepper",
@@ -4713,7 +4939,7 @@ export { defineStepper };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper(), stepper_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper(), stepper_exports)))
     },
     "tel-input": {
       name: "tel-input",
@@ -4899,7 +5125,7 @@ export { TelInput };
           "type": "registry:ui"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input(), tel_input_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input(), tel_input_exports)))
     },
     "animated-label-input-default": {
       name: "animated-label-input-default",
@@ -4911,7 +5137,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports)))
     },
     "animated-label-input-with-form": {
       name: "animated-label-input-with-form",
@@ -4923,7 +5149,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports)))
     },
     "animated-tooltip-default": {
       name: "animated-tooltip-default",
@@ -4935,7 +5161,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports)))
     },
     "labeled-switch-default": {
       name: "labeled-switch-default",
@@ -4947,7 +5173,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports)))
     },
     "labeled-switch-with-form": {
       name: "labeled-switch-with-form",
@@ -4959,7 +5185,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports)))
     },
     "range-slider-default": {
       name: "range-slider-default",
@@ -4971,7 +5197,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports)))
     },
     "range-slider-vertical": {
       name: "range-slider-vertical",
@@ -4983,7 +5209,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports)))
     },
     "range-slider-with-label": {
       name: "range-slider-with-label",
@@ -4995,7 +5221,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports)))
     },
     "responsive-textarea-default": {
       name: "responsive-textarea-default",
@@ -5007,7 +5233,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports)))
     },
     "responsive-textarea-with-form": {
       name: "responsive-textarea-with-form",
@@ -5019,7 +5245,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports)))
     },
     "responsive-textarea-with-label": {
       name: "responsive-textarea-with-label",
@@ -5031,7 +5257,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports)))
     },
     "responsive-textarea-with-text": {
       name: "responsive-textarea-with-text",
@@ -5043,7 +5269,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports)))
     },
     "star-rating-customized": {
       name: "star-rating-customized",
@@ -5055,7 +5281,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports)))
     },
     "star-rating-default": {
       name: "star-rating-default",
@@ -5067,7 +5293,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports)))
     },
     "star-rating-interactive": {
       name: "star-rating-interactive",
@@ -5079,7 +5305,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports)))
     },
     "star-rating-readonly": {
       name: "star-rating-readonly",
@@ -5091,7 +5317,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports)))
     },
     "star-rating-with-form": {
       name: "star-rating-with-form",
@@ -5103,7 +5329,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports)))
     },
     "stepper-demo": {
       name: "stepper-demo",
@@ -5115,7 +5341,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports)))
     },
     "stepper-description": {
       name: "stepper-description",
@@ -5127,7 +5353,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports)))
     },
     "stepper-form": {
       name: "stepper-form",
@@ -5139,7 +5365,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports)))
     },
     "stepper-icon": {
       name: "stepper-icon",
@@ -5151,7 +5377,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports)))
     },
     "stepper-label-orientation": {
       name: "stepper-label-orientation",
@@ -5163,7 +5389,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports)))
     },
     "stepper-responsive-variant": {
       name: "stepper-responsive-variant",
@@ -5175,7 +5401,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports)))
     },
     "stepper-tracking": {
       name: "stepper-tracking",
@@ -5187,7 +5413,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports)))
     },
     "stepper-variants": {
       name: "stepper-variants",
@@ -5199,7 +5425,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports)))
     },
     "tel-input-custom-labels": {
       name: "tel-input-custom-labels",
@@ -5211,7 +5437,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports)))
     },
     "tel-input-default-country": {
       name: "tel-input-default-country",
@@ -5223,7 +5449,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports)))
     },
     "tel-input-default": {
       name: "tel-input-default",
@@ -5235,7 +5461,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports)))
     },
     "tel-input-international": {
       name: "tel-input-international",
@@ -5247,7 +5473,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports)))
     },
     "tel-input-with-form": {
       name: "tel-input-with-form",
@@ -5259,7 +5485,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports)))
     },
     "use-boolean-default": {
       name: "use-boolean-default",
@@ -5271,7 +5497,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports)))
     },
     "use-click-outside-default": {
       name: "use-click-outside-default",
@@ -5283,7 +5509,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports)))
     },
     "use-debounce-default": {
       name: "use-debounce-default",
@@ -5295,7 +5521,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports)))
     },
     "use-element-size-default": {
       name: "use-element-size-default",
@@ -5307,7 +5533,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports)))
     },
     "use-fullscreen-default": {
       name: "use-fullscreen-default",
@@ -5319,7 +5545,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports)))
     },
     "use-fullscreen-with-target": {
       name: "use-fullscreen-with-target",
@@ -5331,7 +5557,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports)))
     },
     "use-mobile-default": {
       name: "use-mobile-default",
@@ -5343,7 +5569,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports)))
     },
     "avatar-default": {
       name: "avatar-default",
@@ -5351,25 +5577,25 @@ export { TelInput };
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-default.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-export default function AvatarDefault() {
-  return (
-    <Avatar>
-      <AvatarImage
-        src='https://github.com/phamhuulocforwork.png'
-        alt='@phamhuulocforwork'
-      />
-      <AvatarFallback>HL</AvatarFallback>
-    </Avatar>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-default.tsx",
+          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+\r
+export default function AvatarDefault() {\r
+  return (\r
+    <Avatar>\r
+      <AvatarImage\r
+        src='https://github.com/shadcn.png'\r
+        alt='@phamhuulocforwork'\r
+      />\r
+      <AvatarFallback>HL</AvatarFallback>\r
+    </Avatar>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-default.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_default(), avatar_default_exports)))
     },
     "avatar-group-max": {
       name: "avatar-group-max",
@@ -5377,89 +5603,89 @@ export default function AvatarDefault() {
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-group-max.tsx",
-          "content": `import * as React from "react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import { cn } from "@/lib/utils";
-
-type AvatarProps = React.ComponentProps<typeof Avatar>;
-
-interface AvatarGroupProps extends React.ComponentProps<"div"> {
-  children: React.ReactElement<AvatarProps>[];
-  max?: number;
-}
-
-const AvatarGroup = ({
-  children,
-  max,
-  className,
-  ...props
-}: AvatarGroupProps) => {
-  const totalAvatars = React.Children.count(children);
-  const displayedAvatars = React.Children.toArray(children)
-    .slice(0, max)
-    .reverse();
-  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
-
-  return (
-    <div
-      className={cn("flex items-center flex-row-reverse", className)}
-      {...props}
-    >
-      {remainingAvatars > 0 && (
-        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>
-          <AvatarFallback className='bg-muted-foreground text-white'>
-            +{remainingAvatars}
-          </AvatarFallback>
-        </Avatar>
-      )}
-      {displayedAvatars.map((avatar, index) => {
-        if (!React.isValidElement(avatar)) return null;
-
-        return (
-          <div key={index} className='-ml-2 hover:z-10 relative'>
-            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {
-              className: "ring-2 ring-background",
-            })}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-export default function AvatarGroupMaxAvatarDemo() {
-  return (
-    <AvatarGroup className='flex items-center' max={3}>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarImage
-          src='https://github.com/phamhuulocforwork.png'
-          alt='@phamhuulocforwork'
-        />
-        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-group-max.tsx",
+          "content": `import * as React from "react";\r
+\r
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+\r
+import { cn } from "@/lib/utils";\r
+\r
+type AvatarProps = React.ComponentProps<typeof Avatar>;\r
+\r
+interface AvatarGroupProps extends React.ComponentProps<"div"> {\r
+  children: React.ReactElement<AvatarProps>[];\r
+  max?: number;\r
+}\r
+\r
+const AvatarGroup = ({\r
+  children,\r
+  max,\r
+  className,\r
+  ...props\r
+}: AvatarGroupProps) => {\r
+  const totalAvatars = React.Children.count(children);\r
+  const displayedAvatars = React.Children.toArray(children)\r
+    .slice(0, max)\r
+    .reverse();\r
+  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r
+\r
+  return (\r
+    <div\r
+      className={cn("flex items-center flex-row-reverse", className)}\r
+      {...props}\r
+    >\r
+      {remainingAvatars > 0 && (\r
+        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r
+          <AvatarFallback className='bg-muted-foreground text-white'>\r
+            +{remainingAvatars}\r
+          </AvatarFallback>\r
+        </Avatar>\r
+      )}\r
+      {displayedAvatars.map((avatar, index) => {\r
+        if (!React.isValidElement(avatar)) return null;\r
+\r
+        return (\r
+          <div key={index} className='-ml-2 hover:z-10 relative'>\r
+            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r
+              className: "ring-2 ring-background",\r
+            })}\r
+          </div>\r
+        );\r
+      })}\r
+    </div>\r
+  );\r
+};\r
+\r
+export default function AvatarGroupMaxAvatarDemo() {\r
+  return (\r
+    <AvatarGroup className='flex items-center' max={3}>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarImage\r
+          src='https://github.com/shadcn.png'\r
+          alt='@phamhuulocforwork'\r
+        />\r
+        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-indigo-500 text-white'>VK</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-orange-500 text-white'>RS</AvatarFallback>\r
+      </Avatar>\r
+    </AvatarGroup>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-group-max.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_group_max(), avatar_group_max_exports)))
     },
     "avatar-group": {
       name: "avatar-group",
@@ -5467,83 +5693,83 @@ export default function AvatarGroupMaxAvatarDemo() {
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-group.tsx",
-          "content": `import * as React from "react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import { cn } from "@/lib/utils";
-
-type AvatarProps = React.ComponentProps<typeof Avatar>;
-
-interface AvatarGroupProps extends React.ComponentProps<"div"> {
-  children: React.ReactElement<AvatarProps>[];
-  max?: number;
-}
-
-const AvatarGroup = ({
-  children,
-  max,
-  className,
-  ...props
-}: AvatarGroupProps) => {
-  const totalAvatars = React.Children.count(children);
-  const displayedAvatars = React.Children.toArray(children)
-    .slice(0, max)
-    .reverse();
-  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
-
-  return (
-    <div
-      className={cn("flex items-center flex-row-reverse", className)}
-      {...props}
-    >
-      {remainingAvatars > 0 && (
-        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>
-          <AvatarFallback className='bg-muted-foreground text-white'>
-            +{remainingAvatars}
-          </AvatarFallback>
-        </Avatar>
-      )}
-      {displayedAvatars.map((avatar, index) => {
-        if (!React.isValidElement(avatar)) return null;
-
-        return (
-          <div key={index} className='-ml-2 hover:z-10 relative'>
-            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {
-              className: "ring-2 ring-background",
-            })}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-export default function AvatarGroupDemo() {
-  return (
-    <AvatarGroup>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarImage
-          src='https://github.com/phamhuulocforwork.png'
-          alt='@phamhuulocforwork'
-        />
-        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>
-      </Avatar>
-      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
-        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-group.tsx",
+          "content": `import * as React from "react";\r
+\r
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+\r
+import { cn } from "@/lib/utils";\r
+\r
+type AvatarProps = React.ComponentProps<typeof Avatar>;\r
+\r
+interface AvatarGroupProps extends React.ComponentProps<"div"> {\r
+  children: React.ReactElement<AvatarProps>[];\r
+  max?: number;\r
+}\r
+\r
+const AvatarGroup = ({\r
+  children,\r
+  max,\r
+  className,\r
+  ...props\r
+}: AvatarGroupProps) => {\r
+  const totalAvatars = React.Children.count(children);\r
+  const displayedAvatars = React.Children.toArray(children)\r
+    .slice(0, max)\r
+    .reverse();\r
+  const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;\r
+\r
+  return (\r
+    <div\r
+      className={cn("flex items-center flex-row-reverse", className)}\r
+      {...props}\r
+    >\r
+      {remainingAvatars > 0 && (\r
+        <Avatar className='-ml-2 hover:z-10 relative ring-2 ring-background'>\r
+          <AvatarFallback className='bg-muted-foreground text-white'>\r
+            +{remainingAvatars}\r
+          </AvatarFallback>\r
+        </Avatar>\r
+      )}\r
+      {displayedAvatars.map((avatar, index) => {\r
+        if (!React.isValidElement(avatar)) return null;\r
+\r
+        return (\r
+          <div key={index} className='-ml-2 hover:z-10 relative'>\r
+            {React.cloneElement(avatar as React.ReactElement<AvatarProps>, {\r
+              className: "ring-2 ring-background",\r
+            })}\r
+          </div>\r
+        );\r
+      })}\r
+    </div>\r
+  );\r
+};\r
+\r
+export default function AvatarGroupDemo() {\r
+  return (\r
+    <AvatarGroup>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarImage\r
+          src='https://github.com/shadcn.png'\r
+          alt='@phamhuulocforwork'\r
+        />\r
+        <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-green-600 text-white'>VN</AvatarFallback>\r
+      </Avatar>\r
+      <Avatar className='-ml-2 first:ml-0 cursor-pointer'>\r
+        <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>\r
+      </Avatar>\r
+    </AvatarGroup>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-group.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_group(), avatar_group_exports)))
     },
     "avatar-hover-card": {
       name: "avatar-hover-card",
@@ -5551,60 +5777,60 @@ export default function AvatarGroupDemo() {
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-hover-card.tsx",
-          "content": `import { CalendarIcon } from "lucide-react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-
-export default function AvatarHoverCard() {
-  return (
-    <HoverCard>
-      <HoverCardTrigger className='cursor-pointer'>
-        <Avatar>
-          <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
-            alt='@phamhuulocforwork'
-          />
-          <AvatarFallback>HL</AvatarFallback>
-        </Avatar>
-      </HoverCardTrigger>
-      <HoverCardContent className='w-full max-w-xs'>
-        <div className='flex justify-between space-x-4'>
-          <Avatar>
-            <AvatarImage
-              src='https://github.com/phamhuulocforwork.png'
-              alt='@phamhuulocforwork'
-            />
-            <AvatarFallback>HL</AvatarFallback>
-          </Avatar>
-          <div className='space-y-1'>
-            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>
-            <p className='text-sm'>
-              I'm currently studying at University (I stay up late and my hair
-              is getting thinner and thinner. Do you think I'm bald? xD)
-            </p>
-            <div className='flex items-center pt-2'>
-              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{" "}
-              <span className='text-xs text-muted-foreground'>
-                Joined February 2025
-              </span>
-            </div>
-          </div>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-hover-card.tsx",
+          "content": `import { CalendarIcon } from "lucide-react";\r
+\r
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+import {\r
+  HoverCard,\r
+  HoverCardContent,\r
+  HoverCardTrigger,\r
+} from "@/components/ui/hover-card";\r
+\r
+export default function AvatarHoverCard() {\r
+  return (\r
+    <HoverCard>\r
+      <HoverCardTrigger className='cursor-pointer'>\r
+        <Avatar>\r
+          <AvatarImage\r
+            src='https://github.com/shadcn.png'\r
+            alt='@phamhuulocforwork'\r
+          />\r
+          <AvatarFallback>HL</AvatarFallback>\r
+        </Avatar>\r
+      </HoverCardTrigger>\r
+      <HoverCardContent className='w-full max-w-xs'>\r
+        <div className='flex justify-between space-x-4'>\r
+          <Avatar>\r
+            <AvatarImage\r
+              src='https://github.com/shadcn.png'\r
+              alt='@phamhuulocforwork'\r
+            />\r
+            <AvatarFallback>HL</AvatarFallback>\r
+          </Avatar>\r
+          <div className='space-y-1'>\r
+            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>\r
+            <p className='text-sm'>\r
+              I'm currently studying at University (I stay up late and my hair\r
+              is getting thinner and thinner. Do you think I'm bald? xD)\r
+            </p>\r
+            <div className='flex items-center pt-2'>\r
+              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{" "}\r
+              <span className='text-xs text-muted-foreground'>\r
+                Joined February 2025\r
+              </span>\r
+            </div>\r
+          </div>\r
+        </div>\r
+      </HoverCardContent>\r
+    </HoverCard>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-hover-card.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_hover_card(), avatar_hover_card_exports)))
     },
     "avatar-with-ring": {
       name: "avatar-with-ring",
@@ -5612,25 +5838,25 @@ export default function AvatarHoverCard() {
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-with-ring.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-export default function AvatarWithRing() {
-  return (
-    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>
-      <AvatarImage
-        src='https://github.com/phamhuulocforwork.png'
-        alt='@phamhuulocforwork'
-      />
-      <AvatarFallback>HL</AvatarFallback>
-    </Avatar>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-with-ring.tsx",
+          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+\r
+export default function AvatarWithRing() {\r
+  return (\r
+    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\r
+      <AvatarImage\r
+        src='https://github.com/shadcn.png'\r
+        alt='@phamhuulocforwork'\r
+      />\r
+      <AvatarFallback>HL</AvatarFallback>\r
+    </Avatar>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-with-ring.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_with_ring(), avatar_with_ring_exports)))
     },
     "avatar-with-status": {
       name: "avatar-with-status",
@@ -5638,105 +5864,67 @@ export default function AvatarWithRing() {
       type: "registry:snippet",
       files: [
         {
-          "path": "registry/default/snippets/avatar-with-status.tsx",
-          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-export default function AvatarWithStatus() {
-  return (
-    <div className='flex items-center gap-3'>
-      {/* Online */}
-      <div className='relative'>
-        <Avatar>
-          <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
-            alt='@phamhuulocforwork'
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>
-      </div>
-
-      {/* DND */}
-      <div className='relative'>
-        <Avatar>
-          <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
-            alt='@phamhuulocforwork'
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>
-      </div>
-
-      {/* Busy */}
-      <div className='relative'>
-        <Avatar>
-          <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
-            alt='@phamhuulocforwork'
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>
-      </div>
-
-      {/* Offline */}
-      <div className='relative'>
-        <Avatar>
-          <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
-            alt='@phamhuulocforwork'
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>
-      </div>
-    </div>
-  );
-}
+          "path": "registry/default/snippets/avatar/avatar-with-status.tsx",
+          "content": `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";\r
+\r
+export default function AvatarWithStatus() {\r
+  return (\r
+    <div className='flex items-center gap-3'>\r
+      {/* Online */}\r
+      <div className='relative'>\r
+        <Avatar>\r
+          <AvatarImage\r
+            src='https://github.com/shadcn.png'\r
+            alt='@phamhuulocforwork'\r
+          />\r
+          <AvatarFallback>CN</AvatarFallback>\r
+        </Avatar>\r
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>\r
+      </div>\r
+\r
+      {/* DND */}\r
+      <div className='relative'>\r
+        <Avatar>\r
+          <AvatarImage\r
+            src='https://github.com/shadcn.png'\r
+            alt='@phamhuulocforwork'\r
+          />\r
+          <AvatarFallback>CN</AvatarFallback>\r
+        </Avatar>\r
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>\r
+      </div>\r
+\r
+      {/* Busy */}\r
+      <div className='relative'>\r
+        <Avatar>\r
+          <AvatarImage\r
+            src='https://github.com/shadcn.png'\r
+            alt='@phamhuulocforwork'\r
+          />\r
+          <AvatarFallback>CN</AvatarFallback>\r
+        </Avatar>\r
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>\r
+      </div>\r
+\r
+      {/* Offline */}\r
+      <div className='relative'>\r
+        <Avatar>\r
+          <AvatarImage\r
+            src='https://github.com/shadcn.png'\r
+            alt='@phamhuulocforwork'\r
+          />\r
+          <AvatarFallback>CN</AvatarFallback>\r
+        </Avatar>\r
+        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>\r
+      </div>\r
+    </div>\r
+  );\r
+}\r
 `,
           "type": "registry:snippet"
         }
       ],
-      component: React60.lazy(() => import("@/registry/default/snippets/avatar-with-status.tsx"))
-    },
-    "tooltip-with-arrow": {
-      name: "tooltip-with-arrow",
-      description: "",
-      type: "registry:snippet",
-      files: [
-        {
-          "path": "registry/default/snippets/tooltip-with-arrow.tsx",
-          "content": `import { TooltipArrow } from "@radix-ui/react-tooltip";
-
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-export default function WithArrowTooltip() {
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant='outline'>Hover</Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Tooltip with arrow</p>
-          <TooltipArrow className='fill-foreground' />
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-}
-`,
-          "type": "registry:snippet"
-        }
-      ],
-      component: React60.lazy(() => import("@/registry/default/snippets/tooltip-with-arrow.tsx"))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_avatar_with_status(), avatar_with_status_exports)))
     },
     "use-boolean": {
       name: "use-boolean",
@@ -5749,7 +5937,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports)))
     },
     "use-callback-ref": {
       name: "use-callback-ref",
@@ -5762,7 +5950,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports)))
     },
     "use-click-outside": {
       name: "use-click-outside",
@@ -5775,7 +5963,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports)))
     },
     "use-controllable-state": {
       name: "use-controllable-state",
@@ -5788,7 +5976,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports)))
     },
     "use-debounce": {
       name: "use-debounce",
@@ -5801,7 +5989,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports)))
     },
     "use-element-size": {
       name: "use-element-size",
@@ -5814,7 +6002,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports)))
     },
     "use-fullscreen": {
       name: "use-fullscreen",
@@ -5827,7 +6015,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports)))
     },
     "use-mobile": {
       name: "use-mobile",
@@ -5840,7 +6028,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports)))
     },
     "use-mounted": {
       name: "use-mounted",
@@ -5853,7 +6041,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports)))
+      component: React63.lazy(() => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports)))
     }
   }
 };

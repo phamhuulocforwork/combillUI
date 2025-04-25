@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/hooks/use-toast";
 
 import StarRating from "@/registry/default/ui/star-rating";
 

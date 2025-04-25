@@ -1,10 +1,8 @@
-// React Imports
 import { Fragment, useLayoutEffect, useState } from "react";
 import type { JSX } from "react";
 
 import { jsx, jsxs } from "react/jsx-runtime";
 
-// Third-party Imports
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 import { codeToHast } from "shiki/bundle/web";
 import type { BundledLanguage } from "shiki/bundle/web";

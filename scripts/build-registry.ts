@@ -1,3 +1,4 @@
+//TODO: Viết script xử lý khai báo các categories @/config/snippets
 import * as fs from "fs";
 import * as path from "path";
 

@@ -7,7 +7,7 @@ export default function AvatarWithStatus() {
       <div className='relative'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
+            src='https://github.com/shadcn.png'
             alt='@phamhuulocforwork'
           />
           <AvatarFallback>CN</AvatarFallback>
@@ -19,7 +19,7 @@ export default function AvatarWithStatus() {
       <div className='relative'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
+            src='https://github.com/shadcn.png'
             alt='@phamhuulocforwork'
           />
           <AvatarFallback>CN</AvatarFallback>
@@ -31,7 +31,7 @@ export default function AvatarWithStatus() {
       <div className='relative'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
+            src='https://github.com/shadcn.png'
             alt='@phamhuulocforwork'
           />
           <AvatarFallback>CN</AvatarFallback>
@@ -43,7 +43,7 @@ export default function AvatarWithStatus() {
       <div className='relative'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/phamhuulocforwork.png'
+            src='https://github.com/shadcn.png'
             alt='@phamhuulocforwork'
           />
           <AvatarFallback>CN</AvatarFallback>

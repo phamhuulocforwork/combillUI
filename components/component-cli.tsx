@@ -7,7 +7,7 @@ import CodeBlock, { highlight } from "@/components/code-block";
 import CopyButton from "@/components/copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 type PackageManager = "pnpm" | "npm" | "yarn" | "bun";
 

@@ -1,4 +1,3 @@
-// Imports
 import { registry } from "@/registry";
 import type { Component } from "@/registry/schema";
 

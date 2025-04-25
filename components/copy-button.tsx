@@ -12,7 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { useCopy } from "@/hooks/useCopy";
+import { useCopy } from "@/hooks/use-copy";
 
 const CopyButton = ({
   source,
@@ -23,7 +23,6 @@ const CopyButton = ({
   className?: string;
   toast?: string;
 }) => {
-  // Hooks
   const { copied, copy } = useCopy(1500, toast);
 
   return (

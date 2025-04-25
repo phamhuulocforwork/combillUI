@@ -55,7 +55,7 @@ export default function AvatarGroupMaxAvatarDemo() {
     <AvatarGroup className='flex items-center' max={3}>
       <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
         <AvatarImage
-          src='https://github.com/phamhuulocforwork.png'
+          src='https://github.com/shadcn.png'
           alt='@phamhuulocforwork'
         />
         <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>

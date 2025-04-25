@@ -1,6 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 
-import Avatar from "@/assets/svg/Avatar";
+import Avatar from "@/assets/svg/avatar";
 
 export type ComponentCategory = {
   slug: string;
