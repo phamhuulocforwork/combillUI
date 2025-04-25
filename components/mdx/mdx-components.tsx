@@ -6,8 +6,8 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import defaultComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 
-import { ComponentSource } from "@/components/component-source";
-import { ComponentTabs } from "@/components/component-tabs";
+import { ComponentSource } from "@/components/mdx/component-source";
+import { ComponentTabs } from "@/components/mdx/component-tabs";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import {
   Tabs as ShadcnTabs,

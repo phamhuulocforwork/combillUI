@@ -1,26 +1,24 @@
 // @ts-nocheck -- skip type checking
 import { _runtime } from "fumadocs-mdx";
 
-import * as docs_1 from "../content/docs/components/animated-label-input.mdx?collection=docs&hash=1744117900572";
-import * as docs_2 from "../content/docs/components/animated-tooltip.mdx?collection=docs&hash=1744117900572";
-import * as docs_3 from "../content/docs/components/labeled-switch.mdx?collection=docs&hash=1744117900572";
-import * as docs_4 from "../content/docs/components/range-slider.mdx?collection=docs&hash=1744117900572";
-import * as docs_5 from "../content/docs/components/responsive-textarea.mdx?collection=docs&hash=1744117900572";
-import * as docs_6 from "../content/docs/components/star-rating.mdx?collection=docs&hash=1744117900572";
-import * as docs_7 from "../content/docs/components/stepper.mdx?collection=docs&hash=1744117900572";
-import * as docs_8 from "../content/docs/components/tel-input.mdx?collection=docs&hash=1744117900572";
-import * as docs_9 from "../content/docs/hooks/use-boolean.mdx?collection=docs&hash=1744117900572";
-import * as docs_10 from "../content/docs/hooks/use-callback-ref.mdx?collection=docs&hash=1744117900572";
-import * as docs_11 from "../content/docs/hooks/use-click-outside.mdx?collection=docs&hash=1744117900572";
-import * as docs_12 from "../content/docs/hooks/use-controllable-state.mdx?collection=docs&hash=1744117900572";
-import * as docs_13 from "../content/docs/hooks/use-debounce.mdx?collection=docs&hash=1744117900572";
-import * as docs_14 from "../content/docs/hooks/use-element-size.mdx?collection=docs&hash=1744117900572";
-import * as docs_15 from "../content/docs/hooks/use-fullscreen.mdx?collection=docs&hash=1744117900572";
-import * as docs_16 from "../content/docs/hooks/use-mobile.mdx?collection=docs&hash=1744117900572";
-import * as docs_17 from "../content/docs/hooks/use-mounted.mdx?collection=docs&hash=1744117900572";
-import * as docs_0 from "../content/docs/introduction.mdx?collection=docs&hash=1744117900572";
-import * as docs_18 from "../content/docs/snippets/avatar.mdx?collection=docs&hash=1744117900572";
-import * as docs_19 from "../content/docs/snippets/tooltip-with-arrow.mdx?collection=docs&hash=1744117900572";
+import * as docs_1 from "../content/docs/components/animated-label-input.mdx?collection=docs&hash=1743699144975";
+import * as docs_2 from "../content/docs/components/animated-tooltip.mdx?collection=docs&hash=1743699144975";
+import * as docs_3 from "../content/docs/components/labeled-switch.mdx?collection=docs&hash=1743699144975";
+import * as docs_4 from "../content/docs/components/range-slider.mdx?collection=docs&hash=1743699144975";
+import * as docs_5 from "../content/docs/components/responsive-textarea.mdx?collection=docs&hash=1743699144975";
+import * as docs_6 from "../content/docs/components/star-rating.mdx?collection=docs&hash=1743699144975";
+import * as docs_7 from "../content/docs/components/stepper.mdx?collection=docs&hash=1743699144975";
+import * as docs_8 from "../content/docs/components/tel-input.mdx?collection=docs&hash=1743699144975";
+import * as docs_9 from "../content/docs/hooks/use-boolean.mdx?collection=docs&hash=1743699144975";
+import * as docs_10 from "../content/docs/hooks/use-callback-ref.mdx?collection=docs&hash=1743699144975";
+import * as docs_11 from "../content/docs/hooks/use-click-outside.mdx?collection=docs&hash=1743699144975";
+import * as docs_12 from "../content/docs/hooks/use-controllable-state.mdx?collection=docs&hash=1743699144975";
+import * as docs_13 from "../content/docs/hooks/use-debounce.mdx?collection=docs&hash=1743699144975";
+import * as docs_14 from "../content/docs/hooks/use-element-size.mdx?collection=docs&hash=1743699144975";
+import * as docs_15 from "../content/docs/hooks/use-fullscreen.mdx?collection=docs&hash=1743699144975";
+import * as docs_16 from "../content/docs/hooks/use-mobile.mdx?collection=docs&hash=1743699144975";
+import * as docs_17 from "../content/docs/hooks/use-mounted.mdx?collection=docs&hash=1743699144975";
+import * as docs_0 from "../content/docs/introduction.mdx?collection=docs&hash=1743699144975";
 import * as _source from "../source.config";
 
 export const docs = _runtime.doc<typeof _source.docs>([
@@ -159,21 +157,6 @@ export const docs = _runtime.doc<typeof _source.docs>([
       absolutePath: "D:/Github/combillUI/content/docs/hooks/use-mounted.mdx",
     },
     data: docs_17,
-  },
-  {
-    info: {
-      path: "snippets\\avatar.mdx",
-      absolutePath: "D:/Github/combillUI/content/docs/snippets/avatar.mdx",
-    },
-    data: docs_18,
-  },
-  {
-    info: {
-      path: "snippets\\tooltip-with-arrow.mdx",
-      absolutePath:
-        "D:/Github/combillUI/content/docs/snippets/tooltip-with-arrow.mdx",
-    },
-    data: docs_19,
   },
 ]);
 export const meta = _runtime.meta<typeof _source.meta>([]);

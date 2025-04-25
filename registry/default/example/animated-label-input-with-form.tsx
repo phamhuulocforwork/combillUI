@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 
 import { AnimatedLabelInput } from "@/registry/default/ui/animated-label-input";
 

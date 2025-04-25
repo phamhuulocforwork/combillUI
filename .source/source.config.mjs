@@ -1463,7 +1463,7 @@ var init_form = __esm({
   }
 });
 
-// hooks/use-toast.ts
+// hooks/useToast.ts
 import * as React19 from "react";
 function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
@@ -1517,8 +1517,8 @@ function useToast() {
   };
 }
 var TOAST_LIMIT, TOAST_REMOVE_DELAY, count, toastTimeouts, addToRemoveQueue, reducer, listeners, memoryState;
-var init_use_toast = __esm({
-  "hooks/use-toast.ts"() {
+var init_useToast = __esm({
+  "hooks/useToast.ts"() {
     "use strict";
     "use client";
     TOAST_LIMIT = 1;
@@ -1644,7 +1644,7 @@ var init_animated_label_input_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_use_toast();
+    init_useToast();
     init_animated_label_input();
     formSchema = z.object({
       email: z.string().email("Invalid email address"),
@@ -1803,7 +1803,7 @@ var init_labeled_switch_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_use_toast();
+    init_useToast();
     init_labeled_switch();
     formSchema2 = z2.object({
       consent: z2.boolean({
@@ -1978,7 +1978,7 @@ var init_responsive_textarea_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_use_toast();
+    init_useToast();
     init_responsive_textarea();
     formSchema3 = z3.object({
       message: z3.string().min(1, "Message is required")
@@ -2137,7 +2137,7 @@ var init_star_rating_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_use_toast();
+    init_useToast();
     init_star_rating();
     FormSchema = z4.object({
       rating: z4.number().min(1, {
@@ -2687,7 +2687,7 @@ var init_stepper_label_orientation = __esm({
   }
 });
 
-// hooks/use-media-query.ts
+// hooks/useMediaQuery.ts
 import * as React38 from "react";
 function useMediaQuery(query) {
   const [value, setValue] = React38.useState(false);
@@ -2702,8 +2702,8 @@ function useMediaQuery(query) {
   }, [query]);
   return value;
 }
-var init_use_media_query = __esm({
-  "hooks/use-media-query.ts"() {
+var init_useMediaQuery = __esm({
+  "hooks/useMediaQuery.ts"() {
     "use strict";
   }
 });
@@ -2751,7 +2751,7 @@ var init_stepper_responsive_variant = __esm({
   "registry/default/example/stepper-responsive-variant.tsx"() {
     "use strict";
     init_button();
-    init_use_media_query();
+    init_useMediaQuery();
     init_stepper();
     ({
       StepperProvider: StepperProvider6,
@@ -3119,7 +3119,7 @@ var init_tel_input_with_form = __esm({
     "use client";
     init_button();
     init_form();
-    init_use_toast();
+    init_useToast();
     init_tel_input();
     formSchema4 = z6.object({
       phone: z6.string().min(1, "Phone number is required")
@@ -3688,297 +3688,18 @@ var init_use_mobile_default = __esm({
   }
 });
 
-// registry/default/snippets/avatar-default.tsx
-var avatar_default_exports = {};
-__export(avatar_default_exports, {
-  default: () => AvatarDefault
-});
-function AvatarDefault() {
-  return /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"));
-}
-var init_avatar_default = __esm({
-  "registry/default/snippets/avatar-default.tsx"() {
-    "use strict";
-    init_avatar();
-  }
-});
-
-// registry/default/snippets/avatar-group-max.tsx
-var avatar_group_max_exports = {};
-__export(avatar_group_max_exports, {
-  default: () => AvatarGroupMaxAvatarDemo
-});
-import * as React58 from "react";
-function AvatarGroupMaxAvatarDemo() {
-  return /* @__PURE__ */ React58.createElement(AvatarGroup, { className: "flex items-center", max: 3 }, /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "HL")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-green-600 text-white" }, "VN")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-red-500 text-white" }, "AB")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "VK")), /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-orange-500 text-white" }, "RS")));
-}
-var AvatarGroup;
-var init_avatar_group_max = __esm({
-  "registry/default/snippets/avatar-group-max.tsx"() {
-    "use strict";
-    init_avatar();
-    init_utils();
-    AvatarGroup = ({
-      children,
-      max,
-      className,
-      ...props
-    }) => {
-      const totalAvatars = React58.Children.count(children);
-      const displayedAvatars = React58.Children.toArray(children).slice(0, max).reverse();
-      const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
-      return /* @__PURE__ */ React58.createElement(
-        "div",
-        {
-          className: cn("flex items-center flex-row-reverse", className),
-          ...props
-        },
-        remainingAvatars > 0 && /* @__PURE__ */ React58.createElement(Avatar, { className: "-ml-2 hover:z-10 relative ring-2 ring-background" }, /* @__PURE__ */ React58.createElement(AvatarFallback, { className: "bg-muted-foreground text-white" }, "+", remainingAvatars)),
-        displayedAvatars.map((avatar, index) => {
-          if (!React58.isValidElement(avatar)) return null;
-          return /* @__PURE__ */ React58.createElement("div", { key: index, className: "-ml-2 hover:z-10 relative" }, React58.cloneElement(avatar, {
-            className: "ring-2 ring-background"
-          }));
-        })
-      );
-    };
-  }
-});
-
-// registry/default/snippets/avatar-group.tsx
-var avatar_group_exports = {};
-__export(avatar_group_exports, {
-  default: () => AvatarGroupDemo
-});
-import * as React59 from "react";
-function AvatarGroupDemo() {
-  return /* @__PURE__ */ React59.createElement(AvatarGroup2, null, /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-indigo-500 text-white" }, "HL")), /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-green-600 text-white" }, "VN")), /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 first:ml-0 cursor-pointer" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-red-500 text-white" }, "AB")));
-}
-var AvatarGroup2;
-var init_avatar_group = __esm({
-  "registry/default/snippets/avatar-group.tsx"() {
-    "use strict";
-    init_avatar();
-    init_utils();
-    AvatarGroup2 = ({
-      children,
-      max,
-      className,
-      ...props
-    }) => {
-      const totalAvatars = React59.Children.count(children);
-      const displayedAvatars = React59.Children.toArray(children).slice(0, max).reverse();
-      const remainingAvatars = max ? Math.max(totalAvatars - max, 1) : 0;
-      return /* @__PURE__ */ React59.createElement(
-        "div",
-        {
-          className: cn("flex items-center flex-row-reverse", className),
-          ...props
-        },
-        remainingAvatars > 0 && /* @__PURE__ */ React59.createElement(Avatar, { className: "-ml-2 hover:z-10 relative ring-2 ring-background" }, /* @__PURE__ */ React59.createElement(AvatarFallback, { className: "bg-muted-foreground text-white" }, "+", remainingAvatars)),
-        displayedAvatars.map((avatar, index) => {
-          if (!React59.isValidElement(avatar)) return null;
-          return /* @__PURE__ */ React59.createElement("div", { key: index, className: "-ml-2 hover:z-10 relative" }, React59.cloneElement(avatar, {
-            className: "ring-2 ring-background"
-          }));
-        })
-      );
-    };
-  }
-});
-
-// components/ui/hover-card.tsx
-import * as React60 from "react";
-import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-var HoverCard, HoverCardTrigger, HoverCardContent;
-var init_hover_card = __esm({
-  "components/ui/hover-card.tsx"() {
-    "use strict";
-    "use client";
-    init_utils();
-    HoverCard = HoverCardPrimitive.Root;
-    HoverCardTrigger = HoverCardPrimitive.Trigger;
-    HoverCardContent = React60.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ React60.createElement(
-      HoverCardPrimitive.Content,
-      {
-        ref,
-        align,
-        sideOffset,
-        className: cn(
-          "z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          className
-        ),
-        ...props
-      }
-    ));
-    HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
-  }
-});
-
-// registry/default/snippets/avatar-hover-card.tsx
-var avatar_hover_card_exports = {};
-__export(avatar_hover_card_exports, {
-  default: () => AvatarHoverCard
-});
-import { CalendarIcon } from "lucide-react";
-function AvatarHoverCard() {
-  return /* @__PURE__ */ React.createElement(HoverCard, null, /* @__PURE__ */ React.createElement(HoverCardTrigger, { className: "cursor-pointer" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"))), /* @__PURE__ */ React.createElement(HoverCardContent, { className: "w-full max-w-xs" }, /* @__PURE__ */ React.createElement("div", { className: "flex justify-between space-x-4" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL")), /* @__PURE__ */ React.createElement("div", { className: "space-y-1" }, /* @__PURE__ */ React.createElement("h4", { className: "text-sm font-semibold" }, "@phamhuulocforwork"), /* @__PURE__ */ React.createElement("p", { className: "text-sm" }, "I'm currently studying at University (I stay up late and my hair is getting thinner and thinner. Do you think I'm bald? xD)"), /* @__PURE__ */ React.createElement("div", { className: "flex items-center pt-2" }, /* @__PURE__ */ React.createElement(CalendarIcon, { className: "mr-2 h-4 w-4 opacity-70" }), " ", /* @__PURE__ */ React.createElement("span", { className: "text-xs text-muted-foreground" }, "Joined February 2025"))))));
-}
-var init_avatar_hover_card = __esm({
-  "registry/default/snippets/avatar-hover-card.tsx"() {
-    "use strict";
-    init_avatar();
-    init_hover_card();
-  }
-});
-
-// registry/default/snippets/avatar-with-ring.tsx
-var avatar_with_ring_exports = {};
-__export(avatar_with_ring_exports, {
-  default: () => AvatarWithRing
-});
-function AvatarWithRing() {
-  return /* @__PURE__ */ React.createElement(Avatar, { className: "ring-2 ring-green-500 ring-offset-[3px] ring-offset-background" }, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "HL"));
-}
-var init_avatar_with_ring = __esm({
-  "registry/default/snippets/avatar-with-ring.tsx"() {
-    "use strict";
-    init_avatar();
-  }
-});
-
-// registry/default/snippets/avatar-with-status.tsx
-var avatar_with_status_exports = {};
-__export(avatar_with_status_exports, {
-  default: () => AvatarWithStatus
-});
-function AvatarWithStatus() {
-  return /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3" }, /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0" })), /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Avatar, null, /* @__PURE__ */ React.createElement(
-    AvatarImage,
-    {
-      src: "https://github.com/phamhuulocforwork.png",
-      alt: "@phamhuulocforwork"
-    }
-  ), /* @__PURE__ */ React.createElement(AvatarFallback, null, "CN")), /* @__PURE__ */ React.createElement("div", { className: "h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0" })));
-}
-var init_avatar_with_status = __esm({
-  "registry/default/snippets/avatar-with-status.tsx"() {
-    "use strict";
-    init_avatar();
-  }
-});
-
-// components/ui/tooltip.tsx
-import * as React61 from "react";
-import * as TooltipPrimitive2 from "@radix-ui/react-tooltip";
-var TooltipProvider, Tooltip, TooltipTrigger, TooltipContent;
-var init_tooltip = __esm({
-  "components/ui/tooltip.tsx"() {
-    "use strict";
-    "use client";
-    init_utils();
-    TooltipProvider = TooltipPrimitive2.Provider;
-    Tooltip = TooltipPrimitive2.Root;
-    TooltipTrigger = TooltipPrimitive2.Trigger;
-    TooltipContent = React61.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ React61.createElement(TooltipPrimitive2.Portal, null, /* @__PURE__ */ React61.createElement(
-      TooltipPrimitive2.Content,
-      {
-        ref,
-        sideOffset,
-        className: cn(
-          "fade-in-0 zoom-in-95 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 animate-in overflow-hidden rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-xs data-[state=closed]:animate-out",
-          className
-        ),
-        ...props
-      }
-    )));
-    TooltipContent.displayName = TooltipPrimitive2.Content.displayName;
-  }
-});
-
-// registry/default/snippets/tooltip-with-arrow.tsx
-var tooltip_with_arrow_exports = {};
-__export(tooltip_with_arrow_exports, {
-  default: () => WithArrowTooltip
-});
-import { TooltipArrow } from "@radix-ui/react-tooltip";
-function WithArrowTooltip() {
-  return /* @__PURE__ */ React.createElement(TooltipProvider, null, /* @__PURE__ */ React.createElement(Tooltip, null, /* @__PURE__ */ React.createElement(TooltipTrigger, { asChild: true }, /* @__PURE__ */ React.createElement(Button, { variant: "outline" }, "Hover")), /* @__PURE__ */ React.createElement(TooltipContent, null, /* @__PURE__ */ React.createElement("p", null, "Tooltip with arrow"), /* @__PURE__ */ React.createElement(TooltipArrow, { className: "fill-foreground" }))));
-}
-var init_tooltip_with_arrow = __esm({
-  "registry/default/snippets/tooltip-with-arrow.tsx"() {
-    "use strict";
-    init_button();
-    init_tooltip();
-  }
-});
-
 // registry/default/hooks/use-callback-ref.ts
 var use_callback_ref_exports = {};
 __export(use_callback_ref_exports, {
   useCallbackRef: () => useCallbackRef
 });
-import * as React62 from "react";
+import * as React58 from "react";
 function useCallbackRef(callback) {
-  const callbackRef = React62.useRef(callback);
-  React62.useEffect(() => {
+  const callbackRef = React58.useRef(callback);
+  React58.useEffect(() => {
     callbackRef.current = callback;
   });
-  return React62.useMemo(
+  return React58.useMemo(
     () => (...args) => callbackRef.current?.(...args),
     []
   );
@@ -3994,7 +3715,7 @@ var use_controllable_state_exports = {};
 __export(use_controllable_state_exports, {
   useControllableState: () => useControllableState
 });
-import * as React63 from "react";
+import * as React59 from "react";
 function useControllableState({
   prop,
   defaultProp,
@@ -4008,7 +3729,7 @@ function useControllableState({
   const isControlled = prop !== void 0;
   const value = isControlled ? prop : uncontrolledProp;
   const handleChange = useCallbackRef(onChange);
-  const setValue = React63.useCallback(
+  const setValue = React59.useCallback(
     (nextValue) => {
       if (isControlled) {
         const setter = nextValue;
@@ -4026,11 +3747,11 @@ function useUncontrolledState({
   defaultProp,
   onChange
 }) {
-  const uncontrolledState = React63.useState(defaultProp);
+  const uncontrolledState = React59.useState(defaultProp);
   const [value] = uncontrolledState;
-  const prevValueRef = React63.useRef(value);
+  const prevValueRef = React59.useRef(value);
   const handleChange = useCallbackRef(onChange);
-  React63.useEffect(() => {
+  React59.useEffect(() => {
     if (prevValueRef.current !== value) {
       handleChange(value);
       prevValueRef.current = value;
@@ -4083,7 +3804,7 @@ import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 
 // __registry__/index.tsx
-import * as React64 from "react";
+import * as React60 from "react";
 var Index = {
   default: {
     "animated-label-input": {
@@ -4166,7 +3887,7 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input(), animated_label_input_exports)))
     },
     "animated-tooltip": {
       name: "animated-tooltip",
@@ -4179,7 +3900,7 @@ export { AnimatedLabelInput, AnimatedLabel, AnimatedInput };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_tooltip(), animated_tooltip_exports)))
     },
     "labeled-switch": {
       name: "labeled-switch",
@@ -4269,7 +3990,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch(), labeled_switch_exports)))
     },
     "range-slider": {
       name: "range-slider",
@@ -4282,7 +4003,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_range_slider(), range_slider_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider(), range_slider_exports)))
     },
     "responsive-textarea": {
       name: "responsive-textarea",
@@ -4295,7 +4016,7 @@ export { LabeledSwitch };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea(), responsive_textarea_exports)))
     },
     "star-rating": {
       name: "star-rating",
@@ -4478,7 +4199,7 @@ export default StarRating;
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating(), star_rating_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating(), star_rating_exports)))
     },
     "stepper": {
       name: "stepper",
@@ -4992,7 +4713,7 @@ export { defineStepper };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper(), stepper_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper(), stepper_exports)))
     },
     "tel-input": {
       name: "tel-input",
@@ -5178,7 +4899,7 @@ export { TelInput };
           "type": "registry:ui"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input(), tel_input_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input(), tel_input_exports)))
     },
     "animated-label-input-default": {
       name: "animated-label-input-default",
@@ -5190,7 +4911,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input_default(), animated_label_input_default_exports)))
     },
     "animated-label-input-with-form": {
       name: "animated-label-input-with-form",
@@ -5202,7 +4923,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_label_input_with_form(), animated_label_input_with_form_exports)))
     },
     "animated-tooltip-default": {
       name: "animated-tooltip-default",
@@ -5214,7 +4935,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_animated_tooltip_default(), animated_tooltip_default_exports)))
     },
     "labeled-switch-default": {
       name: "labeled-switch-default",
@@ -5226,7 +4947,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch_default(), labeled_switch_default_exports)))
     },
     "labeled-switch-with-form": {
       name: "labeled-switch-with-form",
@@ -5238,7 +4959,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_labeled_switch_with_form(), labeled_switch_with_form_exports)))
     },
     "range-slider-default": {
       name: "range-slider-default",
@@ -5250,7 +4971,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_default(), range_slider_default_exports)))
     },
     "range-slider-vertical": {
       name: "range-slider-vertical",
@@ -5262,7 +4983,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_vertical(), range_slider_vertical_exports)))
     },
     "range-slider-with-label": {
       name: "range-slider-with-label",
@@ -5274,7 +4995,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_range_slider_with_label(), range_slider_with_label_exports)))
     },
     "responsive-textarea-default": {
       name: "responsive-textarea-default",
@@ -5286,7 +5007,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_default(), responsive_textarea_default_exports)))
     },
     "responsive-textarea-with-form": {
       name: "responsive-textarea-with-form",
@@ -5298,7 +5019,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_form(), responsive_textarea_with_form_exports)))
     },
     "responsive-textarea-with-label": {
       name: "responsive-textarea-with-label",
@@ -5310,7 +5031,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_label(), responsive_textarea_with_label_exports)))
     },
     "responsive-textarea-with-text": {
       name: "responsive-textarea-with-text",
@@ -5322,7 +5043,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_responsive_textarea_with_text(), responsive_textarea_with_text_exports)))
     },
     "star-rating-customized": {
       name: "star-rating-customized",
@@ -5334,7 +5055,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_customized(), star_rating_customized_exports)))
     },
     "star-rating-default": {
       name: "star-rating-default",
@@ -5346,7 +5067,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_default(), star_rating_default_exports)))
     },
     "star-rating-interactive": {
       name: "star-rating-interactive",
@@ -5358,7 +5079,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_interactive(), star_rating_interactive_exports)))
     },
     "star-rating-readonly": {
       name: "star-rating-readonly",
@@ -5370,7 +5091,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_readonly(), star_rating_readonly_exports)))
     },
     "star-rating-with-form": {
       name: "star-rating-with-form",
@@ -5382,7 +5103,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_star_rating_with_form(), star_rating_with_form_exports)))
     },
     "stepper-demo": {
       name: "stepper-demo",
@@ -5394,7 +5115,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_demo(), stepper_demo_exports)))
     },
     "stepper-description": {
       name: "stepper-description",
@@ -5406,7 +5127,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_description(), stepper_description_exports)))
     },
     "stepper-form": {
       name: "stepper-form",
@@ -5418,7 +5139,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_form(), stepper_form_exports)))
     },
     "stepper-icon": {
       name: "stepper-icon",
@@ -5430,7 +5151,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_icon(), stepper_icon_exports)))
     },
     "stepper-label-orientation": {
       name: "stepper-label-orientation",
@@ -5442,7 +5163,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_label_orientation(), stepper_label_orientation_exports)))
     },
     "stepper-responsive-variant": {
       name: "stepper-responsive-variant",
@@ -5454,7 +5175,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_responsive_variant(), stepper_responsive_variant_exports)))
     },
     "stepper-tracking": {
       name: "stepper-tracking",
@@ -5466,7 +5187,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_tracking(), stepper_tracking_exports)))
     },
     "stepper-variants": {
       name: "stepper-variants",
@@ -5478,7 +5199,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_stepper_variants(), stepper_variants_exports)))
     },
     "tel-input-custom-labels": {
       name: "tel-input-custom-labels",
@@ -5490,7 +5211,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_custom_labels(), tel_input_custom_labels_exports)))
     },
     "tel-input-default-country": {
       name: "tel-input-default-country",
@@ -5502,7 +5223,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_default_country(), tel_input_default_country_exports)))
     },
     "tel-input-default": {
       name: "tel-input-default",
@@ -5514,7 +5235,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_default(), tel_input_default_exports)))
     },
     "tel-input-international": {
       name: "tel-input-international",
@@ -5526,7 +5247,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_international(), tel_input_international_exports)))
     },
     "tel-input-with-form": {
       name: "tel-input-with-form",
@@ -5538,7 +5259,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_tel_input_with_form(), tel_input_with_form_exports)))
     },
     "use-boolean-default": {
       name: "use-boolean-default",
@@ -5550,7 +5271,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_boolean_default(), use_boolean_default_exports)))
     },
     "use-click-outside-default": {
       name: "use-click-outside-default",
@@ -5562,7 +5283,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_click_outside_default(), use_click_outside_default_exports)))
     },
     "use-debounce-default": {
       name: "use-debounce-default",
@@ -5574,7 +5295,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_debounce_default(), use_debounce_default_exports)))
     },
     "use-element-size-default": {
       name: "use-element-size-default",
@@ -5586,7 +5307,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_element_size_default(), use_element_size_default_exports)))
     },
     "use-fullscreen-default": {
       name: "use-fullscreen-default",
@@ -5598,7 +5319,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_default(), use_fullscreen_default_exports)))
     },
     "use-fullscreen-with-target": {
       name: "use-fullscreen-with-target",
@@ -5610,7 +5331,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen_with_target(), use_fullscreen_with_target_exports)))
     },
     "use-mobile-default": {
       name: "use-mobile-default",
@@ -5622,7 +5343,7 @@ export { TelInput };
           "type": "registry:example"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mobile_default(), use_mobile_default_exports)))
     },
     "avatar-default": {
       name: "avatar-default",
@@ -5648,7 +5369,7 @@ export default function AvatarDefault() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_default(), avatar_default_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-default.tsx"))
     },
     "avatar-group-max": {
       name: "avatar-group-max",
@@ -5738,7 +5459,7 @@ export default function AvatarGroupMaxAvatarDemo() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_group_max(), avatar_group_max_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-group-max.tsx"))
     },
     "avatar-group": {
       name: "avatar-group",
@@ -5822,7 +5543,7 @@ export default function AvatarGroupDemo() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_group(), avatar_group_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-group.tsx"))
     },
     "avatar-hover-card": {
       name: "avatar-hover-card",
@@ -5883,7 +5604,7 @@ export default function AvatarHoverCard() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_hover_card(), avatar_hover_card_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-hover-card.tsx"))
     },
     "avatar-with-ring": {
       name: "avatar-with-ring",
@@ -5909,7 +5630,7 @@ export default function AvatarWithRing() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_with_ring(), avatar_with_ring_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-with-ring.tsx"))
     },
     "avatar-with-status": {
       name: "avatar-with-status",
@@ -5977,7 +5698,7 @@ export default function AvatarWithStatus() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_avatar_with_status(), avatar_with_status_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/avatar-with-status.tsx"))
     },
     "tooltip-with-arrow": {
       name: "tooltip-with-arrow",
@@ -6015,7 +5736,7 @@ export default function WithArrowTooltip() {
           "type": "registry:snippet"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_tooltip_with_arrow(), tooltip_with_arrow_exports)))
+      component: React60.lazy(() => import("@/registry/default/snippets/tooltip-with-arrow.tsx"))
     },
     "use-boolean": {
       name: "use-boolean",
@@ -6028,7 +5749,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_boolean(), use_boolean_exports)))
     },
     "use-callback-ref": {
       name: "use-callback-ref",
@@ -6041,7 +5762,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_callback_ref(), use_callback_ref_exports)))
     },
     "use-click-outside": {
       name: "use-click-outside",
@@ -6054,7 +5775,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_click_outside(), use_click_outside_exports)))
     },
     "use-controllable-state": {
       name: "use-controllable-state",
@@ -6067,7 +5788,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_controllable_state(), use_controllable_state_exports)))
     },
     "use-debounce": {
       name: "use-debounce",
@@ -6080,7 +5801,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_debounce(), use_debounce_exports)))
     },
     "use-element-size": {
       name: "use-element-size",
@@ -6093,7 +5814,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_element_size(), use_element_size_exports)))
     },
     "use-fullscreen": {
       name: "use-fullscreen",
@@ -6106,7 +5827,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_fullscreen(), use_fullscreen_exports)))
     },
     "use-mobile": {
       name: "use-mobile",
@@ -6119,7 +5840,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mobile(), use_mobile_exports)))
     },
     "use-mounted": {
       name: "use-mounted",
@@ -6132,7 +5853,7 @@ export default function WithArrowTooltip() {
           "type": "registry:hook"
         }
       ],
-      component: React64.lazy(() => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports)))
+      component: React60.lazy(() => Promise.resolve().then(() => (init_use_mounted(), use_mounted_exports)))
     }
   }
 };

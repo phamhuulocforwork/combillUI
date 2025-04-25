@@ -9,7 +9,7 @@ import {
   DocsTitle,
 } from "fumadocs-ui/page";
 
-import { useMDXComponents } from "@/components/mdx-components";
+import { useMDXComponents } from "@/components/mdx/mdx-components";
 
 import { source } from "@/app/source";
 

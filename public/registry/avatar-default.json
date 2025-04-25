@@ -1,0 +1,11 @@
+{
+  "name": "avatar-default",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "avatar-default.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function AvatarDefault() {\n  return (\n    <Avatar>\n      <AvatarImage\n        src='https://github.com/phamhuulocforwork.png'\n        alt='@phamhuulocforwork'\n      />\n      <AvatarFallback>HL</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:snippet"
+    }
+  ]
+}
