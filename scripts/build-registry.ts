@@ -1,8 +1,10 @@
+//TODO: Viết script xử lý khai báo các categories @/config/snippets
 import * as fs from "fs";
 import * as path from "path";
 
 import { registry } from "@/registry";
 import { hooks } from "@/registry/registry-hooks";
+import { snippets } from "@/registry/registry-snippets";
 import { ui } from "@/registry/registry-ui";
 import type { Registry } from "@/registry/schema";
 import type { Component, ComponentFile } from "@/registry/schema";
@@ -156,33 +158,46 @@ function buildSnippetsRegistry() {
     return;
   }
 
-  // Read all .tsx files in snippets directory
-  const files = fs
-    .readdirSync(SNIPPETS_DIR)
-    .filter((file) => file.endsWith(".tsx"));
+  // Read all subdirectories in snippets directory
+  const subdirs = fs
+    .readdirSync(SNIPPETS_DIR, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
-  // Create registry items
-  const registry: Registry = files.map((file) => {
-    const name = path.basename(file, ".tsx");
-    const relativePath = path
-      .join("registry/default/snippets", file)
-      .replace(/\\/g, "/");
+  const registry: Registry = [];
 
-    // Read file content
-    const content = fs.readFileSync(path.join(SNIPPETS_DIR, file), "utf8");
+  // Process each subdirectory
+  for (const subdir of subdirs) {
+    const subdirPath = path.join(SNIPPETS_DIR, subdir);
 
-    return {
-      name,
-      type: "registry:snippet",
-      files: [
-        {
-          path: relativePath,
-          content,
-          type: "registry:snippet",
-        },
-      ],
-    };
-  });
+    // Read all .tsx files in the subdirectory
+    const files = fs
+      .readdirSync(subdirPath)
+      .filter((file) => file.endsWith(".tsx"));
+
+    // Process each file in the subdirectory
+    for (const file of files) {
+      const name = path.basename(file, ".tsx");
+      const relativePath = path
+        .join("registry/default/snippets", subdir, file)
+        .replace(/\\/g, "/");
+
+      // Read file content
+      const content = fs.readFileSync(path.join(subdirPath, file), "utf8");
+
+      registry.push({
+        name,
+        type: "registry:snippet",
+        files: [
+          {
+            path: relativePath,
+            content,
+            type: "registry:snippet",
+          },
+        ],
+      });
+    }
+  }
 
   // Generate registry-snippets.ts content
   const content = `import type { Registry } from "@/registry/schema";
@@ -275,6 +290,24 @@ function buildShadcnCli() {
 
     fs.writeFileSync(
       path.join(registry, `${component.name}.json`),
+      JSON.stringify(schema, null, 2),
+    );
+  }
+
+  // Process snippets
+  for (const snippet of snippets) {
+    const schema = {
+      name: snippet.name,
+      type: snippet.type,
+      files: snippet.files.map((file) => ({
+        path: file.path.split("/").pop() || "",
+        content: file.content || "",
+        type: file.type,
+      })),
+    };
+
+    fs.writeFileSync(
+      path.join(registry, `${snippet.name}.json`),
       JSON.stringify(schema, null, 2),
     );
   }

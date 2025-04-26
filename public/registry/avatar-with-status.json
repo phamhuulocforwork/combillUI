@@ -1,0 +1,11 @@
+{
+  "name": "avatar-with-status",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "avatar-with-status.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithStatus() {\r\n  return (\r\n    <div className='flex items-center gap-3'>\r\n      {/* Online */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/shadcn.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-green-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* DND */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/shadcn.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-red-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Busy */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/shadcn.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background rounded-full bg-yellow-500 absolute bottom-0 right-0'></div>\r\n      </div>\r\n\r\n      {/* Offline */}\r\n      <div className='relative'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/shadcn.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>CN</AvatarFallback>\r\n        </Avatar>\r\n        <div className='h-2.5 w-2.5 ring-[2px] ring-background border-2 border-muted-foreground rounded-full bg-background absolute bottom-0 right-0'></div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "avatar-hover-card",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "avatar-hover-card.tsx",
+      "content": "import { CalendarIcon } from \"lucide-react\";\r\n\r\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\nimport {\r\n  HoverCard,\r\n  HoverCardContent,\r\n  HoverCardTrigger,\r\n} from \"@/components/ui/hover-card\";\r\n\r\nexport default function AvatarHoverCard() {\r\n  return (\r\n    <HoverCard>\r\n      <HoverCardTrigger className='cursor-pointer'>\r\n        <Avatar>\r\n          <AvatarImage\r\n            src='https://github.com/shadcn.png'\r\n            alt='@phamhuulocforwork'\r\n          />\r\n          <AvatarFallback>HL</AvatarFallback>\r\n        </Avatar>\r\n      </HoverCardTrigger>\r\n      <HoverCardContent className='w-full max-w-xs'>\r\n        <div className='flex justify-between space-x-4'>\r\n          <Avatar>\r\n            <AvatarImage\r\n              src='https://github.com/shadcn.png'\r\n              alt='@phamhuulocforwork'\r\n            />\r\n            <AvatarFallback>HL</AvatarFallback>\r\n          </Avatar>\r\n          <div className='space-y-1'>\r\n            <h4 className='text-sm font-semibold'>@phamhuulocforwork</h4>\r\n            <p className='text-sm'>\r\n              I'm currently studying at University (I stay up late and my hair\r\n              is getting thinner and thinner. Do you think I'm bald? xD)\r\n            </p>\r\n            <div className='flex items-center pt-2'>\r\n              <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{\" \"}\r\n              <span className='text-xs text-muted-foreground'>\r\n                Joined February 2025\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </HoverCardContent>\r\n    </HoverCard>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}
