@@ -219,7 +219,7 @@ const AppSidebar = () => {
                   key={category.slug}
                   {...(category.isComingSoon
                     ? { href: "/", onClick: (e) => e.preventDefault() }
-                    : { href: `/docs/components/${category.slug}` })}
+                    : { href: `/snippets/${category.slug}` })}
                 >
                   {category.name}
                   {category.isComingSoon && (

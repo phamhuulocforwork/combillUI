@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 
 export default function Hero() {
   return (
-    <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-auto'>
+    <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-auto mt-4'>
       <div>
         <Badge
           className='rounded-full py-1 border-none animate-fade-up text-balance'
@@ -34,12 +34,12 @@ export default function Hero() {
           className='mt-12 flex items-center gap-4 animate-fade-up'
           style={{ animationDelay: "0.40s", animationFillMode: "forwards" }}
         >
-          <Button size='lg' className='rounded-full text-base' asChild>
+          <Button size='lg' asChild>
             <Link href='/docs/introduction'>
               Documentation <ArrowUpRight className='!h-5 !w-5' />
             </Link>
           </Button>
-          <Button size='lg' className='rounded-full text-base' asChild>
+          <Button size='lg' asChild>
             <Link
               target='_blank'
               rel='noreferrer'

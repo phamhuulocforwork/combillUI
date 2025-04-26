@@ -17,10 +17,12 @@ import { cn } from "@/lib/utils";
 interface CodeBlockProps
   extends React.ComponentPropsWithoutRef<typeof Collapsible> {
   expandButtonTitle?: string;
+  maxHeight?: string;
 }
 
 export function CodeBlockWrapper({
   expandButtonTitle = "View Code",
+  maxHeight = "max-h-32",
   className,
   children,
   ...props
@@ -36,7 +38,7 @@ export function CodeBlockWrapper({
     >
       <CollapsibleContent
         forceMount
-        className={cn("overflow-hidden", !open && "max-h-32")}
+        className={cn("overflow-hidden", !open && maxHeight)}
       >
         <div
           className={cn(

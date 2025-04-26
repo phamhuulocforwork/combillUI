@@ -17,7 +17,7 @@ type Props = {
 export const highlight = async (code: string, lang: BundledLanguage) => {
   const out = await codeToHast(code, {
     lang,
-    theme: "github-dark",
+    theme: "one-dark-pro",
   });
 
   return toJsxRuntime(out, {

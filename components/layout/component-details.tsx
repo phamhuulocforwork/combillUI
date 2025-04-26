@@ -98,7 +98,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
             <TooltipContent>View code</TooltipContent>
           </Tooltip>
         </TooltipProvider>
-        <DialogContent className='sm:max-w-[650px]'>
+        <DialogContent className='sm:max-w-[650px] max-w-2xl'>
           <DialogHeader>
             <DialogTitle className='text-left'>Installation</DialogTitle>
             <DialogDescription className='sr-only'>
@@ -106,11 +106,8 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
             </DialogDescription>
           </DialogHeader>
           <div className='min-w-0 space-y-5'>
-            <ComponentCli name={component.name} toast='Installation command' />
+            {/* <ComponentCli name={component.name} toast='Installation command' /> */}
             <div className='space-y-4'>
-              <h2 className='text-left text-lg leading-none font-semibold'>
-                Code
-              </h2>
               <div className='relative'>
                 {code === "" ? (
                   <p className='text-muted-foreground text-sm'>
@@ -128,6 +125,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                 ) : (
                   <CodeBlockWrapper
                     expandButtonTitle='Expand'
+                    maxHeight='max-h-64'
                     className='my-6 overflow-hidden rounded-md'
                   >
                     <CodeBlock

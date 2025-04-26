@@ -1,0 +1,11 @@
+{
+  "name": "breadcrumb-slash",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "breadcrumb-slash.tsx",
+      "content": "import { HomeIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  BreadcrumbLink,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n  BreadcrumbSeparator,\r\n} from \"@/components/ui/breadcrumb\";\r\n\r\nconst BreadcrumbSlash = () => {\r\n  return (\r\n    <Breadcrumb>\r\n      <BreadcrumbList>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href='#' className='flex items-center gap-2'>\r\n            <HomeIcon className='size-4' />\r\n            Home\r\n          </BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator> / </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href='#'>Documents</BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator> / </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbPage>Add Document</BreadcrumbPage>\r\n        </BreadcrumbItem>\r\n      </BreadcrumbList>\r\n    </Breadcrumb>\r\n  );\r\n};\r\n\r\nexport default BreadcrumbSlash;\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

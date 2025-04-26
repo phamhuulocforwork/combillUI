@@ -31,7 +31,7 @@ const CommandMenu = () => {
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+      if ((e.key === "enter" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
           e.target instanceof HTMLInputElement ||
@@ -68,7 +68,7 @@ const CommandMenu = () => {
         <span className='inline-flex max-xl:hidden'>Search...</span>
         <span className='sr-only'>Search</span>
         <kbd className='bg-muted pointer-events-none absolute top-[.4375rem] right-1.5 flex h-5 items-center gap-1 rounded border px-1.5 text-xs font-medium select-none max-xl:hidden'>
-          <span className='text-sm'>⌘</span>K
+          <span className='text-sm'>⌘</span>/
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>

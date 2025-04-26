@@ -44,6 +44,21 @@ export const categories: ComponentCategory[] = [
       { name: "avatar-with-status" },
     ],
   },
+  {
+    slug: "breadcrumb",
+    name: "Breadcrumb",
+    svg: Avatar,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: [
+      { name: "breadcrumb-default" },
+      { name: "breadcrumb-slash" },
+      { name: "breadcrumb-with-icon" },
+      { name: "breadcrumb-with-dropdown" },
+    ],
+  },
 ];
 
 export function getCategory(slug: string): ComponentCategory | undefined {

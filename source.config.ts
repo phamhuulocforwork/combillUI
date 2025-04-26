@@ -25,12 +25,12 @@ export default defineConfig({
         rehypePrettyCode,
         {
           theme: {
-            dark: "github-dark",
-            light: "github-light",
+            dark: "one-dark-pro",
+            light: "one-light",
           },
           getHighlighter: () =>
             getHighlighter({
-              themes: ["github-dark", "github-light"],
+              themes: ["one-dark-pro", "one-light"],
             }),
           onVisitLine(node: { children: { length: number } }) {
             if (node.children.length === 0) {

@@ -304,17 +304,20 @@
   }
 
   ::-webkit-scrollbar {
-    width: 5px;
+    /* width: 5px; */
+    display: none;
   }
-  ::-webkit-scrollbar-track {
+  /* ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--border));
     border-radius: 5px;
-  }
+  } */
   * {
-    scrollbar-width: thin;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* scrollbar-width: thin; */
     scrollbar-color: hsl(var(--border)) transparent;
   }
 }
