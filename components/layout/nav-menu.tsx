@@ -20,7 +20,7 @@ const NavMenu = () => {
           },
         )}
       >
-        Docs
+        Components & Hooks
       </Link>
       <Link
         href='/snippets'
