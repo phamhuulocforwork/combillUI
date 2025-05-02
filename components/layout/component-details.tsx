@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Code } from "lucide-react";
 
 import CodeBlock, { highlight } from "@/components/code-block";
-import ComponentCli from "@/components/component-cli";
+// import ComponentCli from "@/components/component-cli";
 import CopyButton from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import {

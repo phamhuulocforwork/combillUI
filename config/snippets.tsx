@@ -59,6 +59,25 @@ export const categories: ComponentCategory[] = [
       { name: "breadcrumb-with-dropdown" },
     ],
   },
+  {
+    slug: "alert",
+    name: "Alert",
+    svg: Avatar,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: [
+      { name: "alert-default" },
+      { name: "alert-destructive" },
+      { name: "alert-info" },
+      { name: "alert-soft" },
+      { name: "alert-success" },
+      { name: "alert-warning" },
+      { name: "alert-with-action" },
+      { name: "alert-with-background" },
+    ],
+  },
 ];
 
 export function getCategory(slug: string): ComponentCategory | undefined {
