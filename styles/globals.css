@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import "fumadocs-ui/css/black.css";
+@import "./fumadocs-theme.css";
 @import "fumadocs-ui/css/preset.css";
 
 @source "../node_modules/fumadocs-ui/dist/**/*.js";

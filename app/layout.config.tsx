@@ -1,4 +1,5 @@
 import { type BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { Book, SquareBottomDashedScissors } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 
@@ -19,6 +20,12 @@ export const baseOptions: BaseLayoutProps = {
     {
       text: "Docs",
       url: "/docs/introduction",
+      icon: <Book />,
+    },
+    {
+      text: "Snippets",
+      url: "/snippets",
+      icon: <SquareBottomDashedScissors />,
     },
     {
       type: "icon",
