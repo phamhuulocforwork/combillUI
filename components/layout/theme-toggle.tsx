@@ -1,47 +1,49 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { type ButtonHTMLAttributes } from "react"
+import { cva } from "class-variance-authority"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 
-import { MoonStar, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils"
 
-import { Button } from "@/components/ui/button";
+const buttonVariants = cva(
+  "size-7 rounded-full p-1.5 text-fd-muted-foreground",
+  {
+    variants: {
+      dark: {
+        true: "dark:bg-fd-accent dark:text-fd-accent-foreground",
+        false:
+          "bg-fd-accent text-fd-accent-foreground dark:bg-transparent dark:text-fd-muted-foreground",
+      },
+    },
+  }
+)
 
-const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+export function ThemeToggle({
+  className,
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>): React.ReactElement {
+  const { setTheme, resolvedTheme } = useTheme()
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
-  if (!mounted) {
-    return (
-      <Button variant='outline' size='icon' className='cursor-pointer'>
-        <span className='sr-only'>Toggle Theme</span>
-      </Button>
-    );
+  const onToggle = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
 
   return (
-    <Button
-      variant='outline'
-      size='icon'
-      className='cursor-pointer'
-      onClick={toggleTheme}
-    >
-      {theme === "dark" ? (
-        <Sun className='size-5' />
-      ) : (
-        <MoonStar className='size-5' />
+    <button
+      type="button"
+      className={cn(
+        "inline-flex items-center rounded-full border p-[3px]",
+        className
       )}
-      <span className='sr-only'>Toggle Theme</span>
-    </Button>
-  );
-};
-
-export default ThemeToggle;
+      data-theme-toggle=""
+      aria-label="Toggle Theme"
+      onClick={onToggle}
+      {...props}
+    >
+      <Sun className={cn(buttonVariants({ dark: false }))} />
+      <Moon className={cn(buttonVariants({ dark: true }))} />
+    </button>
+  )
+}
