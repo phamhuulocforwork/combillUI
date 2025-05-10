@@ -8,7 +8,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-default.tsx",
         content:
-          'import { CircleFadingArrowUpIcon } from "lucide-react";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";\r\n\r\nexport default function AlertDemo() {\r\n  return (\r\n    <Alert>\r\n      <CircleFadingArrowUpIcon className=\'h-4 w-4\' />\r\n      <AlertTitle>System Notification</AlertTitle>\r\n      <AlertDescription>\r\n        Your application has been updated to the latest version.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n',
+          'import { CircleFadingArrowUpIcon } from "lucide-react";\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";\n\nexport default function AlertDemo() {\n  return (\n    <Alert>\n      <CircleFadingArrowUpIcon className=\'h-4 w-4\' />\n      <AlertTitle>System Notification</AlertTitle>\n      <AlertDescription>\n        Your application has been updated to the latest version.\n      </AlertDescription>\n    </Alert>\n  );\n}\n',
         type: "registry:snippet",
       },
     ],
@@ -20,7 +20,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-destructive.tsx",
         content:
-          "import { OctagonAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function DestructiveAlertDemo() {\r\n  return (\r\n    <Alert variant='destructive'>\r\n      <OctagonAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Critical Error</AlertTitle>\r\n      <AlertDescription>\r\n        Failed to save changes. Your data may be lost or corrupted.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+          "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function DestructiveAlertDemo() {\n  return (\n    <Alert variant='destructive'>\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Critical Error</AlertTitle>\n      <AlertDescription>\n        Failed to save changes. Your data may be lost or corrupted.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -32,7 +32,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-info.tsx",
         content:
-          "import { InfoIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertInfoDemo() {\r\n  return (\r\n    <Alert className='border-cyan-600/50 text-cyan-600 dark:border-cyan-600 [&>svg]:text-cyan-600'>\r\n      <InfoIcon className='h-4 w-4' />\r\n      <AlertTitle>Pro Tip</AlertTitle>\r\n      <AlertDescription>\r\n        You can customize your workspace by accessing the settings panel.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+          "import { InfoIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertInfoDemo() {\n  return (\n    <Alert className='border-cyan-600/50 text-cyan-600 dark:border-cyan-600 [&>svg]:text-cyan-600'>\n      <InfoIcon className='h-4 w-4' />\n      <AlertTitle>Pro Tip</AlertTitle>\n      <AlertDescription>\n        You can customize your workspace by accessing the settings panel.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -44,7 +44,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-soft.tsx",
         content:
-          "import {\r\n  CircleFadingArrowUpIcon,\r\n  OctagonAlert,\r\n  ShieldAlert,\r\n} from \"lucide-react\";\r\n\r\nimport { Alert, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertCalloutDemo() {\r\n  return (\r\n    <div className='w-full space-y-4'>\r\n      <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />\r\n        <AlertTitle>\r\n          Payment processed successfully. Your order is confirmed.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-blue-500/10 dark:bg-blue-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-blue-500' />\r\n        <AlertTitle>\r\n          Feature preview available. Try our new dashboard layout.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-amber-500/10 dark:bg-amber-600/30 border-none'>\r\n        <ShieldAlert className='h-4 w-4 !text-amber-500' />\r\n        <AlertTitle>\r\n          Unusual account activity detected. Verify recent logins.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-destructive/10 dark:bg-destructive/20 border-none'>\r\n        <OctagonAlert className='h-4 w-4 !text-destructive' />\r\n        <AlertTitle>\r\n          Connection lost. Service unavailable until connectivity is restored.\r\n        </AlertTitle>\r\n      </Alert>\r\n    </div>\r\n  );\r\n}\r\n",
+          "import {\n  CircleFadingArrowUpIcon,\n  OctagonAlert,\n  ShieldAlert,\n} from \"lucide-react\";\n\nimport { Alert, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertCalloutDemo() {\n  return (\n    <div className='w-full space-y-4'>\n      <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />\n        <AlertTitle>\n          Payment processed successfully. Your order is confirmed.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-blue-500/10 dark:bg-blue-600/30 border-none'>\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-blue-500' />\n        <AlertTitle>\n          Feature preview available. Try our new dashboard layout.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-amber-500/10 dark:bg-amber-600/30 border-none'>\n        <ShieldAlert className='h-4 w-4 !text-amber-500' />\n        <AlertTitle>\n          Unusual account activity detected. Verify recent logins.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-destructive/10 dark:bg-destructive/20 border-none'>\n        <OctagonAlert className='h-4 w-4 !text-destructive' />\n        <AlertTitle>\n          Connection lost. Service unavailable until connectivity is restored.\n        </AlertTitle>\n      </Alert>\n    </div>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -56,7 +56,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-success.tsx",
         content:
-          "import { CircleCheckBigIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertSuccessDemo() {\r\n  return (\r\n    <Alert className='border-emerald-600/50 text-emerald-600 dark:border-emerald-600 [&>svg]:text-emerald-600'>\r\n      <CircleCheckBigIcon className='h-4 w-4' />\r\n      <AlertTitle>Account Verified</AlertTitle>\r\n      <AlertDescription>\r\n        Your account has been successfully verified and is now ready to use\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+          "import { CircleCheckBigIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertSuccessDemo() {\n  return (\n    <Alert className='border-emerald-600/50 text-emerald-600 dark:border-emerald-600 [&>svg]:text-emerald-600'>\n      <CircleCheckBigIcon className='h-4 w-4' />\n      <AlertTitle>Account Verified</AlertTitle>\n      <AlertDescription>\n        Your account has been successfully verified and is now ready to use\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -68,7 +68,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-warning.tsx",
         content:
-          "import { TriangleAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertWarningDemo() {\r\n  return (\r\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\r\n      <TriangleAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Low Storage Space</AlertTitle>\r\n      <AlertDescription>\r\n        Your device is running low on storage. Please free up space to avoid performance issues.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+          "import { TriangleAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWarningDemo() {\n  return (\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\n      <TriangleAlertIcon className='h-4 w-4' />\n      <AlertTitle>Low Storage Space</AlertTitle>\n      <AlertDescription>\n        Your device is running low on storage. Please free up space to avoid\n        performance issues.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -80,7 +80,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-with-action.tsx",
         content:
-          "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\n\r\nimport { CircleFadingArrowUpIcon, XIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\nexport default function AlertWithActionsDemo() {\r\n  const [isAlertVisible, setIsAlertVisible] = useState(true);\r\n\r\n  const showAlert = () => {\r\n    setIsAlertVisible(true);\r\n  };\r\n  const hideAlert = () => {\r\n    setIsAlertVisible(false);\r\n  };\r\n\r\n  return (\r\n    <div className='w-full'>\r\n      {isAlertVisible && (\r\n        <Alert className='flex justify-between items-center pr-2 [&>svg+div]:translate-y-0'>\r\n          <CircleFadingArrowUpIcon className='h-4 w-4' />\r\n          <div className='flex-col justify-center'>\r\n            <AlertTitle>Privacy Policy Update</AlertTitle>\r\n            <AlertDescription>\r\n              We've updated our privacy policy. Please review the changes before\r\n              continuing.\r\n            </AlertDescription>\r\n          </div>\r\n          <Button\r\n            size='icon'\r\n            variant='ghost'\r\n            className='!pl-0'\r\n            onClick={hideAlert}\r\n          >\r\n            <XIcon className='h-5 w-5' />\r\n          </Button>\r\n        </Alert>\r\n      )}\r\n      {!isAlertVisible && (\r\n        <div className='flex justify-center'>\r\n          <Button className='mt-2 mx-auto' onClick={showAlert}>\r\n            Reopen\r\n          </Button>\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n",
+          "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { CircleFadingArrowUpIcon, XIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function AlertWithActionsDemo() {\n  const [isAlertVisible, setIsAlertVisible] = useState(true);\n\n  const showAlert = () => {\n    setIsAlertVisible(true);\n  };\n  const hideAlert = () => {\n    setIsAlertVisible(false);\n  };\n\n  return (\n    <div className='w-full'>\n      {isAlertVisible && (\n        <Alert className='flex justify-between items-center pr-2 [&>svg+div]:translate-y-0'>\n          <CircleFadingArrowUpIcon className='h-4 w-4' />\n          <div className='flex-col justify-center'>\n            <AlertTitle>Privacy Policy Update</AlertTitle>\n            <AlertDescription>\n              We've updated our privacy policy. Please review the changes before\n              continuing.\n            </AlertDescription>\n          </div>\n          <Button\n            size='icon'\n            variant='ghost'\n            className='!pl-0'\n            onClick={hideAlert}\n          >\n            <XIcon className='h-5 w-5' />\n          </Button>\n        </Alert>\n      )}\n      {!isAlertVisible && (\n        <div className='flex justify-center'>\n          <Button className='mt-2 mx-auto' onClick={showAlert}>\n            Reopen\n          </Button>\n        </div>\n      )}\n    </div>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],
@@ -92,7 +92,7 @@ export const snippets: Registry = [
       {
         path: "registry/default/snippets/alert/alert-with-background.tsx",
         content:
-          "import { OctagonAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertWithBackgroundDemo() {\r\n  return (\r\n    <Alert\r\n      variant='destructive'\r\n      className='bg-destructive text-destructive-foreground [&>svg]:text-destructive-foreground'\r\n    >\r\n      <OctagonAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Authentication Failed</AlertTitle>\r\n      <AlertDescription>\r\n        Your session has expired. Please log in again to continue.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+          "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWithBackgroundDemo() {\n  return (\n    <Alert\n      variant='destructive'\n      className='bg-destructive text-destructive-foreground [&>svg]:text-destructive-foreground'\n    >\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Authentication Failed</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again to continue.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
         type: "registry:snippet",
       },
     ],

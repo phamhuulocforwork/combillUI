@@ -1,0 +1,11 @@
+{
+  "name": "alert-soft",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "alert-soft.tsx",
+      "content": "import {\r\n  CircleFadingArrowUpIcon,\r\n  OctagonAlert,\r\n  ShieldAlert,\r\n} from \"lucide-react\";\r\n\r\nimport { Alert, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertCalloutDemo() {\r\n  return (\r\n    <div className='w-full space-y-4'>\r\n      <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />\r\n        <AlertTitle>\r\n          Payment processed successfully. Your order is confirmed.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-blue-500/10 dark:bg-blue-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-blue-500' />\r\n        <AlertTitle>\r\n          Feature preview available. Try our new dashboard layout.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-amber-500/10 dark:bg-amber-600/30 border-none'>\r\n        <ShieldAlert className='h-4 w-4 !text-amber-500' />\r\n        <AlertTitle>\r\n          Unusual account activity detected. Verify recent logins.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-destructive/10 dark:bg-destructive/20 border-none'>\r\n        <OctagonAlert className='h-4 w-4 !text-destructive' />\r\n        <AlertTitle>\r\n          Connection lost. Service unavailable until connectivity is restored.\r\n        </AlertTitle>\r\n      </Alert>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

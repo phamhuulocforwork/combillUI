@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Book, FileText, SquareBottomDashedScissors } from "lucide-react";
-import { Pen } from "lucide-react";
+import { FileText, SquareBottomDashedScissors } from "lucide-react";
 
 import { DocsLayout } from "@/components/notebook";
 import { SidebarProvider } from "@/components/ui/sidebar";

@@ -8,7 +8,11 @@ import AppSidebar, { CustomSidebarTrigger } from "@/components/layout/sidebar";
 const PagesLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className='flex h-full w-full min-w-0 flex-col min-h-screen'>
-      <Header toggle={<CustomSidebarTrigger />} />
+      <Header
+        toggle={
+          <CustomSidebarTrigger className='size-8 [&_svg]:size-[18px] md:hidden' />
+        }
+      />
       <div className='flex flex-1'>
         <div className='mx-auto flex w-full container border-dashed min-[1400px]:border-x'>
           <AppSidebar />

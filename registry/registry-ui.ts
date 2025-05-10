@@ -42,6 +42,26 @@ export const ui: Registry = [
     ],
   },
   {
+    name: "kbd",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["react", "class-variance-authority"],
+    devDependencies: [],
+    tailwind: {},
+    cssVars: {
+      light: {},
+      dark: {},
+    },
+    files: [
+      {
+        path: "registry/default/ui/kbd.tsx",
+        content:
+          'import * as React from "react";\r\n\r\nimport { Slot } from "@radix-ui/react-slot";\r\nimport { type VariantProps, cva } from "class-variance-authority";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst kbdVariants = cva(\r\n  "inline-flex w-fit items-center gap-1 font-medium font-mono text-[10px] text-foreground/70 sm:text-[11px]",\r\n  {\r\n    variants: {\r\n      size: {\r\n        default: "h-6 rounded px-1.5",\r\n        sm: "h-5 rounded-sm px-1",\r\n        lg: "h-7 rounded-md px-2",\r\n      },\r\n      variant: {\r\n        default: "bg-accent",\r\n        outline:\r\n          "bg-background px-0 [&_[data-slot=\'kbd-key\']]:min-w-[20px] [&_[data-slot=\'kbd-key\']]:border [&_[data-slot=\'kbd-key\']]:border-border [&_[data-slot=\'kbd-key\']]:bg-muted/30 [&_[data-slot=\'kbd-key\']]:px-1.5 [&_[data-slot=\'kbd-key\']]:shadow-xs",\r\n        ghost: "bg-transparent shadow-none",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      size: "default",\r\n      variant: "default",\r\n    },\r\n  },\r\n);\r\n\r\ninterface KbdRootProps\r\n  extends React.ComponentPropsWithoutRef<"kbd">,\r\n    VariantProps<typeof kbdVariants> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdRoot = React.forwardRef<HTMLElement, KbdRootProps>(\r\n  (props, forwardedRef) => {\r\n    const {\r\n      variant = "default",\r\n      size = "default",\r\n      asChild,\r\n      className,\r\n      ...rootProps\r\n    } = props;\r\n\r\n    const RootPrimitive = asChild ? Slot : "kbd";\r\n\r\n    return (\r\n      <RootPrimitive\r\n        role=\'group\'\r\n        data-slot=\'kbd\'\r\n        {...rootProps}\r\n        ref={forwardedRef}\r\n        className={cn(kbdVariants({ size, variant, className }))}\r\n      />\r\n    );\r\n  },\r\n);\r\nKbdRoot.displayName = "KbdRoot";\r\n\r\nconst KEY_DESCRIPTIONS: Record<string, string> = {\r\n  "⌘": "Command",\r\n  "⇧": "Shift",\r\n  "⌥": "Option",\r\n  "⌃": "Control",\r\n  Ctrl: "Control",\r\n  "⌫": "Backspace",\r\n  "⎋": "Escape",\r\n  "↩": "Return",\r\n  "⇥": "Tab",\r\n  "⌤": "Enter",\r\n  "↑": "Arrow Up",\r\n  "↓": "Arrow Down",\r\n  "←": "Arrow Left",\r\n  "→": "Arrow Right",\r\n  "⇪": "Caps Lock",\r\n  fn: "Function",\r\n  "⌦": "Delete",\r\n  "⇞": "Page Up",\r\n  "⇟": "Page Down",\r\n  "↖": "Home",\r\n  "↘": "End",\r\n  "↕": "Page Up/Down",\r\n  "↔": "Left/Right",\r\n} as const;\r\n\r\ninterface KbdKeyProps extends React.ComponentPropsWithoutRef<"span"> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdKey = React.forwardRef<HTMLSpanElement, KbdKeyProps>(\r\n  (props, forwardedRef) => {\r\n    const {\r\n      asChild,\r\n      className,\r\n      children,\r\n      title: titleProp,\r\n      ...keyProps\r\n    } = props;\r\n\r\n    const keyText = children?.toString() ?? "";\r\n    const title = titleProp ?? KEY_DESCRIPTIONS[keyText] ?? keyText;\r\n\r\n    const KeyPrimitive = asChild ? Slot : "span";\r\n\r\n    return (\r\n      <abbr title={title} className=\'no-underline\'>\r\n        <KeyPrimitive\r\n          data-slot=\'kbd-key\'\r\n          {...keyProps}\r\n          ref={forwardedRef}\r\n          className={cn(\r\n            "inline-flex items-center justify-center rounded",\r\n            className,\r\n          )}\r\n        >\r\n          {children}\r\n        </KeyPrimitive>\r\n      </abbr>\r\n    );\r\n  },\r\n);\r\nKbdKey.displayName = "KbdKey";\r\n\r\ninterface KbdSeparatorProps extends React.ComponentPropsWithoutRef<"span"> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdSeparator = React.forwardRef<HTMLSpanElement, KbdSeparatorProps>(\r\n  (props, forwardedRef) => {\r\n    const { asChild, children = "+", className, ...separatorProps } = props;\r\n\r\n    const SeparatorPrimitive = asChild ? Slot : "span";\r\n\r\n    return (\r\n      <SeparatorPrimitive\r\n        role=\'separator\'\r\n        aria-orientation=\'horizontal\'\r\n        aria-hidden=\'true\'\r\n        data-slot=\'kbd-separator\'\r\n        {...separatorProps}\r\n        ref={forwardedRef}\r\n        className={cn("text-foreground/70", className)}\r\n      >\r\n        {children}\r\n      </SeparatorPrimitive>\r\n    );\r\n  },\r\n);\r\nKbdSeparator.displayName = "KbdSeparator";\r\n\r\nconst Kbd = KbdRoot;\r\nconst Root = KbdRoot;\r\nconst Key = KbdKey;\r\nconst Separator = KbdSeparator;\r\n\r\nexport {\r\n  Kbd,\r\n  KbdKey,\r\n  KbdSeparator,\r\n  //\r\n  Root,\r\n  Key,\r\n  Separator,\r\n};\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "labeled-switch",
     type: "registry:ui",
     registryDependencies: [],

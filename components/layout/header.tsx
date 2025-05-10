@@ -56,8 +56,8 @@ const Header = ({ toggle }: { toggle?: ReactNode }) => {
             <NavMenu />
             <div className='flex items-center gap-2 md:gap-4'>
               <CommandMenu />
-              <ThemeToggle />
-              <div className='flex items-center gap-1.5 max-md:hidden'>
+              <ThemeToggle className='p-0 max-md:hidden' />
+              <div className='flex items-center gap-1.5'>
                 <Button
                   variant='ghost'
                   size='icon'

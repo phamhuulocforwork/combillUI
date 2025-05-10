@@ -1,49 +1,57 @@
-"use client"
+"use client";
 
-import { type ButtonHTMLAttributes } from "react"
-import { cva } from "class-variance-authority"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import { type ButtonHTMLAttributes } from "react";
+import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { MoonStar, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
-const buttonVariants = cva(
-  "size-7 rounded-full p-1.5 text-fd-muted-foreground",
-  {
-    variants: {
-      dark: {
-        true: "dark:bg-fd-accent dark:text-fd-accent-foreground",
-        false:
-          "bg-fd-accent text-fd-accent-foreground dark:bg-transparent dark:text-fd-muted-foreground",
-      },
-    },
-  }
-)
+import { Button } from "@/components/ui/button";
 
 export function ThemeToggle({
   className,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>): React.ReactElement {
-  const { setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const onToggle = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  if (!mounted) {
+    return (
+      <Button
+        variant='outline'
+        size='icon'
+        className='cursor-pointer'
+        {...props}
+      >
+        <span className='sr-only'>Toggle Theme</span>
+      </Button>
+    );
   }
 
   return (
-    <button
-      type="button"
-      className={cn(
-        "inline-flex items-center rounded-full border p-[3px]",
-        className
-      )}
-      data-theme-toggle=""
-      aria-label="Toggle Theme"
-      onClick={onToggle}
+    <Button
+      variant='outline'
+      size='icon'
+      className='cursor-pointer'
+      onClick={toggleTheme}
       {...props}
     >
-      <Sun className={cn(buttonVariants({ dark: false }))} />
-      <Moon className={cn(buttonVariants({ dark: true }))} />
-    </button>
-  )
+      {theme === "dark" ? (
+        <Sun className='size-5' />
+      ) : (
+        <MoonStar className='size-5' />
+      )}
+      <span className='sr-only'>Toggle Theme</span>
+    </Button>
+  );
 }
+
+export default ThemeToggle;

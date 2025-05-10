@@ -4,6 +4,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
+import { useSearchContext } from "fumadocs-ui/provider";
 import { Code, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -18,16 +19,19 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 import { searchData } from "@/assets/data/search";
+import { Kbd, Key } from "@/registry/default/ui/kbd";
 
 const CommandMenu = () => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
 
-  const isBreakpointReached = useMediaQuery("(max-width: 1279px)");
+  const isMobile = useIsMobile();
   const router = useRouter();
+
+  const { hotKey } = useSearchContext();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -59,17 +63,19 @@ const CommandMenu = () => {
   return (
     <>
       <Button
-        variant='outline'
+        {...(isMobile ? { variant: "ghost" } : { variant: "outline" })}
         className='xl:text-muted-foreground relative w-9 cursor-pointer text-sm font-normal xl:w-52 xl:justify-start xl:!pe-12 xl:shadow-none'
         onClick={() => setOpen(true)}
-        {...(isBreakpointReached && { size: "icon" })}
+        {...(isMobile && { size: "icon" })}
       >
         <Search className='size-4' />
         <span className='inline-flex max-xl:hidden'>Search...</span>
         <span className='sr-only'>Search</span>
-        <kbd className='bg-muted pointer-events-none absolute top-[.4375rem] right-1.5 flex h-5 items-center gap-1 rounded border px-1.5 text-xs font-medium select-none max-xl:hidden'>
-          <span className='text-sm'>⌘</span>/
-        </kbd>
+        {hotKey.map((k, i) => (
+          <Kbd key={i} variant='outline' size='sm' className='max-xl:hidden'>
+            <Key>{k.display}</Key>
+          </Kbd>
+        ))}
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput

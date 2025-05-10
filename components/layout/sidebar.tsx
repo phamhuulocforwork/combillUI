@@ -5,7 +5,7 @@ import type { ComponentProps, MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Code, LayoutPanelTop, Menu, X } from "lucide-react";
+import { Code, LayoutPanelTop, PanelLeftIcon, X } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -45,17 +45,25 @@ type CustomSidebarMenuSubItemProps = ComponentProps<"li"> & {
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
 };
 
-export const CustomSidebarTrigger = () => {
+export const CustomSidebarTrigger = ({
+  className,
+  onClick,
+  ...props
+}: React.ComponentProps<typeof Button>) => {
   const { toggleSidebar } = useSidebar();
 
   return (
     <Button
-      variant='outline'
+      variant='ghost'
       size='icon'
-      className='cursor-pointer lg:hidden'
-      onClick={() => toggleSidebar()}
+      className={cn("size-7", className)}
+      onClick={(event) => {
+        onClick?.(event);
+        toggleSidebar();
+      }}
+      {...props}
     >
-      <Menu className='size-5' />
+      <PanelLeftIcon />
       <span className='sr-only'>Sidebar</span>
     </Button>
   );

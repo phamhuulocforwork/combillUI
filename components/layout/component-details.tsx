@@ -123,11 +123,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                     .
                   </p>
                 ) : (
-                  <CodeBlockWrapper
-                    expandButtonTitle='Expand'
-                    maxHeight='max-h-64'
-                    className='my-6 overflow-hidden rounded-md'
-                  >
+                  <>
                     <CodeBlock
                       code={code}
                       lang='tsx'
@@ -138,7 +134,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                       className='dark end-1 top-1'
                       toast='Code'
                     />
-                  </CodeBlockWrapper>
+                  </>
                 )}
               </div>
             </div>

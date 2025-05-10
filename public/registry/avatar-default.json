@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "avatar-default.tsx",
-      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarDefault() {\r\n  return (\r\n    <Avatar>\r\n      <AvatarImage\r\n        src='https://github.com/shadcn.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function AvatarDefault() {\n  return (\n    <Avatar>\n      <AvatarImage\n        src='https://github.com/shadcn.png'\n        alt='@phamhuulocforwork'\n      />\n      <AvatarFallback>HL</AvatarFallback>\n    </Avatar>\n  );\n}\n",
       "type": "registry:snippet"
     }
   ]

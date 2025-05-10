@@ -136,10 +136,14 @@ export function DocsNavbar() {
   const isMobile = useIsMobile();
 
   return (
-    <Navbar id='nd-subnav' className='h-14 md:gap-1.5 z-[2]'>
+    <Navbar
+      id='nd-subnav'
+      className='h-14 md:gap-1.5 gap-1 z-[2] border-dashed'
+    >
       {!open && <SidebarTrigger className='-ms-1.5 size-8' />}
+      {isMobile && <SidebarTrigger className='size-8 [&_svg]:size-[18px]' />}
       <SearchOnly>
-        <LargeSearchToggle className='w-full max-w-[240px] rounded-sm max-md:hidden' />
+        <LargeSearchToggle className='w-full max-w-[240px] rounded-sm max-md:hidden bg-transparent' />
       </SearchOnly>
       <div className='md:hidden'>
         <Link href='/'>
@@ -159,7 +163,6 @@ export function DocsNavbar() {
       >
         <Icons.github />
       </Link>
-      {isMobile && <SidebarTrigger className='size-8 [&_svg]:size-[18px]' />}
     </Navbar>
   );
 }
