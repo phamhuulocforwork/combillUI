@@ -4,7 +4,6 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import { useSearchContext } from "fumadocs-ui/provider";
 import { Code, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,6 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 
 import { searchData } from "@/assets/data/search";
-import { Kbd, Key } from "@/registry/default/ui/kbd";
 
 const CommandMenu = () => {
   const [open, setOpen] = useState(false);
@@ -30,8 +28,6 @@ const CommandMenu = () => {
 
   const isMobile = useIsMobile();
   const router = useRouter();
-
-  const { hotKey } = useSearchContext();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -71,11 +67,6 @@ const CommandMenu = () => {
         <Search className='size-4' />
         <span className='inline-flex max-xl:hidden'>Search...</span>
         <span className='sr-only'>Search</span>
-        {hotKey.map((k, i) => (
-          <Kbd key={i} variant='outline' size='sm' className='max-xl:hidden'>
-            <Key>{k.display}</Key>
-          </Kbd>
-        ))}
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
