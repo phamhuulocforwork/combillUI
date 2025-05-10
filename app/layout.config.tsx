@@ -31,7 +31,7 @@ export const baseOptions: BaseLayoutProps = {
       type: "icon",
       url: siteConfig.links.github,
       text: "Github",
-      icon: <Icons.gitHub className='size-4' aria-hidden='true' />,
+      icon: <Icons.github className='size-4' aria-hidden='true' />,
       external: true,
     },
   ],
