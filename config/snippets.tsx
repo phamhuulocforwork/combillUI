@@ -5,8 +5,6 @@ export type ComponentCategory = {
   slug: string;
   name: string;
   description?: string;
-  isNew?: boolean;
-  isUpdated?: boolean;
 } & (
   | {
       components: { name: string }[];
@@ -19,6 +17,8 @@ export type ComponentCategory = {
       };
       icon: LucideIcon;
       isComingSoon?: never | false;
+      isNew?: never | true;
+      isUpdated?: never | true;
     }
   | {
       icon?: never;
@@ -34,6 +34,7 @@ export const categories: ComponentCategory[] = [
     name: "Avatar",
     description: "An image element with a fallback for representing the user.",
     icon: UserIcon,
+    isNew: true,
     breakpoints: {
       sm: 2,
       lg: 3,
@@ -53,6 +54,7 @@ export const categories: ComponentCategory[] = [
     description:
       "Displays the path to the current resource using a hierarchy of links.",
     icon: HomeIcon,
+    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -69,6 +71,7 @@ export const categories: ComponentCategory[] = [
     name: "Alert",
     description: "Displays a callout for user attention.",
     icon: AlertCircleIcon,
+    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
