@@ -12,14 +12,14 @@ import { getComponentsByNames } from "@/lib/components";
 import { categories, getCategory } from "@/config/snippets";
 
 type Props = {
-  params: Promise<{ category: string }>;
+  params: { category: string };
 };
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const category = getCategory((await params).category);
+  const category = getCategory(params.category);
 
   if (!category || category.isComingSoon) {
     return {};
@@ -58,7 +58,7 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return categories
     .filter((category) => !category.isComingSoon)
     .map((category) => ({
@@ -66,8 +66,8 @@ export async function generateStaticParams() {
     }));
 }
 
-const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
-  const category = getCategory((await params).category);
+const Page = ({ params }: { params: { category: string } }) => {
+  const category = getCategory(params.category);
 
   if (!category || category.isComingSoon) {
     notFound();
@@ -85,8 +85,8 @@ const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
       <ComponentsGrid {...category.breakpoints}>
         {components.map((component) => (
           <ComponentCard key={component.name} component={component}>
-            <ComponentLoader component={component} category={category.slug} />
             <ComponentDetails component={component} />
+            <ComponentLoader component={component} category={category.slug} />
           </ComponentCard>
         ))}
       </ComponentsGrid>

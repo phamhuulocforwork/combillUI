@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { categories } from "@/config/blocks";
-
 //TODO: Add metadata
 export const metadata: Metadata = {
   title: "Shadcn Blocks",
@@ -32,7 +30,9 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = () => {
+const Page = async (props: {
+  searchParams: Promise<{ columns: string; q: string }>;
+}) => {
   return (
     <div className='flex flex-col items-start justify-center space-y-4 p-4 sm:space-y-8 sm:p-8'>
       <div className='flex flex-col space-y-3'>
@@ -42,29 +42,6 @@ const Page = () => {
           accelerate your project development. Below is a summary of the
           available component categories:
         </p>
-      </div>
-      <div className='grid w-full gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 xl:grid-cols-4'>
-        {categories
-          .filter((category) => !category.isComingSoon)
-          .map((category) => (
-            <div
-              key={category.slug}
-              className='group overflow-hidden rounded-md border'
-            >
-              <Link href={`/blocks/${category.slug}`}>
-                <div className='flex flex-col gap-1 p-4'>
-                  <div className='flex items-center gap-2'>
-                    <category.icon className='transition-all duration-300 group-hover:scale-110' />
-                    <p className='text-muted-foreground text-sm'>{`${category.components.length} ${category.components.length === 1 ? "Block" : "Blocks"}`}</p>
-                  </div>
-                  <h2 className='text-lg font-medium'>{category.name}</h2>
-                  <p className='text-muted-foreground text-sm line-clamp-2 mt-1'>
-                    {category.description}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
       </div>
     </div>
   );

@@ -2,6 +2,150 @@ import type { Registry } from "@/registry/schema";
 
 export const snippets: Registry = [
   {
+    name: "accordion-box-contained",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-box-contained.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionBoxContained() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'last:border-none first:rounded-t-md last:rounded-b-md px-4 bg-muted\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-box",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-box.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionBox() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border border-b-0 last:border-b first:rounded-t-md last:rounded-b-md px-4\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-contained",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-contained.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionContained() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border-none rounded-md px-4 bg-secondary\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-default",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-default.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionDefaut() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-disabled-item",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-disabled-item.tsx",
+        content:
+          'import { Contrast, Palette, Zap } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n    icon: Palette,\r\n    disabled: true,\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionItemDisabled() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content, icon: Icon, disabled }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger\r\n            disabled={disabled}\r\n            className={cn({\r\n              "opacity-50": disabled,\r\n            })}\r\n          >\r\n            <div className=\'flex items-start gap-3\'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-expand-icon",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-expand-icon.tsx",
+        content:
+          'import * as AccordionPrimitive from "@radix-ui/react-accordion";\r\nimport { Plus } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionDefaultOpen() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionPrimitive.Header className=\'flex\'>\r\n            <AccordionPrimitive.Trigger className=\'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-45\'>\r\n              {title}\r\n              <Plus className=\'h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200\' />\r\n            </AccordionPrimitive.Trigger>\r\n          </AccordionPrimitive.Header>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-highlight-active-item",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-highlight-active-item.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionHighlightActiveItem() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'data-[state=open]:border-b-2 data-[state=open]:border-indigo-600 dark:data-[state=open]:border-indigo-500\'\r\n        >\r\n          <AccordionTrigger className=\'data-[state=open]:text-indigo-600 dark:data-[state=open]:text-indigo-500\'>\r\n            {title}\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-media-content",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-media-content.tsx",
+        content:
+          "import Image from \"next/image\";\r\n\r\nimport { Contrast, Palette, Zap } from \"lucide-react\";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from \"@/components/ui/accordion\";\r\n\r\nconst items = [\r\n  {\r\n    title: \"Is it accessible?\",\r\n    content: \"Yes. It adheres to the WAI-ARIA design pattern.\",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: \"Is it styled?\",\r\n    content:\r\n      \"Yes. It comes with default styles that matches the other components' aesthetic.\",\r\n    icon: Palette,\r\n  },\r\n  {\r\n    title: \"Is it animated?\",\r\n    content:\r\n      \"Yes. It's animated by default, but you can disable it if you prefer.\",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionMediaContent() {\r\n  return (\r\n    <Accordion\r\n      defaultValue='item-0'\r\n      type='single'\r\n      collapsible\r\n      className='max-w-lg my-4 w-full'\r\n    >\r\n      {items.map(({ title, content, icon: Icon }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>\r\n            <div className='flex items-start gap-3'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>\r\n            {content}\r\n            <div className='mt-4 w-full aspect-[18/9] bg-muted rounded-xl'>\r\n              <Image\r\n                src='/svgs/placeholder.svg'\r\n                fill\r\n                alt='placeholder'\r\n                className='object-cover rounded-xl'\r\n              />\r\n            </div>\r\n          </AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n",
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-multiple-expanded-at-a-time",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-multiple-expanded-at-a-time.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionMultipleOpen() {\r\n  return (\r\n    <Accordion\r\n      defaultValue={["item-0", "item-1"]}\r\n      type=\'multiple\'\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-outline",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-outline.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionOutline() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border rounded-md px-4\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-tabs",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-tabs.tsx",
+        content:
+          'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionTabs() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      defaultValue=\'item-0\'\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border-none rounded-md px-4 data-[state=open]:bg-secondary\'\r\n        >\r\n          <AccordionTrigger className=\'data-[state=closed]:py-2\'>\r\n            {title}\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
+    name: "accordion-with-icon",
+    type: "registry:snippet",
+    files: [
+      {
+        path: "registry/default/snippets/accordion/accordion-with-icon.tsx",
+        content:
+          'import { Contrast, Palette, Zap } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n    icon: Palette,\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionWithIcon() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content, icon: Icon }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>\r\n            <div className=\'flex items-start gap-3\'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+        type: "registry:snippet",
+      },
+    ],
+  },
+  {
     name: "alert-default",
     type: "registry:snippet",
     files: [

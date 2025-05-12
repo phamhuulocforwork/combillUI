@@ -1,5 +1,17 @@
 import type { LucideIcon } from "lucide-react";
-import { AlertCircleIcon, HomeIcon, UserIcon } from "lucide-react";
+import {
+  AlertCircleIcon,
+  HomeIcon,
+  ListCollapse,
+  UserIcon,
+} from "lucide-react";
+
+import {
+  accordionComponents,
+  alertComponents,
+  avatarComponents,
+  breadcrumbComponents,
+} from "@/registry/default/snippets";
 
 export type ComponentCategory = {
   slug: string;
@@ -30,23 +42,28 @@ export type ComponentCategory = {
 
 export const categories: ComponentCategory[] = [
   {
+    slug: "accordion",
+    name: "Accordion",
+    description:
+      "A vertically stacked set of interactive headings that each reveal a section of content.",
+    icon: ListCollapse,
+    isNew: true,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: accordionComponents,
+  },
+  {
     slug: "avatar",
     name: "Avatar",
     description: "An image element with a fallback for representing the user.",
     icon: UserIcon,
-    isNew: true,
     breakpoints: {
       sm: 2,
       lg: 3,
     },
-    components: [
-      { name: "avatar-default" },
-      { name: "avatar-group-max" },
-      { name: "avatar-group" },
-      { name: "avatar-hover-card" },
-      { name: "avatar-with-ring" },
-      { name: "avatar-with-status" },
-    ],
+    components: avatarComponents,
   },
   {
     slug: "breadcrumb",
@@ -54,38 +71,22 @@ export const categories: ComponentCategory[] = [
     description:
       "Displays the path to the current resource using a hierarchy of links.",
     icon: HomeIcon,
-    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
     },
-    components: [
-      { name: "breadcrumb-default" },
-      { name: "breadcrumb-slash" },
-      { name: "breadcrumb-with-icon" },
-      { name: "breadcrumb-with-dropdown" },
-    ],
+    components: breadcrumbComponents,
   },
   {
     slug: "alert",
     name: "Alert",
     description: "Displays a callout for user attention.",
     icon: AlertCircleIcon,
-    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
     },
-    components: [
-      { name: "alert-default" },
-      { name: "alert-destructive" },
-      { name: "alert-info" },
-      { name: "alert-soft" },
-      { name: "alert-success" },
-      { name: "alert-warning" },
-      { name: "alert-with-action" },
-      { name: "alert-with-background" },
-    ],
+    components: alertComponents,
   },
 ];
 

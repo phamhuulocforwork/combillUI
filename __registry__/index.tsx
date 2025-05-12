@@ -39,6 +39,21 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    kbd: {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/ui/kbd.tsx",
+          content:
+            'import * as React from "react";\r\n\r\nimport { Slot } from "@radix-ui/react-slot";\r\nimport { type VariantProps, cva } from "class-variance-authority";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst kbdVariants = cva(\r\n  "inline-flex w-fit items-center gap-1 font-medium font-mono text-[10px] text-foreground/70 sm:text-[11px]",\r\n  {\r\n    variants: {\r\n      size: {\r\n        default: "h-6 rounded px-1.5",\r\n        sm: "h-5 rounded-sm px-1",\r\n        lg: "h-7 rounded-md px-2",\r\n      },\r\n      variant: {\r\n        default: "bg-accent",\r\n        outline:\r\n          "bg-background px-0 [&_[data-slot=\'kbd-key\']]:min-w-[20px] [&_[data-slot=\'kbd-key\']]:border [&_[data-slot=\'kbd-key\']]:border-border [&_[data-slot=\'kbd-key\']]:bg-muted/30 [&_[data-slot=\'kbd-key\']]:px-1.5 [&_[data-slot=\'kbd-key\']]:shadow-xs",\r\n        ghost: "bg-transparent shadow-none",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      size: "default",\r\n      variant: "default",\r\n    },\r\n  },\r\n);\r\n\r\ninterface KbdRootProps\r\n  extends React.ComponentPropsWithoutRef<"kbd">,\r\n    VariantProps<typeof kbdVariants> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdRoot = React.forwardRef<HTMLElement, KbdRootProps>(\r\n  (props, forwardedRef) => {\r\n    const {\r\n      variant = "default",\r\n      size = "default",\r\n      asChild,\r\n      className,\r\n      ...rootProps\r\n    } = props;\r\n\r\n    const RootPrimitive = asChild ? Slot : "kbd";\r\n\r\n    return (\r\n      <RootPrimitive\r\n        role=\'group\'\r\n        data-slot=\'kbd\'\r\n        {...rootProps}\r\n        ref={forwardedRef}\r\n        className={cn(kbdVariants({ size, variant, className }))}\r\n      />\r\n    );\r\n  },\r\n);\r\nKbdRoot.displayName = "KbdRoot";\r\n\r\nconst KEY_DESCRIPTIONS: Record<string, string> = {\r\n  "⌘": "Command",\r\n  "⇧": "Shift",\r\n  "⌥": "Option",\r\n  "⌃": "Control",\r\n  Ctrl: "Control",\r\n  "⌫": "Backspace",\r\n  "⎋": "Escape",\r\n  "↩": "Return",\r\n  "⇥": "Tab",\r\n  "⌤": "Enter",\r\n  "↑": "Arrow Up",\r\n  "↓": "Arrow Down",\r\n  "←": "Arrow Left",\r\n  "→": "Arrow Right",\r\n  "⇪": "Caps Lock",\r\n  fn: "Function",\r\n  "⌦": "Delete",\r\n  "⇞": "Page Up",\r\n  "⇟": "Page Down",\r\n  "↖": "Home",\r\n  "↘": "End",\r\n  "↕": "Page Up/Down",\r\n  "↔": "Left/Right",\r\n} as const;\r\n\r\ninterface KbdKeyProps extends React.ComponentPropsWithoutRef<"span"> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdKey = React.forwardRef<HTMLSpanElement, KbdKeyProps>(\r\n  (props, forwardedRef) => {\r\n    const {\r\n      asChild,\r\n      className,\r\n      children,\r\n      title: titleProp,\r\n      ...keyProps\r\n    } = props;\r\n\r\n    const keyText = children?.toString() ?? "";\r\n    const title = titleProp ?? KEY_DESCRIPTIONS[keyText] ?? keyText;\r\n\r\n    const KeyPrimitive = asChild ? Slot : "span";\r\n\r\n    return (\r\n      <abbr title={title} className=\'no-underline\'>\r\n        <KeyPrimitive\r\n          data-slot=\'kbd-key\'\r\n          {...keyProps}\r\n          ref={forwardedRef}\r\n          className={cn(\r\n            "inline-flex items-center justify-center rounded",\r\n            className,\r\n          )}\r\n        >\r\n          {children}\r\n        </KeyPrimitive>\r\n      </abbr>\r\n    );\r\n  },\r\n);\r\nKbdKey.displayName = "KbdKey";\r\n\r\ninterface KbdSeparatorProps extends React.ComponentPropsWithoutRef<"span"> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst KbdSeparator = React.forwardRef<HTMLSpanElement, KbdSeparatorProps>(\r\n  (props, forwardedRef) => {\r\n    const { asChild, children = "+", className, ...separatorProps } = props;\r\n\r\n    const SeparatorPrimitive = asChild ? Slot : "span";\r\n\r\n    return (\r\n      <SeparatorPrimitive\r\n        role=\'separator\'\r\n        aria-orientation=\'horizontal\'\r\n        aria-hidden=\'true\'\r\n        data-slot=\'kbd-separator\'\r\n        {...separatorProps}\r\n        ref={forwardedRef}\r\n        className={cn("text-foreground/70", className)}\r\n      >\r\n        {children}\r\n      </SeparatorPrimitive>\r\n    );\r\n  },\r\n);\r\nKbdSeparator.displayName = "KbdSeparator";\r\n\r\nconst Kbd = KbdRoot;\r\nconst Root = KbdRoot;\r\nconst Key = KbdKey;\r\nconst Separator = KbdSeparator;\r\n\r\nexport {\r\n  Kbd,\r\n  KbdKey,\r\n  KbdSeparator,\r\n  //\r\n  Root,\r\n  Key,\r\n  Separator,\r\n};\r\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(() => import("@/registry/default/ui/kbd.tsx")),
+    },
+
     "labeled-switch": {
       name: "labeled-switch",
       description: "",
@@ -713,6 +728,237 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "accordion-box-contained": {
+      name: "accordion-box-contained",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-box-contained.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionBoxContained() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'last:border-none first:rounded-t-md last:rounded-b-md px-4 bg-muted\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-box-contained.tsx"
+          ),
+      ),
+    },
+
+    "accordion-box": {
+      name: "accordion-box",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-box.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionBox() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border border-b-0 last:border-b first:rounded-t-md last:rounded-b-md px-4\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/snippets/accordion/accordion-box.tsx"),
+      ),
+    },
+
+    "accordion-contained": {
+      name: "accordion-contained",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-contained.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionContained() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border-none rounded-md px-4 bg-secondary\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-contained.tsx"
+          ),
+      ),
+    },
+
+    "accordion-default": {
+      name: "accordion-default",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-default.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionDefaut() {\r\n  return (\r\n    <Accordion type=\'single\' collapsible className=\'max-w-lg my-4 w-full\'>\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/accordion/accordion-default.tsx"),
+      ),
+    },
+
+    "accordion-disabled-item": {
+      name: "accordion-disabled-item",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-disabled-item.tsx",
+          content:
+            'import { Contrast, Palette, Zap } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nimport { cn } from "@/lib/utils";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n    icon: Palette,\r\n    disabled: true,\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionItemDisabled() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content, icon: Icon, disabled }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger\r\n            disabled={disabled}\r\n            className={cn({\r\n              "opacity-50": disabled,\r\n            })}\r\n          >\r\n            <div className=\'flex items-start gap-3\'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-disabled-item.tsx"
+          ),
+      ),
+    },
+
+    "accordion-expand-icon": {
+      name: "accordion-expand-icon",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-expand-icon.tsx",
+          content:
+            'import * as AccordionPrimitive from "@radix-ui/react-accordion";\r\nimport { Plus } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionDefaultOpen() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionPrimitive.Header className=\'flex\'>\r\n            <AccordionPrimitive.Trigger className=\'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-45\'>\r\n              {title}\r\n              <Plus className=\'h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200\' />\r\n            </AccordionPrimitive.Trigger>\r\n          </AccordionPrimitive.Header>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-expand-icon.tsx"
+          ),
+      ),
+    },
+
+    "accordion-highlight-active-item": {
+      name: "accordion-highlight-active-item",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-highlight-active-item.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionHighlightActiveItem() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'data-[state=open]:border-b-2 data-[state=open]:border-indigo-600 dark:data-[state=open]:border-indigo-500\'\r\n        >\r\n          <AccordionTrigger className=\'data-[state=open]:text-indigo-600 dark:data-[state=open]:text-indigo-500\'>\r\n            {title}\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-highlight-active-item.tsx"
+          ),
+      ),
+    },
+
+    "accordion-media-content": {
+      name: "accordion-media-content",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-media-content.tsx",
+          content:
+            'import Image from "next/image";\r\n\r\nimport { Contrast, Palette, Zap } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n    icon: Palette,\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionMediaContent() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content, icon: Icon }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>\r\n            <div className=\'flex items-start gap-3\'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>\r\n            {content}\r\n            <div className=\'mt-4 w-full aspect-[18/9] bg-muted rounded-xl\' />\r\n          </AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-media-content.tsx"
+          ),
+      ),
+    },
+
+    "accordion-multiple-expanded-at-a-time": {
+      name: "accordion-multiple-expanded-at-a-time",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-multiple-expanded-at-a-time.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionMultipleOpen() {\r\n  return (\r\n    <Accordion\r\n      defaultValue={["item-0", "item-1"]}\r\n      type=\'multiple\'\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-multiple-expanded-at-a-time.tsx"
+          ),
+      ),
+    },
+
+    "accordion-outline": {
+      name: "accordion-outline",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-outline.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionOutline() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border rounded-md px-4\'\r\n        >\r\n          <AccordionTrigger>{title}</AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/accordion/accordion-outline.tsx"),
+      ),
+    },
+
+    "accordion-tabs": {
+      name: "accordion-tabs",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-tabs.tsx",
+          content:
+            'import {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n  },\r\n];\r\n\r\nexport default function AccordionTabs() {\r\n  return (\r\n    <Accordion\r\n      type=\'single\'\r\n      collapsible\r\n      defaultValue=\'item-0\'\r\n      className=\'max-w-lg my-4 w-full space-y-2\'\r\n    >\r\n      {items.map(({ title, content }, index) => (\r\n        <AccordionItem\r\n          key={index}\r\n          value={`item-${index}`}\r\n          className=\'border-none rounded-md px-4 data-[state=open]:bg-secondary\'\r\n        >\r\n          <AccordionTrigger className=\'data-[state=closed]:py-2\'>\r\n            {title}\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/accordion/accordion-tabs.tsx"),
+      ),
+    },
+
+    "accordion-with-icon": {
+      name: "accordion-with-icon",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/accordion/accordion-with-icon.tsx",
+          content:
+            'import { Contrast, Palette, Zap } from "lucide-react";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from "@/components/ui/accordion";\r\n\r\nconst items = [\r\n  {\r\n    title: "Is it accessible?",\r\n    content: "Yes. It adheres to the WAI-ARIA design pattern.",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: "Is it styled?",\r\n    content:\r\n      "Yes. It comes with default styles that matches the other components\' aesthetic.",\r\n    icon: Palette,\r\n  },\r\n  {\r\n    title: "Is it animated?",\r\n    content:\r\n      "Yes. It\'s animated by default, but you can disable it if you prefer.",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionWithIcon() {\r\n  return (\r\n    <Accordion\r\n      defaultValue=\'item-0\'\r\n      type=\'single\'\r\n      collapsible\r\n      className=\'max-w-lg my-4 w-full\'\r\n    >\r\n      {items.map(({ title, content, icon: Icon }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>\r\n            <div className=\'flex items-start gap-3\'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/accordion/accordion-with-icon.tsx"
+          ),
+      ),
+    },
+
     "alert-default": {
       name: "alert-default",
       description: "",
@@ -721,7 +967,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-default.tsx",
           content:
-            'import { CircleFadingArrowUpIcon } from "lucide-react";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";\r\n\r\nexport default function AlertDemo() {\r\n  return (\r\n    <Alert>\r\n      <CircleFadingArrowUpIcon className=\'h-4 w-4\' />\r\n      <AlertTitle>System Notification</AlertTitle>\r\n      <AlertDescription>\r\n        Your application has been updated to the latest version.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n',
+            'import { CircleFadingArrowUpIcon } from "lucide-react";\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";\n\nexport default function AlertDemo() {\n  return (\n    <Alert>\n      <CircleFadingArrowUpIcon className=\'h-4 w-4\' />\n      <AlertTitle>System Notification</AlertTitle>\n      <AlertDescription>\n        Your application has been updated to the latest version.\n      </AlertDescription>\n    </Alert>\n  );\n}\n',
           type: "registry:snippet",
         },
       ],
@@ -738,7 +984,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-destructive.tsx",
           content:
-            "import { OctagonAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function DestructiveAlertDemo() {\r\n  return (\r\n    <Alert variant='destructive'>\r\n      <OctagonAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Critical Error</AlertTitle>\r\n      <AlertDescription>\r\n        Failed to save changes. Your data may be lost or corrupted.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+            "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function DestructiveAlertDemo() {\n  return (\n    <Alert variant='destructive'>\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Critical Error</AlertTitle>\n      <AlertDescription>\n        Failed to save changes. Your data may be lost or corrupted.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -755,7 +1001,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-info.tsx",
           content:
-            "import { InfoIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertInfoDemo() {\r\n  return (\r\n    <Alert className='border-cyan-600/50 text-cyan-600 dark:border-cyan-600 [&>svg]:text-cyan-600'>\r\n      <InfoIcon className='h-4 w-4' />\r\n      <AlertTitle>Pro Tip</AlertTitle>\r\n      <AlertDescription>\r\n        You can customize your workspace by accessing the settings panel.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+            "import { InfoIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertInfoDemo() {\n  return (\n    <Alert className='border-cyan-600/50 text-cyan-600 dark:border-cyan-600 [&>svg]:text-cyan-600'>\n      <InfoIcon className='h-4 w-4' />\n      <AlertTitle>Pro Tip</AlertTitle>\n      <AlertDescription>\n        You can customize your workspace by accessing the settings panel.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -772,7 +1018,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-soft.tsx",
           content:
-            "import {\r\n  CircleFadingArrowUpIcon,\r\n  OctagonAlert,\r\n  ShieldAlert,\r\n} from \"lucide-react\";\r\n\r\nimport { Alert, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertCalloutDemo() {\r\n  return (\r\n    <div className='w-full space-y-4'>\r\n      <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />\r\n        <AlertTitle>\r\n          Payment processed successfully. Your order is confirmed.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-blue-500/10 dark:bg-blue-600/30 border-none'>\r\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-blue-500' />\r\n        <AlertTitle>\r\n          Feature preview available. Try our new dashboard layout.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-amber-500/10 dark:bg-amber-600/30 border-none'>\r\n        <ShieldAlert className='h-4 w-4 !text-amber-500' />\r\n        <AlertTitle>\r\n          Unusual account activity detected. Verify recent logins.\r\n        </AlertTitle>\r\n      </Alert>\r\n      <Alert className='bg-destructive/10 dark:bg-destructive/20 border-none'>\r\n        <OctagonAlert className='h-4 w-4 !text-destructive' />\r\n        <AlertTitle>\r\n          Connection lost. Service unavailable until connectivity is restored.\r\n        </AlertTitle>\r\n      </Alert>\r\n    </div>\r\n  );\r\n}\r\n",
+            "import {\n  CircleFadingArrowUpIcon,\n  OctagonAlert,\n  ShieldAlert,\n} from \"lucide-react\";\n\nimport { Alert, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertCalloutDemo() {\n  return (\n    <div className='w-full space-y-4'>\n      <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />\n        <AlertTitle>\n          Payment processed successfully. Your order is confirmed.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-blue-500/10 dark:bg-blue-600/30 border-none'>\n        <CircleFadingArrowUpIcon className='h-4 w-4 !text-blue-500' />\n        <AlertTitle>\n          Feature preview available. Try our new dashboard layout.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-amber-500/10 dark:bg-amber-600/30 border-none'>\n        <ShieldAlert className='h-4 w-4 !text-amber-500' />\n        <AlertTitle>\n          Unusual account activity detected. Verify recent logins.\n        </AlertTitle>\n      </Alert>\n      <Alert className='bg-destructive/10 dark:bg-destructive/20 border-none'>\n        <OctagonAlert className='h-4 w-4 !text-destructive' />\n        <AlertTitle>\n          Connection lost. Service unavailable until connectivity is restored.\n        </AlertTitle>\n      </Alert>\n    </div>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -789,7 +1035,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-success.tsx",
           content:
-            "import { CircleCheckBigIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertSuccessDemo() {\r\n  return (\r\n    <Alert className='border-emerald-600/50 text-emerald-600 dark:border-emerald-600 [&>svg]:text-emerald-600'>\r\n      <CircleCheckBigIcon className='h-4 w-4' />\r\n      <AlertTitle>Account Verified</AlertTitle>\r\n      <AlertDescription>\r\n        Your account has been successfully verified and is now ready to use\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+            "import { CircleCheckBigIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertSuccessDemo() {\n  return (\n    <Alert className='border-emerald-600/50 text-emerald-600 dark:border-emerald-600 [&>svg]:text-emerald-600'>\n      <CircleCheckBigIcon className='h-4 w-4' />\n      <AlertTitle>Account Verified</AlertTitle>\n      <AlertDescription>\n        Your account has been successfully verified and is now ready to use\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -806,7 +1052,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-warning.tsx",
           content:
-            "import { TriangleAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertWarningDemo() {\r\n  return (\r\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\r\n      <TriangleAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Low Storage Space</AlertTitle>\r\n      <AlertDescription>\r\n        Your device is running low on storage. Please free up space to avoid performance issues.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+            "import { TriangleAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWarningDemo() {\n  return (\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\n      <TriangleAlertIcon className='h-4 w-4' />\n      <AlertTitle>Low Storage Space</AlertTitle>\n      <AlertDescription>\n        Your device is running low on storage. Please free up space to avoid\n        performance issues.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -823,7 +1069,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-with-action.tsx",
           content:
-            "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\n\r\nimport { CircleFadingArrowUpIcon, XIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\nexport default function AlertWithActionsDemo() {\r\n  const [isAlertVisible, setIsAlertVisible] = useState(true);\r\n\r\n  const showAlert = () => {\r\n    setIsAlertVisible(true);\r\n  };\r\n  const hideAlert = () => {\r\n    setIsAlertVisible(false);\r\n  };\r\n\r\n  return (\r\n    <div className='w-full'>\r\n      {isAlertVisible && (\r\n        <Alert className='flex justify-between items-center pr-2 [&>svg+div]:translate-y-0'>\r\n          <CircleFadingArrowUpIcon className='h-4 w-4' />\r\n          <div className='flex-col justify-center'>\r\n            <AlertTitle>Privacy Policy Update</AlertTitle>\r\n            <AlertDescription>\r\n              We've updated our privacy policy. Please review the changes before\r\n              continuing.\r\n            </AlertDescription>\r\n          </div>\r\n          <Button\r\n            size='icon'\r\n            variant='ghost'\r\n            className='!pl-0'\r\n            onClick={hideAlert}\r\n          >\r\n            <XIcon className='h-5 w-5' />\r\n          </Button>\r\n        </Alert>\r\n      )}\r\n      {!isAlertVisible && (\r\n        <div className='flex justify-center'>\r\n          <Button className='mt-2 mx-auto' onClick={showAlert}>\r\n            Reopen\r\n          </Button>\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n",
+            "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { CircleFadingArrowUpIcon, XIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function AlertWithActionsDemo() {\n  const [isAlertVisible, setIsAlertVisible] = useState(true);\n\n  const showAlert = () => {\n    setIsAlertVisible(true);\n  };\n  const hideAlert = () => {\n    setIsAlertVisible(false);\n  };\n\n  return (\n    <div className='w-full'>\n      {isAlertVisible && (\n        <Alert className='flex justify-between items-center pr-2 [&>svg+div]:translate-y-0'>\n          <CircleFadingArrowUpIcon className='h-4 w-4' />\n          <div className='flex-col justify-center'>\n            <AlertTitle>Privacy Policy Update</AlertTitle>\n            <AlertDescription>\n              We've updated our privacy policy. Please review the changes before\n              continuing.\n            </AlertDescription>\n          </div>\n          <Button\n            size='icon'\n            variant='ghost'\n            className='!pl-0'\n            onClick={hideAlert}\n          >\n            <XIcon className='h-5 w-5' />\n          </Button>\n        </Alert>\n      )}\n      {!isAlertVisible && (\n        <div className='flex justify-center'>\n          <Button className='mt-2 mx-auto' onClick={showAlert}>\n            Reopen\n          </Button>\n        </div>\n      )}\n    </div>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -840,7 +1086,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/alert/alert-with-background.tsx",
           content:
-            "import { OctagonAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertWithBackgroundDemo() {\r\n  return (\r\n    <Alert\r\n      variant='destructive'\r\n      className='bg-destructive text-destructive-foreground [&>svg]:text-destructive-foreground'\r\n    >\r\n      <OctagonAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Authentication Failed</AlertTitle>\r\n      <AlertDescription>\r\n        Your session has expired. Please log in again to continue.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+            "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWithBackgroundDemo() {\n  return (\n    <Alert\n      variant='destructive'\n      className='bg-destructive text-destructive-foreground [&>svg]:text-destructive-foreground'\n    >\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Authentication Failed</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again to continue.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],

@@ -1,0 +1,11 @@
+{
+  "name": "accordion-with-icon",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "accordion-with-icon.tsx",
+      "content": "import { Contrast, Palette, Zap } from \"lucide-react\";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from \"@/components/ui/accordion\";\r\n\r\nconst items = [\r\n  {\r\n    title: \"Is it accessible?\",\r\n    content: \"Yes. It adheres to the WAI-ARIA design pattern.\",\r\n    icon: Contrast,\r\n  },\r\n  {\r\n    title: \"Is it styled?\",\r\n    content:\r\n      \"Yes. It comes with default styles that matches the other components' aesthetic.\",\r\n    icon: Palette,\r\n  },\r\n  {\r\n    title: \"Is it animated?\",\r\n    content:\r\n      \"Yes. It's animated by default, but you can disable it if you prefer.\",\r\n    icon: Zap,\r\n  },\r\n];\r\n\r\nexport default function AccordionWithIcon() {\r\n  return (\r\n    <Accordion\r\n      defaultValue='item-0'\r\n      type='single'\r\n      collapsible\r\n      className='max-w-lg my-4 w-full'\r\n    >\r\n      {items.map(({ title, content, icon: Icon }, index) => (\r\n        <AccordionItem key={index} value={`item-${index}`}>\r\n          <AccordionTrigger>\r\n            <div className='flex items-start gap-3'>\r\n              <Icon />\r\n              {title}\r\n            </div>\r\n          </AccordionTrigger>\r\n          <AccordionContent>{content}</AccordionContent>\r\n        </AccordionItem>\r\n      ))}\r\n    </Accordion>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

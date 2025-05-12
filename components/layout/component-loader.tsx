@@ -1,32 +1,55 @@
+"use client";
+
 import type { ComponentType } from "react";
+import React from "react";
 
 import type { RegistryItem } from "@/lib/components";
+
+import { Index } from "@/__registry__";
+
+import { Skeleton } from "../ui/skeleton";
 
 type ComponentLoaderProps = {
   component: RegistryItem;
   category: string;
 };
 
-const ComponentLoader = async <TProps extends object>({
+const ComponentLoader = <TProps extends object>({
   component,
   category,
   ...props
 }: ComponentLoaderProps & TProps) => {
-  if (!component?.name) {
-    return null;
-  }
+  const ComponentElement = React.useMemo(() => {
+    try {
+      const Component = Index["default"][component.name]
+        ?.component as ComponentType<TProps>;
 
-  try {
-    const Component = (
-      await import(`@/registry/default/snippets/${category}/${component.name}`)
-    ).default as ComponentType<TProps>;
+      if (!Component) {
+        return (
+          <p className='text-muted-foreground text-sm'>
+            Component{" "}
+            <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
+              {component.name}
+            </code>{" "}
+            not found in registry.
+          </p>
+        );
+      }
 
-    return <Component {...(props as TProps)} currentPage={1} totalPages={10} />;
-  } catch (error) {
-    console.error(`Failed to load component ${component.name}:`, error);
+      return (
+        <Component {...(props as TProps)} currentPage={1} totalPages={10} />
+      );
+    } catch (error) {
+      console.error(`Failed to load component ${component.name}:`, error);
+      return null;
+    }
+  }, [component.name, category, props]);
 
-    return null;
-  }
+  return (
+    <React.Suspense fallback={<Skeleton className='h-[300px] w-full' />}>
+      {ComponentElement}
+    </React.Suspense>
+  );
 };
 
 export default ComponentLoader;

@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "alert-warning.tsx",
-      "content": "import { TriangleAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function AlertWarningDemo() {\r\n  return (\r\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\r\n      <TriangleAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Low Storage Space</AlertTitle>\r\n      <AlertDescription>\r\n        Your device is running low on storage. Please free up space to avoid performance issues.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
+      "content": "import { TriangleAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWarningDemo() {\n  return (\n    <Alert className='border-amber-500/50 text-amber-500 dark:border-amber-500 [&>svg]:text-amber-500'>\n      <TriangleAlertIcon className='h-4 w-4' />\n      <AlertTitle>Low Storage Space</AlertTitle>\n      <AlertDescription>\n        Your device is running low on storage. Please free up space to avoid\n        performance issues.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
       "type": "registry:snippet"
     }
   ]

@@ -16,7 +16,6 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { categories as categoriesBlock } from "@/config/blocks";
 import { categories as categoriesSnippet } from "@/config/snippets";
 
 export function NavMenu() {

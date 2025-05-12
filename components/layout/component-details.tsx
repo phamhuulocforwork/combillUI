@@ -29,8 +29,6 @@ import {
 import type { RegistryItem } from "@/lib/components";
 import { convertRegistryPaths } from "@/lib/components";
 
-import { CodeBlockWrapper } from "../code-block-wrapper";
-
 const ComponentDetails = ({ component }: { component: RegistryItem }) => {
   const [code, setCode] = useState<string | null>(null);
   const [highlightedCode, setHighlightedCode] = useState<JSX.Element | null>(
@@ -80,8 +78,13 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
   }, [component.name]);
 
   return (
-    <div className='absolute -end-2 -top-2 flex items-center gap-2'>
-      <Dialog>
+    <Dialog>
+      <div className='flex gap-2 justify-end w-full'>
+        <CopyButton
+          source={code}
+          toast='Code'
+          className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 hover:!bg-transparent disabled:opacity-100'
+        />
         <TooltipProvider delayDuration={0}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -98,50 +101,49 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
             <TooltipContent>View code</TooltipContent>
           </Tooltip>
         </TooltipProvider>
-        <DialogContent className='sm:max-w-[650px] max-w-2xl'>
-          <DialogHeader>
-            <DialogTitle className='text-left'>Installation</DialogTitle>
-            <DialogDescription className='sr-only'>
-              Use the CLI to add components to your project
-            </DialogDescription>
-          </DialogHeader>
-          <div className='min-w-0 space-y-5'>
-            {/* <ComponentCli name={component.name} toast='Installation command' /> */}
-            <div className='space-y-4'>
-              <div className='relative'>
-                {code === "" ? (
-                  <p className='text-muted-foreground text-sm'>
-                    No code available. If you think this is an error, please{" "}
-                    <Link
-                      href='https://github.com/phamhuulocforwork/combillUI/issues'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='text-foreground font-medium underline hover:no-underline'
-                    >
-                      open an issue
-                    </Link>
-                    .
-                  </p>
-                ) : (
-                  <>
-                    <CodeBlock
-                      code={code}
-                      lang='tsx'
-                      preHighlighted={highlightedCode}
-                    />
-                    <CopyButton
-                      source={code}
-                      className='dark end-1 top-1'
-                      toast='Code'
-                    />
-                  </>
-                )}
-              </div>
+      </div>
+      <DialogContent className='sm:max-w-[650px] max-w-2xl'>
+        <DialogHeader>
+          <DialogTitle className='text-left'>Installation</DialogTitle>
+          <DialogDescription className='sr-only'>
+            Use the CLI to add components to your project
+          </DialogDescription>
+        </DialogHeader>
+        <div className='min-w-0 space-y-5'>
+          <div className='space-y-4'>
+            <div className='relative'>
+              {code === "" ? (
+                <p className='text-muted-foreground text-sm'>
+                  No code available. If you think this is an error, please{" "}
+                  <Link
+                    href='https://github.com/phamhuulocforwork/combillUI/issues'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-foreground font-medium underline hover:no-underline'
+                  >
+                    open an issue
+                  </Link>
+                  .
+                </p>
+              ) : (
+                <>
+                  <CodeBlock
+                    code={code}
+                    lang='tsx'
+                    preHighlighted={highlightedCode}
+                  />
+                  <CopyButton
+                    source={code}
+                    className='dark absolute end-1 top-1'
+                    toast='Code'
+                  />
+                </>
+              )}
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
-    </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
