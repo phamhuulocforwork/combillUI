@@ -92,6 +92,7 @@ export const categories: ComponentCategory[] = [
     breakpoints: {
       sm: 2,
       lg: 3,
+      xl: 4,
     },
     components: badgeComponents,
   },
@@ -101,6 +102,7 @@ export const categories: ComponentCategory[] = [
     description:
       "Displays the path to the current resource using a hierarchy of links.",
     icon: HomeIcon,
+    isUpdated: true,
     breakpoints: {
       sm: 1,
       lg: 2,

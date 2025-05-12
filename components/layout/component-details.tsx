@@ -29,6 +29,8 @@ import {
 import type { RegistryItem } from "@/lib/components";
 import { convertRegistryPaths } from "@/lib/components";
 
+import ComponentCli from "../component-cli";
+
 const ComponentDetails = ({ component }: { component: RegistryItem }) => {
   const [code, setCode] = useState<string | null>(null);
   const [highlightedCode, setHighlightedCode] = useState<JSX.Element | null>(
@@ -111,6 +113,8 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
         </DialogHeader>
         <div className='min-w-0 space-y-5'>
           <div className='space-y-4'>
+            <ComponentCli name={component.name} />
+
             <div className='relative'>
               {code === "" ? (
                 <p className='text-muted-foreground text-sm'>
@@ -135,6 +139,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                   <CopyButton
                     source={code}
                     className='dark absolute end-1 top-1'
+                    btnClassName='hover:!bg-transparent'
                     toast='Code'
                   />
                 </>

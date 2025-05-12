@@ -153,6 +153,12 @@ export const breadcrumbComponents = [
     name: "breadcrumb-slash",
   },
   {
+    name: "breadcrumb-steps",
+  },
+  {
+    name: "breadcrumb-tab-active",
+  },
+  {
     name: "breadcrumb-with-dropdown",
   },
   {

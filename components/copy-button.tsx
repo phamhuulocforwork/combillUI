@@ -17,10 +17,12 @@ import { useCopy } from "@/hooks/use-copy";
 const CopyButton = ({
   source,
   className,
+  btnClassName,
   toast,
 }: {
   source: string | null;
   className?: string;
+  btnClassName?: string;
   toast?: string;
 }) => {
   const { copied, copy } = useCopy(1500, toast);
@@ -33,7 +35,10 @@ const CopyButton = ({
             <Button
               variant='ghost'
               size='icon'
-              className='text-muted-foreground hover:text-foreground cursor-pointer transition-none disabled:opacity-100'
+              className={cn(
+                `text-muted-foreground hover:text-foreground cursor-pointer transition-none disabled:opacity-100`,
+                btnClassName,
+              )}
               onClick={() => copy(source || "")}
               aria-label={copied ? "Copied" : "Copy component source"}
               disabled={copied}

@@ -44,7 +44,7 @@ const ComponentLoader = <TProps extends object>({
   }, [component.name, props]);
 
   return (
-    <React.Suspense fallback={<Skeleton className='h-[300px] w-full' />}>
+    <React.Suspense fallback={<Skeleton className='h-[100px] w-full' />}>
       {ComponentElement}
     </React.Suspense>
   );

@@ -1333,7 +1333,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/avatar/avatar-shape.tsx",
           content:
-            'import { Avatar, AvatarFallback } from "@/components/ui/avatar";\n\nexport default function AvatarShape() {\n  return (\n    <div className="grid gap-5">\n      <div className="flex items-center gap-4">\n        <Avatar className="rounded-none">\n          <AvatarFallback className="rounded-none bg-indigo-500 text-white">\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className="rounded-md">\n          <AvatarFallback className="rounded-lg bg-indigo-500 text-white">\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className="rounded-full">\n          <AvatarFallback className="rounded-full bg-indigo-500 text-white">\n            CN\n          </AvatarFallback>\n        </Avatar>\n      </div>\n      <div className="flex items-center gap-4">\n        <Avatar className="rounded-none">\n          <AvatarFallback className="rounded-none bg-indigo-500/25 text-indigo-500">\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className="rounded-md">\n          <AvatarFallback className="rounded-lg bg-indigo-500/25 text-indigo-500">\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className="rounded-full">\n          <AvatarFallback className="rounded-full bg-indigo-500/25 text-indigo-500">\n            CN\n          </AvatarFallback>\n        </Avatar>\n      </div>\n    </div>\n  );\n}\n',
+            "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\n\nexport default function AvatarShape() {\n  return (\n    <div className='grid gap-5'>\n      <div className='flex items-center gap-4'>\n        <Avatar className='rounded-none'>\n          <AvatarFallback className='rounded-none bg-indigo-500 text-white'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className='rounded-md'>\n          <AvatarFallback className='rounded-lg bg-indigo-500 text-white'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className='rounded-full'>\n          <AvatarFallback className='rounded-full bg-indigo-500 text-white'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n      </div>\n      <div className='flex items-center gap-4'>\n        <Avatar className='rounded-none'>\n          <AvatarFallback className='rounded-none bg-indigo-500/25 text-indigo-500'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className='rounded-md'>\n          <AvatarFallback className='rounded-lg bg-indigo-500/25 text-indigo-500'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n        <Avatar className='rounded-full'>\n          <AvatarFallback className='rounded-full bg-indigo-500/25 text-indigo-500'>\n            CN\n          </AvatarFallback>\n        </Avatar>\n      </div>\n    </div>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1402,7 +1402,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-default.tsx",
           content:
-            'import { Badge } from "@/components/ui/badge";\r\n\r\nexport function BadgeDefault() {\r\n  return <Badge>Badge</Badge>;\r\n}\r\n',
+            'import { Badge } from "@/components/ui/badge";\n\nexport default function BadgeDefault() {\n  return <Badge>Badge</Badge>;\n}\n',
           type: "registry:snippet",
         },
       ],
@@ -1419,7 +1419,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-destructive.tsx",
           content:
-            "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeDestructive() {\r\n  return <Badge variant='destructive'>Destructive</Badge>;\r\n}\r\n",
+            "import { Badge } from \"@/components/ui/badge\";\n\nexport default function BadgeDestructive() {\n  return <Badge variant='destructive'>Destructive</Badge>;\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1436,7 +1436,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-outline.tsx",
           content:
-            "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeOutline() {\r\n  return <Badge variant='outline'>Outline</Badge>;\r\n}\r\n",
+            "import { Badge } from \"@/components/ui/badge\";\n\nexport default function BadgeOutline() {\n  return <Badge variant='outline'>Outline</Badge>;\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1453,7 +1453,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-rounded.tsx",
           content:
-            'import React from "react";\r\n\r\nimport { Badge } from "@/components/ui/badge";\r\n\r\nexport function BadgeRounded() {\r\n  return <Badge className=\'rounded-full\'>Rounded</Badge>;\r\n}\r\n',
+            'import React from "react";\n\nimport { Badge } from "@/components/ui/badge";\n\nexport default function BadgeRounded() {\n  return <Badge className=\'rounded-full\'>Rounded</Badge>;\n}\n',
           type: "registry:snippet",
         },
       ],
@@ -1470,7 +1470,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-secondary.tsx",
           content:
-            "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeSecondary() {\r\n  return <Badge variant='secondary'>Secondary</Badge>;\r\n}\r\n",
+            "import { Badge } from \"@/components/ui/badge\";\n\nexport default function BadgeSecondary() {\n  return <Badge variant='secondary'>Secondary</Badge>;\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1487,7 +1487,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-soft.tsx",
           content:
-            "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function SoftBadge() {\r\n  return (\r\n    <div className='flex items-center gap-3 flex-wrap'>\r\n      <Badge className='bg-amber-600/10 dark:bg-amber-600/20 hover:bg-amber-600/10 text-amber-500 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-amber-500 mr-2' /> In\r\n        Progress\r\n      </Badge>\r\n      <Badge className='bg-red-600/10 dark:bg-red-600/20 hover:bg-red-600/10 text-red-500 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-red-500 mr-2' /> Blocked\r\n      </Badge>\r\n      <Badge className='bg-emerald-600/10 dark:bg-emerald-600/20 hover:bg-emerald-600/10 text-emerald-500 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2' /> Done\r\n      </Badge>\r\n    </div>\r\n  );\r\n}\r\n",
+            "import { Badge } from \"@/components/ui/badge\";\n\nexport default function SoftBadge() {\n  return (\n    <div className='flex items-center gap-3 flex-wrap'>\n      <Badge className='bg-amber-600/10 dark:bg-amber-600/20 hover:bg-amber-600/10 text-amber-500 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-amber-500 mr-2' /> In\n        Progress\n      </Badge>\n      <Badge className='bg-red-600/10 dark:bg-red-600/20 hover:bg-red-600/10 text-red-500 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-red-500 mr-2' /> Blocked\n      </Badge>\n      <Badge className='bg-emerald-600/10 dark:bg-emerald-600/20 hover:bg-emerald-600/10 text-emerald-500 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2' /> Done\n      </Badge>\n    </div>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1504,7 +1504,7 @@ export const Index: Record<string, any> = {
         {
           path: "registry/default/snippets/badge/badge-status.tsx",
           content:
-            "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function StatusBadge() {\r\n  return (\r\n    <div className='flex items-center gap-3 flex-wrap'>\r\n      <Badge className='bg-amber-600/10 dark:bg-amber-600/20 hover:bg-amber-600/10 text-amber-500 border-amber-600/60 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-amber-500 mr-2' /> In\r\n        Progress\r\n      </Badge>\r\n      <Badge className='bg-red-600/10 dark:bg-red-600/20 hover:bg-red-600/10 text-red-500 border-red-600/60 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-red-500 mr-2' /> Blocked\r\n      </Badge>\r\n      <Badge className='bg-emerald-600/10 dark:bg-emerald-600/20 hover:bg-emerald-600/10 text-emerald-500 border-emerald-600/60 shadow-none rounded-full'>\r\n        <div className='h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2' /> Done\r\n      </Badge>\r\n    </div>\r\n  );\r\n}\r\n",
+            "import { Badge } from \"@/components/ui/badge\";\n\nexport default function StatusBadge() {\n  return (\n    <div className='flex items-center gap-3 flex-wrap'>\n      <Badge className='bg-amber-600/10 dark:bg-amber-600/20 hover:bg-amber-600/10 text-amber-500 border-amber-600/60 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-amber-500 mr-2' /> In\n        Progress\n      </Badge>\n      <Badge className='bg-red-600/10 dark:bg-red-600/20 hover:bg-red-600/10 text-red-500 border-red-600/60 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-red-500 mr-2' /> Blocked\n      </Badge>\n      <Badge className='bg-emerald-600/10 dark:bg-emerald-600/20 hover:bg-emerald-600/10 text-emerald-500 border-emerald-600/60 shadow-none rounded-full'>\n        <div className='h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2' /> Done\n      </Badge>\n    </div>\n  );\n}\n",
           type: "registry:snippet",
         },
       ],
@@ -1548,6 +1548,44 @@ export const Index: Record<string, any> = {
       component: React.lazy(
         () =>
           import("@/registry/default/snippets/breadcrumb/breadcrumb-slash.tsx"),
+      ),
+    },
+
+    "breadcrumb-steps": {
+      name: "breadcrumb-steps",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/breadcrumb/breadcrumb-steps.tsx",
+          content:
+            'import {\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  BreadcrumbLink,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n} from "@/components/ui/breadcrumb";\r\nimport { Package, ShoppingCart, Store, Truck } from "lucide-react";\r\nimport { Fragment } from "react";\r\n\r\nconst steps = [\r\n  {\r\n    label: "Store",\r\n    href: "#/store",\r\n    icon: Store,\r\n  },\r\n  {\r\n    label: "Delivery Tracking",\r\n    href: "#/delivery-tracking",\r\n    icon: Truck,\r\n  },\r\n  {\r\n    label: "Cart",\r\n    href: "#/cart",\r\n    icon: ShoppingCart,\r\n  },\r\n  {\r\n    label: "Package",\r\n    href: "#/package",\r\n    icon: Package,\r\n    active: true,\r\n  },\r\n];\r\n\r\nexport default function BreadcrumbsSteps() {\r\n  return (\r\n    <Breadcrumb>\r\n      <BreadcrumbList>\r\n        {steps.map((step, index) => (\r\n          <Fragment key={index}>\r\n            <BreadcrumbItem>\r\n              {step.active ? (\r\n                <BreadcrumbPage>\r\n                  <step.icon className="h-5 w-5" />\r\n                </BreadcrumbPage>\r\n              ) : (\r\n                <BreadcrumbLink href={step.href}>\r\n                  <step.icon className="h-5 w-5" />\r\n                </BreadcrumbLink>\r\n              )}\r\n            </BreadcrumbItem>\r\n            {index !== steps.length - 1 && (\r\n              <li\r\n                role="presentation"\r\n                aria-hidden="true"\r\n                className="inline-block h-[2px] w-[40px] bg-muted"\r\n              />\r\n            )}\r\n          </Fragment>\r\n        ))}\r\n      </BreadcrumbList>\r\n    </Breadcrumb>\r\n  );\r\n};\r\n\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/breadcrumb/breadcrumb-steps.tsx"),
+      ),
+    },
+
+    "breadcrumb-tab-active": {
+      name: "breadcrumb-tab-active",
+      description: "",
+      type: "registry:snippet",
+      files: [
+        {
+          path: "registry/default/snippets/breadcrumb/breadcrumb-tab-active.tsx",
+          content:
+            'import React from "react";\r\n\r\nimport { ChevronsRight } from "lucide-react";\r\n\r\nimport { Badge } from "@/components/ui/badge";\r\nimport {\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  BreadcrumbLink,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n  BreadcrumbSeparator,\r\n} from "@/components/ui/breadcrumb";\r\n\r\nexport default function BreadcrumbTabActive() {\r\n  return (\r\n    <Breadcrumb>\r\n      <BreadcrumbList>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href=\'#\'>Home</BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator>\r\n          <ChevronsRight />\r\n        </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href=\'#/components\'>Components</BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator>\r\n          <ChevronsRight />\r\n        </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbPage>\r\n            <Badge className=\'shadow-none rounded-full\'>Breadcrumb</Badge>\r\n          </BreadcrumbPage>\r\n        </BreadcrumbItem>\r\n      </BreadcrumbList>\r\n    </Breadcrumb>\r\n  );\r\n}\r\n',
+          type: "registry:snippet",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/snippets/breadcrumb/breadcrumb-tab-active.tsx"
+          ),
       ),
     },
 

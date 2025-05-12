@@ -3,7 +3,6 @@ import { z } from "zod";
 export const registryItemTypeSchema = z.enum([
   "registry:ui",
   "registry:example",
-  "registry:snippet",
   "registry:hook",
 ]);
 
@@ -19,7 +18,6 @@ export const componentSchema = z.object({
   type: z.union([
     z.literal("registry:ui"),
     z.literal("registry:example"),
-    z.literal("registry:snippet"),
     z.literal("registry:hook"),
   ]),
   registryDependencies: z.array(z.string()).optional(),

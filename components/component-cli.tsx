@@ -74,7 +74,8 @@ const ComponentCli = ({ name, toast }: { name: string; toast?: string }) => {
       </Tabs>
       <CopyButton
         source={commands[packageManager as PackageManager]}
-        className='dark end-1 top-1'
+        className='dark absolute end-1 top-1 hover:!bg-transparent'
+        btnClassName='hover:!bg-transparent'
         toast={toast}
       />
     </div>

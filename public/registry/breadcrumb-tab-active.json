@@ -1,0 +1,11 @@
+{
+  "name": "breadcrumb-tab-active",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "breadcrumb-tab-active.tsx",
+      "content": "import React from \"react\";\r\n\r\nimport { ChevronsRight } from \"lucide-react\";\r\n\r\nimport { Badge } from \"@/components/ui/badge\";\r\nimport {\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  BreadcrumbLink,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n  BreadcrumbSeparator,\r\n} from \"@/components/ui/breadcrumb\";\r\n\r\nexport default function BreadcrumbTabActive() {\r\n  return (\r\n    <Breadcrumb>\r\n      <BreadcrumbList>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href='#'>Home</BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator>\r\n          <ChevronsRight />\r\n        </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbLink href='#/components'>Components</BreadcrumbLink>\r\n        </BreadcrumbItem>\r\n        <BreadcrumbSeparator>\r\n          <ChevronsRight />\r\n        </BreadcrumbSeparator>\r\n        <BreadcrumbItem>\r\n          <BreadcrumbPage>\r\n            <Badge className='shadow-none rounded-full'>Breadcrumb</Badge>\r\n          </BreadcrumbPage>\r\n        </BreadcrumbItem>\r\n      </BreadcrumbList>\r\n    </Breadcrumb>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

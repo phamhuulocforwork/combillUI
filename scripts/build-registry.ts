@@ -196,12 +196,12 @@ function buildSnippetsRegistry() {
 
       registry.push({
         name,
-        type: "registry:snippet",
+        type: "registry:ui",
         files: [
           {
             path: relativePath,
             content,
-            type: "registry:snippet",
+            type: "registry:ui",
           },
         ],
       });
