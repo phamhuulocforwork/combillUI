@@ -225,6 +225,8 @@ const AppSidebar = () => {
               {categories.map((category) => (
                 <CustomSidebarMenuSubItem
                   key={category.slug}
+                  isNew={category.isNew}
+                  isUpdated={category.isUpdated}
                   {...(category.isComingSoon
                     ? { href: "/", onClick: (e) => e.preventDefault() }
                     : { href: `/snippets/${category.slug}` })}

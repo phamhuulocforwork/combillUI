@@ -6,7 +6,6 @@ import { FaGithub } from "react-icons/fa";
 
 import { Icons } from "@/components/icons";
 import CommandMenu from "@/components/layout/command-menu";
-import NavMenu from "@/components/layout/nav-menu";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +15,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import { NavMenu } from "./nav-menu";
 
 const Header = ({ toggle }: { toggle?: ReactNode }) => {
   return (

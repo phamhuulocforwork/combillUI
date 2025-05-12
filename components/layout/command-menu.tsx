@@ -104,6 +104,12 @@ const CommandMenu = () => {
                 <Code />
                 <span>Snippets</span>
               </CommandItem>
+              <CommandItem
+                onSelect={() => runCommand(() => router.push("/blocks"))}
+              >
+                <Code />
+                <span>Blocks (coming soon)</span>
+              </CommandItem>
             </CommandGroup>
           )}
         </CommandList>

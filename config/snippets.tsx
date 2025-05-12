@@ -1,10 +1,12 @@
-import type { ComponentType, SVGProps } from "react";
-
-import Avatar from "@/assets/svg/avatar";
+import type { LucideIcon } from "lucide-react";
+import { AlertCircleIcon, HomeIcon, UserIcon } from "lucide-react";
 
 export type ComponentCategory = {
   slug: string;
   name: string;
+  description?: string;
+  isNew?: boolean;
+  isUpdated?: boolean;
 } & (
   | {
       components: { name: string }[];
@@ -15,11 +17,11 @@ export type ComponentCategory = {
         lg?: number;
         xl?: number;
       };
-      svg: ComponentType<SVGProps<SVGSVGElement>>;
+      icon: LucideIcon;
       isComingSoon?: never | false;
     }
   | {
-      svg?: never;
+      icon?: never;
       components?: never;
       breakpoints?: never | undefined;
       isComingSoon: true;
@@ -30,7 +32,8 @@ export const categories: ComponentCategory[] = [
   {
     slug: "avatar",
     name: "Avatar",
-    svg: Avatar,
+    description: "An image element with a fallback for representing the user.",
+    icon: UserIcon,
     breakpoints: {
       sm: 2,
       lg: 3,
@@ -47,7 +50,9 @@ export const categories: ComponentCategory[] = [
   {
     slug: "breadcrumb",
     name: "Breadcrumb",
-    svg: Avatar,
+    description:
+      "Displays the path to the current resource using a hierarchy of links.",
+    icon: HomeIcon,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -62,7 +67,8 @@ export const categories: ComponentCategory[] = [
   {
     slug: "alert",
     name: "Alert",
-    svg: Avatar,
+    description: "Displays a callout for user attention.",
+    icon: AlertCircleIcon,
     breakpoints: {
       sm: 1,
       lg: 2,
