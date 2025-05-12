@@ -108,10 +108,40 @@ export const avatarComponents = [
     name: "avatar-hover-card",
   },
   {
+    name: "avatar-shape",
+  },
+  {
     name: "avatar-with-ring",
   },
   {
     name: "avatar-with-status",
+  },
+  {
+    name: "avatar-with-text",
+  },
+];
+
+export const badgeComponents = [
+  {
+    name: "badge-default",
+  },
+  {
+    name: "badge-destructive",
+  },
+  {
+    name: "badge-outline",
+  },
+  {
+    name: "badge-rounded",
+  },
+  {
+    name: "badge-secondary",
+  },
+  {
+    name: "badge-soft",
+  },
+  {
+    name: "badge-status",
   },
 ];
 
@@ -135,5 +165,6 @@ export const categories = {
   alert: alertComponents,
   alertDialog: alertDialogComponents,
   avatar: avatarComponents,
+  badge: badgeComponents,
   breadcrumb: breadcrumbComponents,
 };

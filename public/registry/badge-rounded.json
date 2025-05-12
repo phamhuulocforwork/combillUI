@@ -1,0 +1,11 @@
+{
+  "name": "badge-rounded",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "badge-rounded.tsx",
+      "content": "import React from \"react\";\r\n\r\nimport { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeRounded() {\r\n  return <Badge className='rounded-full'>Rounded</Badge>;\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

@@ -79,11 +79,11 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
 
   return (
     <Dialog>
-      <div className='flex gap-2 justify-end w-full'>
+      <div className='flex gap-2 justify-end w-full absolute -top-0.5 -right-0.5'>
         <CopyButton
           source={code}
           toast='Code'
-          className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 hover:!bg-transparent disabled:opacity-100'
+          className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100'
         />
         <TooltipProvider delayDuration={0}>
           <Tooltip>
@@ -92,7 +92,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                 <Button
                   variant='ghost'
                   size='icon'
-                  className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 hover:!bg-transparent disabled:opacity-100'
+                  className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100'
                 >
                   <Code aria-hidden={true} className='size-4' />
                 </Button>

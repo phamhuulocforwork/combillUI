@@ -11,7 +11,7 @@ interface AvatarGroupProps extends React.ComponentProps<"div"> {
   max?: number;
 }
 
-const AvatarGroup = ({
+const AvatarGroupItem = ({
   children,
   max,
   className,
@@ -50,12 +50,12 @@ const AvatarGroup = ({
   );
 };
 
-export default function AvatarGroupDemo() {
+export default function AvatarGroup() {
   return (
-    <AvatarGroup>
+    <AvatarGroupItem>
       <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
         <AvatarImage
-          src='https://github.com/shadcn.png'
+          src='http://github.com/phamhuulocforwork.png'
           alt='@phamhuulocforwork'
         />
         <AvatarFallback className='bg-indigo-500 text-white'>HL</AvatarFallback>
@@ -66,6 +66,6 @@ export default function AvatarGroupDemo() {
       <Avatar className='-ml-2 first:ml-0 cursor-pointer'>
         <AvatarFallback className='bg-red-500 text-white'>AB</AvatarFallback>
       </Avatar>
-    </AvatarGroup>
+    </AvatarGroupItem>
   );
 }

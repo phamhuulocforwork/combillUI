@@ -1,0 +1,11 @@
+{
+  "name": "badge-secondary",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "badge-secondary.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeSecondary() {\r\n  return <Badge variant='secondary'>Secondary</Badge>;\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

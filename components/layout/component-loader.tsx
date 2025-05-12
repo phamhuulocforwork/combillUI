@@ -11,12 +11,10 @@ import { Skeleton } from "../ui/skeleton";
 
 type ComponentLoaderProps = {
   component: RegistryItem;
-  category: string;
 };
 
 const ComponentLoader = <TProps extends object>({
   component,
-  category,
   ...props
 }: ComponentLoaderProps & TProps) => {
   const ComponentElement = React.useMemo(() => {
@@ -43,7 +41,7 @@ const ComponentLoader = <TProps extends object>({
       console.error(`Failed to load component ${component.name}:`, error);
       return null;
     }
-  }, [component.name, category, props]);
+  }, [component.name, props]);
 
   return (
     <React.Suspense fallback={<Skeleton className='h-[300px] w-full' />}>

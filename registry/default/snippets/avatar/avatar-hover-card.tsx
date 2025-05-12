@@ -13,7 +13,7 @@ export default function AvatarHoverCard() {
       <HoverCardTrigger className='cursor-pointer'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/shadcn.png'
+            src='http://github.com/phamhuulocforwork.png'
             alt='@phamhuulocforwork'
           />
           <AvatarFallback>HL</AvatarFallback>
@@ -23,7 +23,7 @@ export default function AvatarHoverCard() {
         <div className='flex justify-between space-x-4'>
           <Avatar>
             <AvatarImage
-              src='https://github.com/shadcn.png'
+              src='http://github.com/phamhuulocforwork.png'
               alt='@phamhuulocforwork'
             />
             <AvatarFallback>HL</AvatarFallback>

@@ -86,7 +86,7 @@ const Page = ({ params }: { params: { category: string } }) => {
         {components.map((component) => (
           <ComponentCard key={component.name} component={component}>
             <ComponentDetails component={component} />
-            <ComponentLoader component={component} category={category.slug} />
+            <ComponentLoader component={component} />
           </ComponentCard>
         ))}
       </ComponentsGrid>

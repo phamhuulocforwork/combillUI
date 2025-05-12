@@ -3,6 +3,7 @@ import {
   AlertCircleIcon,
   HomeIcon,
   ListCollapse,
+  RectangleHorizontal,
   TriangleAlert,
   UserIcon,
 } from "lucide-react";
@@ -12,6 +13,7 @@ import {
   alertComponents,
   alertDialogComponents,
   avatarComponents,
+  badgeComponents,
   breadcrumbComponents,
 } from "@/registry/default/snippets";
 
@@ -80,6 +82,18 @@ export const categories: ComponentCategory[] = [
       lg: 3,
     },
     components: avatarComponents,
+  },
+  {
+    slug: "badge",
+    name: "Badge",
+    description: "Displays a badge or a component that looks like a badge.",
+    icon: RectangleHorizontal,
+    isNew: true,
+    breakpoints: {
+      sm: 2,
+      lg: 3,
+    },
+    components: badgeComponents,
   },
   {
     slug: "breadcrumb",

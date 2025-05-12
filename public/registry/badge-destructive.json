@@ -1,0 +1,11 @@
+{
+  "name": "badge-destructive",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "badge-destructive.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeDestructive() {\r\n  return <Badge variant='destructive'>Destructive</Badge>;\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ export default function AvatarDefault() {
   return (
     <Avatar>
       <AvatarImage
-        src='https://github.com/shadcn.png'
+        src='http://github.com/phamhuulocforwork.png'
         alt='@phamhuulocforwork'
       />
       <AvatarFallback>HL</AvatarFallback>

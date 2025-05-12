@@ -1,0 +1,11 @@
+{
+  "name": "badge-outline",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "badge-outline.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeOutline() {\r\n  return <Badge variant='outline'>Outline</Badge>;\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

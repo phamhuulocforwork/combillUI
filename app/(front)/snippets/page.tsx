@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
+import { Badge } from "@/components/ui/badge";
+
 import { categories } from "@/config/snippets";
 
 //TODO: Add metadata
@@ -55,9 +57,10 @@ const Page = () => {
                 <div className='flex flex-col gap-1 p-4'>
                   <div className='flex items-center gap-2'>
                     <category.icon className='transition-all duration-300 group-hover:scale-110' />
-                    <p className='text-muted-foreground text-sm'>{`${category.components.length} ${category.components.length === 1 ? "Snippet" : "Snippets"}`}</p>
+                    <h2 className='text-lg font-medium'>{category.name}</h2>
+                    <Badge variant='secondary'>{`${category.components.length} ${category.components.length === 1 ? "Snippet" : "Snippets"}`}</Badge>
                   </div>
-                  <h2 className='text-lg font-medium'>{category.name}</h2>
+
                   <p className='text-muted-foreground text-sm line-clamp-2 mt-1'>
                     {category.description}
                   </p>

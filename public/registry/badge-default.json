@@ -1,0 +1,11 @@
+{
+  "name": "badge-default",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "badge-default.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\r\n\r\nexport function BadgeDefault() {\r\n  return <Badge>Badge</Badge>;\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}
