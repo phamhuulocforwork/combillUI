@@ -3,12 +3,14 @@ import {
   AlertCircleIcon,
   HomeIcon,
   ListCollapse,
+  TriangleAlert,
   UserIcon,
 } from "lucide-react";
 
 import {
   accordionComponents,
   alertComponents,
+  alertDialogComponents,
   avatarComponents,
   breadcrumbComponents,
 } from "@/registry/default/snippets";
@@ -55,10 +57,24 @@ export const categories: ComponentCategory[] = [
     components: accordionComponents,
   },
   {
+    slug: "alert-dialog",
+    name: "Alert Dialog",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+    icon: TriangleAlert,
+    isNew: true,
+    breakpoints: {
+      sm: 2,
+      lg: 3,
+    },
+    components: alertDialogComponents,
+  },
+  {
     slug: "avatar",
     name: "Avatar",
     description: "An image element with a fallback for representing the user.",
     icon: UserIcon,
+    isUpdated: true,
     breakpoints: {
       sm: 2,
       lg: 3,

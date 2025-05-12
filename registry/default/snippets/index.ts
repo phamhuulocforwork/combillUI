@@ -67,6 +67,33 @@ export const alertComponents = [
   },
 ];
 
+export const alertDialogComponents = [
+  {
+    name: "alert-dialog-default",
+  },
+  {
+    name: "alert-dialog-destructive",
+  },
+  {
+    name: "alert-dialog-info",
+  },
+  {
+    name: "alert-dialog-success",
+  },
+  {
+    name: "alert-dialog-warning",
+  },
+  {
+    name: "alert-dialog-with-footer",
+  },
+  {
+    name: "alert-dialog-with-header",
+  },
+  {
+    name: "alert-dialog-with-icon",
+  },
+];
+
 export const avatarComponents = [
   {
     name: "avatar-default",
@@ -106,6 +133,7 @@ export const breadcrumbComponents = [
 export const categories = {
   accordion: accordionComponents,
   alert: alertComponents,
+  alertDialog: alertDialogComponents,
   avatar: avatarComponents,
   breadcrumb: breadcrumbComponents,
 };

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Contrast, Palette, Zap } from "lucide-react";
 
 import {
@@ -47,12 +45,11 @@ export default function AccordionMediaContent() {
           </AccordionTrigger>
           <AccordionContent>
             {content}
-            <div className='mt-4 w-full aspect-[18/9] bg-muted rounded-xl'>
-              <Image
+            <div className='mt-4 w-full bg-muted rounded-xl'>
+              <img
                 src='/svgs/placeholder.svg'
-                fill
                 alt='placeholder'
-                className='object-cover rounded-xl'
+                className='object-cover aspect-[18/9]'
               />
             </div>
           </AccordionContent>

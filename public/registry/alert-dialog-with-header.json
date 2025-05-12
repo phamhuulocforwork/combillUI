@@ -1,0 +1,11 @@
+{
+  "name": "alert-dialog-with-header",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "alert-dialog-with-header.tsx",
+      "content": "import * as AlertDialogPrimitive from \"@radix-ui/react-alert-dialog\";\r\nimport { OctagonAlert, X } from \"lucide-react\";\r\n\r\nimport {\r\n  AlertDialog,\r\n  AlertDialogAction,\r\n  AlertDialogCancel,\r\n  AlertDialogContent,\r\n  AlertDialogDescription,\r\n  AlertDialogFooter,\r\n  AlertDialogHeader,\r\n  AlertDialogTitle,\r\n  AlertDialogTrigger,\r\n} from \"@/components/ui/alert-dialog\";\r\nimport { Button, buttonVariants } from \"@/components/ui/button\";\r\n\r\nexport default function AlertDialogWithHeader() {\r\n  return (\r\n    <AlertDialog>\r\n      <AlertDialogTrigger asChild>\r\n        <Button variant='outline'>Show Dialog</Button>\r\n      </AlertDialogTrigger>\r\n      <AlertDialogContent>\r\n        <div className='-mt-3 -mx-6 border-b pb-3 px-6 flex justify-between items-center'>\r\n          <AlertDialogTitle>Delete Account</AlertDialogTitle>\r\n          <AlertDialogPrimitive.Cancel\r\n            className={buttonVariants({\r\n              variant: \"ghost\",\r\n              size: \"icon\",\r\n              className: \"!h-7 !w-7\",\r\n            })}\r\n          >\r\n            <X />\r\n          </AlertDialogPrimitive.Cancel>\r\n        </div>\r\n        <AlertDialogHeader className='pt-2'>\r\n          <AlertDialogTitle>\r\n            <div className='mx-auto sm:mx-0 mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-destructive/10'>\r\n              <OctagonAlert className='h-5 w-5 text-destructive' />\r\n            </div>\r\n            Are you absolutely sure?\r\n          </AlertDialogTitle>\r\n          <AlertDialogDescription className='text-[15px]'>\r\n            This action cannot be undone. This will permanently delete your\r\n            account and remove your data from our servers.\r\n          </AlertDialogDescription>\r\n        </AlertDialogHeader>\r\n        <AlertDialogFooter className='mt-2'>\r\n          <AlertDialogCancel>Cancel</AlertDialogCancel>\r\n          <AlertDialogAction>Continue</AlertDialogAction>\r\n        </AlertDialogFooter>\r\n      </AlertDialogContent>\r\n    </AlertDialog>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}

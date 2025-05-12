@@ -1,0 +1,11 @@
+{
+  "name": "alert-dialog-warning",
+  "type": "registry:snippet",
+  "files": [
+    {
+      "path": "alert-dialog-warning.tsx",
+      "content": "import { OctagonAlert } from \"lucide-react\";\r\n\r\nimport {\r\n  AlertDialog,\r\n  AlertDialogAction,\r\n  AlertDialogCancel,\r\n  AlertDialogContent,\r\n  AlertDialogDescription,\r\n  AlertDialogFooter,\r\n  AlertDialogHeader,\r\n  AlertDialogTitle,\r\n  AlertDialogTrigger,\r\n} from \"@/components/ui/alert-dialog\";\r\nimport { Button, buttonVariants } from \"@/components/ui/button\";\r\n\r\nexport default function AlertDialogWarning() {\r\n  return (\r\n    <AlertDialog>\r\n      <AlertDialogTrigger asChild>\r\n        <Button variant='outline'>Show Dialog</Button>\r\n      </AlertDialogTrigger>\r\n      <AlertDialogContent>\r\n        <AlertDialogHeader className='items-center'>\r\n          <AlertDialogTitle>\r\n            <div className='mb-2 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-warning/10'>\r\n              <OctagonAlert className='h-7 w-7 text-warning' />\r\n            </div>\r\n            Warning: Proceed with Caution\r\n          </AlertDialogTitle>\r\n          <AlertDialogDescription className='text-[15px] text-center'>\r\n            You are about to perform an action that may have unintended\r\n            consequences. Please ensure you understand the implications before\r\n            proceeding.\r\n          </AlertDialogDescription>\r\n        </AlertDialogHeader>\r\n        <AlertDialogFooter className='mt-2 sm:justify-center'>\r\n          <AlertDialogCancel>Cancel</AlertDialogCancel>\r\n          <AlertDialogAction className={buttonVariants({ variant: \"warning\" })}>\r\n            Proceed\r\n          </AlertDialogAction>\r\n        </AlertDialogFooter>\r\n      </AlertDialogContent>\r\n    </AlertDialog>\r\n  );\r\n}\r\n",
+      "type": "registry:snippet"
+    }
+  ]
+}
