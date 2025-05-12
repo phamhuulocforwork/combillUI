@@ -1,0 +1,11 @@
+{
+  "name": "carousel-with-progress",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "carousel-with-progress.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport {\r\n  Carousel,\r\n  type CarouselApi,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\nimport { Progress } from \"@/components/ui/progress\";\r\n\r\nexport default function CarouselWithProgress() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  const progress = (current * 100) / count;\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on(\"select\", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className='mx-auto max-w-xs py-4'>\r\n      <Carousel setApi={setApi} className='w-full max-w-xs'>\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className='flex aspect-video items-center justify-center p-6'>\r\n                  <span className='text-4xl font-semibold'>{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious className='top-[calc(100%+0.5rem)] translate-y-0 left-0' />\r\n        <CarouselNext className='top-[calc(100%+0.5rem)] translate-y-0 left-2 translate-x-full' />\r\n      </Carousel>\r\n      <Progress value={progress} className='mt-4 w-24 ml-auto' />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

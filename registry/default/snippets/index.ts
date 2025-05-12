@@ -166,6 +166,33 @@ export const breadcrumbComponents = [
   },
 ];
 
+export const carouselComponents = [
+  {
+    name: "carousel-default",
+  },
+  {
+    name: "carousel-multiple-slides",
+  },
+  {
+    name: "carousel-slide-status-2",
+  },
+  {
+    name: "carousel-slide-status",
+  },
+  {
+    name: "carousel-vertical",
+  },
+  {
+    name: "carousel-with-footer",
+  },
+  {
+    name: "carousel-with-pagination",
+  },
+  {
+    name: "carousel-with-progress",
+  },
+];
+
 export const categories = {
   accordion: accordionComponents,
   alert: alertComponents,
@@ -173,4 +200,5 @@ export const categories = {
   avatar: avatarComponents,
   badge: badgeComponents,
   breadcrumb: breadcrumbComponents,
+  carousel: carouselComponents,
 };

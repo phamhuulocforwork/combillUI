@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   AlertCircleIcon,
+  GalleryThumbnails,
   HomeIcon,
   ListCollapse,
   RectangleHorizontal,
@@ -15,6 +16,7 @@ import {
   avatarComponents,
   badgeComponents,
   breadcrumbComponents,
+  carouselComponents,
 } from "@/registry/default/snippets";
 
 export type ComponentCategory = {
@@ -51,7 +53,6 @@ export const categories: ComponentCategory[] = [
     description:
       "A vertically stacked set of interactive headings that each reveal a section of content.",
     icon: ListCollapse,
-    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -59,12 +60,22 @@ export const categories: ComponentCategory[] = [
     components: accordionComponents,
   },
   {
+    slug: "alert",
+    name: "Alert",
+    description: "Displays a callout for user attention.",
+    icon: AlertCircleIcon,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: alertComponents,
+  },
+  {
     slug: "alert-dialog",
     name: "Alert Dialog",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
     icon: TriangleAlert,
-    isNew: true,
     breakpoints: {
       sm: 2,
       lg: 3,
@@ -110,15 +121,16 @@ export const categories: ComponentCategory[] = [
     components: breadcrumbComponents,
   },
   {
-    slug: "alert",
-    name: "Alert",
-    description: "Displays a callout for user attention.",
-    icon: AlertCircleIcon,
+    slug: "carousel",
+    name: "Carousel",
+    description: "A carousel with motion and swipe built using Embla.",
+    icon: GalleryThumbnails,
+    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
     },
-    components: alertComponents,
+    components: carouselComponents,
   },
 ];
 

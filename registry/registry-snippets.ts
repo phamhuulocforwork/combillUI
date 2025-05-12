@@ -589,4 +589,100 @@ export const snippets: Registry = [
       },
     ],
   },
+  {
+    name: "carousel-default",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-default.tsx",
+        content:
+          'import * as React from "react";\r\n\r\nimport { Card, CardContent } from "@/components/ui/card";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from "@/components/ui/carousel";\r\n\r\nexport default function CarouselDefault() {\r\n  return (\r\n    <Carousel className="w-full max-w-xs">\r\n      <CarouselContent>\r\n        {Array.from({ length: 5 }).map((_, index) => (\r\n          <CarouselItem key={index}>\r\n            <div className="p-1">\r\n              <Card>\r\n                <CardContent className="flex aspect-video items-center justify-center p-6">\r\n                  <span className="text-4xl font-semibold">{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </div>\r\n          </CarouselItem>\r\n        ))}\r\n      </CarouselContent>\r\n      <CarouselPrevious />\r\n      <CarouselNext />\r\n    </Carousel>\r\n  );\r\n}\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-multiple-slides",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-multiple-slides.tsx",
+        content:
+          "import React from \"react\";\r\n\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\n\r\nexport default function CarouselWithMultipleSlides() {\r\n  return (\r\n    <Carousel\r\n      opts={{\r\n        align: \"start\",\r\n      }}\r\n      className='w-full max-w-sm'\r\n    >\r\n      <CarouselContent>\r\n        {Array.from({ length: 5 }).map((_, index) => (\r\n          <CarouselItem key={index} className='md:basis-1/2 lg:basis-1/3'>\r\n            <div className='p-1'>\r\n              <Card>\r\n                <CardContent className='flex aspect-square items-center justify-center p-6'>\r\n                  <span className='text-3xl font-semibold'>{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </div>\r\n          </CarouselItem>\r\n        ))}\r\n      </CarouselContent>\r\n      <CarouselPrevious />\r\n      <CarouselNext />\r\n    </Carousel>\r\n  );\r\n}\r\n",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-slide-status-2",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-slide-status-2.tsx",
+        content:
+          "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport {\r\n  Carousel,\r\n  type CarouselApi,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\n\r\nexport default function CarouselSlideStatus2() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on(\"select\", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className='mx-auto max-w-xs'>\r\n      <Carousel setApi={setApi} className='w-full max-w-xs'>\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className='flex aspect-video items-center justify-center p-6'>\r\n                  <span className='text-4xl font-semibold'>{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious />\r\n        <CarouselNext />\r\n      </Carousel>\r\n      <div className='mt-4 text-center text-sm text-muted-foreground'>\r\n        {current} / {count}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-slide-status",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-slide-status.tsx",
+        content:
+          "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport {\r\n  Carousel,\r\n  type CarouselApi,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\n\r\nexport default function CarouselSlideStatus() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on(\"select\", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className='mx-auto max-w-xs'>\r\n      <Carousel setApi={setApi} className='w-full max-w-xs'>\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className='flex aspect-video items-center justify-center p-6'>\r\n                  <span className='text-4xl font-semibold'>{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious />\r\n        <CarouselNext />\r\n      </Carousel>\r\n      <div className='mt-4 text-center text-sm text-muted-foreground'>\r\n        Slide {current} of {count}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-vertical",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-vertical.tsx",
+        content:
+          'import * as React from "react";\r\n\r\nimport { Card, CardContent } from "@/components/ui/card";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from "@/components/ui/carousel";\r\n\r\nexport default function CarouselVertical() {\r\n  return (\r\n    <Carousel\r\n      opts={{\r\n        align: "start",\r\n      }}\r\n      orientation="vertical"\r\n      className="w-full max-w-xs my-14"\r\n    >\r\n      <CarouselContent className="-mt-1 h-[200px]">\r\n        {Array.from({ length: 5 }).map((_, index) => (\r\n          <CarouselItem key={index} className="pt-1 md:basis-1/2">\r\n            <div className="p-1">\r\n              <Card>\r\n                <CardContent className="flex items-center justify-center p-6">\r\n                  <span className="text-3xl font-semibold">{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </div>\r\n          </CarouselItem>\r\n        ))}\r\n      </CarouselContent>\r\n      <CarouselPrevious />\r\n      <CarouselNext />\r\n    </Carousel>\r\n  );\r\n}\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-with-footer",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-with-footer.tsx",
+        content:
+          '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { Card, CardContent } from "@/components/ui/card";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n  type CarouselApi,\r\n} from "@/components/ui/carousel";\r\nimport { cn } from "@/lib/utils";\r\n\r\nexport default function CarouselWithFooter() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on("select", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className="mx-auto max-w-xs py-4">\r\n      <Carousel setApi={setApi} className="w-full max-w-xs">\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className="flex aspect-video items-center justify-center p-6">\r\n                  <span className="text-4xl font-semibold">{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious className="top-[calc(100%+0.5rem)] translate-y-0 left-0" />\r\n        <CarouselNext className="top-[calc(100%+0.5rem)] translate-y-0 left-2 translate-x-full" />\r\n      </Carousel>\r\n      <div className="mt-4 flex items-center justify-end gap-2">\r\n        {Array.from({ length: count }).map((_, index) => (\r\n          <button\r\n            key={index}\r\n            onClick={() => api?.scrollTo(index)}\r\n            className={cn("h-3.5 w-3.5 rounded-full border-2", {\r\n              "border-primary": current === index + 1,\r\n            })}\r\n          />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-with-pagination",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-with-pagination.tsx",
+        content:
+          '"use client";\r\n\r\nimport * as React from "react";\r\n\r\nimport { Card, CardContent } from "@/components/ui/card";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n  type CarouselApi,\r\n} from "@/components/ui/carousel";\r\nimport { cn } from "@/lib/utils";\r\n\r\nexport default function CarouselWithPagination() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on("select", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className="mx-auto max-w-xs">\r\n      <Carousel setApi={setApi} className="w-full max-w-xs">\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className="flex aspect-video items-center justify-center p-6">\r\n                  <span className="text-4xl font-semibold">{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious />\r\n        <CarouselNext />\r\n      </Carousel>\r\n      <div className="mt-4 flex items-center justify-center gap-2">\r\n        {Array.from({ length: count }).map((_, index) => (\r\n          <button\r\n            key={index}\r\n            onClick={() => api?.scrollTo(index)}\r\n            className={cn("h-3.5 w-3.5 rounded-full border-2", {\r\n              "border-primary": current === index + 1,\r\n            })}\r\n          />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "carousel-with-progress",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/carousel/carousel-with-progress.tsx",
+        content:
+          "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { Card, CardContent } from \"@/components/ui/card\";\r\nimport {\r\n  Carousel,\r\n  type CarouselApi,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n} from \"@/components/ui/carousel\";\r\nimport { Progress } from \"@/components/ui/progress\";\r\n\r\nexport default function CarouselWithProgress() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n  const [count, setCount] = React.useState(0);\r\n\r\n  const progress = (current * 100) / count;\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCount(api.scrollSnapList().length);\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on(\"select\", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <div className='mx-auto max-w-xs py-4'>\r\n      <Carousel setApi={setApi} className='w-full max-w-xs'>\r\n        <CarouselContent>\r\n          {Array.from({ length: 5 }).map((_, index) => (\r\n            <CarouselItem key={index}>\r\n              <Card>\r\n                <CardContent className='flex aspect-video items-center justify-center p-6'>\r\n                  <span className='text-4xl font-semibold'>{index + 1}</span>\r\n                </CardContent>\r\n              </Card>\r\n            </CarouselItem>\r\n          ))}\r\n        </CarouselContent>\r\n        <CarouselPrevious className='top-[calc(100%+0.5rem)] translate-y-0 left-0' />\r\n        <CarouselNext className='top-[calc(100%+0.5rem)] translate-y-0 left-2 translate-x-full' />\r\n      </Carousel>\r\n      <Progress value={progress} className='mt-4 w-24 ml-auto' />\r\n    </div>\r\n  );\r\n}\r\n",
+        type: "registry:ui",
+      },
+    ],
+  },
 ];

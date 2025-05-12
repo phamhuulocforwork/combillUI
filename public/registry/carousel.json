@@ -1,0 +1,11 @@
+{
+  "name": "carousel",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "carousel.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}
