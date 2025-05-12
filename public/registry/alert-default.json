@@ -1,11 +1,11 @@
 {
   "name": "alert-default",
-  "type": "registry:snippet",
+  "type": "registry:ui",
   "files": [
     {
       "path": "alert-default.tsx",
       "content": "import { CircleFadingArrowUpIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertDemo() {\n  return (\n    <Alert>\n      <CircleFadingArrowUpIcon className='h-4 w-4' />\n      <AlertTitle>System Notification</AlertTitle>\n      <AlertDescription>\n        Your application has been updated to the latest version.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
-      "type": "registry:snippet"
+      "type": "registry:ui"
     }
   ]
 }

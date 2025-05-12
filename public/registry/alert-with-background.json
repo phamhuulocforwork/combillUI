@@ -1,11 +1,11 @@
 {
   "name": "alert-with-background",
-  "type": "registry:snippet",
+  "type": "registry:ui",
   "files": [
     {
       "path": "alert-with-background.tsx",
       "content": "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertWithBackgroundDemo() {\n  return (\n    <Alert\n      variant='destructive'\n      className='bg-destructive text-destructive-foreground [&>svg]:text-destructive-foreground'\n    >\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Authentication Failed</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again to continue.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
-      "type": "registry:snippet"
+      "type": "registry:ui"
     }
   ]
 }

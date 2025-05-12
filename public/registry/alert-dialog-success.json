@@ -1,11 +1,11 @@
 {
   "name": "alert-dialog-success",
-  "type": "registry:snippet",
+  "type": "registry:ui",
   "files": [
     {
       "path": "alert-dialog-success.tsx",
       "content": "import { CheckCircle } from \"lucide-react\";\n\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/components/ui/alert-dialog\";\nimport { Button, buttonVariants } from \"@/components/ui/button\";\n\nexport default function AlertDialogSuccess() {\n  return (\n    <AlertDialog>\n      <AlertDialogTrigger asChild>\n        <Button variant='outline'>\n          <CheckCircle />\n          Success Dialog\n        </Button>\n      </AlertDialogTrigger>\n      <AlertDialogContent>\n        <AlertDialogHeader className='items-center'>\n          <AlertDialogTitle>\n            <div className='mb-2 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-success/10'>\n              <CheckCircle className='h-7 w-7 text-success' />\n            </div>\n            Success!\n          </AlertDialogTitle>\n          <AlertDialogDescription className='text-[15px] text-center'>\n            Your account has been successfully created. You can now log in and\n            start using our services.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter className='mt-2 sm:justify-center'>\n          <AlertDialogCancel>Close</AlertDialogCancel>\n          <AlertDialogAction className={buttonVariants({ variant: \"success\" })}>\n            Log In\n          </AlertDialogAction>\n        </AlertDialogFooter>\n      </AlertDialogContent>\n    </AlertDialog>\n  );\n}\n",
-      "type": "registry:snippet"
+      "type": "registry:ui"
     }
   ]
 }
