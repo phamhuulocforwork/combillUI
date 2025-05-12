@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   AlertCircleIcon,
+  ChevronsUpDown,
   GalleryThumbnails,
   HomeIcon,
   ListCollapse,
@@ -17,6 +18,7 @@ import {
   badgeComponents,
   breadcrumbComponents,
   carouselComponents,
+  collapsibleComponents,
 } from "@/registry/default/snippets";
 
 export type ComponentCategory = {
@@ -131,6 +133,18 @@ export const categories: ComponentCategory[] = [
       lg: 2,
     },
     components: carouselComponents,
+  },
+  {
+    slug: "collapsible",
+    name: "Collapsible",
+    description: "An interactive component which expands/collapses a panel.",
+    icon: ChevronsUpDown,
+    isNew: true,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: collapsibleComponents,
   },
 ];
 

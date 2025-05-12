@@ -1,0 +1,11 @@
+{
+  "name": "collapsible-show-more",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "collapsible-show-more.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { ChevronDown, ChevronUp } from \"lucide-react\";\r\n\r\nimport { Button } from \"@/components/ui/button\";\r\nimport {\r\n  Collapsible,\r\n  CollapsibleContent,\r\n  CollapsibleTrigger,\r\n} from \"@/components/ui/collapsible\";\r\n\r\nexport default function ShowMoreCollapsible() {\r\n  const [isOpen, setIsOpen] = React.useState(false);\r\n\r\n  return (\r\n    <Collapsible\r\n      open={isOpen}\r\n      onOpenChange={setIsOpen}\r\n      className='w-full max-w-xs space-y-2'\r\n    >\r\n      {Array.from({ length: 2 }).map((_, index) => (\r\n        <div key={index} className='flex items-center gap-2'>\r\n          <div className='h-10 w-10 shrink-0 rounded-full bg-accent' />\r\n          <div className='w-full flex flex-col gap-1.5'>\r\n            <div className='h-2.5 w-[40%] rounded-lg bg-accent' />\r\n            <div className='h-2.5 w-full rounded-lg bg-accent' />\r\n          </div>\r\n        </div>\r\n      ))}\r\n      <CollapsibleContent className='space-y-2'>\r\n        {Array.from({ length: 3 }).map((_, index) => (\r\n          <div key={index + 2} className='flex items-center gap-2'>\r\n            <div className='h-10 w-10 shrink-0 rounded-full bg-accent' />\r\n            <div className='w-full flex flex-col gap-1.5'>\r\n              <div className='h-2.5 w-[40%] rounded-lg bg-accent' />\r\n              <div className='h-2.5 w-full rounded-lg bg-accent' />\r\n            </div>\r\n          </div>\r\n        ))}\r\n      </CollapsibleContent>\r\n      <CollapsibleTrigger asChild>\r\n        <Button\r\n          variant='outline'\r\n          size='sm'\r\n          className='!mt-4 data-[state=open]:hidden'\r\n        >\r\n          Show more <ChevronDown />\r\n        </Button>\r\n      </CollapsibleTrigger>\r\n      <CollapsibleTrigger asChild>\r\n        <Button\r\n          variant='outline'\r\n          size='sm'\r\n          className='!mt-4 data-[state=open]:inline-flex hidden'\r\n        >\r\n          Show less <ChevronUp />\r\n        </Button>\r\n      </CollapsibleTrigger>\r\n    </Collapsible>\r\n  );\r\n}\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

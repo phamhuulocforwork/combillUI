@@ -193,6 +193,18 @@ export const carouselComponents = [
   },
 ];
 
+export const collapsibleComponents = [
+  {
+    name: "collapsible-default",
+  },
+  {
+    name: "collapsible-file-tree",
+  },
+  {
+    name: "collapsible-show-more",
+  },
+];
+
 export const categories = {
   accordion: accordionComponents,
   alert: alertComponents,
@@ -201,4 +213,5 @@ export const categories = {
   badge: badgeComponents,
   breadcrumb: breadcrumbComponents,
   carousel: carouselComponents,
+  collapsible: collapsibleComponents,
 };
