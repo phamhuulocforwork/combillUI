@@ -7,8 +7,16 @@ import Link from "next/link";
 import type { PageTree } from "fumadocs-core/server";
 import { SearchOnly, useTreeContext, useTreePath } from "fumadocs-ui/provider";
 
-import { Navbar } from "@/components/docs/navbar";
 import { Icons } from "@/components/icons";
+import { Navbar } from "@/components/layout/docs/navbar";
+import {
+  SidebarFolder,
+  SidebarFolderContent,
+  SidebarFolderLink,
+  SidebarFolderTrigger,
+  SidebarItem,
+  SidebarSeparator,
+} from "@/components/layout/docs/sidebar";
 import {
   LargeSearchToggle,
   SearchToggle,
@@ -21,14 +29,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 import { siteConfig } from "@/config/site";
 
-import {
-  SidebarFolder,
-  SidebarFolderContent,
-  SidebarFolderLink,
-  SidebarFolderTrigger,
-  SidebarItem,
-  SidebarSeparator,
-} from "./docs/sidebar";
 import type { SidebarComponents } from "./notebook";
 import { SidebarMenu, SidebarTrigger, useSidebar } from "./ui/sidebar";
 

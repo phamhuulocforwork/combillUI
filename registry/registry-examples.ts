@@ -22,11 +22,31 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "animated-tooltip-default",
+    name: "kbd-default",
     type: "registry:example",
     files: [
       {
-        path: "registry/default/example/animated-tooltip-default.tsx",
+        path: "registry/default/example/kbd-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-multiple",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/kbd-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-variants",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/default/example/kbd-variants.tsx",
         type: "registry:example",
       },
     ],

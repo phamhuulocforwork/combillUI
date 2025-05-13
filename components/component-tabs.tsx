@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import Link from "next/link";
+
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 import { Skeleton } from "@/components/ui/skeleton";
@@ -41,7 +43,16 @@ export function ComponentTabs({
           <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
             {name}
           </code>{" "}
-          not found in registry.
+          not found in registry, please{" "}
+          <Link
+            href='https://github.com/phamhuulocforwork/combillUI/issues'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-foreground font-medium underline hover:no-underline'
+          >
+            open an issue
+          </Link>
+          .
         </p>
       );
     }

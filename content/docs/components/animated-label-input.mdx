@@ -2,6 +2,8 @@
 title: Animated Label Input
 description: A input component that animates when it is focused.
 preview: true
+links:
+  api: /docs/components/animated-label-input#api-reference
 ---
 
 <ComponentTabs name='animated-label-input-default' />
@@ -75,21 +77,25 @@ import {
 } from "@/components/ui/animated-label-input";
 ```
 
-### Default
-
-```tsx
-<AnimatedLabelInput label='Animated Label' />
-```
-
-### Customize
-
-```tsx
-<AnimatedInput id="animated-label-input-demo" />
-<AnimatedLabel htmlFor="animated-label-input-demo">Animated Label</AnimatedLabel>
-```
-
 ## Example
 
 ### With Form
 
 <ComponentTabs name='animated-label-input-with-form' />
+
+## API Reference
+
+### Root
+
+The root of the label component.
+
+<AutoTypeTable path='./types/docs/animated-label-input.ts' name='RootProps' />
+
+### Label
+
+The component that represents the label for the input.
+
+<AutoTypeTable
+  path='./types/docs/animated-label-input.ts'
+  name='AnimatedLabelInputProps'
+/>

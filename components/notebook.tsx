@@ -6,21 +6,24 @@ import { notFound } from "next/navigation";
 import type { PageTree } from "fumadocs-core/server";
 import { TreeContextProvider } from "fumadocs-ui/provider";
 
+import { Icons } from "@/components/icons";
+import { Sidebar, SidebarProps } from "@/components/layout/docs/sidebar";
 import { type Option, RootToggle } from "@/components/layout/root-toggle";
-
-import { TabOptions, getSidebarTabs } from "@/lib/get-sidebar-tabs";
-import { cn } from "@/lib/utils";
-
-import { Sidebar, SidebarProps } from "./docs/sidebar";
-import { Icons } from "./icons";
-import { DocsNavbar, LayoutBody, SidebarItems } from "./notebook.client";
+import {
+  DocsNavbar,
+  LayoutBody,
+  SidebarItems,
+} from "@/components/notebook.client";
 import {
   SidebarContent,
   SidebarGroup,
   SidebarHeader,
   SidebarInset,
   SidebarTrigger,
-} from "./ui/sidebar";
+} from "@/components/ui/sidebar";
+
+import { TabOptions, getSidebarTabs } from "@/lib/get-sidebar-tabs";
+import { cn } from "@/lib/utils";
 
 interface SidebarOptions extends SidebarProps {
   tabs?: Option[] | TabOptions | false;

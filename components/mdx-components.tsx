@@ -6,8 +6,10 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import defaultComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 
-import { ComponentSource } from "@/components/mdx/component-source";
-import { ComponentTabs } from "@/components/mdx/component-tabs";
+import { ComponentSource } from "@/components/component-source";
+import { ComponentTabs } from "@/components/component-tabs";
+import { DataAttributesTable } from "@/components/data-attributes-table";
+import { DynamicLink } from "@/components/dynamic-link";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import {
   Tabs as ShadcnTabs,
@@ -50,6 +52,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ComponentTabs,
     ComponentSource,
+    DataAttributesTable,
+    DynamicLink,
     ShadcnTabs,
     TabsContent,
     TabsList,

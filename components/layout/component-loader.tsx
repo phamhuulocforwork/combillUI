@@ -3,6 +3,8 @@
 import type { ComponentType } from "react";
 import React from "react";
 
+import Link from "next/link";
+
 import type { RegistryItem } from "@/lib/components";
 
 import { Index } from "@/__registry__";
@@ -29,7 +31,16 @@ const ComponentLoader = <TProps extends object>({
             <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
               {component.name}
             </code>{" "}
-            not found in registry.
+            not found in registry, please{" "}
+            <Link
+              href='https://github.com/phamhuulocforwork/combillUI/issues'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-foreground font-medium underline hover:no-underline'
+            >
+              open an issue
+            </Link>
+            .
           </p>
         );
       }

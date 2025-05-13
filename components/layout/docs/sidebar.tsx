@@ -21,21 +21,21 @@ import Link, { type LinkProps } from "fumadocs-core/link";
 import { useOnChange } from "fumadocs-core/utils/use-on-change";
 import { ChevronRight, ExternalLink } from "lucide-react";
 
-import { isActive } from "@/lib/is-active";
-import { cn } from "@/lib/utils";
-
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../ui/collapsible";
+} from "@/components/ui/collapsible";
 import {
   Sidebar as ShadCNSidebar,
   SidebarGroupLabel,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
-} from "../ui/sidebar";
+} from "@/components/ui/sidebar";
+
+import { isActive } from "@/lib/is-active";
+import { cn } from "@/lib/utils";
 
 export interface SidebarProps extends HTMLAttributes<HTMLElement> {
   defaultOpenLevel?: number;
