@@ -6,7 +6,7 @@
     "clean": "rimraf --glob .next .source __registry__ public/registry",
     "clean:all": "rimraf --glob .next node_modules .source __registry__ public/registry",
     "build:registry": "tsx scripts/build-registry.ts",
-    "preview": "npm run build:all && next start",
+    "preview": "npm run build && next start",
     "format": "prettier --write './**/*.{ts,tsx}'",
     "format:check": "prettier --check \"./**/*.{ts,tsx}\"",
     "lint": "next lint",
@@ -46,6 +46,7 @@
     "react-icons": "^5.5.0",
     "react-phone-number-input": "^3.4.11",
     "react-popper": "^2.3.0",
+    "react-simple-code-editor": "^0.14.1",
     "rimraf": "^6.0.1",
     "sonner": "^1.7.4",
     "tailwind-merge": "^3.1.0",
@@ -79,6 +80,7 @@
     "rehype-slug": "^6.0.0",
     "remark-code-import": "^1.2.0",
     "remark-math": "^6.0.0",
+    "shiki": "^3.4.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
