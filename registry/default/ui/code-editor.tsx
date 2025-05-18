@@ -1,275 +1,181 @@
 "use client";
 
 import * as React from "react";
-import type { HTMLAttributes } from "react";
 
-import { createHighlighter } from "shiki";
+import {
+  type BeforeMount,
+  Editor as MonacoEditor,
+  type OnMount,
+} from "@monaco-editor/react";
+import { type VariantProps, cva } from "class-variance-authority";
+import type { editor } from "monaco-editor";
 
 import { cn } from "@/lib/utils";
 
-export interface CodeEditorProps
-  extends Omit<HTMLAttributes<HTMLTextAreaElement>, "onChange"> {
-  /**
-   * The current value of the editor
-   */
+export interface Language {
   value: string;
-  /**
-   * Callback when the value changes
-   */
+  label: string;
+}
+
+export const languages: Language[] = [
+  { value: "javascript", label: "JavaScript" },
+  { value: "typescript", label: "TypeScript" },
+  { value: "html", label: "HTML" },
+  { value: "css", label: "CSS" },
+  { value: "json", label: "JSON" },
+  { value: "markdown", label: "Markdown" },
+  { value: "python", label: "Python" },
+  { value: "java", label: "Java" },
+  { value: "csharp", label: "C#" },
+  { value: "cpp", label: "C++" },
+];
+
+const codeEditorVariants = cva(
+  "w-full overflow-hidden rounded-md border bg-background",
+  {
+    variants: {
+      variant: {
+        default: "border-border",
+        outline: "border-2",
+      },
+      size: {
+        default: "min-h-[300px]",
+        sm: "min-h-[200px]",
+        lg: "min-h-[500px]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
+export interface CodeEditorProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
+    VariantProps<typeof codeEditorVariants> {
+  value: string;
   onChange?: (value: string) => void;
-  /**
-   * The language for syntax highlighting
-   * @default "javascript"
-   */
   language?: string;
-  /**
-   * Placeholder text when the editor is empty
-   * @default "// Write your code here..."
-   */
-  placeholder?: string;
-  /**
-   * Whether to show line numbers
-   * @default true
-   */
-  lineNumbers?: boolean;
-  /**
-   * Whether the editor is read-only
-   * @default false
-   */
+  height?: string;
+  theme?: "light" | "dark";
+  options?: editor.IStandaloneEditorConstructionOptions;
+  onMount?: OnMount;
   readOnly?: boolean;
 }
 
-const highlighter = await createHighlighter({
-  langs: [
-    "c",
-    "c++",
-    "javascript",
-    "typescript",
-    "jsx",
-    "tsx",
-    "html",
-    "css",
-    "json",
-    "markdown",
-  ],
-  themes: ["one-dark-pro", "one-light"],
-});
-
-export const CodeEditor = React.forwardRef<
-  HTMLTextAreaElement,
-  CodeEditorProps
->(
+const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
   (
     {
+      className,
+      variant,
+      size,
       value,
       onChange,
       language = "javascript",
-      placeholder = "// Write your code here...",
-      className,
+      height = "300px",
+      theme = "dark",
+      options,
+      onMount,
       readOnly = false,
       ...props
     },
     ref,
   ) => {
-    const [history, setHistory] = React.useState<string[]>([value || ""]);
-    const [historyIndex, setHistoryIndex] = React.useState(0);
-    const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-    const preRef = React.useRef<HTMLPreElement>(null);
-    const combinedRef = React.useMemo(
-      () =>
-        ref
-          ? (node: HTMLTextAreaElement) => {
-              textareaRef.current = node;
-              if (typeof ref === "function") ref(node);
-              else if (ref) ref.current = node;
-            }
-          : textareaRef,
-      [ref],
-    );
+    const handleEditorDidMount: OnMount = (editor, monaco) => {
+      if (onMount) {
+        onMount(editor, monaco);
+      }
+    };
 
-    // Handle history for undo/redo
-    const updateHistory = React.useCallback(
-      (newValue: string) => {
-        setHistory((prev) => {
-          const newHistory = prev.slice(0, historyIndex + 1);
-          newHistory.push(newValue);
-          return newHistory;
+    const handleBeforeMount: BeforeMount = (monaco) => {
+      // Define VS Code dark theme
+      monaco.editor.defineTheme("vs-dark-custom", {
+        base: "vs-dark",
+        inherit: true,
+        rules: [],
+        colors: {
+          "editor.background": "#1e1e1e",
+          "editor.foreground": "#d4d4d4",
+          "editor.lineHighlightBackground": "#2d2d2d",
+          "editorLineNumber.foreground": "#858585",
+          "editor.selectionBackground": "#264f78",
+          "editor.inactiveSelectionBackground": "#3a3d41",
+        },
+      });
+
+      monaco.editor.defineTheme("vs-light-custom", {
+        base: "vs",
+        inherit: true,
+        rules: [],
+        colors: {
+          "editor.background": "#ffffff",
+          "editor.foreground": "#000000",
+          "editor.lineHighlightBackground": "#f5f5f5",
+          "editorLineNumber.foreground": "#999999",
+          "editor.selectionBackground": "#b3d7ff",
+          "editor.inactiveSelectionBackground": "#e5ebf1",
+        },
+      });
+
+      if (monaco.languages.typescript) {
+        monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+          target: monaco.languages.typescript.ScriptTarget.Latest,
+          allowNonTsExtensions: true,
+          moduleResolution:
+            monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+          module: monaco.languages.typescript.ModuleKind.CommonJS,
+          noEmit: true,
+          esModuleInterop: true,
+          jsx: monaco.languages.typescript.JsxEmit.React,
+          reactNamespace: "React",
+          allowJs: true,
         });
-        setHistoryIndex((prev) => prev + 1);
-      },
-      [historyIndex],
-    );
-
-    // Handle value change
-    const handleChange = React.useCallback(
-      (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const newValue = e.target.value;
-        onChange?.(newValue);
-        updateHistory(newValue);
-      },
-      [onChange, updateHistory],
-    );
-
-    // Handle undo/redo
-    const handleUndo = React.useCallback(() => {
-      if (historyIndex > 0) {
-        setHistoryIndex((prev) => prev - 1);
-        const previousValue = history[historyIndex - 1];
-        onChange?.(previousValue);
       }
-    }, [history, historyIndex, onChange]);
+    };
 
-    const handleRedo = React.useCallback(() => {
-      if (historyIndex < history.length - 1) {
-        setHistoryIndex((prev) => prev + 1);
-        const nextValue = history[historyIndex + 1];
-        onChange?.(nextValue);
-      }
-    }, [history, historyIndex, onChange]);
-
-    // Handle tab key
-    const handleTab = React.useCallback(
-      (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === "Tab") {
-          e.preventDefault();
-          const textarea = e.currentTarget;
-          const start = textarea.selectionStart;
-          const end = textarea.selectionEnd;
-          const newValue =
-            textarea.value.substring(0, start) +
-            "  " +
-            textarea.value.substring(end);
-          textarea.value = newValue;
-          textarea.selectionStart = textarea.selectionEnd = start + 2;
-          handleChange({
-            target: textarea,
-          } as React.ChangeEvent<HTMLTextAreaElement>);
-        }
-      },
-      [handleChange],
-    );
-
-    // Handle keyboard shortcuts
-    const handleKeyDown = React.useCallback(
-      (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        // Tab handling
-        if (e.key === "Tab") {
-          handleTab(e);
-        }
-
-        // Undo/Redo
-        if ((e.metaKey || e.ctrlKey) && e.key === "z") {
-          e.preventDefault();
-          if (e.shiftKey) {
-            handleRedo();
-          } else {
-            handleUndo();
-          }
-        }
-
-        // Auto-pairing brackets and quotes
-        const pairs: Record<string, string> = {
-          "(": ")",
-          "{": "}",
-          "[": "]",
-          "'": "'",
-          '"': '"',
-          "`": "`",
-        };
-
-        if (pairs[e.key]) {
-          e.preventDefault();
-          const textarea = e.currentTarget;
-          const start = textarea.selectionStart;
-          const end = textarea.selectionEnd;
-
-          if (start === end) {
-            // No selection, insert pair
-            const newValue =
-              textarea.value.substring(0, start) +
-              e.key +
-              pairs[e.key] +
-              textarea.value.substring(end);
-            textarea.value = newValue;
-            textarea.selectionStart = textarea.selectionEnd = start + 1;
-          } else {
-            // Wrap selection with pair
-            const newValue =
-              textarea.value.substring(0, start) +
-              e.key +
-              textarea.value.substring(start, end) +
-              pairs[e.key] +
-              textarea.value.substring(end);
-            textarea.value = newValue;
-            textarea.selectionStart = start + 1;
-            textarea.selectionEnd = end + 1;
-          }
-
-          handleChange({
-            target: textarea,
-          } as React.ChangeEvent<HTMLTextAreaElement>);
-        }
-      },
-      [handleChange, handleRedo, handleTab, handleUndo],
-    );
-
-    // Sync scroll between textarea and highlighted code
-    const handleScroll = React.useCallback(() => {
-      if (preRef.current && textareaRef.current) {
-        preRef.current.scrollTop = textareaRef.current.scrollTop;
-        preRef.current.scrollLeft = textareaRef.current.scrollLeft;
-      }
-    }, []);
-
-    // Generate highlighted HTML
-    const highlightedCode = React.useMemo(() => {
-      try {
-        const html = highlighter.codeToHtml(value || "", {
-          lang: language,
-          theme: "one-dark-pro",
-          colorReplacements: {
-            "one-dark-pro": {
-              "#282c34": "transparent",
-            },
-          },
-        });
-        return html;
-      } catch (error) {
-        console.error("Syntax highlighting error:", error);
-        return `<pre>${value || ""}</pre>`;
-      }
-    }, [value, language]);
+    const defaultOptions: editor.IStandaloneEditorConstructionOptions = {
+      fontSize: 14,
+      scrollBeyondLastLine: false,
+      automaticLayout: true,
+      minimap: { enabled: false },
+      folding: true,
+      lineNumbers: "on",
+      wordWrap: "on",
+      tabSize: 2,
+      bracketPairColorization: { enabled: true },
+      cursorBlinking: "blink",
+      formatOnPaste: true,
+      readOnly,
+      ...options,
+    };
 
     return (
       <div
-        className={cn(
-          "relative rounded-md border border-input bg-background font-mono text-sm",
-          "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
-          className,
-        )}
+        className={cn(codeEditorVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
       >
-        <div className='relative overflow-auto'>
-          <pre
-            ref={preRef}
-            className='pointer-events-none absolute h-full w-full overflow-auto whitespace-pre p-3'
-            aria-hidden='true'
-            dangerouslySetInnerHTML={{ __html: highlightedCode }}
-          />
-          <textarea
-            ref={combinedRef}
-            value={value}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            onScroll={handleScroll}
-            placeholder={placeholder}
-            spellCheck='false'
-            className='h-[350px] min-h-[150px] w-full resize-y overflow-auto whitespace-pre bg-transparent p-3 font-mono text-transparent caret-foreground outline-none'
-            readOnly={readOnly}
-            {...props}
-          />
-        </div>
+        <MonacoEditor
+          height={height}
+          language={language}
+          value={value}
+          onChange={(value) => onChange?.(value || "")}
+          theme={theme === "dark" ? "vs-dark-custom" : "vs-light-custom"}
+          options={defaultOptions}
+          beforeMount={handleBeforeMount}
+          onMount={handleEditorDidMount}
+          loading={
+            <div className='flex h-full w-full items-center justify-center text-sm text-muted-foreground'>
+              Loading editor...
+            </div>
+          }
+        />
       </div>
     );
   },
 );
+
 CodeEditor.displayName = "CodeEditor";
+
+export { CodeEditor, codeEditorVariants };

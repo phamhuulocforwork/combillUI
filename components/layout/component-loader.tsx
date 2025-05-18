@@ -5,6 +5,8 @@ import React from "react";
 
 import Link from "next/link";
 
+import { Loader2Icon } from "lucide-react";
+
 import type { RegistryItem } from "@/lib/components";
 
 import { Index } from "@/__registry__";
@@ -55,7 +57,13 @@ const ComponentLoader = <TProps extends object>({
   }, [component.name, props]);
 
   return (
-    <React.Suspense fallback={<Skeleton className='h-[100px] w-full' />}>
+    <React.Suspense
+      fallback={
+        <div className='flex h-[100px] w-full items-center justify-center'>
+          <Loader2Icon className='mr-2 animate-spin' /> Loading...
+        </div>
+      }
+    >
       {ComponentElement}
     </React.Suspense>
   );

@@ -721,4 +721,28 @@ export const snippets: Registry = [
       },
     ],
   },
+  {
+    name: "spinner-circle",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/spinner/spinner-circle.tsx",
+        content:
+          "import { Loader2Icon } from \"lucide-react\";\r\n\r\nexport default function SpinnerCircle() {\r\n  return <Loader2Icon className='animate-spin' />;\r\n}\r\n",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "spinner-default",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/snippets/spinner/spinner-default.tsx",
+        content:
+          'import { LoaderIcon } from "lucide-react";\r\n\r\nexport default function SpinnerDefault() {\r\n  return <LoaderIcon className="animate-spin" />;\r\n}\r\n',
+        type: "registry:ui",
+      },
+    ],
+  },
 ];

@@ -1,0 +1,11 @@
+{
+  "name": "spinner-circle",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "spinner-circle.tsx",
+      "content": "import { Loader2Icon } from \"lucide-react\";\r\n\r\nexport default function SpinnerCircle() {\r\n  return <Loader2Icon className='animate-spin' />;\r\n}\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

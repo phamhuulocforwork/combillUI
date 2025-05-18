@@ -4,6 +4,7 @@ import type { JSX } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { Loader2Icon } from "lucide-react";
 import { codeToHast } from "shiki/bundle/web";
 import type { BundledLanguage } from "shiki/bundle/web";
 
@@ -59,7 +60,9 @@ const CodeBlock = ({ code, lang, initial, preHighlighted }: Props) => {
       {content}
     </div>
   ) : (
-    <pre className='rounded-md bg-zinc-950 p-4'>Loading...</pre>
+    <pre className='rounded-md bg-zinc-950 p-4'>
+      <Loader2Icon className='mr-2 animate-spin' /> Loading...
+    </pre>
   );
 };
 

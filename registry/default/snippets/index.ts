@@ -205,6 +205,15 @@ export const collapsibleComponents = [
   },
 ];
 
+export const spinnerComponents = [
+  {
+    name: "spinner-circle",
+  },
+  {
+    name: "spinner-default",
+  },
+];
+
 export const categories = {
   accordion: accordionComponents,
   alert: alertComponents,
@@ -214,4 +223,5 @@ export const categories = {
   breadcrumb: breadcrumbComponents,
   carousel: carouselComponents,
   collapsible: collapsibleComponents,
+  spinner: spinnerComponents,
 };

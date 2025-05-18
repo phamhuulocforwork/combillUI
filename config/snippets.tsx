@@ -5,6 +5,7 @@ import {
   GalleryThumbnails,
   HomeIcon,
   ListCollapse,
+  Loader2Icon,
   RectangleHorizontal,
   TriangleAlert,
   UserIcon,
@@ -19,6 +20,7 @@ import {
   breadcrumbComponents,
   carouselComponents,
   collapsibleComponents,
+  spinnerComponents,
 } from "@/registry/default/snippets";
 
 export type ComponentCategory = {
@@ -145,6 +147,19 @@ export const categories: ComponentCategory[] = [
       lg: 2,
     },
     components: collapsibleComponents,
+  },
+  {
+    slug: "spinner",
+    name: "Spinner",
+    description: "Informs users about the status of ongoing processes.",
+    icon: Loader2Icon,
+    isNew: true,
+    breakpoints: {
+      sm: 2,
+      lg: 3,
+      xl: 4,
+    },
+    components: spinnerComponents,
   },
 ];
 
