@@ -59,8 +59,8 @@ const ComponentLoader = <TProps extends object>({
   return (
     <React.Suspense
       fallback={
-        <div className='flex h-[100px] w-full items-center justify-center'>
-          <Loader2Icon className='mr-2 animate-spin' /> Loading...
+        <div className='flex h-[100px] w-full items-center justify-center text-muted-foreground'>
+          <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
         </div>
       }
     >

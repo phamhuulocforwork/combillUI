@@ -60,8 +60,8 @@ const CodeBlock = ({ code, lang, initial, preHighlighted }: Props) => {
       {content}
     </div>
   ) : (
-    <pre className='rounded-md bg-zinc-950 p-4'>
-      <Loader2Icon className='mr-2 animate-spin' /> Loading...
+    <pre className='rounded-md bg-zinc-950 p-4 flex items-center justify-center'>
+      <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
     </pre>
   );
 };
