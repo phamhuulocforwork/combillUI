@@ -11,8 +11,6 @@ import type { RegistryItem } from "@/lib/components";
 
 import { Index } from "@/__registry__";
 
-import { Skeleton } from "../ui/skeleton";
-
 type ComponentLoaderProps = {
   component: RegistryItem;
 };
@@ -59,7 +57,7 @@ const ComponentLoader = <TProps extends object>({
   return (
     <React.Suspense
       fallback={
-        <div className='flex h-[100px] w-full items-center justify-center text-muted-foreground'>
+        <div className='flex w-full items-center justify-center text-muted-foreground text-sm font-semibold'>
           <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
         </div>
       }

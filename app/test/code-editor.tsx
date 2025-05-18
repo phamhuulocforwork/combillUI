@@ -1,15 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-import { CodeEditor } from "./code-editor";
-import oneDarkPro from "./onedarkpro.json";
-
-export default function TestPage() {
-  const [code, setCode] = useState(`"use client";
-
 import { useCallback, useMemo } from "react";
 
 import { Editor as MonacoEditor } from "@monaco-editor/react";
@@ -144,40 +134,9 @@ export function CodeEditor({
         }
         {...props}
       />
-      <div className='absolute top-2 right-2 flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity'>
+      <div className='absolute bottom-2 right-2 flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity'>
         <Badge>{detectedLanguage}</Badge>
       </div>
     </div>
-  );
-}`);
-
-  const handleCodeChange = (value: string | undefined) => {
-    if (value !== undefined) {
-      setCode(value);
-    }
-  };
-
-  return (
-    <main className='flex flex-col items-center justify-center gap-4 min-h-screen'>
-      <section className='container flex flex-col items-center justify-center gap-4'>
-        <Card className='w-full'>
-          <CardHeader className='pb-3'>
-            <CardTitle>Code Editor</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CodeEditor
-              value={code}
-              onChange={handleCodeChange}
-              height='50vh'
-              customDarkTheme={{
-                base: "vs-dark",
-                inherit: true,
-                ...oneDarkPro,
-              }}
-            />
-          </CardContent>
-        </Card>
-      </section>
-    </main>
   );
 }

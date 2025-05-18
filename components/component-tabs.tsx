@@ -5,8 +5,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
-import { Skeleton } from "@/components/ui/skeleton";
+import { Loader2Icon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -83,7 +82,13 @@ export function ComponentTabs({
             className,
           )}
         >
-          <React.Suspense fallback={<Skeleton className='size-full' />}>
+          <React.Suspense
+            fallback={
+              <div className='flex w-full items-center justify-center text-muted-foreground text-sm font-semibold'>
+                <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
+              </div>
+            }
+          >
             {Preview}
           </React.Suspense>
         </div>
