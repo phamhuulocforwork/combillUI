@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "alert-destructive.tsx",
-      "content": "import { OctagonAlertIcon } from \"lucide-react\";\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function DestructiveAlertDemo() {\n  return (\n    <Alert variant='destructive'>\n      <OctagonAlertIcon className='h-4 w-4' />\n      <AlertTitle>Critical Error</AlertTitle>\n      <AlertDescription>\n        Failed to save changes. Your data may be lost or corrupted.\n      </AlertDescription>\n    </Alert>\n  );\n}\n",
+      "content": "import { OctagonAlertIcon } from \"lucide-react\";\r\n\r\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\r\n\r\nexport default function DestructiveAlertDemo() {\r\n  return (\r\n    <Alert variant='destructive'>\r\n      <OctagonAlertIcon className='h-4 w-4' />\r\n      <AlertTitle>Critical Error</AlertTitle>\r\n      <AlertDescription>\r\n        Failed to save changes. Your data may be lost or corrupted.\r\n      </AlertDescription>\r\n    </Alert>\r\n  );\r\n}\r\n",
       "type": "registry:ui"
     }
   ]

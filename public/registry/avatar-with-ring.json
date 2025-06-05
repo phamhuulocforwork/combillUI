@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "avatar-with-ring.tsx",
-      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function AvatarWithRing() {\n  return (\n    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\n      <AvatarImage\n        src='http://github.com/phamhuulocforwork.png'\n        alt='@phamhuulocforwork'\n      />\n      <AvatarFallback>HL</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\r\n\r\nexport default function AvatarWithRing() {\r\n  return (\r\n    <Avatar className='ring-2 ring-green-500 ring-offset-[3px] ring-offset-background'>\r\n      <AvatarImage\r\n        src='http://github.com/phamhuulocforwork.png'\r\n        alt='@phamhuulocforwork'\r\n      />\r\n      <AvatarFallback>HL</AvatarFallback>\r\n    </Avatar>\r\n  );\r\n}\r\n",
       "type": "registry:ui"
     }
   ]

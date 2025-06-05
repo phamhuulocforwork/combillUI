@@ -91,7 +91,6 @@ export const categories: ComponentCategory[] = [
     name: "Avatar",
     description: "An image element with a fallback for representing the user.",
     icon: UserIcon,
-    isUpdated: true,
     breakpoints: {
       sm: 2,
       lg: 3,
@@ -103,7 +102,6 @@ export const categories: ComponentCategory[] = [
     name: "Badge",
     description: "Displays a badge or a component that looks like a badge.",
     icon: RectangleHorizontal,
-    isNew: true,
     breakpoints: {
       sm: 2,
       lg: 3,
@@ -117,7 +115,6 @@ export const categories: ComponentCategory[] = [
     description:
       "Displays the path to the current resource using a hierarchy of links.",
     icon: HomeIcon,
-    isUpdated: true,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -129,7 +126,6 @@ export const categories: ComponentCategory[] = [
     name: "Carousel",
     description: "A carousel with motion and swipe built using Embla.",
     icon: GalleryThumbnails,
-    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -141,7 +137,6 @@ export const categories: ComponentCategory[] = [
     name: "Collapsible",
     description: "An interactive component which expands/collapses a panel.",
     icon: ChevronsUpDown,
-    isNew: true,
     breakpoints: {
       sm: 1,
       lg: 2,
@@ -153,7 +148,6 @@ export const categories: ComponentCategory[] = [
     name: "Spinner",
     description: "Informs users about the status of ongoing processes.",
     icon: Loader2Icon,
-    isNew: true,
     breakpoints: {
       sm: 2,
       lg: 3,

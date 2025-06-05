@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "spinner-default.tsx",
-      "content": "import { LoaderIcon } from \"lucide-react\";\r\n\r\nexport default function SpinnerDefault() {\r\n  return <LoaderIcon className=\"animate-spin\" />;\r\n}\r\n",
+      "content": "import { LoaderIcon } from \"lucide-react\";\r\n\r\nexport default function SpinnerDefault() {\r\n  return <LoaderIcon className='animate-spin' />;\r\n}\r\n",
       "type": "registry:ui"
     }
   ]
