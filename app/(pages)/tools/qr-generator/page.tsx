@@ -40,7 +40,7 @@ export default function QRGeneratorPage() {
     // TODO: Add more color options
     try {
       const pngUrl = await QRCode.toDataURL(text, {
-        width: 256,
+        width: 1280,
         margin: 2,
         color: {
           dark: "#000000",
@@ -192,10 +192,7 @@ export default function QRGeneratorPage() {
                 </div>
               ) : (
                 <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
-                  <div className='text-center text-muted-foreground'>
-                    <QrCode className='h-12 w-12 mx-auto mb-2 opacity-50' />
-                    <p>The QR code will be displayed here</p>
-                  </div>
+                  <div className='text-center text-muted-foreground'></div>
                 </div>
               )}
             </div>
