@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-import { categories } from "@/config/snippets";
+import { categoriesSnippet } from "@/config/snippets";
 
 type CustomSidebarMenuItemProps = ComponentProps<"li"> & {
   href?: string;
@@ -222,7 +222,7 @@ const AppSidebar = () => {
               Snippets
             </SidebarGroupLabel>
             <SidebarMenuSub className='mx-3 gap-0 border-0 p-0 lg:mx-4'>
-              {categories.map((category) => (
+              {categoriesSnippet.map((category) => (
                 <CustomSidebarMenuSubItem
                   key={category.slug}
                   isNew={"isNew" in category ? category.isNew : undefined}

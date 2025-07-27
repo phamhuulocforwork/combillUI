@@ -9,7 +9,7 @@ import ComponentsGrid from "@/components/layout/components-grid";
 
 import { getComponentsByNames } from "@/lib/components";
 
-import { categories, getCategory } from "@/config/snippets";
+import { categoriesSnippet, getCategory } from "@/config/snippets";
 
 type Props = {
   params: { category: string };
@@ -59,7 +59,7 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return categories
+  return categoriesSnippet
     .filter((category) => !category.isComingSoon)
     .map((category) => ({
       category: category.slug,

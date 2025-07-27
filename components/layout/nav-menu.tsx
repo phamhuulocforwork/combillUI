@@ -16,7 +16,8 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { categories as categoriesSnippet } from "@/config/snippets";
+import { categoriesSnippet } from "@/config/snippets";
+import { categoriesTools } from "@/config/tools";
 
 export function NavMenu() {
   return (
@@ -40,6 +41,22 @@ export function NavMenu() {
                   href={`/snippets/${snippet.slug}`}
                 >
                   {snippet.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+              {categoriesTools.map((tool) => (
+                <ListItem
+                  key={tool.slug}
+                  title={tool.name}
+                  href={`/tools/${tool.slug}`}
+                >
+                  {tool.description}
                 </ListItem>
               ))}
             </ul>

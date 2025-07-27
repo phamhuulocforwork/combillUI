@@ -50,7 +50,7 @@ export type ComponentCategory = {
     }
 );
 
-export const categories: ComponentCategory[] = [
+export const categoriesSnippet: ComponentCategory[] = [
   {
     slug: "accordion",
     name: "Accordion",
@@ -158,5 +158,5 @@ export const categories: ComponentCategory[] = [
 ];
 
 export function getCategory(slug: string): ComponentCategory | undefined {
-  return categories.find((category) => category.slug === slug);
+  return categoriesSnippet.find((category) => category.slug === slug);
 }

@@ -2,7 +2,7 @@ import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 import { Circle, File, type LucideProps } from "lucide-react";
 
-import { categories } from "@/config/snippets";
+import { categoriesSnippet } from "@/config/snippets";
 
 type SearchData = {
   title: string;
@@ -35,7 +35,7 @@ export const searchData: SearchData[] = [
   {
     title: "Snippets",
     data: [
-      ...categories
+      ...categoriesSnippet
         .filter((category) => !category.isComingSoon)
         .map((category) => ({
           icon: Circle,
