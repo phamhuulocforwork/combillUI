@@ -1926,6 +1926,77 @@ export const Index: Record<string, any> = {
       ),
     },
 
+    "lazy-tooltip": {
+      name: "lazy-tooltip",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/snippets/tooltip/lazy-tooltip.tsx",
+          content:
+            "'use client';\n\nimport * as React from 'react';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from '@/components/ui/tooltip';\nimport { Button } from '@/components/ui/button';\n\nexport default function LazyTooltip() {\n  const [enabled, setEnabled] = React.useState(false);\n\n  const triggerProps = {\n    onPointerEnter: () => setEnabled(true),\n    onTouchStart: () => setEnabled(true),\n  } as const;\n\n  if (!enabled) {\n    return (\n      <>\n        <Button variant=\"secondary\">Hover</Button>\n      </>\n    );\n  }\n\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button variant=\"secondary\" {...triggerProps}>Hover</Button>\n      </TooltipTrigger>\n      <TooltipContent>This mounts on first hover</TooltipContent>\n    </Tooltip>\n  );\n}",
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () => import("@/registry/default/snippets/tooltip/lazy-tooltip.tsx"),
+      ),
+    },
+
+    "tooltip-directions": {
+      name: "tooltip-directions",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/snippets/tooltip/tooltip-directions.tsx",
+          content:
+            'import { Button } from "@/components/ui/button";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from "@/components/ui/tooltip";\n\nexport default function TooltipDirections() {\n  return (\n    <TooltipProvider>\n      <div className="flex gap-2 flex-wrap">\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant="outline">Left</Button>\n          </TooltipTrigger>\n          <TooltipContent side="left">\n            <p>Hey there!</p>\n          </TooltipContent>\n        </Tooltip>\n\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant="outline">Top</Button>\n          </TooltipTrigger>\n          <TooltipContent side="top">\n            <p>Hey there!</p>\n          </TooltipContent>\n        </Tooltip>\n\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant="outline">Bottom</Button>\n          </TooltipTrigger>\n          <TooltipContent side="bottom">\n            <p>Hey there!</p>\n          </TooltipContent>\n        </Tooltip>\n\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant="outline">Right</Button>\n          </TooltipTrigger>\n          <TooltipContent side="right">\n            <p>Hey there!</p>\n          </TooltipContent>\n        </Tooltip>\n      </div>\n    </TooltipProvider>\n  );\n}\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/tooltip/tooltip-directions.tsx"),
+      ),
+    },
+
+    "with-arrrow-tooltip": {
+      name: "with-arrrow-tooltip",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/snippets/tooltip/with-arrrow-tooltip.tsx",
+          content:
+            'import { Button } from "@/components/ui/button";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from "@/components/ui/tooltip";\nimport * as TooltipPrimitive from "@radix-ui/react-tooltip";\n\nexport default function WithArrowTooltip() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant="outline">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Tooltip with arrow</p>\n          <TooltipPrimitive.Arrow className="fill-foreground" />\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/tooltip/with-arrrow-tooltip.tsx"),
+      ),
+    },
+
+    "with-delay-tooltip": {
+      name: "with-delay-tooltip",
+      description: "",
+      type: "registry:ui",
+      files: [
+        {
+          path: "registry/default/snippets/tooltip/with-delay-tooltip.tsx",
+          content:
+            '"use client";\n\nimport { Button } from "@/components/ui/button";\nimport { Input } from "@/components/ui/input";\nimport { Label } from "@/components/ui/label";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from "@/components/ui/tooltip";\nimport { ChangeEvent, useState } from "react";\n\nexport default function WithDelayTooltipDemo() {\n  const [delayDuration, setDelayDuration] = useState<number | undefined>(500);\n\n  const handleDelayDurationChange = (e: ChangeEvent<HTMLInputElement>) => {\n    setDelayDuration(\n      e.target.value === "" ? undefined : Math.max(0, +e.target.value)\n    );\n  };\n\n  return (\n    <div className="flex flex-col gap-6 items-center">\n      <TooltipProvider>\n        <Tooltip delayDuration={delayDuration}>\n          <TooltipTrigger asChild>\n            <Button variant="outline">Hover</Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <p>Hello there!</p>\n          </TooltipContent>\n        </Tooltip>\n      </TooltipProvider>\n\n      <div>\n        <Label>Delay</Label>\n        <Input\n          type="number"\n          className="mt-2"\n          value={delayDuration}\n          onChange={handleDelayDurationChange}\n        />\n      </div>\n    </div>\n  );\n}\n',
+          type: "registry:ui",
+        },
+      ],
+      component: React.lazy(
+        () =>
+          import("@/registry/default/snippets/tooltip/with-delay-tooltip.tsx"),
+      ),
+    },
+
     "use-boolean": {
       name: "use-boolean",
       description: "",

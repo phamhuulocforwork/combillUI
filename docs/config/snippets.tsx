@@ -6,6 +6,7 @@ import {
   HomeIcon,
   ListCollapse,
   Loader2Icon,
+  MessagesSquare,
   RectangleHorizontal,
   TriangleAlert,
   UserIcon,
@@ -21,6 +22,7 @@ import {
   carouselComponents,
   collapsibleComponents,
   spinnerComponents,
+  tooltipComponents,
 } from "@/registry/default/snippets";
 
 export type ComponentCategory = {
@@ -154,6 +156,18 @@ export const categoriesSnippet: ComponentCategory[] = [
       xl: 4,
     },
     components: spinnerComponents,
+  },
+  {
+    slug: "tooltip",
+    name: "Tooltip",
+    description: "Displays a tooltip with information about the current state.",
+    icon: MessagesSquare,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+      xl: 3,
+    },
+    components: tooltipComponents,
   },
 ];
 

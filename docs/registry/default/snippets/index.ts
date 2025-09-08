@@ -214,6 +214,21 @@ export const spinnerComponents = [
   },
 ];
 
+export const tooltipComponents = [
+  {
+    name: "lazy-tooltip",
+  },
+  {
+    name: "tooltip-directions",
+  },
+  {
+    name: "with-arrrow-tooltip",
+  },
+  {
+    name: "with-delay-tooltip",
+  },
+];
+
 export const categories = {
   accordion: accordionComponents,
   alert: alertComponents,
@@ -224,4 +239,5 @@ export const categories = {
   carousel: carouselComponents,
   collapsible: collapsibleComponents,
   spinner: spinnerComponents,
+  tooltip: tooltipComponents,
 };

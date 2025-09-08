@@ -75,7 +75,9 @@ const FileTreeItem = ({ name, type, children }: FileTreeItem) => {
         </span>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        {children?.map((child) => <FileTreeItem key={child.name} {...child} />)}
+        {children?.map((child) => (
+          <FileTreeItem key={child.name} {...child} />
+        ))}
       </CollapsibleContent>
     </Collapsible>
   );
