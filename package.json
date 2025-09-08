@@ -1,6 +1,12 @@
 {
   "name": "combillui",
   "packageManager": "pnpm@10.15.1",
+  "pnpm": {
+    "overrides": {
+      "strip-ansi": "7.1.2",
+      "debug": "4.4.1"
+    }
+  },
   "private": true,
   "type": "module",
   "workspaces": [

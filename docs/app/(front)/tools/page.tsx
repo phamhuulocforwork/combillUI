@@ -57,7 +57,6 @@ const Page = () => {
                   <div className='flex items-center gap-2'>
                     <category.icon className='transition-all duration-300 group-hover:scale-110' />
                     <h2 className='text-lg font-medium'>{category.name}</h2>
-                    <Badge variant='secondary'>{`${category.components.length} ${category.components.length === 1 ? "Tool" : "Tools"}`}</Badge>
                   </div>
 
                   <p className='text-muted-foreground text-sm line-clamp-2 mt-1'>

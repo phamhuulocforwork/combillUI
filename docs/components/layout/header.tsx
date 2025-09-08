@@ -20,7 +20,7 @@ import { NavMenu } from "./nav-menu";
 
 const Header = ({ toggle }: { toggle?: ReactNode }) => {
   return (
-    <header className='bg-background/60 sticky top-0 z-50 flex min-h-12 w-full flex-shrink-0 items-center justify-center border-b border-dashed backdrop-blur-[8px]'>
+    <header className='bg-background/60 sticky top-0 z-50 flex min-h-12 w-full flex-shrink-0 items-center justify-center border-b border-dashed backdrop-blur-[8px] h-[var(--header-height)]'>
       <div className='mx-auto flex h-full w-full container items-center border-dashed min-[1400px]:border-x'>
         <div className='flex w-full items-center max-lg:gap-4'>
           <div className='flex items-center gap-3 ps-4 sm:ps-8'>

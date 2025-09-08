@@ -7,6 +7,7 @@ import QRCode from "qrcode";
 import { toast } from "sonner";
 
 import CopyButton from "@/components/copy-button";
+import PagesContent from "@/components/layout/pages-content";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -115,128 +116,134 @@ export default function QRGeneratorPage() {
   };
 
   return (
-    <div className='container mx-auto py-8 px-4 max-w-4xl'>
-      <div className='text-center mb-8'>
-        <h1 className='text-3xl font-bold mb-2 flex items-center justify-center gap-2'>
-          <QrCode className='h-8 w-8' />
-          QR Code Generator
-        </h1>
-        <p className='text-muted-foreground'>
-          Generate a QR code from text, URL, or any content you want
-        </p>
-      </div>
-
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-        <Card>
-          <CardHeader>
-            <CardTitle>Enter Content</CardTitle>
-            <CardDescription>
-              Enter text, URL, or data you want to convert to a QR code
-            </CardDescription>
-          </CardHeader>
-          <CardContent className='space-y-4'>
-            <div className='space-y-2'>
-              <Label htmlFor='qr-text'>Content</Label>
-              <ResponsiveTextarea
-                id='qr-text'
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                onKeyDown={onEnterPress}
-                placeholder='Enter text, URL, email...'
-              />
+    <div className='flex flex-1'>
+      <div className='mx-auto flex w-full container border-dashed min-[1400px]:border-x'>
+        <PagesContent className='flex items-center justify-center'>
+          <div className='container mx-auto py-8 px-4 max-w-4xl'>
+            <div className='text-center mb-8'>
+              <h1 className='text-3xl font-bold mb-2 flex items-center justify-center gap-2'>
+                <QrCode className='h-8 w-8' />
+                QR Code Generator
+              </h1>
+              <p className='text-muted-foreground'>
+                Generate a QR code from text, URL, or any content you want
+              </p>
             </div>
 
-            <Button
-              onClick={generateQRCode}
-              disabled={!text.trim() || isGenerating}
-              className='w-full'
-            >
-              {isGenerating ? (
-                <>
-                  <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                  Generating QR Code...
-                </>
-              ) : (
-                <>Generate QR Code</>
-              )}
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>QR Code</CardTitle>
-          </CardHeader>
-          <CardContent className='space-y-4'>
-            <div className='flex justify-center'>
-              {isGenerating ? (
-                <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
-                  <div className='text-center text-muted-foreground'>
-                    <Loader2 className='h-12 w-12 mx-auto mb-2 animate-spin' />
-                    <p>Generating QR code...</p>
-                  </div>
-                </div>
-              ) : hasQRCode ? (
-                <div className='p-4 bg-white rounded-lg border'>
-                  <img
-                    src={pngDataUrl}
-                    alt='QR Code'
-                    className='max-w-full hidden'
-                  />
-                  {svgString && (
-                    <div
-                      className='max-w-full'
-                      dangerouslySetInnerHTML={{ __html: svgString }}
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Enter Content</CardTitle>
+                  <CardDescription>
+                    Enter text, URL, or data you want to convert to a QR code
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className='space-y-4'>
+                  <div className='space-y-2'>
+                    <Label htmlFor='qr-text'>Content</Label>
+                    <ResponsiveTextarea
+                      id='qr-text'
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                      onKeyDown={onEnterPress}
+                      placeholder='Enter text, URL, email...'
                     />
+                  </div>
+
+                  <Button
+                    onClick={generateQRCode}
+                    disabled={!text.trim() || isGenerating}
+                    className='w-full'
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                        Generating QR Code...
+                      </>
+                    ) : (
+                      <>Generate QR Code</>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>QR Code</CardTitle>
+                </CardHeader>
+                <CardContent className='space-y-4'>
+                  <div className='flex justify-center'>
+                    {isGenerating ? (
+                      <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
+                        <div className='text-center text-muted-foreground'>
+                          <Loader2 className='h-12 w-12 mx-auto mb-2 animate-spin' />
+                          <p>Generating QR code...</p>
+                        </div>
+                      </div>
+                    ) : hasQRCode ? (
+                      <div className='p-4 bg-white rounded-lg border'>
+                        <img
+                          src={pngDataUrl}
+                          alt='QR Code'
+                          className='max-w-full hidden'
+                        />
+                        {svgString && (
+                          <div
+                            className='max-w-full'
+                            dangerouslySetInnerHTML={{ __html: svgString }}
+                          />
+                        )}
+                      </div>
+                    ) : (
+                      <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
+                        <div className='text-center text-muted-foreground'></div>
+                      </div>
+                    )}
+                  </div>
+
+                  {hasQRCode && !isGenerating && (
+                    <>
+                      <Separator />
+
+                      <div className='space-y-3'>
+                        <div className='flex items-center gap-2'>
+                          <Button
+                            variant='outline'
+                            onClick={downloadSVG}
+                            className='flex-1'
+                          >
+                            Download SVG
+                            <SplinePointer className='h-4 w-4 mr-2' />
+                          </Button>
+                          <CopyButton
+                            source={svgString}
+                            toast='SVG copied!'
+                            btnClassName='h-10 w-10'
+                          />
+                        </div>
+                        <div className='flex items-center gap-2'>
+                          <Button
+                            variant='outline'
+                            onClick={downloadPNG}
+                            className='flex-1'
+                          >
+                            Download PNG
+                            <Image className='h-4 w-4 mr-2' />
+                          </Button>
+                          <CopyButton
+                            source={pngDataUrl}
+                            toast='PNG data URL copied!'
+                            btnClassName='h-10 w-10'
+                          />
+                        </div>
+                      </div>
+                    </>
                   )}
-                </div>
-              ) : (
-                <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
-                  <div className='text-center text-muted-foreground'></div>
-                </div>
-              )}
+                </CardContent>
+              </Card>
             </div>
-
-            {hasQRCode && !isGenerating && (
-              <>
-                <Separator />
-
-                <div className='space-y-3'>
-                  <div className='flex items-center gap-2'>
-                    <Button
-                      variant='outline'
-                      onClick={downloadSVG}
-                      className='flex-1'
-                    >
-                      Download SVG
-                      <SplinePointer className='h-4 w-4 mr-2' />
-                    </Button>
-                    <CopyButton
-                      source={svgString}
-                      toast='SVG copied!'
-                      btnClassName='h-10 w-10'
-                    />
-                  </div>
-                  <div className='flex items-center gap-2'>
-                    <Button
-                      variant='outline'
-                      onClick={downloadPNG}
-                      className='flex-1'
-                    >
-                      Download PNG
-                      <Image className='h-4 w-4 mr-2' />
-                    </Button>
-                    <CopyButton
-                      source={pngDataUrl}
-                      toast='PNG data URL copied!'
-                      btnClassName='h-10 w-10'
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-          </CardContent>
-        </Card>
+          </div>
+        </PagesContent>
       </div>
     </div>
   );
