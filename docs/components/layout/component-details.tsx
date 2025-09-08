@@ -8,7 +8,6 @@ import Link from "next/link";
 import { Code } from "lucide-react";
 
 import CodeBlock, { highlight } from "@/components/code-block";
-// import ComponentCli from "@/components/component-cli";
 import CopyButton from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,8 +27,12 @@ import {
 
 import type { RegistryItem } from "@/lib/components";
 import { convertRegistryPaths } from "@/lib/components";
+import { cn } from "@/lib/utils";
 
 import ComponentCli from "../component-cli";
+
+const buttonStyle =
+  "text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100";
 
 const ComponentDetails = ({ component }: { component: RegistryItem }) => {
   const [code, setCode] = useState<string | null>(null);
@@ -81,28 +84,25 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
 
   return (
     <Dialog>
-      <div className='flex gap-2 justify-end w-full absolute -top-0.5 -right-0.5'>
-        <CopyButton
-          source={code}
-          toast='Code'
-          className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100'
-        />
-        <TooltipProvider delayDuration={0}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <DialogTrigger asChild>
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className='text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100'
-                >
-                  <Code aria-hidden={true} className='size-4' />
-                </Button>
-              </DialogTrigger>
-            </TooltipTrigger>
-            <TooltipContent>View code</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+      <div className='absolute -top-0.5 -right-0.5 flex w-full items-center justify-between'>
+        <div className={cn(buttonStyle, "text-xs font-medium")}>
+          {component.name}
+        </div>
+        <div className='flex gap-2'>
+          <CopyButton source={code} toast='Code' className={buttonStyle} />
+          <TooltipProvider delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DialogTrigger asChild>
+                  <Button variant='ghost' size='icon' className={buttonStyle}>
+                    <Code aria-hidden={true} className='size-4' />
+                  </Button>
+                </DialogTrigger>
+              </TooltipTrigger>
+              <TooltipContent>View code</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </div>
       <DialogContent className='sm:max-w-[650px] max-w-2xl'>
         <DialogHeader>

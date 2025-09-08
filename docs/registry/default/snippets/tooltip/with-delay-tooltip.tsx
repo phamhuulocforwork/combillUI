@@ -22,7 +22,15 @@ export default function WithDelayTooltipDemo() {
   };
 
   return (
-    <div className='flex flex-col gap-6 items-center'>
+    <div className='flex w-full items-end gap-2 '>
+      <div className='flex flex-col gap-1'>
+        <Label>Delay</Label>
+        <Input
+          type='number'
+          value={delayDuration}
+          onChange={handleDelayDurationChange}
+        />
+      </div>
       <TooltipProvider>
         <Tooltip delayDuration={delayDuration}>
           <TooltipTrigger asChild>
@@ -33,16 +41,6 @@ export default function WithDelayTooltipDemo() {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-
-      <div>
-        <Label>Delay</Label>
-        <Input
-          type='number'
-          className='mt-2'
-          value={delayDuration}
-          onChange={handleDelayDurationChange}
-        />
-      </div>
     </div>
   );
 }

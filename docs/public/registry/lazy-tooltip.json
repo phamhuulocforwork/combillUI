@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "lazy-tooltip.tsx",
-      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from '@/components/ui/tooltip';\nimport { Button } from '@/components/ui/button';\n\nexport default function LazyTooltip() {\n  const [enabled, setEnabled] = React.useState(false);\n\n  const triggerProps = {\n    onPointerEnter: () => setEnabled(true),\n    onTouchStart: () => setEnabled(true),\n  } as const;\n\n  if (!enabled) {\n    return (\n      <>\n        <Button variant=\"secondary\">Hover</Button>\n      </>\n    );\n  }\n\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button variant=\"secondary\" {...triggerProps}>Hover</Button>\n      </TooltipTrigger>\n      <TooltipContent>This mounts on first hover</TooltipContent>\n    </Tooltip>\n  );\n}",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\n\nexport default function LazyTooltip() {\n  const [enabled, setEnabled] = React.useState(true);\n\n  const triggerProps = {\n    onPointerEnter: () => setEnabled(true),\n    onTouchStart: () => setEnabled(true),\n  } as const;\n\n  if (!enabled) {\n    return (\n      <>\n        <Button variant='secondary'>Lazy Tooltip</Button>\n      </>\n    );\n  }\n\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button variant='outline' {...triggerProps}>\n          Lazy Tooltip\n        </Button>\n      </TooltipTrigger>\n      <TooltipContent>This mounts on first hover</TooltipContent>\n    </Tooltip>\n  );\n}\n",
       "type": "registry:ui"
     }
   ]

@@ -20,7 +20,7 @@ export default function LazyTooltip() {
   if (!enabled) {
     return (
       <>
-        <Button variant='secondary'>Hover</Button>
+        <Button variant='secondary'>Lazy Tooltip</Button>
       </>
     );
   }
@@ -29,7 +29,7 @@ export default function LazyTooltip() {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button variant='outline' {...triggerProps}>
-          Hover
+          Lazy Tooltip
         </Button>
       </TooltipTrigger>
       <TooltipContent>This mounts on first hover</TooltipContent>

@@ -13,10 +13,10 @@ export default function WithArrowTooltip() {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant='outline'>Hover</Button>
+          <Button variant='outline'>With Arrow</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Tooltip with arrow</p>
+          <p>Tooltip with Arrow</p>
           <TooltipPrimitive.Arrow className='fill-foreground' />
         </TooltipContent>
       </Tooltip>
