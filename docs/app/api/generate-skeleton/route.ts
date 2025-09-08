@@ -1,4 +1,4 @@
-import { openai } from "@ai-sdk/openai";
+import { google } from "@ai-sdk/google";
 import { streamText } from "ai";
 
 export async function POST(req: Request) {
@@ -9,7 +9,7 @@ ${prompt}
 Focus on creating skeleton patterns for the main structural elements and repeat these patterns as needed. Aim to capture the essence of the layout without replicating every single element.`;
 
   const result = await streamText({
-    model: openai("gpt-4o-mini"),
+    model: google("gemini-2.5-flash"),
     system: `You are an expert in HTML and Tailwind CSS, specializing in creating accessible and performant loading skeletons. Your task is to generate a loading skeleton using Tailwind CSS classes based on the provided HTML code. Follow these guidelines:
 
 1. Use only Tailwind CSS classes to create placeholder elements that simulate content loading.
