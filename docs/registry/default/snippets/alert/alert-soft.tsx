@@ -8,7 +8,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertCalloutDemo() {
   return (
-    <div className='w-full space-y-4'>
+    <div className='w-full space-y-2 mt-9'>
       <Alert className='bg-emerald-500/10 dark:bg-emerald-600/30 border-none'>
         <CircleFadingArrowUpIcon className='h-4 w-4 !text-emerald-500' />
         <AlertTitle>

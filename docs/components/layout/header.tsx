@@ -18,10 +18,17 @@ import {
 
 import { NavMenu } from "./nav-menu";
 
-const Header = ({ toggle }: { toggle?: ReactNode }) => {
+interface HeaderProps {
+  toggle?: ReactNode;
+  fullWidth?: boolean;
+}
+
+export default function Header({ toggle, fullWidth }: HeaderProps) {
   return (
     <header className='bg-background/60 sticky top-0 z-50 flex min-h-12 w-full flex-shrink-0 items-center justify-center border-b border-dashed backdrop-blur-[8px] h-[var(--header-height)]'>
-      <div className='mx-auto flex h-full w-full container items-center border-dashed min-[1400px]:border-x'>
+      <div
+        className={`mx-auto flex h-full w-full items-center border-dashed ${fullWidth ? "min-w-screen max-w-[1400px]" : "container min-[1400px]:border-x"}`}
+      >
         <div className='flex w-full items-center max-lg:gap-4'>
           <div className='flex items-center gap-3 ps-4 sm:ps-8'>
             {toggle}
@@ -81,6 +88,4 @@ const Header = ({ toggle }: { toggle?: ReactNode }) => {
       </div>
     </header>
   );
-};
-
-export default Header;
+}

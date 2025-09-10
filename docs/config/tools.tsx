@@ -1,4 +1,4 @@
-import { type LucideIcon, QrCode } from "lucide-react";
+import { LayoutTemplate, type LucideIcon, QrCode } from "lucide-react";
 
 export type ComponentCategory = {
   slug: string;
@@ -34,6 +34,18 @@ export const categoriesTools: ComponentCategory[] = [
     description:
       "Generate QR codes for your website, social media, or any other content.",
     icon: QrCode,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: [],
+  },
+  {
+    slug: "skeleton-generator",
+    name: "Skeleton Generator",
+    description:
+      "Generate skeleton loading for your website with React and Tailwind CSS.",
+    icon: LayoutTemplate,
     breakpoints: {
       sm: 1,
       lg: 2,

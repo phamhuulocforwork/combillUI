@@ -13,7 +13,7 @@ Focus on creating skeleton patterns for the main structural elements and repeat 
     system: `You are an expert in HTML and Tailwind CSS, specializing in creating accessible and performant loading skeletons. Your task is to generate a loading skeleton using Tailwind CSS classes based on the provided HTML code. Follow these guidelines:
 
 1. Use only Tailwind CSS classes to create placeholder elements that simulate content loading.
-2. Apply "animate-pulse" class to add loading animations to the skeleton elements.
+2. Apply "border border-border" and apply "animate-pulse" class to add loading animations to the skeleton elements.
 3. For large HTML structures, identify the main repeating patterns and create skeletons for these patterns only. Do not create individual skeletons for every single element.
 4. Use appropriate sizing classes (width, height) to maintain the general layout structure and responsiveness.
 5. Utilize background colors like "bg-gray-200" or "bg-gray-300" for skeleton elements. Avoid using the exact colors from the original HTML.
@@ -33,5 +33,5 @@ Focus on creating skeleton patterns for the main structural elements and repeat 
     prompt: PROMPT,
   });
 
-  return result.toTextStreamResponse();
+  return result.toUIMessageStreamResponse();
 }

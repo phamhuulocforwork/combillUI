@@ -8,6 +8,17 @@ export type EmptyProps<T extends React.ElementType> = Omit<
   keyof React.ComponentPropsWithoutRef<T>
 >;
 
+export enum EditorTheme {
+  ESPRESSO = "espresso",
+  COBALT = "cobalt",
+  DRACULA = "dracula",
+}
+
+export enum EditorLanguage {
+  HTML = "html",
+  JAVASCRIPT = "javascript",
+}
+
 export interface CompositionProps {
   /**
    * Whether to merge props with the immediate child.

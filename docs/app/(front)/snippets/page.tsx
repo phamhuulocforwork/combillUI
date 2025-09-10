@@ -56,8 +56,8 @@ const Page = () => {
               <Link href={`/snippets/${category.slug}`}>
                 <div className='flex flex-col gap-1 p-4'>
                   <div className='flex items-center gap-2'>
-                    <category.icon className='transition-all duration-300 group-hover:scale-110' />
-                    <h2 className='text-lg font-medium'>{category.name}</h2>
+                    <category.icon className='size-6 transition-all duration-300 group-hover:scale-110' />
+                    <h2 className='text-base font-medium'>{category.name}</h2>
                     <Badge variant='secondary'>{`${category.components.length} ${category.components.length === 1 ? "Snippet" : "Snippets"}`}</Badge>
                   </div>
 

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import Link from "next/link";
-
 //TODO: Add metadata
 export const metadata: Metadata = {
   title: "Shadcn Blocks",
