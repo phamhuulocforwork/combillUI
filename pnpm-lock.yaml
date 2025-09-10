@@ -17,7 +17,7 @@ importers:
         version: 2.2.3
       '@changesets/cli':
         specifier: ^2.29.6
-        version: 2.29.6(@types/node@24.3.1)
+        version: 2.29.7(@types/node@24.3.1)
       '@testing-library/jest-dom':
         specifier: ^6.8.0
         version: 6.8.0
@@ -60,12 +60,9 @@ importers:
       '@ai-sdk/google':
         specifier: ^2.0.13
         version: 2.0.13(zod@3.25.76)
-      '@ai-sdk/openai':
-        specifier: ^2.0.27
-        version: 2.0.27(zod@3.25.76)
       '@ai-sdk/react':
         specifier: ^2.0.37
-        version: 2.0.37(react@19.1.1)(zod@3.25.76)
+        version: 2.0.39(react@19.1.1)(zod@3.25.76)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.62.0(react@19.1.1))
@@ -149,7 +146,7 @@ importers:
         version: 2.0.13
       ai:
         specifier: ^5.0.37
-        version: 5.0.37(zod@3.25.76)
+        version: 5.0.39(zod@3.25.76)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -399,20 +396,14 @@ packages:
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
 
-  '@ai-sdk/gateway@1.0.19':
-    resolution: {integrity: sha512-TYLxx8Sclr/RdB0RIwGmA8OtJtyJxoPGtrTYgwrbzM2GdtwYtUuA/UIc4tZyCeyR1ujfqjbqiIF3kB54zGRD3A==}
+  '@ai-sdk/gateway@1.0.20':
+    resolution: {integrity: sha512-2K0kGnHyLfT1v2+3xXbLqohfWBJ/vmIh1FTWnrvZfvuUuBdOi2DMgnSQzkLvFVLyM8mhOcx+ZwU6IOOsuyOv/w==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
 
   '@ai-sdk/google@2.0.13':
     resolution: {integrity: sha512-5WauM+IrqbllWT4uXZVrfTnPCSKTtkHGNsD2CYD0JgGfeIOpa285UYCYUi0Z4RtcovwnZitvQABq465FfeLwzA==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4
-
-  '@ai-sdk/openai@2.0.27':
-    resolution: {integrity: sha512-5fUFBlE9qGFgezVIVkzQk87qZYkxsn5PsedtCFPoGxHK6c2QVYHuD1UcrVIKt0elr043Vx17Xo/gS5oJAR5YEQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
@@ -427,8 +418,8 @@ packages:
     resolution: {integrity: sha512-6o7Y2SeO9vFKB8lArHXehNuusnpddKPk7xqL7T2/b+OvXMRIXUO1rR4wcv1hAFUAT9avGZshty3Wlua/XA7TvA==}
     engines: {node: '>=18'}
 
-  '@ai-sdk/react@2.0.37':
-    resolution: {integrity: sha512-1VgtKUuGUPJf1UqjPgipox+ZKdVAYmal8tki3cgC9nByf7vP5J+RARRPaFUHBd+frOOeYPOT2LvSqu0EejBEMw==}
+  '@ai-sdk/react@2.0.39':
+    resolution: {integrity: sha512-cBQZQG3ZtEebBPCcDVJGS4BU6e4ADgnO2PRhqvkPcPeFM68LK+x5E0VJcpLWUuoAW1Lv/yqy62LN3Ql1mFbzYQ==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
@@ -619,8 +610,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@changesets/apply-release-plan@7.0.12':
-    resolution: {integrity: sha512-EaET7As5CeuhTzvXTQCRZeBUcisoYPDDcXvgTE/2jmmypKp0RC7LxKj/yzqeh/1qFTZI7oDGFcL1PHRuQuketQ==}
+  '@changesets/apply-release-plan@7.0.13':
+    resolution: {integrity: sha512-BIW7bofD2yAWoE8H4V40FikC+1nNFEKBisMECccS16W1rt6qqhNTBDmIw5HaqmMgtLNz9e7oiALiEUuKrQ4oHg==}
 
   '@changesets/assemble-release-plan@6.0.9':
     resolution: {integrity: sha512-tPgeeqCHIwNo8sypKlS3gOPmsS3wP0zHt67JDuL20P4QcXiw/O4Hl7oXiuLnP9yg+rXLQ2sScdV1Kkzde61iSQ==}
@@ -628,8 +619,8 @@ packages:
   '@changesets/changelog-git@0.2.1':
     resolution: {integrity: sha512-x/xEleCFLH28c3bQeQIyeZf8lFXyDFVn1SgcBiR2Tw/r4IAWlk1fzxCEZ6NxQAjF2Nwtczoen3OA2qR+UawQ8Q==}
 
-  '@changesets/cli@2.29.6':
-    resolution: {integrity: sha512-6qCcVsIG1KQLhpQ5zE8N0PckIx4+9QlHK3z6/lwKnw7Tir71Bjw8BeOZaxA/4Jt00pcgCnCSWZnyuZf5Il05QQ==}
+  '@changesets/cli@2.29.7':
+    resolution: {integrity: sha512-R7RqWoaksyyKXbKXBTbT4REdy22yH81mcFK6sWtqSanxUCbUi9Uf+6aqxZtDQouIqPdem2W56CdxXgsxdq7FLQ==}
     hasBin: true
 
   '@changesets/config@3.1.1':
@@ -2429,8 +2420,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@5.0.37:
-    resolution: {integrity: sha512-6QJEoLvynMBdk+vC/HT3Ry4w9DjhTKlC2PU+XZU/5z5QPGkGVloby7LJtzNYDOA41OltH+JOohSYqg/9phFwqg==}
+  ai@5.0.39:
+    resolution: {integrity: sha512-1AOjTHY8MUY4T/X/I+otGTbvKmMQCCGWffuVDyQ21l/2Vv/QoLZcw+ZZHVvp+wvQcPOsfXjURGSFZtin7rnghA==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
@@ -2722,8 +2713,8 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
-  country-flag-icons@1.5.19:
-    resolution: {integrity: sha512-D/ZkRyj+ywJC6b2IrAN3/tpbReMUqmuRLlcKFoY/o0+EPQN9Ev/e8tV+D3+9scvu/tarxwLErNwS73C3yzxs/g==}
+  country-flag-icons@1.5.20:
+    resolution: {integrity: sha512-ldchBFYlw2dXXGXO6q/xCYaFiiK/eg5qSctBRDzUTDvHqAdIMOVTj1sp0OWVo7g6h+RURTjlu+5BhtGwIbe9tg==}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -4780,8 +4771,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  simple-swizzle@0.2.3:
-    resolution: {integrity: sha512-NLgA1P4m+AAQuaetDKl899hwnPQd8cF0XjfIX/zdMga/kgeanRFn0MP2/HbMxPYNeJckKiB/1M4DLpb1XSWcvA==}
+  simple-swizzle@0.2.2:
+    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -5488,19 +5479,13 @@ snapshots:
 
   '@adobe/css-tools@4.4.4': {}
 
-  '@ai-sdk/gateway@1.0.19(zod@3.25.76)':
+  '@ai-sdk/gateway@1.0.20(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
       '@ai-sdk/provider-utils': 3.0.8(zod@3.25.76)
       zod: 3.25.76
 
   '@ai-sdk/google@2.0.13(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.8(zod@3.25.76)
-      zod: 3.25.76
-
-  '@ai-sdk/openai@2.0.27(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
       '@ai-sdk/provider-utils': 3.0.8(zod@3.25.76)
@@ -5517,10 +5502,10 @@ snapshots:
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/react@2.0.37(react@19.1.1)(zod@3.25.76)':
+  '@ai-sdk/react@2.0.39(react@19.1.1)(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider-utils': 3.0.8(zod@3.25.76)
-      ai: 5.0.37(zod@3.25.76)
+      ai: 5.0.39(zod@3.25.76)
       react: 19.1.1
       swr: 2.3.6(react@19.1.1)
       throttleit: 2.1.0
@@ -5738,7 +5723,7 @@ snapshots:
   '@biomejs/cli-win32-x64@2.2.3':
     optional: true
 
-  '@changesets/apply-release-plan@7.0.12':
+  '@changesets/apply-release-plan@7.0.13':
     dependencies:
       '@changesets/config': 3.1.1
       '@changesets/get-version-range-type': 0.4.0
@@ -5767,9 +5752,9 @@ snapshots:
     dependencies:
       '@changesets/types': 6.1.0
 
-  '@changesets/cli@2.29.6(@types/node@24.3.1)':
+  '@changesets/cli@2.29.7(@types/node@24.3.1)':
     dependencies:
-      '@changesets/apply-release-plan': 7.0.12
+      '@changesets/apply-release-plan': 7.0.13
       '@changesets/assemble-release-plan': 6.0.9
       '@changesets/changelog-git': 0.2.1
       '@changesets/config': 3.1.1
@@ -7579,9 +7564,9 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.37(zod@3.25.76):
+  ai@5.0.39(zod@3.25.76):
     dependencies:
-      '@ai-sdk/gateway': 1.0.19(zod@3.25.76)
+      '@ai-sdk/gateway': 1.0.20(zod@3.25.76)
       '@ai-sdk/provider': 2.0.0
       '@ai-sdk/provider-utils': 3.0.8(zod@3.25.76)
       '@opentelemetry/api': 1.9.0
@@ -7851,7 +7836,7 @@ snapshots:
   color-string@1.9.1:
     dependencies:
       color-name: 1.1.4
-      simple-swizzle: 0.2.3
+      simple-swizzle: 0.2.2
     optional: true
 
   color@4.2.3:
@@ -7876,7 +7861,7 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  country-flag-icons@1.5.19: {}
+  country-flag-icons@1.5.20: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -10126,7 +10111,7 @@ snapshots:
   react-phone-number-input@3.4.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       classnames: 2.5.1
-      country-flag-icons: 1.5.19
+      country-flag-icons: 1.5.20
       input-format: 0.3.14(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       libphonenumber-js: 1.12.15
       prop-types: 15.8.1
@@ -10555,7 +10540,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-swizzle@0.2.3:
+  simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
     optional: true
