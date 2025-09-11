@@ -136,7 +136,7 @@ export default function SkeletonGenerator() {
               </Tabs>
               <Button
                 variant='outline'
-                className='font-medium text-sm size-9 md:w-auto'
+                className='font-medium text-sm'
                 onClick={() => {
                   navigator.clipboard.writeText(
                     activeTab === "html" ? code : htmlToJsx(code),
@@ -150,7 +150,7 @@ export default function SkeletonGenerator() {
                 ) : (
                   <Copy />
                 )}
-                <span className='hidden md:inline'>{copyLabel}</span>
+                <span>{copyLabel}</span>
               </Button>
             </div>
             <div className='flex-grow p-4 overflow-hidden'>
