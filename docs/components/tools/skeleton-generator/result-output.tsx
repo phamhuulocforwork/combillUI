@@ -2,7 +2,7 @@ import React from "react";
 
 import { htmlToJsx } from "@/lib/utils";
 
-import { EditorLanguage, EditorTheme } from "@/types";
+import { EditorLanguage } from "@/types";
 
 import MonacoEditor from "./monaco-editor";
 import Previewer from "./previewer";

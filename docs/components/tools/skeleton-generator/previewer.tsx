@@ -12,7 +12,7 @@ const EmptyState: React.FC = () => {
     <div className='flex items-center justify-center h-full'>
       <div className='text-center p-8 max-w-lg rounded-lg border border-border'>
         <h2 className='text-2xl font-bold  mb-4'>No Skeletons Yet</h2>
-        <p className='mb-6'>
+        <p className='mb-6 hidden md:block'>
           This is where your AI-generated skeletons will appear.
         </p>
         <div className='space-y-4 mb-6'>
