@@ -3,7 +3,9 @@
 ## Component Architecture
 
 ### Atomic Design Principles
+
 CombillUI follows atomic design with clear separation:
+
 - **Atoms**: Basic UI elements (buttons, inputs, labels)
 - **Molecules**: Composite components (input with label, form fields)
 - **Organisms**: Complex UI sections (forms, navigation)
@@ -11,6 +13,7 @@ CombillUI follows atomic design with clear separation:
 - **Pages**: Complete page implementations
 
 ### Component Composition
+
 - Use Radix UI Slot pattern for flexible composition
 - Prefer composition over inheritance
 - Allow `asChild` prop for component polymorphism
@@ -33,12 +36,14 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 ## State Management Patterns
 
 ### Local State
+
 - Use `useState` sparingly, prefer derived state
 - Co-locate state with components that use it
 - Avoid lifting state unnecessarily
 - Use `useReducer` for complex state logic
 
 ### Props vs State
+
 - Prefer props over internal state when possible
 - Use controlled components pattern
 - Support uncontrolled usage with `defaultValue` props
@@ -47,6 +52,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 ## Animation Patterns
 
 ### Framer Motion Integration
+
 - Use `motion.div` for animatable containers
 - Prefer CSS transitions for simple animations
 - Use `AnimatePresence` for enter/exit animations
@@ -70,6 +76,7 @@ const AnimatedComponent = () => (
 ## TypeScript Patterns
 
 ### Generic Components
+
 ```typescript
 interface SelectProps<T> {
   options: T[];
@@ -84,6 +91,7 @@ function Select<T>({ options, value, onChange, getDisplayValue }: SelectProps<T>
 ```
 
 ### Utility Types
+
 ```typescript
 type ComponentProps = React.ComponentProps<typeof BaseComponent>;
 type OmitProps = Omit<ComponentProps, "conflictingProp">;
@@ -91,12 +99,14 @@ type PartialProps = Partial<ComponentProps>;
 ```
 
 ## Error Handling
+
 - Use error boundaries for React components
 - Provide fallback UI for error states
 - Log errors appropriately
 - Don't expose internal errors to users
 
 ## Performance Patterns
+
 - Use `React.memo` for expensive components
 - Implement proper dependency arrays in hooks
 - Use `useCallback` and `useMemo` appropriately
@@ -104,6 +114,7 @@ type PartialProps = Partial<ComponentProps>;
 - Optimize bundle splitting with dynamic imports
 
 ## Accessibility Patterns
+
 - Use semantic HTML elements
 - Provide ARIA labels and descriptions
 - Support keyboard navigation
@@ -112,6 +123,7 @@ type PartialProps = Partial<ComponentProps>;
 - Meet WCAG AA contrast requirements
 
 ## Testing Patterns
+
 - Unit test component logic
 - Integration test user interactions
 - Test accessibility features
@@ -120,6 +132,7 @@ type PartialProps = Partial<ComponentProps>;
 - Test error states and edge cases
 
 ## Build and Bundle Patterns
+
 - Use tsup for component library bundling
 - Support both ESM and CommonJS outputs
 - Generate TypeScript declaration files

@@ -1,6 +1,7 @@
 # Code Style and Conventions
 
 ## TypeScript Configuration
+
 - **Target**: ES2022
 - **Module**: ESNext with bundler resolution
 - **Strict mode**: Enabled with `noUncheckedIndexedAccess`
@@ -8,6 +9,7 @@
 - **Lib**: DOM, DOM.Iterable, ES2022
 
 ## Formatting (Biome)
+
 - **Indentation**: 2 spaces
 - **Line endings**: Auto-detected
 - **Quotes**: Double quotes preferred
@@ -16,6 +18,7 @@
 - **Import organization**: Auto-organized by Biome
 
 ## Naming Conventions
+
 - **Directories**: kebab-case (e.g., `animated-label-input`)
 - **Files**: kebab-case for components, camelCase for utilities
 - **Components**: PascalCase (e.g., `AnimatedLabelInput`)
@@ -25,6 +28,7 @@
 - **Variables**: camelCase
 
 ## Component Patterns
+
 - Use `React.forwardRef` for all components that need refs
 - Set `displayName` for all components
 - Use `React.ElementRef<typeof Component>` for ref types
@@ -32,6 +36,7 @@
 - Use `React.useImperativeHandle` when exposing imperative API
 
 ## Import/Export Style
+
 ```typescript
 // Preferred: named exports
 export { AnimatedLabelInput };
@@ -51,6 +56,7 @@ import { AnimatedInput } from "./animated-input";
 ```
 
 ## Styling Patterns
+
 - Use `cn()` utility for conditional classes (clsx + tailwind-merge)
 - Prefer utility-first approach with Tailwind CSS
 - Use CSS variables for theming when needed
@@ -81,6 +87,7 @@ function Component({ className, variant = "default" }: ComponentProps) {
 ```
 
 ## TypeScript Patterns
+
 - Use interfaces for object props
 - Prefer `type` for unions and utility types
 - Use `React.ComponentProps<typeof Component>` for extending component props
@@ -96,7 +103,8 @@ type ComponentVariant = "default" | "destructive" | "outline";
 ```
 
 ## File Structure
-```
+
+```txt
 packages/component-name/
 ├── src/
 │   ├── index.ts              # Main exports
@@ -111,6 +119,7 @@ packages/component-name/
 ```
 
 ## Testing Conventions
+
 - Use `.test.ts` or `.test.tsx` extensions
 - Use `describe` blocks for component suites
 - Use `it` for individual test cases
@@ -119,6 +128,7 @@ packages/component-name/
 - Test accessibility features
 
 ## Git Conventions
+
 - Use conventional commits
 - Squash feature branches before merging
 - Use changesets for versioning (`pnpm changeset`)
