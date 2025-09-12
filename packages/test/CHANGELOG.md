@@ -1,4 +1,4 @@
-# @combillui/animated-label-input
+# @combillui/test
 
 ## 0.0.1
 

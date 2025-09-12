@@ -16,7 +16,7 @@ export default defineConfig({
   splitting: true,
   treeshake: true,
   tsconfig: "tsconfig.json",
-  external: ["react", "react-dom", "@radix-ui/react-slot"],
+  external: ["react"],
   async onSuccess() {
     // Add 'use client' directive as it was removed during treeshaking
     const filePath = join("dist", "index.js");
