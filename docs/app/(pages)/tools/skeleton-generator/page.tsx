@@ -13,9 +13,9 @@ import {
   Wand2,
 } from "lucide-react";
 
+import { MonacoEditorRef } from "@/components/blocks/monaco-editor/monaco-editor";
 import { Icons } from "@/components/icons";
 import CodeInput from "@/components/tools/skeleton-generator/code-input";
-import { MonacoEditorRef } from "@/components/tools/skeleton-generator/monaco-editor";
 import ResultOutput from "@/components/tools/skeleton-generator/result-output";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -122,7 +122,7 @@ export default function SkeletonGenerator() {
                     <span className='hidden md:inline'>Preview</span>
                   </TabsTrigger>
                   <TabsTrigger value='html' className='flex items-center gap-2'>
-                    <Code className='size-4' />
+                    <Icons.html className='size-4' />
                     <span className='hidden md:inline'>HTML</span>
                   </TabsTrigger>
                   <TabsTrigger

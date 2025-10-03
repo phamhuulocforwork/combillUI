@@ -4,7 +4,7 @@ import { htmlToJsx } from "@/lib/utils";
 
 import { EditorLanguage } from "@/types";
 
-import MonacoEditor from "./monaco-editor";
+import MonacoEditor from "../../blocks/monaco-editor/monaco-editor";
 import Previewer from "./previewer";
 
 interface ResultOutputProps {

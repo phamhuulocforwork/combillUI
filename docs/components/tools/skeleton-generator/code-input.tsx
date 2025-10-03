@@ -1,6 +1,8 @@
 import React from "react";
 
-import MonacoEditor, { MonacoEditorRef } from "./monaco-editor";
+import MonacoEditor, {
+  MonacoEditorRef,
+} from "@/components/blocks/monaco-editor/monaco-editor";
 
 interface CodeInputProps {
   code: string;

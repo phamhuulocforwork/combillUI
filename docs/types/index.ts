@@ -15,8 +15,10 @@ export enum EditorTheme {
 }
 
 export enum EditorLanguage {
+  TEXT = "text",
   HTML = "html",
   JAVASCRIPT = "javascript",
+  JSON = "json",
 }
 
 export interface CompositionProps {

@@ -1,4 +1,4 @@
-import { LayoutTemplate, type LucideIcon, QrCode } from "lucide-react";
+import { Braces, LayoutTemplate, type LucideIcon, QrCode } from "lucide-react";
 
 export type ComponentCategory = {
   slug: string;
@@ -46,6 +46,17 @@ export const categoriesTools: ComponentCategory[] = [
     description:
       "Generate skeleton loading for your website with React and Tailwind CSS.",
     icon: LayoutTemplate,
+    breakpoints: {
+      sm: 1,
+      lg: 2,
+    },
+    components: [],
+  },
+  {
+    slug: "snippet-generator",
+    name: "Snippet Generator",
+    description: "Generate code snippets for VSCode, Sublime Text, and Atom",
+    icon: Braces,
     breakpoints: {
       sm: 1,
       lg: 2,
