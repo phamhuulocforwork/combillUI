@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { CommandList } from "cmdk";
 import {
   AlertCircle,
@@ -10,7 +11,6 @@ import {
   CheckCircle2,
   ChevronDown,
   Download,
-  Sheet,
   Upload,
   X,
 } from "lucide-react";
@@ -69,19 +69,16 @@ import type {
   ExcelFieldOption,
   ValidationResult,
 } from "@/registry/default/blocks/excel-importer/excel-types";
-import {
-  generateTemplateCSV,
-  generateTemplateExcel,
-} from "@/registry/default/blocks/excel-importer/excel-utils";
+import { generateTemplateExcel } from "@/registry/default/blocks/excel-importer/excel-utils";
 import { FileUploader } from "@/registry/default/blocks/file-uploader/file-uploader";
 import { useParseExcel } from "@/registry/default/hooks/use-parse-excel";
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 interface ExcelImporterProps
   extends React.ComponentPropsWithoutRef<typeof DialogTrigger>,
     ButtonProps {
   fields: ExcelFieldOption[];
   onImport: (data: Record<string, unknown>[]) => void;
+  maxRows?: number;
 }
 
 type Step = "upload" | "configure" | "map" | "validate";
@@ -89,12 +86,16 @@ type Step = "upload" | "configure" | "map" | "validate";
 export function ExcelImporter({
   fields,
   onImport,
+  maxRows,
   className,
   ...props
 }: ExcelImporterProps) {
   const [open, setOpen] = React.useState(false);
   const [step, setStep] = React.useState<Step>("upload");
-  const [fileType, setFileType] = React.useState<"csv" | "excel" | null>(null);
+  const [rowsExceeded, setRowsExceeded] = React.useState<{
+    total: number;
+    limit: number;
+  } | null>(null);
 
   const {
     rawData,
@@ -118,7 +119,7 @@ export function ExcelImporter({
     totalRows: number;
     validRows: number;
     errorRows: number;
-    data: ValidationResult;
+    data: ValidationResult[];
   } | null>(null);
 
   const [editingCell, setEditingCell] = React.useState<{
@@ -147,21 +148,11 @@ export function ExcelImporter({
     const file = files[0];
     if (!file) return;
 
-    // Detect file type
-    const extension = file.name.split(".").pop()?.toLowerCase();
-    const isCSV = extension === "csv";
-    setFileType(isCSV ? "csv" : "excel");
+    // Reset row exceeded warning
+    setRowsExceeded(null);
 
     await onParseFile(file);
-
-    // For CSV, skip configure step and go directly to mapping
-    if (isCSV) {
-      // CSV files are already parsed with headers
-      extractData();
-      setStep("map");
-    } else {
-      setStep("configure");
-    }
+    setStep("configure");
   };
 
   const handleConfigure = () => {
@@ -169,6 +160,19 @@ export function ExcelImporter({
       alert("Please select header row and data start row");
       return;
     }
+
+    // Check row limit before extracting
+    if (maxRows && rawData.length > 0) {
+      const dataRows = rawData.length - (dataStartRow + 1);
+      if (dataRows > maxRows) {
+        setRowsExceeded({
+          total: dataRows,
+          limit: maxRows,
+        });
+        return;
+      }
+    }
+
     extractData();
     setStep("map");
   };
@@ -191,9 +195,9 @@ export function ExcelImporter({
 
   const resetState = () => {
     setStep("upload");
-    setFileType(null);
     setValidationSummary(null);
     setEditingCell(null);
+    setRowsExceeded(null);
   };
 
   const handleCellEdit = (
@@ -217,8 +221,8 @@ export function ExcelImporter({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant='outline' className={cn("w-fit", className)} {...props}>
-          <Sheet />
-          Import Excel/CSV
+          <Upload />
+          Import
         </Button>
       </DialogTrigger>
 
@@ -228,12 +232,11 @@ export function ExcelImporter({
           <DialogHeader>
             <DialogTitle>Upload File</DialogTitle>
             <DialogDescription>
-              Upload a CSV or Excel file (.csv, .xlsx, .xls)
+              Upload an Excel file (.xlsx, .xls)
             </DialogDescription>
           </DialogHeader>
           <FileUploader
             accept={{
-              "text/csv": [".csv"],
               "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
                 [".xlsx"],
               "application/vnd.ms-excel": [".xls"],
@@ -263,16 +266,7 @@ export function ExcelImporter({
               onClick={() => generateTemplateExcel(fields)}
             >
               <Download className='mr-2 size-4' />
-              Download Excel Template
-            </Button>
-            <Button
-              type='button'
-              variant='outline'
-              className='flex-1'
-              onClick={() => generateTemplateCSV(fields)}
-            >
-              <Download className='mr-2 size-4' />
-              Download CSV Template
+              Download Template
             </Button>
           </div>
         </DialogContent>
@@ -337,39 +331,54 @@ export function ExcelImporter({
               </div>
             </div>
 
+            {rowsExceeded && (
+              <Alert variant='destructive'>
+                <AlertCircle className='h-4 w-4' />
+                <AlertTitle>Row Limit Exceeded</AlertTitle>
+                <AlertDescription>
+                  Your file contains {rowsExceeded.total} data rows, but the
+                  maximum allowed is {rowsExceeded.limit} rows. Please reduce
+                  the number of rows in your file.
+                </AlertDescription>
+              </Alert>
+            )}
+
             <div className='grid h-[26.25rem] w-full overflow-hidden rounded-md border'>
-              <Table>
-                <TableHeader className='sticky top-0 z-10 bg-background shadow'>
-                  <TableRow className='bg-muted/50'>
-                    {rawData[0]?.map((_, colIndex) => (
-                      <TableHead key={colIndex} className='border-r'>
-                        Column {colIndex + 1}
-                      </TableHead>
-                    ))}
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {rawData.map((row, rowIndex) => (
-                    <TableRow
-                      key={rowIndex}
-                      className={cn(
-                        "h-10",
-                        rowIndex === headerRow && "bg-blue-50 dark:bg-blue-950",
-                        rowIndex === dataStartRow &&
-                          "bg-green-50 dark:bg-green-950",
-                      )}
-                    >
-                      {(row as unknown[]).map((cell, cellIndex) => (
-                        <TableCell key={cellIndex} className='border-r'>
-                          <span className='line-clamp-1'>
-                            {String(cell ?? "")}
-                          </span>
-                        </TableCell>
+              <div className='overflow-auto'>
+                <Table>
+                  <TableHeader className='sticky top-0 z-10 bg-background shadow'>
+                    <TableRow className='bg-muted/50'>
+                      {rawData[0]?.map((_, colIndex) => (
+                        <TableHead key={colIndex} className='border-r'>
+                          Column {colIndex + 1}
+                        </TableHead>
                       ))}
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {rawData.map((row, rowIndex) => (
+                      <TableRow
+                        key={rowIndex}
+                        className={cn(
+                          "h-10",
+                          rowIndex === headerRow &&
+                            "bg-blue-50 dark:bg-blue-950",
+                          rowIndex === dataStartRow &&
+                            "bg-green-50 dark:bg-green-950",
+                        )}
+                      >
+                        {(row as unknown[]).map((cell, cellIndex) => (
+                          <TableCell key={cellIndex} className='border-r'>
+                            <span className='line-clamp-1'>
+                              {String(cell ?? "")}
+                            </span>
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </div>
           </div>
 
@@ -378,7 +387,9 @@ export function ExcelImporter({
               <ArrowLeft className='size-4' aria-hidden='true' />
               Back
             </Button>
-            <Button onClick={handleConfigure}>Continue</Button>
+            <Button onClick={handleConfigure} disabled={!!rowsExceeded}>
+              Continue
+            </Button>
           </DialogFooter>
         </DialogContent>
       )}
@@ -402,58 +413,67 @@ export function ExcelImporter({
             </Button>
           </div>
 
+          {rowsExceeded && (
+            <Alert variant='destructive'>
+              <AlertCircle className='h-4 w-4' />
+              <AlertTitle>Row Limit Exceeded</AlertTitle>
+              <AlertDescription>
+                Your file contains {rowsExceeded.total} data rows, but the
+                maximum allowed is {rowsExceeded.limit} rows. Please reduce the
+                number of rows in your file or upload a different file.
+              </AlertDescription>
+            </Alert>
+          )}
+
           <div className='grid h-[26.25rem] w-full overflow-hidden rounded-md border'>
-            <Table className='border-b'>
-              <TableHeader className='sticky top-0 z-10 bg-background shadow'>
-                <TableRow className='bg-muted/50'>
-                  {fields.map((field) => (
-                    <PreviewTableHead
-                      key={field.value}
-                      field={field}
-                      onFieldChange={(f) => {
-                        onFieldChange({
-                          oldValue: f.value,
-                          newValue: field.value,
-                        });
-                      }}
-                      onFieldToggle={onFieldToggle}
-                      originalFieldMappings={fieldMappings.original}
-                      currentFieldMapping={fieldMappings.current[field.value]}
-                      className='border-r'
-                    />
-                  ))}
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {mappedData.map((row, i) => (
-                  <TableRow key={i} className='h-10'>
+            <div className='overflow-auto'>
+              <Table className='border-b'>
+                <TableHeader className='sticky top-0 z-10 bg-background shadow'>
+                  <TableRow className='bg-muted/50'>
                     {fields.map((field) => (
-                      <TableCell
+                      <PreviewTableHead
                         key={field.value}
-                        className='border-r last:border-r-0'
-                      >
-                        <span className='line-clamp-1'>
-                          {String(row[field.value] ?? "")}
-                        </span>
-                      </TableCell>
+                        field={field}
+                        onFieldChange={(f) => {
+                          onFieldChange({
+                            oldValue: f.value,
+                            newValue: field.value,
+                          });
+                        }}
+                        onFieldToggle={onFieldToggle}
+                        originalFieldMappings={fieldMappings.original}
+                        currentFieldMapping={fieldMappings.current[field.value]}
+                        className='border-r'
+                      />
                     ))}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {mappedData.map((row, i) => (
+                    <TableRow key={i} className='h-10'>
+                      {fields.map((field) => (
+                        <TableCell
+                          key={field.value}
+                          className='border-r last:border-r-0'
+                        >
+                          <span className='line-clamp-1'>
+                            {String(row[field.value] ?? "")}
+                          </span>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
 
           <DialogFooter className='gap-2 sm:space-x-0'>
-            <Button
-              variant='outline'
-              onClick={() =>
-                setStep(fileType === "csv" ? "upload" : "configure")
-              }
-            >
+            <Button variant='outline' onClick={() => setStep("configure")}>
               <ArrowLeft className='size-4' aria-hidden='true' />
               Back
             </Button>
-            <Button onClick={handleMap}>
+            <Button onClick={handleMap} disabled={!!rowsExceeded}>
               <Upload className='size-4' aria-hidden='true' />
               Validate & Import
             </Button>

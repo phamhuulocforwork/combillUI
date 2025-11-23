@@ -342,6 +342,40 @@ export function useParseExcel({
         };
       }
 
+      // Re-check duplicates for unique fields after the update
+      const selectedFields = fields.filter(
+        (field) => prev.fieldMappings.current[field.value] !== undefined,
+      );
+      const uniqueFields = selectedFields.filter((f) => f.unique);
+
+      // Clear existing duplicate errors first
+      newResults.forEach((result) => {
+        if (result.errors) {
+          result.errors = result.errors.filter(
+            (error) => !error.description.includes("duplicated"),
+          );
+          if (result.errors.length === 0) {
+            result.errors = undefined;
+          }
+        }
+      });
+
+      // Re-detect duplicates
+      uniqueFields.forEach((uniqueField) => {
+        const formattedData = newResults.map((r) => r.formatData!);
+        const duplicateErrors = detectDuplicates(formattedData, uniqueField);
+
+        duplicateErrors.forEach((error, index) => {
+          const result = newResults[index];
+          if (!result) return;
+
+          if (!result.errors) {
+            result.errors = [];
+          }
+          result.errors.push(error);
+        });
+      });
+
       return {
         ...prev,
         validationResults: newResults,
