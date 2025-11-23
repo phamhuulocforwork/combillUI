@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FileUp, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+import MonacoEditor from "@/components/blocks/monaco-editor/monaco-editor";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { ResponsiveTextarea } from "@/registry/default/ui/responsive-textarea";
+import { EditorLanguage } from "@/types";
 
 import { parseJSON } from "./utils/json-utils";
 
@@ -115,7 +116,9 @@ export default function JSONInputCard({
           <Label htmlFor='mode-select'>Comparison Mode</Label>
           <Select
             value={mode}
-            onValueChange={(value) => setMode(value as "two-files" | "template")}
+            onValueChange={(value) =>
+              setMode(value as "two-files" | "template")
+            }
           >
             <SelectTrigger id='mode-select'>
               <SelectValue />
@@ -141,7 +144,7 @@ export default function JSONInputCard({
               onClick={() => document.getElementById("file1")?.click()}
               disabled={isProcessing}
             >
-              <FileUp className='h-4 w-4 mr-2' />
+              <FileUp className='h-4 w-4' />
               Upload File
             </Button>
             <input
@@ -152,13 +155,13 @@ export default function JSONInputCard({
               onChange={(e) => handleFileUpload(e, setJson1Text)}
             />
           </div>
-          <ResponsiveTextarea
-            id='json1'
-            value={json1Text}
-            onChange={(e) => setJson1Text(e.target.value)}
-            placeholder='Paste JSON here or upload a file...'
-            className='font-mono text-sm min-h-[200px]'
-          />
+          <div className='h-[300px] border rounded-md overflow-hidden'>
+            <MonacoEditor
+              code={json1Text}
+              onCodeChange={setJson1Text}
+              language={EditorLanguage.JSON}
+            />
+          </div>
         </div>
 
         <div className='space-y-2'>
@@ -172,7 +175,7 @@ export default function JSONInputCard({
               onClick={() => document.getElementById("file2")?.click()}
               disabled={isProcessing}
             >
-              <FileUp className='h-4 w-4 mr-2' />
+              <FileUp className='h-4 w-4' />
               Upload File
             </Button>
             <input
@@ -183,13 +186,13 @@ export default function JSONInputCard({
               onChange={(e) => handleFileUpload(e, setJson2Text)}
             />
           </div>
-          <ResponsiveTextarea
-            id='json2'
-            value={json2Text}
-            onChange={(e) => setJson2Text(e.target.value)}
-            placeholder='Paste JSON here or upload a file...'
-            className='font-mono text-sm min-h-[200px]'
-          />
+          <div className='h-[300px] border rounded-md overflow-hidden'>
+            <MonacoEditor
+              code={json2Text}
+              onCodeChange={setJson2Text}
+              language={EditorLanguage.JSON}
+            />
+          </div>
         </div>
 
         <div className='flex gap-2'>
@@ -200,7 +203,7 @@ export default function JSONInputCard({
           >
             {isProcessing ? (
               <>
-                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                <Loader2 className='h-4 w-4 animate-spin' />
                 Processing...
               </>
             ) : (

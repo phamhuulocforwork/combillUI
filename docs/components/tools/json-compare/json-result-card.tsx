@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { toast } from "sonner";
 
+import MonacoEditor from "@/components/blocks/monaco-editor/monaco-editor";
 import CopyButton from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +14,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import { EditorLanguage } from "@/types";
 
 import { formatJSON } from "./utils/json-utils";
 
@@ -109,7 +112,7 @@ export default function JSONResultCard({
                             )
                           }
                         >
-                          <Download className='h-4 w-4 mr-2' />
+                          <Download className='h-4 w-4' />
                           Download
                         </Button>
                       </div>
@@ -133,7 +136,8 @@ export default function JSONResultCard({
                       </>
                     ) : (
                       <div className='text-sm text-muted-foreground p-3 border rounded-md'>
-                        No differences found. All keys in JSON 1 exist in JSON 2.
+                        No differences found. All keys in JSON 1 exist in JSON
+                        2.
                       </div>
                     )}
                   </div>
@@ -144,11 +148,14 @@ export default function JSONResultCard({
                     <h3 className='text-sm font-medium'>
                       Difference Structure (JSON)
                     </h3>
-                    <ScrollArea className='h-[250px] rounded-md border'>
-                      <pre className='p-4 text-xs font-mono'>
-                        {formatJSON(comparisonResult.differences)}
-                      </pre>
-                    </ScrollArea>
+                    <div className='h-[300px] rounded-md border overflow-hidden'>
+                      <MonacoEditor
+                        code={formatJSON(comparisonResult.differences)}
+                        onCodeChange={() => {}}
+                        language={EditorLanguage.JSON}
+                        editable={false}
+                      />
+                    </div>
                   </div>
                 </>
               )}
@@ -172,17 +179,20 @@ export default function JSONResultCard({
                           downloadJSON(mergedResult, "merged-result.json")
                         }
                       >
-                        <Download className='h-4 w-4 mr-2' />
+                        <Download className='h-4 w-4' />
                         Download
                       </Button>
                     </div>
                   </div>
 
-                  <ScrollArea className='h-[400px] rounded-md border'>
-                    <pre className='p-4 text-xs font-mono'>
-                      {formatJSON(mergedResult)}
-                    </pre>
-                  </ScrollArea>
+                  <div className='h-[700px] rounded-md border overflow-hidden'>
+                    <MonacoEditor
+                      code={formatJSON(mergedResult)}
+                      onCodeChange={() => {}}
+                      language={EditorLanguage.JSON}
+                      editable={false}
+                    />
+                  </div>
                 </>
               )}
             </TabsContent>
