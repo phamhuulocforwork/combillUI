@@ -12,13 +12,14 @@ import { getComponentsByNames } from "@/lib/components";
 import { categoriesSnippet, getCategory } from "@/config/snippets";
 
 type Props = {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 };
 
 export async function generateMetadata(
-  { params }: Props,
+  props: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const params = await props.params;
   const category = getCategory(params.category);
 
   if (!category || category.isComingSoon) {
@@ -66,7 +67,8 @@ export function generateStaticParams() {
     }));
 }
 
-const Page = ({ params }: { params: { category: string } }) => {
+const Page = async (props: { params: Promise<{ category: string }> }) => {
+  const params = await props.params;
   const category = getCategory(params.category);
 
   if (!category || category.isComingSoon) {

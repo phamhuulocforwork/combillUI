@@ -14,11 +14,10 @@ import { useMDXComponents } from "@/components/mdx-components";
 
 import { source } from "@/app/source";
 
-export default async function Page({
-  params,
-}: {
-  params: { slug?: string[] };
+export default async function Page(props: {
+  params: Promise<{ slug?: string[] }>;
 }) {
+  const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
@@ -38,11 +37,11 @@ export default async function Page({
           {page.data.description}
         </DocsDescription>
         <div className='flex items-center gap-2'>
-          {page.data.links?.doc ? (
-            <DynamicLink href={page.data.links.doc}>Docs</DynamicLink>
+          {(page.data.links as any)?.doc ? (
+            <DynamicLink href={(page.data.links as any).doc}>Docs</DynamicLink>
           ) : null}
-          {page.data.links?.api ? (
-            <DynamicLink href={page.data.links.api}>API</DynamicLink>
+          {(page.data.links as any)?.api ? (
+            <DynamicLink href={(page.data.links as any).api}>API</DynamicLink>
           ) : null}
         </div>
       </div>
@@ -58,7 +57,10 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export function generateMetadata({ params }: { params: { slug?: string[] } }) {
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[] }>;
+}) {
+  const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
