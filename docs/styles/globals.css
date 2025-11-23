@@ -304,12 +304,21 @@
   }
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 0.5rem;
+    height: 0.5rem;
   }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+  }
+
   * {
     -ms-overflow-style: none;
-    scrollbar-width: none;
-    scrollbar-color: hsl(var(--border)) transparent;
+    scrollbar-width: thin;
   }
 }
 
