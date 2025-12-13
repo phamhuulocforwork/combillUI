@@ -18,7 +18,7 @@ import { Icons } from "@/components/icons";
 import CodeInput from "@/components/tools/skeleton-generator/code-input";
 import ResultOutput from "@/components/tools/skeleton-generator/result-output";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/tabs";
 
 import { htmlToJsx } from "@/lib/utils";
 

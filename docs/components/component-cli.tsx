@@ -5,7 +5,7 @@ import type { JSX } from "react";
 
 import CodeBlock, { highlight } from "@/components/code-block";
 import CopyButton from "@/components/copy-button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs";
 
 import { useLocalStorage } from "@/hooks/use-local-storage";
 

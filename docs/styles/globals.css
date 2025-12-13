@@ -227,7 +227,7 @@
   }
 
   [data-rehype-pretty-code-figure] figure {
-    @apply my-4! rounded-none!;
+    @apply my-0! rounded-none! px-4;
   }
 }
 
@@ -347,7 +347,7 @@
   }
 
   [data-rehype-pretty-code-figure] figure {
-    @apply !bg-secondary/50 m-0 rounded-none border-none;
+    @apply !bg-secondary/50 m-0 rounded-none border-none px-4;
   }
 
   [data-line] span {

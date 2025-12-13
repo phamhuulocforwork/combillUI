@@ -1,101 +1,266 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import React, { ReactNode, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/tabs';
+import { DirectionProvider } from '@radix-ui/react-direction';
+import { LoaderCircleIcon, RotateCw } from 'lucide-react';
+import { trackDirectionChange, trackViewChange } from '@/lib/analytics';
+import { CliCodeCopyButton } from './cli-code-copy-button';
+import { OpenInV0Button } from './open-in-v0-button';
+import { Index } from '@/__registry__';
 
-import Link from "next/link";
+type themeType = 'dark' | 'light' | '';
 
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Loader2Icon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-
-import { Index } from "@/__registry__";
-
-interface ComponentTabsProps extends React.ComponentPropsWithoutRef<"div"> {
+type ComponentTabsContext = {
   name: string;
-  children: React.ReactNode;
-  align?: "start" | "center" | "end";
-  preventPreviewFocus?: boolean;
-  scalePreview?: boolean;
-  fullPreview?: boolean;
+  code: string;
+  codeElement: ReactNode;
+  view: 'code' | 'preview';
+  setView: (view: 'code' | 'preview') => void;
+  theme: themeType;
+  setTheme: React.Dispatch<React.SetStateAction<themeType>>;
+  rtl: boolean;
+  setRtl: React.Dispatch<React.SetStateAction<boolean>>;
+  reloadKey: number;
+  reload: () => void;
+};
+
+export interface ComponentTabsProps {
+  name: string;
+  children?: ReactNode;
 }
 
-export function ComponentTabs({
+const ComponentTabsContext = React.createContext<ComponentTabsContext | null>(null);
+
+export function useComponentTabs() {
+  const context = React.useContext(ComponentTabsContext);
+  if (!context) {
+    throw new Error('useComponentTabs must be used within a ComponentTabsProvider.');
+  }
+  return context;
+}
+
+function ComponentTabsProvider({
   name,
+  code,
+  codeElement,
   children,
-  align = "center",
-  preventPreviewFocus,
-  scalePreview,
-  fullPreview,
-  className,
-}: ComponentTabsProps) {
-  const Codes = React.Children.toArray(children) as React.ReactElement[];
-  const Code = Codes[0];
+}: {
+  name: string;
+  code: string;
+  codeElement: ReactNode;
+  children: ReactNode;
+}) {
+  const [view, setView] = useState<ComponentTabsContext['view']>('preview');
+  const [theme, setTheme] = useState<themeType>('');
+  const [rtl, setRtl] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
-  const Preview = React.useMemo(() => {
-    const Component = Index["default"][name]?.component;
-
-    if (!Component) {
-      return (
-        <p className='text-muted-foreground text-sm'>
-          Component{" "}
-          <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
-            {name}
-          </code>{" "}
-          not found in registry, please{" "}
-          <Link
-            href='https://github.com/phamhuulocforwork/combillUI/issues'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-foreground font-medium underline hover:no-underline'
-          >
-            open an issue
-          </Link>
-          .
-        </p>
-      );
-    }
-
-    return <Component />;
-  }, [name]);
+  const reload = () => {
+    setReloadKey((prev) => prev + 1);
+  };
 
   return (
-    <Tabs items={["Preview", "Code"]} className='rounded-md'>
-      <Tab
-        value='Preview'
-        className={cn("preview-block", {
-          "focus-visible:outline-hidden focus-visible:ring-0":
-            preventPreviewFocus,
-        })}
-        tabIndex={preventPreviewFocus ? -1 : 0}
+    <ComponentTabsContext.Provider
+      value={{
+        name,
+        code,
+        codeElement,
+        view,
+        setView,
+        theme,
+        setTheme,
+        rtl,
+        setRtl,
+        reloadKey,
+        reload,
+      }}
+    >
+      <div
+        data-view={view}
+        className="group/block-view-wrapper flex min-w-0 flex-col items-stretch gap-4"
       >
-        <div
-          className={cn(
-            "flex h-[400px] w-full justify-center p-10",
-            {
-              "items-start": align === "start",
-              "items-center": align === "center",
-              "items-end": align === "end",
-              "h-full p-0": fullPreview,
-              "sm:p-10": scalePreview,
-            },
-            className,
-          )}
+        {children}
+      </div>
+    </ComponentTabsContext.Provider>
+  );
+}
+
+function RtlToggleButton() {
+  const { name, rtl, setRtl } = useComponentTabs();
+
+  return (
+    <Button
+      size="sm"
+      variant="outline"
+      className={cn('size-7.5 leading-[0] text-muted-foreground text-[0.6rem]')}
+      onClick={() => {
+        const newDirection = rtl ? 'ltr' : 'rtl';
+        setRtl(!rtl);
+        trackDirectionChange(name, newDirection);
+      }}
+    >
+      {rtl ? 'LTR' : 'RTL'}
+    </Button>
+  );
+}
+
+function ReloadButton() {
+  const { reload } = useComponentTabs();
+
+  return (
+    <Button  size="sm" variant="outline" className="size-7.5" onClick={reload}>
+      <RotateCw className="size-3.5" />
+    </Button>
+  );
+}
+
+function ComponentTabsToolbar() {
+  const { setView, name } = useComponentTabs();
+
+  return (
+    <div className="flex items-center gap-2.5 justify-between">
+      <div className={cn('w-full flex items-center justify-between gap-2')}>
+        <Tabs
+          defaultValue="preview"
+          onValueChange={(value) => {
+            setView(value as 'preview' | 'code');
+            trackViewChange(name, value as 'preview' | 'code');
+          }}
+          className="flex"
         >
-          <React.Suspense
-            fallback={
-              <div className='flex w-full items-center justify-center text-muted-foreground text-sm font-semibold'>
-                <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
-              </div>
-            }
-          >
-            {Preview}
-          </React.Suspense>
+          <TabsList className="h-7.5 flex items-stretch rounded-md gap-1 px-1 py-1 bg-accent/70">
+            <TabsTrigger value="preview" className="rounded-sm text-xs px-2.5">
+              Preview
+            </TabsTrigger>
+            <TabsTrigger value="code" className="rounded-sm text-xs px-2.5">
+              Code
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+
+        <div className="flex items-center gap-2">
+          <CliCodeCopyButton name={name.replaceAll('/', '-')} />
+          <RtlToggleButton />
+          <ReloadButton />
+
+          {name && <OpenInV0Button name={name.replaceAll('/', '-')} />}
         </div>
-      </Tab>
-      <Tab value='Code' className='component-block py-0'>
-        {Code}
-      </Tab>
-    </Tabs>
+      </div>
+    </div>
+  );
+}
+
+function ComponentTabsDemo() {
+  const { theme, rtl, name, view, reloadKey } = useComponentTabs();
+  const [Component, setComponent] = useState<React.ComponentType | null>(null);
+
+  // Load the component from registry
+  useEffect(() => {
+    const loadComponent = () => {
+      try {
+        // Clear the component first to show loading state
+        setComponent(null);
+
+        // Get component from registry
+        const ComponentFromRegistry = Index['default'][name]?.component;
+        
+        if (ComponentFromRegistry) {
+          setComponent(() => ComponentFromRegistry);
+        } else {
+          console.error(`Component ${name} not found in registry`);
+        }
+      } catch (error) {
+        console.error(`Failed to load component: ${name}`, error);
+      }
+    };
+
+    loadComponent();
+  }, [name, reloadKey]); // reloadKey dependency will trigger reload
+
+  if (view !== 'preview') return null; // Return null if not in preview mode
+
+  // Always render component skeleton
+  return (
+    <DirectionProvider dir={rtl ? 'rtl' : 'ltr'}>
+      <div
+        className={cn(
+          'flex lg:min-h-[350px] grow justify-center items-center bg-background border border-border/90 rounded-lg p-6 lg:p-10',
+          theme === 'dark' && 'dark',
+          theme === 'light' && 'light',
+        )}
+        dir={rtl ? 'rtl' : 'ltr'}
+        style={{ direction: rtl ? 'rtl' : 'ltr' }}
+      >
+        {Component ? (
+          <Component key={reloadKey} />
+        ) : (
+          <div className="h-full text-xs flex items-center justify-center gap-1.5 text-muted-foreground">
+            <LoaderCircleIcon className="size-4 animate-spin" />
+            Loading
+          </div>
+        )}
+      </div>
+    </DirectionProvider>
+  );
+}
+
+function ComponentTabsCode() {
+  const { view, codeElement } = useComponentTabs();
+
+  if (view !== 'code') return null;
+
+  return (
+    <div>
+      <div className={cn('relative overflow-hidden rounded-xl bg-neutral-950 dark:bg-neutral-900 text-white [&_figure]:my-0')}>
+        {codeElement}
+      </div>
+    </div>
+  );
+}
+
+// Helper function to extract plain text code from children
+function extractCodeFromChildren(children: ReactNode): string {
+  const extractText = (node: any): string => {
+    if (typeof node === 'string') return node;
+    if (typeof node === 'number') return String(node);
+    if (!node) return '';
+    
+    if (Array.isArray(node)) {
+      return node.map(extractText).join('');
+    }
+    
+    if (React.isValidElement(node)) {
+      // If it's a code element, extract its text content
+      const props = node.props as { children?: ReactNode };
+      if (props.children) {
+        return extractText(props.children);
+      }
+    }
+    
+    return '';
+  };
+
+  return extractText(children);
+}
+
+export function ComponentTabs({ name, children }: ComponentTabsProps) {
+  // Extract code text from children for copy functionality
+  const code = extractCodeFromChildren(children);
+
+  if (!code && !children) {
+    return null;
+  }
+
+  return (
+    <div className="pt-3.5 mb-14">
+      <ComponentTabsProvider name={name} code={code} codeElement={children}>
+        <ComponentTabsToolbar />
+        <ComponentTabsDemo />
+        <ComponentTabsCode />
+      </ComponentTabsProvider>
+    </div>
   );
 }

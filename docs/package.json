@@ -1,5 +1,5 @@
 {
-  "name": "combillui-docs",
+  "name": "docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -34,6 +34,7 @@
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-context-menu": "^2.2.16",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-direction": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-hover-card": "^1.1.15",
     "@radix-ui/react-label": "^2.1.7",
@@ -71,6 +72,7 @@
     "fumadocs-ui": "^15.2.15",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "input-otp": "^1.4.2",
+    "jotai": "^2.16.0",
     "lodash.debounce": "^4.0.8",
     "lodash.template": "^4.5.0",
     "lucide-react": "^0.487.0",
@@ -114,8 +116,8 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^20",
     "@types/qrcode": "^1.5.5",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "@types/unist": "^3.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",

@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import MonacoEditor from "@/components/blocks/monaco-editor/monaco-editor";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/tabs";
 
 import { EditorLanguage } from "@/types";
 
