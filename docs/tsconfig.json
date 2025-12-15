@@ -37,5 +37,5 @@
     ".next/types/**/*.ts",
     "*.js"
   ],
-  "exclude": ["node_modules", "scripts/build-registry.mts", "__registry__"]
+  "exclude": ["node_modules", "scripts/build-registry.ts", "__registry__"]
 }

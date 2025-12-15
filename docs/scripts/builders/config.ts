@@ -17,5 +17,7 @@ export const config: BuildConfig = {
   ),
   HOOKS_DIR: path.join(process.cwd(), "registry/default/hooks"),
   HOOKS_OUTPUT_FILE: path.join(process.cwd(), "registry/registry-hooks.ts"),
+  BLOCKS_DIR: path.join(process.cwd(), "registry/default/blocks"),
+  BLOCKS_CACHE_DIR: path.join(process.cwd(), "registry/.cache/default/blocks"),
   REGISTRY_OUTPUT_FILE: path.join(process.cwd(), "__registry__/index.tsx"),
 };

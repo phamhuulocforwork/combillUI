@@ -2,6 +2,7 @@ export { buildUIRegistry } from "./ui-builder";
 export { buildExampleRegistry } from "./example-builder";
 export { buildSnippetsRegistry } from "./snippets-builder";
 export { buildHooksRegistry } from "./hooks-builder";
+export { buildBlockRegistry } from "./block_builder";
 export { buildShadcnCli } from "./cli-builder";
 export { buildMainRegistry } from "./main-builder";
 

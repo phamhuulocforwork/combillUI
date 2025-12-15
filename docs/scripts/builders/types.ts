@@ -14,6 +14,8 @@ export interface BuildConfig {
   SNIPPETS_OUTPUT_FILE: string;
   HOOKS_DIR: string;
   HOOKS_OUTPUT_FILE: string;
+  BLOCKS_DIR: string;
+  BLOCKS_CACHE_DIR: string;
   REGISTRY_OUTPUT_FILE: string;
 }
 

@@ -1,4 +1,5 @@
 import {
+  buildBlockRegistry,
   buildExampleRegistry,
   buildHooksRegistry,
   buildMainRegistry,
@@ -16,6 +17,7 @@ async function main(): Promise<void> {
       Promise.resolve(buildUIRegistry()),
       Promise.resolve(buildExampleRegistry()),
       Promise.resolve(buildSnippetsRegistry()),
+      Promise.resolve(buildBlockRegistry()),
       Promise.resolve(buildHooksRegistry()),
     ]);
 
@@ -30,6 +32,7 @@ async function main(): Promise<void> {
     console.log("   • Generated registry/registry-ui.ts");
     console.log("   • Generated registry/registry-examples.ts");
     console.log("   • Generated registry/registry-snippets.ts");
+    console.log("   • Generated registry/.cache/default/blocks/*.json");
     console.log("   • Generated registry/registry-hooks.ts");
     console.log("   • Generated public/registry/*.json files");
     console.log("   • Generated __registry__/index.tsx");
