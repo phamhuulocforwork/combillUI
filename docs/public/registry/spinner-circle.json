@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "spinner-circle.tsx",
-      "content": "import { Loader2Icon } from \"lucide-react\";\n\nexport default function SpinnerCircle() {\n  return <Loader2Icon className='animate-spin' />;\n}\n",
+      "content": "import { Loader2Icon } from 'lucide-react';\n\nexport default function SpinnerCircle() {\n  return <Loader2Icon className=\"animate-spin\" />;\n}\n",
       "type": "registry:ui"
     }
   ]

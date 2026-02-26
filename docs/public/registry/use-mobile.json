@@ -3,14 +3,14 @@
   "type": "registry:hook",
   "registryDependencies": [],
   "dependencies": [
-    "react",
-    "lodash.debounce"
+    "lodash.debounce",
+    "react"
   ],
   "devDependencies": [],
   "files": [
     {
       "path": "use-mobile.ts",
-      "content": "import * as React from \"react\";\n\nimport debounce from \"lodash.debounce\";\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener(\"resize\", debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener(\"resize\", debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n",
+      "content": "import debounce from 'lodash.debounce';\nimport * as React from 'react';\n\nconst useIsMobile = (): boolean => {\n  const [isMobile, setIsMobile] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    const updateSize = (): void => {\n      setIsMobile(window.innerWidth < 768);\n    };\n    const debouncedUpdateSize = debounce(updateSize, 250);\n\n    updateSize();\n\n    window.addEventListener('resize', debouncedUpdateSize);\n\n    return (): void =>\n      window.removeEventListener('resize', debouncedUpdateSize);\n  }, []);\n\n  return isMobile;\n};\n\nexport default useIsMobile;\n",
       "type": "registry:hook"
     }
   ]

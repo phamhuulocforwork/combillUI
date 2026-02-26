@@ -42,6 +42,36 @@ export const examples: Registry = [
     ],
   },
   {
+    name: 'file-uploader-basic',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/file-uploader-basic.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'file-uploader-multiple',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/file-uploader-multiple.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
+    name: 'file-uploader-with-progress',
+    type: 'registry:example',
+    files: [
+      {
+        path: 'registry/default/example/file-uploader-with-progress.tsx',
+        type: 'registry:example',
+      },
+    ],
+  },
+  {
     name: 'kbd-default',
     type: 'registry:example',
     files: [

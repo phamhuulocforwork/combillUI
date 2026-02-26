@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "badge-default.tsx",
-      "content": "import { Badge } from \"@/components/ui/badge\";\n\nexport default function BadgeDefault() {\n  return <Badge>Badge</Badge>;\n}\n",
+      "content": "import { Badge } from '@/components/ui/badge';\n\nexport default function BadgeDefault() {\n  return <Badge>Badge</Badge>;\n}\n",
       "type": "registry:ui"
     }
   ]
