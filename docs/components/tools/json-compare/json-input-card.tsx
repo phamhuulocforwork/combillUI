@@ -62,7 +62,7 @@ export default function JSONInputCard({
       } else {
         toast.error(`Invalid JSON in ${file.name}: ${result.error}`);
       }
-    } catch (error) {
+    } catch (_error) {
       toast.error("Error reading file");
     }
 
@@ -71,7 +71,7 @@ export default function JSONInputCard({
   };
 
   const validateAndProcess = (
-    action: "compare" | "merge",
+    _action: "compare" | "merge",
   ): { json1: any; json2: any } | null => {
     const result1 = parseJSON(json1Text);
     const result2 = parseJSON(json2Text);

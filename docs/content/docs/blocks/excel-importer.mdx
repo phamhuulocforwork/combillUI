@@ -1,0 +1,343 @@
+---
+title: Excel Importer
+description: Import and validate Excel data with smart field mapping, type conversion, and inline validation.
+preview: true
+links:
+  api: /docs/blocks/excel-importer#api-reference
+---
+
+<ComponentTabs name='excel-importer-basic' />
+
+## Installation
+
+<ShadcnTabs defaultValue='cli'>
+  <TabsList>
+    <TabsTrigger value='cli'>
+      CLI
+    </TabsTrigger>
+    <TabsTrigger value='manual'>
+      Manual
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent value='cli'>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value="npm">
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/excel-importer.json'
+        ```
+      </Tab>
+      
+      <Tab value="pnpm">
+        ```bash 
+        pnpm dlx shadcn@latest add 'https://combillui.vercel.app/registry/excel-importer.json'
+        ```
+      </Tab>
+
+      <Tab value="yarn">
+        ```bash
+        npx dlx shadcn@latest add 'https://combillui.vercel.app/registry/excel-importer.json'
+        ```
+      </Tab>
+
+      <Tab value="bun">
+        ```bash
+        bunx --bun shadcn@latest add 'https://combillui.vercel.app/registry/excel-importer.json'
+        ```
+      </Tab>
+    </Tabs>
+
+  </TabsContent>
+  <TabsContent value='manual'>
+    <Steps>
+      <Step>
+        Install the core package
+        ```bash
+        npm install @combillui/excel-importer
+        ```
+      </Step>
+      <Step>
+        Install required UI components
+        ```bash
+        npx shadcn@latest add dialog button input label select table checkbox tooltip command popover alert
+        ```
+      </Step>
+      <Step>
+        Copy and paste the component code into your project.
+        <ComponentSource name="excel-importer" />
+      </Step>
+      <Step>
+        Make sure to also install the FileUploader component if you haven't already.
+        ```bash
+        npx shadcn@latest add 'https://combillui.vercel.app/registry/file-uploader.json'
+        ```
+      </Step>
+    </Steps>
+  </TabsContent>
+</ShadcnTabs>
+
+## Usage
+
+```tsx
+import { ExcelImporter } from "@/components/blocks/excel-importer";
+import type { ExcelFieldOption } from "@combillui/excel-importer";
+
+const fields: ExcelFieldOption[] = [
+  { label: "Full Name", value: "name", required: true },
+  { label: "Email", value: "email", required: true },
+];
+
+function MyComponent() {
+  const handleImport = (data: Record<string, unknown>[]) => {
+    console.log("Imported data:", data);
+  };
+
+  return <ExcelImporter fields={fields} onImport={handleImport} />;
+}
+```
+
+## Features
+
+- **Smart Field Mapping** - Automatically detects headers and maps them to your schema
+- **Type Conversion** - Supports string, number, date, and boolean types
+- **Validation** - Required fields, unique constraints, and regex patterns
+- **Inline Editing** - Fix validation errors directly in the UI
+- **Template Generation** - Download Excel templates from your field configuration
+- **Multi-step Workflow** - Upload → Configure → Map → Validate
+- **Row Limit Support** - Optionally limit the number of rows that can be imported
+
+## Examples
+
+### Basic Import
+
+<ComponentTabs name='excel-importer-basic' />
+
+### Advanced Validation
+
+This example shows how to use unique constraints, regex patterns, and type conversion.
+
+<ComponentTabs name='excel-importer-validation' />
+
+## Field Configuration
+
+The `fields` prop defines your data schema with validation rules:
+
+```tsx
+const fields: ExcelFieldOption[] = [
+  {
+    label: "Employee Code",     // Display name in UI
+    value: "code",              // Property name in output
+    required: true,             // Must have a value
+    unique: true,               // No duplicates allowed
+  },
+  {
+    label: "Email",
+    value: "email",
+    required: true,
+    parseRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    parseRegexMessage: "Invalid email format",
+  },
+  {
+    label: "Age",
+    value: "age",
+    parseType: "number",        // Auto-convert to number
+  },
+  {
+    label: "Birth Date",
+    value: "birthDate",
+    parseType: "date",          // Auto-convert to YYYY-MM-DD
+  },
+  {
+    label: "Active",
+    value: "isActive",
+    parseType: "boolean",       // Auto-convert to true/false
+  },
+];
+```
+
+## Validation Rules
+
+### Required Fields
+
+Mark fields as required to ensure they have values:
+
+```tsx
+{ label: "Name", value: "name", required: true }
+```
+
+### Unique Constraints
+
+Prevent duplicate values across all rows:
+
+```tsx
+{ label: "ID", value: "id", unique: true }
+```
+
+### Type Conversion
+
+Automatically convert values to specific types:
+
+```tsx
+{ label: "Age", value: "age", parseType: "number" }
+{ label: "Birth Date", value: "birthDate", parseType: "date" }
+{ label: "Is Active", value: "isActive", parseType: "boolean" }
+```
+
+### Regex Validation
+
+Validate values against custom patterns:
+
+```tsx
+{
+  label: "Phone",
+  value: "phone",
+  parseRegex: /^\+?[\d\s-()]+$/,
+  parseRegexMessage: "Invalid phone format"
+}
+```
+
+## Excel Template Format
+
+The Excel Importer expects files in this format:
+
+```
+Row 1: Labels (optional) - Display names like "Employee Code", "Full Name"
+Row 2: Values (headers)  - Field keys like "code", "name"
+Row 3+: Data             - Actual data rows
+```
+
+When you download a template using `generateTemplateExcel()`, it automatically creates this format with example data.
+
+## Core Package Usage
+
+You can use the core package directly without the UI component:
+
+```tsx
+import { 
+  useParseExcel,
+  generateTemplateExcel,
+  type ExcelFieldOption 
+} from "@combillui/excel-importer";
+
+function MyCustomImporter() {
+  const {
+    onParseFile,
+    setRowIndices,
+    extractData,
+    validateData,
+    validationResults,
+    getSanitizedData,
+  } = useParseExcel({ fields });
+
+  // Custom implementation...
+}
+```
+
+### Generate Templates Programmatically
+
+```tsx
+import { generateTemplateExcel } from "@combillui/excel-importer";
+
+// Download Excel template
+generateTemplateExcel(fields, {
+  fileName: "employee-template",
+  includeExample: true,
+});
+
+// Or CSV template
+import { generateTemplateCSV } from "@combillui/excel-importer";
+
+generateTemplateCSV(fields, {
+  fileName: "employee-template",
+  includeExample: false,
+});
+```
+
+## API Reference
+
+### ExcelImporter Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `fields` | `ExcelFieldOption[]` | - | **Required.** Field configuration with validation rules |
+| `onImport` | `(data: Record<string, unknown>[]) => void` | - | **Required.** Callback when import is successful |
+| `maxRows` | `number` | - | Optional maximum number of rows to import |
+
+### ExcelFieldOption
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `label` | `string` | Display name in the UI |
+| `value` | `string` | Property name in the output data |
+| `required` | `boolean` | Whether the field is required |
+| `unique` | `boolean` | Whether duplicate values are allowed |
+| `parseType` | `"string" \| "number" \| "date" \| "boolean"` | Type to convert values to |
+| `parseRegex` | `RegExp \| string` | Regex pattern for validation |
+| `parseRegexMessage` | `string` | Custom error message for regex validation |
+
+### ValidationResult
+
+```tsx
+interface ValidationResult {
+  rowIndex: number;
+  rawData: Record<string, unknown>;
+  formatData?: Record<string, unknown>;
+  errors?: ValidationError[];
+}
+```
+
+### ValidationError
+
+```tsx
+interface ValidationError {
+  fieldKey: string;
+  rawValue: string;
+  description: string;
+  type: "format" | "blankInRequired" | "duplicate";
+}
+```
+
+## Import Workflow
+
+The ExcelImporter follows a 4-step workflow:
+
+1. **Upload** - Select an Excel file (.xlsx or .xls)
+2. **Configure** - Choose which row contains headers and where data starts
+3. **Map** - Map Excel columns to your fields (with auto-detection)
+4. **Validate** - Review validation results and fix errors inline
+
+## Date Format Support
+
+The importer supports multiple date formats:
+
+- DD/MM/YYYY, D/M/YYYY
+- DD-MM-YYYY, D-M-YYYY
+- YYYY-MM-DD, YYYY/MM/DD
+- DD MMM YYYY, MMMM D, YYYY
+- ISO 8601: YYYY-MM-DDTHH:mm:ss
+- Excel serial numbers
+
+All dates are converted to `YYYY-MM-DD` format.
+
+## Error Handling
+
+The component provides inline error validation with three types:
+
+- **Format errors** - Type conversion or regex validation failures
+- **Required field errors** - Missing values in required fields
+- **Duplicate errors** - Duplicate values in unique fields
+
+Users can edit cells directly to fix validation errors before importing.
+
+## Accessibility
+
+- Keyboard navigation support
+- ARIA labels for screen readers
+- Focus management through the import workflow
+- Accessible form controls
+
+## Browser Support
+
+Works in all modern browsers with ES2015+ support. Requires browser APIs:
+- File API for file reading
+- Blob API for template download

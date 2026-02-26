@@ -6,7 +6,7 @@ import type {
   ExcelFieldOption,
   FieldType,
   ValidationError,
-} from "./excel-types";
+} from "./types";
 
 dayjs.extend(customParseFormat);
 

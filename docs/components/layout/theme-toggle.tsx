@@ -9,7 +9,6 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
 export function ThemeToggle({
-  className,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>): React.ReactElement {
   const { theme, setTheme } = useTheme();

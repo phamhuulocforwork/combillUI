@@ -6,7 +6,6 @@ import { useCompletion } from "@ai-sdk/react";
 import {
   ArrowBigRightDash,
   CheckCircleIcon,
-  Code,
   Copy,
   Eye,
   LoaderCircle,
@@ -157,7 +156,7 @@ export default function SkeletonGenerator() {
               <ResultOutput
                 activeTab={activeTab}
                 code={code}
-                onCodeChange={(code) => {}}
+                onCodeChange={() => {}}
               />
             </div>
           </div>

@@ -22,6 +22,26 @@ export const examples: Registry = [
     ]
   },
   {
+    "name": "excel-importer-basic",
+    "type": "registry:example",
+    "files": [
+      {
+        "path": "registry/default/example/excel-importer-basic.tsx",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
+    "name": "excel-importer-validation",
+    "type": "registry:example",
+    "files": [
+      {
+        "path": "registry/default/example/excel-importer-validation.tsx",
+        "type": "registry:example"
+      }
+    ]
+  },
+  {
     "name": "kbd-default",
     "type": "registry:example",
     "files": [

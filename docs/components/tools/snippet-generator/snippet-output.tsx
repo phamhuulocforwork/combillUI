@@ -33,7 +33,7 @@ export function SnippetOutput({
       setCopyLabel("Copied!");
       setTimeout(() => setCopyLabel("Copy"), 1500);
       toast.success("Snippet copied to clipboard!");
-    } catch (err) {
+    } catch (_error) {
       toast.error("Failed to copy snippet");
     }
   };

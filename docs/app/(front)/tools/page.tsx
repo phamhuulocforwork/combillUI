@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
-
 import { categoriesTools } from "@/config/tools";
 
 //TODO: Add metadata

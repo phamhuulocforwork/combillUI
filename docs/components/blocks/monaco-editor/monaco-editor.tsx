@@ -2,7 +2,6 @@
 
 import React, {
   useCallback,
-  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -78,7 +77,7 @@ const MonacoEditor = React.forwardRef<MonacoEditorRef, MonacoEditorProps>(
       });
     }, []);
 
-    const handleEditorDidMount: OnMount = (editor, monaco) => {
+    const handleEditorDidMount: OnMount = (editor, _monaco) => {
       editorRef.current = editor;
 
       editor.onDidChangeModelContent(() => {
@@ -104,7 +103,7 @@ const MonacoEditor = React.forwardRef<MonacoEditorRef, MonacoEditorProps>(
       <div className='w-full h-full border border-border overflow-hidden rounded-md shadow-md'>
         <Editor
           height='100%'
-          language={languageMap[language]}
+          language={languageMap[language as keyof typeof languageMap]}
           value={code}
           theme={editorTheme}
           onMount={handleEditorDidMount}

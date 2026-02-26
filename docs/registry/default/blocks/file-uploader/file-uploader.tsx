@@ -2,8 +2,6 @@
 
 import * as React from "react";
 
-import Image from "next/image";
-
 import { FileTextIcon, UploadIcon, X } from "lucide-react";
 import Dropzone, {
   type DropzoneProps,
@@ -56,12 +54,12 @@ export function FileUploader(props: FileUploaderProps) {
   const onDrop = React.useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
       if (!multiple && maxFileCount === 1 && acceptedFiles.length > 1) {
-        toast.error("Không thể tải lên nhiều hơn 1 file một lượt");
+        toast.error("Cannot upload more than 1 file at a time");
         return;
       }
 
       if ((files?.length ?? 0) + acceptedFiles.length > maxFileCount) {
-        toast.error(`Không thể tải lên nhiều hơn ${maxFileCount} file`);
+        toast.error(`Cannot upload more than ${maxFileCount} files`);
         return;
       }
 
@@ -77,7 +75,7 @@ export function FileUploader(props: FileUploaderProps) {
 
       if (rejectedFiles.length > 0) {
         rejectedFiles.forEach(({ file }) => {
-          toast.error(`File ${file.name} bị từ chối`);
+          toast.error(`File ${file.name} was rejected`);
         });
       }
 
@@ -90,12 +88,12 @@ export function FileUploader(props: FileUploaderProps) {
           updatedFiles.length > 0 ? `${updatedFiles.length} files` : `file`;
 
         toast.promise(onUpload(updatedFiles), {
-          loading: `Đang tải lên ${target}...`,
+          loading: `Uploading ${target}...`,
           success: () => {
             setFiles([]);
-            return `${target} đã được tải lên`;
+            return `${target} uploaded`;
           },
-          error: `Không thể tải lên ${target}`,
+          error: `Failed to upload ${target}`,
         });
       }
     },
@@ -156,7 +154,7 @@ export function FileUploader(props: FileUploaderProps) {
                   />
                 </div>
                 <p className='font-medium text-muted-foreground'>
-                  Thả file vào đây
+                  Drop files here
                 </p>
               </div>
             ) : (
@@ -169,14 +167,14 @@ export function FileUploader(props: FileUploaderProps) {
                 </div>
                 <div className='flex flex-col gap-px'>
                   <p className='font-medium text-muted-foreground'>
-                    Kéo và thả file vào đây, hoặc nhấp để chọn file
+                    Drag and drop files here, or click to select files
                   </p>
                   <p className='text-sm text-muted-foreground/70'>
-                    Bạn có thể tải lên
+                    You can upload
                     {maxFileCount > 1
-                      ? ` ${maxFileCount === Infinity ? "nhiều" : maxFileCount}
-                      file (tối đa ${formatBytes(maxSize)} mỗi file)`
-                      : ` một file với kích thước tối đa ${formatBytes(
+                      ? ` ${maxFileCount === Infinity ? "multiple" : maxFileCount}
+                      files (up to ${formatBytes(maxSize)} each)`
+                      : ` one file with a maximum size of ${formatBytes(
                           maxSize,
                         )}`}
                   </p>
@@ -236,7 +234,7 @@ function FileCard({ file, progress, onRemove }: FileCardProps) {
           onClick={onRemove}
         >
           <X className='size-4' aria-hidden='true' />
-          <span className='sr-only'>Xóa file</span>
+          <span className='sr-only'>Remove file</span>
         </Button>
       </div>
     </div>
@@ -254,7 +252,7 @@ interface FilePreviewProps {
 function FilePreview({ file }: FilePreviewProps) {
   if (file.type.startsWith("image/")) {
     return (
-      <Image
+      <img
         src={file.preview}
         alt={file.name}
         width={48}

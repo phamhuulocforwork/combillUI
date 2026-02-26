@@ -178,7 +178,7 @@ export function isValidJSON(text: string): boolean {
 export function formatJSON(data: any, indent: number = 2): string {
   try {
     return JSON.stringify(data, null, indent);
-  } catch (error) {
+  } catch (_error) {
     return "";
   }
 }

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 
 import { ExcelImporter } from "@/registry/default/blocks/excel-importer/excel-importer";
-import type { ExcelFieldOption } from "@/registry/default/blocks/excel-importer/excel-types";
+import type { ExcelFieldOption } from "@combillui/excel-importer";
 
 export default function TestPage() {
   const [testResults, setTestResults] = useState<{
@@ -83,7 +83,7 @@ export default function TestPage() {
         `Successfully imported ${data.length} employees`,
         data,
       );
-    } catch (error) {
+    } catch (_error) {
       updateTestResult("employee", "error", "Failed to import employees");
     }
   };

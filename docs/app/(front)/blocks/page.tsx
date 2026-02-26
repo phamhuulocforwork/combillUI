@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = async (props: {
+const Page = async (_props: {
   searchParams: Promise<{ columns: string; q: string }>;
 }) => {
   return (

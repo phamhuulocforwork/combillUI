@@ -5,12 +5,12 @@ import type {
   ExcelFieldOption,
   ValidationError,
   ValidationResult,
-} from "@/registry/default/blocks/excel-importer/excel-types";
+} from "./types";
 import {
   detectDuplicates,
   parseExcelFile,
   validateField,
-} from "@/registry/default/blocks/excel-importer/excel-utils";
+} from "./utils";
 
 interface ExcelState {
   fileName: string;

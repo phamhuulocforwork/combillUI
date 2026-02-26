@@ -68,10 +68,9 @@ import { cn } from "@/lib/utils";
 import type {
   ExcelFieldOption,
   ValidationResult,
-} from "@/registry/default/blocks/excel-importer/excel-types";
-import { generateTemplateExcel } from "@/registry/default/blocks/excel-importer/excel-utils";
+} from "@combillui/excel-importer";
+import { generateTemplateExcel, useParseExcel } from "@combillui/excel-importer";
 import { FileUploader } from "@/registry/default/blocks/file-uploader/file-uploader";
-import { useParseExcel } from "@/registry/default/hooks/use-parse-excel";
 
 interface ExcelImporterProps
   extends React.ComponentPropsWithoutRef<typeof DialogTrigger>,
