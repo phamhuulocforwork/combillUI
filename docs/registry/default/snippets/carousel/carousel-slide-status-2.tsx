@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
   type CarouselApi,
@@ -10,7 +10,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
 export default function CarouselSlideStatus2() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -25,20 +25,20 @@ export default function CarouselSlideStatus2() {
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   return (
-    <div className='mx-auto max-w-xs'>
-      <Carousel setApi={setApi} className='w-full max-w-xs'>
+    <div className="mx-auto max-w-xs">
+      <Carousel setApi={setApi} className="w-full max-w-xs">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
               <Card>
-                <CardContent className='flex aspect-video items-center justify-center p-6'>
-                  <span className='text-4xl font-semibold'>{index + 1}</span>
+                <CardContent className="flex aspect-video items-center justify-center p-6">
+                  <span className="font-semibold text-4xl">{index + 1}</span>
                 </CardContent>
               </Card>
             </CarouselItem>
@@ -47,7 +47,7 @@ export default function CarouselSlideStatus2() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className='mt-4 text-center text-sm text-muted-foreground'>
+      <div className="mt-4 text-center text-muted-foreground text-sm">
         {current} / {count}
       </div>
     </div>

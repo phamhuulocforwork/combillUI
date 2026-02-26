@@ -1,4 +1,4 @@
-export type FieldType = "string" | "number" | "date" | "boolean";
+export type FieldType = 'string' | 'number' | 'date' | 'boolean';
 
 export interface ExcelFieldOption {
   label: string;
@@ -14,7 +14,7 @@ export interface ValidationError {
   fieldKey: string;
   rawValue: string;
   description: string;
-  type: "format" | "blankInRequired" | "duplicate";
+  type: 'format' | 'blankInRequired' | 'duplicate';
 }
 
 export interface ValidationResult<T = Record<string, unknown>> {

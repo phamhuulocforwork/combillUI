@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-import { defineStepper } from "@/registry/default/ui/stepper";
+import { defineStepper } from '@/registry/default/ui/stepper';
 
 const {
   StepperProvider,
@@ -14,25 +14,25 @@ const {
   StepperDescription,
 } = defineStepper(
   {
-    id: "step-1",
-    title: "Info",
-    description: "Your information",
+    id: 'step-1',
+    title: 'Info',
+    description: 'Your information',
   },
   {
-    id: "step-2",
-    title: "Docs",
-    description: "Your documents",
+    id: 'step-2',
+    title: 'Docs',
+    description: 'Your documents',
   },
   {
-    id: "step-3",
-    title: "Completed",
-    description: "Your information and documents are completed",
+    id: 'step-3',
+    title: 'Completed',
+    description: 'Your information and documents are completed',
   },
 );
 
 export default function StepperDemo() {
   return (
-    <StepperProvider className='space-y-4' variant='horizontal'>
+    <StepperProvider className="space-y-4" variant="horizontal">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
@@ -48,14 +48,14 @@ export default function StepperDemo() {
             ))}
           </StepperNavigation>
           {methods.switch({
-            "step-1": (step) => <Content id={step.id} />,
-            "step-2": (step) => <Content id={step.id} />,
-            "step-3": (step) => <Content id={step.id} />,
+            'step-1': (step) => <Content id={step.id} />,
+            'step-2': (step) => <Content id={step.id} />,
+            'step-3': (step) => <Content id={step.id} />,
           })}
           <StepperControls>
             {!methods.isLast && (
               <Button
-                variant='secondary'
+                variant="secondary"
                 onClick={methods.prev}
                 disabled={methods.isFirst}
               >
@@ -63,7 +63,7 @@ export default function StepperDemo() {
               </Button>
             )}
             <Button onClick={methods.isLast ? methods.reset : methods.next}>
-              {methods.isLast ? "Reset" : "Next"}
+              {methods.isLast ? 'Reset' : 'Next'}
             </Button>
           </StepperControls>
         </React.Fragment>
@@ -74,8 +74,8 @@ export default function StepperDemo() {
 
 const Content = ({ id }: { id: string }) => {
   return (
-    <StepperPanel className='h-[200px] content-center rounded border p-8'>
-      <p className='text-xl font-normal'>Content for {id}</p>
+    <StepperPanel className="h-[200px] content-center rounded border p-8">
+      <p className="font-normal text-xl">Content for {id}</p>
     </StepperPanel>
   );
 };

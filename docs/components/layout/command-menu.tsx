@@ -1,12 +1,11 @@
-"use client";
+'use client';
 
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Code, Search } from 'lucide-react';
 
-import { useRouter } from "next/navigation";
-
-import { Code, Search } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/navigation';
+import { Fragment, useCallback, useEffect, useState } from 'react';
+import { searchData } from '@/assets/data/search';
+import { Button } from '@/components/ui/button';
 import {
   CommandDialog,
   CommandEmpty,
@@ -16,22 +15,19 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command";
-
-import { useIsMobile } from "@/hooks/use-mobile";
-
-import { searchData } from "@/assets/data/search";
+} from '@/components/ui/command';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CommandMenu = () => {
   const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const isMobile = useIsMobile();
   const router = useRouter();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if ((e.key === "enter" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+      if ((e.key === 'enter' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
           e.target instanceof HTMLInputElement ||
@@ -46,9 +42,9 @@ const CommandMenu = () => {
       }
     };
 
-    document.addEventListener("keydown", down);
+    document.addEventListener('keydown', down);
 
-    return () => document.removeEventListener("keydown", down);
+    return () => document.removeEventListener('keydown', down);
   }, []);
 
   const runCommand = useCallback((command: () => unknown) => {
@@ -59,18 +55,18 @@ const CommandMenu = () => {
   return (
     <>
       <Button
-        {...(isMobile ? { variant: "ghost" } : { variant: "outline" })}
-        className='xl:text-muted-foreground relative w-9 cursor-pointer text-sm font-normal xl:w-52 xl:justify-start xl:!pe-12 xl:shadow-none'
+        {...(isMobile ? { variant: 'ghost' } : { variant: 'outline' })}
+        className="xl:!pe-12 relative w-9 cursor-pointer font-normal text-sm xl:w-52 xl:justify-start xl:text-muted-foreground xl:shadow-none"
         onClick={() => setOpen(true)}
-        {...(isMobile && { size: "icon" })}
+        {...(isMobile && { size: 'icon' })}
       >
-        <Search className='size-4' />
-        <span className='inline-flex max-xl:hidden'>Search...</span>
-        <span className='sr-only'>Search</span>
+        <Search className="size-4" />
+        <span className="inline-flex max-xl:hidden">Search...</span>
+        <span className="sr-only">Search</span>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
-          placeholder='Type a command or search...'
+          placeholder="Type a command or search..."
           value={search}
           onValueChange={setSearch}
         />
@@ -97,15 +93,15 @@ const CommandMenu = () => {
               </Fragment>
             ))
           ) : (
-            <CommandGroup heading='Suggestions'>
+            <CommandGroup heading="Suggestions">
               <CommandItem
-                onSelect={() => runCommand(() => router.push("/snippets"))}
+                onSelect={() => runCommand(() => router.push('/snippets'))}
               >
                 <Code />
                 <span>Snippets</span>
               </CommandItem>
               <CommandItem
-                onSelect={() => runCommand(() => router.push("/blocks"))}
+                onSelect={() => runCommand(() => router.push('/blocks'))}
               >
                 <Code />
                 <span>Blocks (coming soon)</span>

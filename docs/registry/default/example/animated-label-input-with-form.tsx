@@ -1,28 +1,27 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Send } from 'lucide-react';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Send } from "lucide-react";
-import { useForm } from "react-hook-form";
-
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from '@/hooks/use-toast';
 
-import { AnimatedLabelInput } from "@/registry/default/ui/animated-label-input";
+import { AnimatedLabelInput } from '@/registry/default/ui/animated-label-input';
 
 const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,28 +31,28 @@ export default function AnimatedLabelInputWithForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
   function onSubmit(data: FormValues) {
     toast({
-      title: "Form submitted!",
+      title: 'Form submitted!',
       description: `Email: ${data.email}`,
     });
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-4'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <AnimatedLabelInput label='Email' {...field} />
+                <AnimatedLabelInput label="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -61,13 +60,13 @@ export default function AnimatedLabelInputWithForm() {
         />
         <FormField
           control={form.control}
-          name='password'
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <AnimatedLabelInput
-                  label='Password'
-                  type='password'
+                  label="Password"
+                  type="password"
                   {...field}
                 />
               </FormControl>
@@ -75,7 +74,7 @@ export default function AnimatedLabelInputWithForm() {
             </FormItem>
           )}
         />
-        <Button className='w-full' type='submit'>
+        <Button className="w-full" type="submit">
           Submit
           <Send />
         </Button>

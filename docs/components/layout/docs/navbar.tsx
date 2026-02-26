@@ -1,14 +1,13 @@
-"use client";
+'use client';
 
-import { type ButtonHTMLAttributes, type HTMLAttributes } from "react";
+import { SidebarTrigger } from 'fumadocs-core/sidebar';
+import { Menu, X } from 'lucide-react';
+import type { ButtonHTMLAttributes, HTMLAttributes } from 'react';
 
-import { SidebarTrigger } from "fumadocs-core/sidebar";
-import { Menu, X } from "lucide-react";
+import { buttonVariants } from '@/components/ui/button';
+import { useSidebar } from '@/components/ui/sidebar';
 
-import { buttonVariants } from "@/components/ui/button";
-import { useSidebar } from "@/components/ui/sidebar";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 export function Navbar(props: HTMLAttributes<HTMLElement>) {
   const { open } = useSidebar();
@@ -17,8 +16,8 @@ export function Navbar(props: HTMLAttributes<HTMLElement>) {
     <header
       {...props}
       className={cn(
-        "sticky top-[var(--fd-banner-height)] flex flex-row items-center border-b border-fd-foreground/10 px-4 transition-colors",
-        open && "bg-fd-background/80 backdrop-blur-lg",
+        'sticky top-[var(--fd-banner-height)] flex flex-row items-center border-fd-foreground/10 border-b px-4 transition-colors',
+        open && 'bg-fd-background/80 backdrop-blur-lg',
         props.className,
       )}
     >
@@ -37,8 +36,8 @@ export function NavbarSidebarTrigger(
       {...props}
       className={cn(
         buttonVariants({
-          variant: "ghost",
-          size: "icon",
+          variant: 'ghost',
+          size: 'icon',
         }),
         props.className,
       )}

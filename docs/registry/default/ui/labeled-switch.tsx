@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as SwitchPrimitives from '@radix-ui/react-switch';
+import { motion } from 'framer-motion';
+import * as React from 'react';
 
-import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { motion } from "framer-motion";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface LabeledSwitchProps {
   firstLabel: React.ReactNode;
@@ -26,7 +25,7 @@ const LabeledSwitch = React.forwardRef<
     return (
       <SwitchPrimitives.Root
         className={cn(
-          "relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors",
+          'relative flex w-fit cursor-pointer items-center rounded-full ring-2 ring-input transition-colors',
           className,
         )}
         ref={ref}
@@ -41,20 +40,20 @@ const LabeledSwitch = React.forwardRef<
         </LabeledSwitchButton>
         <SwitchPrimitives.Thumb
           className={cn(
-            "absolute inset-0 w-full z-0 flex data-[state=unchecked]:justify-start data-[state=checked]:justify-end",
+            'absolute inset-0 z-0 flex w-full data-[state=unchecked]:justify-start data-[state=checked]:justify-end',
           )}
         >
           <motion.span
             layout
-            transition={{ type: "spring", damping: 15, stiffness: 250 }}
-            className='h-full w-1/2 rounded-full bg-muted'
+            transition={{ type: 'spring', damping: 15, stiffness: 250 }}
+            className="h-full w-1/2 rounded-full bg-muted"
           />
         </SwitchPrimitives.Thumb>
       </SwitchPrimitives.Root>
     );
   },
 );
-LabeledSwitch.displayName = "LabeledSwitch";
+LabeledSwitch.displayName = 'LabeledSwitch';
 
 const LabeledSwitchButton = ({
   children,
@@ -65,12 +64,12 @@ const LabeledSwitchButton = ({
 }) => (
   <div
     className={cn(
-      "relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 text-xs font-bold transition-colors md:py-1.5 md:pl-3 md:pr-3.5",
-      selected ? "text-primary" : "text-muted-foreground",
+      'relative z-10 flex w-full items-center justify-center gap-2 px-3 py-3 font-bold text-xs transition-colors md:py-1.5 md:pr-3.5 md:pl-3',
+      selected ? 'text-primary' : 'text-muted-foreground',
     )}
     onMouseDown={(e) => e.preventDefault()}
   >
-    <span className='relative z-10'>{children}</span>
+    <span className="relative z-10">{children}</span>
   </div>
 );
 

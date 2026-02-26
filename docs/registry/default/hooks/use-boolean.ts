@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 type UseBooleanReturn = {
   value: boolean;
@@ -9,8 +9,8 @@ type UseBooleanReturn = {
 };
 
 export function useBoolean(defaultValue = false): UseBooleanReturn {
-  if (typeof defaultValue !== "boolean") {
-    throw new Error("defaultValue must be `true` or `false`");
+  if (typeof defaultValue !== 'boolean') {
+    throw new Error('defaultValue must be `true` or `false`');
   }
   const [value, setValue] = React.useState(defaultValue);
 

@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-const DEFAULT_EVENTS = ["mousedown", "touchstart"];
+const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 export function useClickOutside<T extends HTMLElement = any>(
   handler: () => void,
@@ -14,8 +14,8 @@ export function useClickOutside<T extends HTMLElement = any>(
       const { target } = event ?? {};
       if (Array.isArray(nodes)) {
         const shouldIgnore =
-          target?.hasAttribute("data-ignore-outside-clicks") ||
-          (!document.body.contains(target) && target.tagName !== "HTML");
+          target?.hasAttribute('data-ignore-outside-clicks') ||
+          (!document.body.contains(target) && target.tagName !== 'HTML');
         const shouldTrigger = nodes.every(
           (node) => !!node && !event.composedPath().includes(node),
         );

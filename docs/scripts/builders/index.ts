@@ -1,10 +1,9 @@
-export { buildUIRegistry } from "./ui-builder";
-export { buildExampleRegistry } from "./example-builder";
-export { buildSnippetsRegistry } from "./snippets-builder";
-export { buildHooksRegistry } from "./hooks-builder";
-export { buildShadcnCli } from "./cli-builder";
-export { buildMainRegistry } from "./main-builder";
-
-export { config } from "./config";
-export { detectDependencies } from "./utils";
-export type { DependencyAnalysis, BuildConfig, BuilderFunction } from "./types";
+export { buildShadcnCli } from './cli-builder';
+export { config } from './config';
+export { buildExampleRegistry } from './example-builder';
+export { buildHooksRegistry } from './hooks-builder';
+export { buildMainRegistry } from './main-builder';
+export { buildSnippetsRegistry } from './snippets-builder';
+export type { BuildConfig, BuilderFunction, DependencyAnalysis } from './types';
+export { buildUIRegistry } from './ui-builder';
+export { detectDependencies } from './utils';

@@ -1,4 +1,4 @@
-import { html } from "common-tags";
+import { html } from 'common-tags';
 
 const parseAtom = (
   description: string,

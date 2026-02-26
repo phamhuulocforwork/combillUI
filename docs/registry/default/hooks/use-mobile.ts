@@ -1,6 +1,5 @@
-import * as React from "react";
-
-import debounce from "lodash.debounce";
+import debounce from 'lodash.debounce';
+import * as React from 'react';
 
 const useIsMobile = (): boolean => {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -13,10 +12,10 @@ const useIsMobile = (): boolean => {
 
     updateSize();
 
-    window.addEventListener("resize", debouncedUpdateSize);
+    window.addEventListener('resize', debouncedUpdateSize);
 
     return (): void =>
-      window.removeEventListener("resize", debouncedUpdateSize);
+      window.removeEventListener('resize', debouncedUpdateSize);
   }, []);
 
   return isMobile;

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-import { useFullscreen } from "@/registry/default/hooks/use-fullscreen";
+import { useFullscreen } from '@/registry/default/hooks/use-fullscreen';
 
 export default function UseFullscreenWithTarget() {
   const elementRef = React.useRef<HTMLDivElement>(null);
@@ -17,16 +17,16 @@ export default function UseFullscreenWithTarget() {
   }, [ref]);
 
   return (
-    <div className='flex flex-col gap-4 items-center justify-center'>
+    <div className="flex flex-col items-center justify-center gap-4">
       <img
         ref={ref}
-        src='https://raw.githubusercontent.com/phamhuulocforwork/combillUI/master/public/images/demo.png'
-        alt='demo'
+        src="https://raw.githubusercontent.com/phamhuulocforwork/combillUI/master/public/images/demo.png"
+        alt="demo"
         width={200}
-        className='rounded-md'
+        className="rounded-md"
       />
-      <Button onClick={toggle} variant={fullscreen ? "destructive" : "default"}>
-        {fullscreen ? "Exit fullscreen" : "View in fullscreen"}
+      <Button onClick={toggle} variant={fullscreen ? 'destructive' : 'default'}>
+        {fullscreen ? 'Exit fullscreen' : 'View in fullscreen'}
       </Button>
     </div>
   );

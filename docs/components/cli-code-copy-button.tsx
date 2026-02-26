@@ -1,11 +1,18 @@
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Check } from 'lucide-react';
-import { trackBlockCliCopy } from '@/lib/analytics';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { useConfig } from '@/hooks/use-config';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
+import { trackBlockCliCopy } from '@/lib/analytics';
 
-export function CliCodeCopyButton({ name }: { name: string } & React.ComponentProps<typeof Button>) {
+export function CliCodeCopyButton({
+  name,
+}: { name: string } & React.ComponentProps<typeof Button>) {
   const { copy, copied } = useCopyToClipboard();
   const [config] = useConfig();
   const packageManager = config.packageManager || 'pnpm';
@@ -23,7 +30,7 @@ export function CliCodeCopyButton({ name }: { name: string } & React.ComponentPr
           <Button
             size="sm"
             variant="outline"
-            className="h-7.5 text-muted-foreground w-36 justify-start"
+            className="h-7.5 w-36 justify-start text-muted-foreground"
             title="Copy CLI command"
             onClick={() => {
               copy(commands[packageManager]);

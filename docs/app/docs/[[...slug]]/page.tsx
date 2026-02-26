@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
-
-import { notFound } from "next/navigation";
-
 import {
   DocsBody,
   DocsDescription,
   DocsPage,
   DocsTitle,
-} from "fumadocs-ui/page";
-
-import { DynamicLink } from "@/components/dynamic-link";
-import { useMDXComponents } from "@/components/mdx-components";
-
-import { source } from "@/app/source";
+} from 'fumadocs-ui/page';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { source } from '@/app/source';
+import { DynamicLink } from '@/components/dynamic-link';
+import { useMDXComponents } from '@/components/mdx-components';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -28,15 +24,15 @@ export default async function Page(props: {
       toc={page.data.toc}
       full={page.data.full}
       tableOfContent={{
-        style: "clerk",
+        style: 'clerk',
       }}
     >
-      <div className='flex flex-col gap-2'>
+      <div className="flex flex-col gap-2">
         <DocsTitle>{page.data.title}</DocsTitle>
-        <DocsDescription className='mb-2.5'>
+        <DocsDescription className="mb-2.5">
           {page.data.description}
         </DocsDescription>
-        <div className='flex items-center gap-2'>
+        <div className="flex items-center gap-2">
           {(page.data.links as any)?.doc ? (
             <DynamicLink href={(page.data.links as any).doc}>Docs</DynamicLink>
           ) : null}

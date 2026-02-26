@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
   type CarouselApi,
@@ -10,9 +10,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 export default function CarouselWithPagination() {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -27,20 +27,20 @@ export default function CarouselWithPagination() {
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   return (
-    <div className='mx-auto max-w-xs'>
-      <Carousel setApi={setApi} className='w-full max-w-xs'>
+    <div className="mx-auto max-w-xs">
+      <Carousel setApi={setApi} className="w-full max-w-xs">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
               <Card>
-                <CardContent className='flex aspect-video items-center justify-center p-6'>
-                  <span className='text-4xl font-semibold'>{index + 1}</span>
+                <CardContent className="flex aspect-video items-center justify-center p-6">
+                  <span className="font-semibold text-4xl">{index + 1}</span>
                 </CardContent>
               </Card>
             </CarouselItem>
@@ -49,13 +49,13 @@ export default function CarouselWithPagination() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className='mt-4 flex items-center justify-center gap-2'>
+      <div className="mt-4 flex items-center justify-center gap-2">
         {Array.from({ length: count }).map((_, index) => (
           <button
             key={index}
             onClick={() => api?.scrollTo(index)}
-            className={cn("h-3.5 w-3.5 rounded-full border-2", {
-              "border-primary": current === index + 1,
+            className={cn('h-3.5 w-3.5 rounded-full border-2', {
+              'border-primary': current === index + 1,
             })}
           />
         ))}

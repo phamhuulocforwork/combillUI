@@ -1,16 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 import type {
   DataValidationSummary,
   ExcelFieldOption,
   ValidationError,
   ValidationResult,
-} from "./types";
-import {
-  detectDuplicates,
-  parseExcelFile,
-  validateField,
-} from "./utils";
+} from './types';
+import { detectDuplicates, parseExcelFile, validateField } from './utils';
 
 interface ExcelState {
   fileName: string;
@@ -38,7 +34,7 @@ export function useParseExcel({
   onError,
 }: UseParseExcelProps) {
   const [excelState, setExcelState] = React.useState<ExcelState>({
-    fileName: "",
+    fileName: '',
     rawData: [],
     headerRow: null,
     dataStartRow: null,
@@ -73,7 +69,7 @@ export function useParseExcel({
 
       setExcelState((prev) => ({
         ...prev,
-        fileName: file.name.replace(/\.[^/.]+$/, ""),
+        fileName: file.name.replace(/\.[^/.]+$/, ''),
         rawData,
         headerRow,
         dataStartRow,
@@ -81,7 +77,7 @@ export function useParseExcel({
       }));
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Failed to parse file";
+        err instanceof Error ? err.message : 'Failed to parse file';
       setExcelState((prev) => ({ ...prev, error: message }));
       onError?.(message);
     }
@@ -105,7 +101,7 @@ export function useParseExcel({
     const { rawData, headerRow, dataStartRow } = excelState;
 
     if (headerRow === null || dataStartRow === null) {
-      const message = "Please select header row and data start row";
+      const message = 'Please select header row and data start row';
       setExcelState((prev) => ({ ...prev, error: message }));
       onError?.(message);
       return;
@@ -299,7 +295,7 @@ export function useParseExcel({
       Object.keys(row).reduce(
         (acc, key) => ({
           ...acc,
-          [key]: row[key] === null ? "" : row[key],
+          [key]: row[key] === null ? '' : row[key],
         }),
         {},
       ),
@@ -352,7 +348,7 @@ export function useParseExcel({
       newResults.forEach((result) => {
         if (result.errors) {
           result.errors = result.errors.filter(
-            (error) => !error.description.includes("duplicated"),
+            (error) => !error.description.includes('duplicated'),
           );
           if (result.errors.length === 0) {
             result.errors = undefined;

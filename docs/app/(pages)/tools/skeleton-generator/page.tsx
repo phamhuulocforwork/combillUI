@@ -1,8 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-
-import { useCompletion } from "@ai-sdk/react";
+import { useCompletion } from '@ai-sdk/react';
 import {
   ArrowBigRightDash,
   CheckCircleIcon,
@@ -10,23 +8,22 @@ import {
   Eye,
   LoaderCircle,
   Wand2,
-} from "lucide-react";
+} from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
-import { MonacoEditorRef } from "@/components/blocks/monaco-editor/monaco-editor";
-import { Icons } from "@/components/icons";
-import CodeInput from "@/components/tools/skeleton-generator/code-input";
-import ResultOutput from "@/components/tools/skeleton-generator/result-output";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/tabs";
-
-import { htmlToJsx } from "@/lib/utils";
-
-import { useToast } from "@/hooks/use-toast";
+import type { MonacoEditorRef } from '@/components/blocks/monaco-editor/monaco-editor';
+import { Icons } from '@/components/icons';
+import { Tabs, TabsList, TabsTrigger } from '@/components/tabs';
+import CodeInput from '@/components/tools/skeleton-generator/code-input';
+import ResultOutput from '@/components/tools/skeleton-generator/result-output';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { htmlToJsx } from '@/lib/utils';
 
 export default function SkeletonGenerator() {
-  const [activeTab, setActiveTab] = useState("preview");
-  const [htmlCode, setHtmlCode] = useState("");
-  const [copyLabel, setCopyLabel] = useState("Copy");
+  const [activeTab, setActiveTab] = useState('preview');
+  const [htmlCode, setHtmlCode] = useState('');
+  const [copyLabel, setCopyLabel] = useState('Copy');
   const editorRef = useRef<MonacoEditorRef>(null);
   const { toast } = useToast();
 
@@ -42,55 +39,55 @@ export default function SkeletonGenerator() {
 
     // Small delay to ensure formatting completes before submission
     setTimeout(async () => {
-      setActiveTab("html");
+      setActiveTab('html');
       await complete(htmlCode);
     }, 100);
   };
 
   const { completion, complete, isLoading, error } = useCompletion({
-    api: "/api/generate-skeleton",
+    api: '/api/generate-skeleton',
     onFinish: () => {
-      console.log("Completion finished, switching to preview tab");
-      setActiveTab("preview");
+      console.log('Completion finished, switching to preview tab');
+      setActiveTab('preview');
     },
   });
 
   useEffect(() => {
     if (error) {
       toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
+        variant: 'destructive',
+        title: 'Uh oh! Something went wrong.',
         description: error.message,
       });
     }
   }, [error]);
 
-  const code = completion.replace(/^```html\n/, "").replace(/\n```$/, "");
+  const code = completion.replace(/^```html\n/, '').replace(/\n```$/, '');
 
   return (
-    <div className='flex flex-col h-[calc(100vh-var(--header-height))] container mx-auto border border-border border-dashed'>
-      <main className='flex-grow flex overflow-hidden '>
-        <div className='flex-1 flex flex-col lg:flex-row overflow-hidden'>
-          <div className='flex-1 flex flex-col overflow-hidden rounded-none lg:border-r'>
-            <div className='flex flex-row items-center justify-between  px-4 pt-4 pb-0'>
-              <div className='text-lg font-bold '>HTML Code</div>
-              <div className='flex gap-2'>
+    <div className="container mx-auto flex h-[calc(100vh-var(--header-height))] flex-col border border-border border-dashed">
+      <main className="flex flex-grow overflow-hidden">
+        <div className="flex flex-1 flex-col overflow-hidden lg:flex-row">
+          <div className="flex flex-1 flex-col overflow-hidden rounded-none lg:border-r">
+            <div className="flex flex-row items-center justify-between px-4 pt-4 pb-0">
+              <div className="font-bold text-lg">HTML Code</div>
+              <div className="flex gap-2">
                 <Button
                   onClick={formatCode}
                   disabled={!htmlCode.trim() || isLoading}
-                  size='icon'
+                  size="icon"
                 >
-                  <Wand2 className='w-4 h-4' />
+                  <Wand2 className="h-4 w-4" />
                 </Button>
                 <Button
                   onClick={handleSubmit}
                   disabled={isLoading}
-                  className='text-sm font-medium'
+                  className="font-medium text-sm"
                 >
                   {isLoading ? (
                     <>
                       Generating
-                      <LoaderCircle className='animate-spin' />
+                      <LoaderCircle className="animate-spin" />
                     </>
                   ) : (
                     <>
@@ -101,7 +98,7 @@ export default function SkeletonGenerator() {
                 </Button>
               </div>
             </div>
-            <div className='flex-grow p-4 overflow-hidden'>
+            <div className="flex-grow overflow-hidden p-4">
               <CodeInput
                 ref={editorRef}
                 code={htmlCode}
@@ -109,50 +106,50 @@ export default function SkeletonGenerator() {
               />
             </div>
           </div>
-          <div className='flex-1 flex flex-col overflow-hidden rounded-none'>
-            <div className='flex flex-row items-center justify-between space-y-0 pt-4 pb-0 px-4'>
+          <div className="flex flex-1 flex-col overflow-hidden rounded-none">
+            <div className="flex flex-row items-center justify-between space-y-0 px-4 pt-4 pb-0">
               <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className='grid w-full grid-cols-3 max-w-xs'>
+                <TabsList className="grid w-full max-w-xs grid-cols-3">
                   <TabsTrigger
-                    value='preview'
-                    className='flex items-center gap-2'
+                    value="preview"
+                    className="flex items-center gap-2"
                   >
-                    <Eye className='size-4' />
-                    <span className='hidden md:inline'>Preview</span>
+                    <Eye className="size-4" />
+                    <span className="hidden md:inline">Preview</span>
                   </TabsTrigger>
-                  <TabsTrigger value='html' className='flex items-center gap-2'>
-                    <Icons.html className='size-4' />
-                    <span className='hidden md:inline'>HTML</span>
+                  <TabsTrigger value="html" className="flex items-center gap-2">
+                    <Icons.html className="size-4" />
+                    <span className="hidden md:inline">HTML</span>
                   </TabsTrigger>
                   <TabsTrigger
-                    value='react'
-                    className='flex items-center gap-2'
+                    value="react"
+                    className="flex items-center gap-2"
                   >
-                    <Icons.reactjs className='size-4' />
-                    <span className='hidden md:inline'>React</span>
+                    <Icons.reactjs className="size-4" />
+                    <span className="hidden md:inline">React</span>
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
               <Button
-                variant='outline'
-                className='font-medium text-sm'
+                variant="outline"
+                className="font-medium text-sm"
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    activeTab === "html" ? code : htmlToJsx(code),
+                    activeTab === 'html' ? code : htmlToJsx(code),
                   );
-                  setCopyLabel("Copied!");
-                  setTimeout(() => setCopyLabel("Copy"), 1500);
+                  setCopyLabel('Copied!');
+                  setTimeout(() => setCopyLabel('Copy'), 1500);
                 }}
               >
-                {copyLabel === "Copied!" ? (
-                  <CheckCircleIcon className='text-green-500 ' />
+                {copyLabel === 'Copied!' ? (
+                  <CheckCircleIcon className="text-green-500" />
                 ) : (
                   <Copy />
                 )}
                 <span>{copyLabel}</span>
               </Button>
             </div>
-            <div className='flex-grow p-4 overflow-hidden'>
+            <div className="flex-grow overflow-hidden p-4">
               <ResultOutput
                 activeTab={activeTab}
                 code={code}

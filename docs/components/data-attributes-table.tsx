@@ -5,7 +5,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 
 interface DataAttributesTableProps {
   attributes?: {
@@ -21,11 +21,11 @@ export function DataAttributesTable({
 }: DataAttributesTableProps) {
   const allAttributes = [
     ...(attributes ?? []),
-    ...(slot ? [{ title: "[data-slot]", value: `"${slot}"` }] : []),
+    ...(slot ? [{ title: '[data-slot]', value: `"${slot}"` }] : []),
   ];
 
   return (
-    <div className='mdx'>
+    <div className="mdx">
       <Table>
         <TableHeader>
           <TableRow>
@@ -37,11 +37,11 @@ export function DataAttributesTable({
           {allAttributes.map((attribute, index) => (
             <TableRow key={`${attribute.title}-${index}`}>
               <TableCell>
-                <code className='text-[13px]'>{attribute.title}</code>
+                <code className="text-[13px]">{attribute.title}</code>
               </TableCell>
               <TableCell>
                 {Array.isArray(attribute.value) ? (
-                  <code className='font-mono text-foreground/80'>
+                  <code className="font-mono text-foreground/80">
                     {attribute.value.map((item, index) => (
                       <span key={item}>
                         {index + 1 !== attribute.value.length

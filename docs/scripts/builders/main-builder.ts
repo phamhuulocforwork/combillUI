@@ -1,20 +1,20 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
-import type { Component, ComponentFile } from "@/registry/schema";
+import type { Component, ComponentFile } from '@/registry/schema';
 
-import { config } from "./config";
+import { config } from './config';
 
 export async function buildMainRegistry(): Promise<void> {
-  console.log("🔨 Building main registry...");
+  console.log('🔨 Building main registry...');
 
   // Dynamically import registry after it's been generated
-  const { registry } = await import("@/registry");
+  const { registry } = await import('@/registry');
 
   const components: Record<string, Component> = {};
 
   for (const component of registry) {
-    const { name, description = "", type, files } = component;
+    const { name, description = '', type, files } = component;
 
     const processedFiles: ComponentFile[] = files.map((file) => ({
       ...file,
@@ -46,7 +46,7 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/${component.files[0].path}")),
     }`,
       )
-      .join(",\n")}
+      .join(',\n')}
   }
 };`;
 
@@ -56,5 +56,5 @@ export const Index: Record<string, any> = {
   }
 
   fs.writeFileSync(config.REGISTRY_OUTPUT_FILE, registryContent);
-  console.log("✅ Generated __registry__/index.tsx");
+  console.log('✅ Generated __registry__/index.tsx');
 }

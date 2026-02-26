@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { Loader2 } from 'lucide-react';
+import QRCode from 'qrcode';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
-import { Loader2 } from "lucide-react";
-import QRCode from "qrcode";
-import { toast } from "sonner";
-
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
-import { ResponsiveTextarea } from "@/registry/default/ui/responsive-textarea";
+import { ResponsiveTextarea } from '@/registry/default/ui/responsive-textarea';
 
 interface QRInputCardProps {
   onQRGenerated: (pngDataUrl: string, svgString: string) => void;
@@ -25,12 +24,12 @@ export default function QRInputCard({
   onQRGenerated,
   onGeneratingChange,
 }: QRInputCardProps) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generateQRCode = async () => {
     if (!text.trim()) {
-      toast.error("Please enter content to generate QR code");
+      toast.error('Please enter content to generate QR code');
       return;
     }
 
@@ -42,26 +41,26 @@ export default function QRInputCard({
         width: 1280,
         margin: 2,
         color: {
-          dark: "#000000",
-          light: "#FFFFFF",
+          dark: '#000000',
+          light: '#FFFFFF',
         },
       });
 
       const svg = await QRCode.toString(text, {
-        type: "svg",
+        type: 'svg',
         width: 256,
         margin: 2,
         color: {
-          dark: "#000000",
-          light: "#FFFFFF",
+          dark: '#000000',
+          light: '#FFFFFF',
         },
       });
 
       onQRGenerated(pngUrl, svg);
-      toast.success("QR code generated successfully!");
+      toast.success('QR code generated successfully!');
     } catch (error) {
-      console.error("Error generating QR code:", error);
-      toast.error("An error occurred while generating QR code");
+      console.error('Error generating QR code:', error);
+      toast.error('An error occurred while generating QR code');
     } finally {
       setIsGenerating(false);
       onGeneratingChange(false);
@@ -69,7 +68,7 @@ export default function QRInputCard({
   };
 
   const onEnterPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !isGenerating) {
+    if (e.key === 'Enter' && !isGenerating) {
       generateQRCode();
     }
   };
@@ -82,26 +81,26 @@ export default function QRInputCard({
           Enter text, URL, or data you want to convert to a QR code
         </CardDescription>
       </CardHeader>
-      <CardContent className='space-y-4'>
-        <div className='space-y-2'>
-          <Label htmlFor='qr-text'>Content</Label>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="qr-text">Content</Label>
           <ResponsiveTextarea
-            id='qr-text'
+            id="qr-text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={onEnterPress}
-            placeholder='Enter text, URL, email...'
+            placeholder="Enter text, URL, email..."
           />
         </div>
 
         <Button
           onClick={generateQRCode}
           disabled={!text.trim() || isGenerating}
-          className='w-full'
+          className="w-full"
         >
           {isGenerating ? (
             <>
-              <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Generating QR Code...
             </>
           ) : (

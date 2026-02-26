@@ -1,4 +1,4 @@
-import { createMDX } from "fumadocs-mdx/next";
+import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
 
@@ -13,16 +13,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "raw.githubusercontent.com",
-        protocol: "https",
+        hostname: 'raw.githubusercontent.com',
+        protocol: 'https',
       },
     ],
   },
   async redirects() {
     return [
       {
-        source: "/docs",
-        destination: "/docs/introduction",
+        source: '/docs',
+        destination: '/docs/introduction',
         permanent: false,
       },
     ];

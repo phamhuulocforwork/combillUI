@@ -1,15 +1,15 @@
 'use client';
 
-import React, { ReactNode, useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@/components/tabs';
 import { DirectionProvider } from '@radix-ui/react-direction';
 import { LoaderCircleIcon, RotateCw } from 'lucide-react';
+import React, { type ReactNode, useEffect, useState } from 'react';
+import { Index } from '@/__registry__';
+import { Tabs, TabsList, TabsTrigger } from '@/components/tabs';
+import { Button } from '@/components/ui/button';
 import { trackDirectionChange, trackViewChange } from '@/lib/analytics';
+import { cn } from '@/lib/utils';
 import { CliCodeCopyButton } from './cli-code-copy-button';
 import { OpenInV0Button } from './open-in-v0-button';
-import { Index } from '@/__registry__';
 
 type themeType = 'dark' | 'light' | '';
 
@@ -32,12 +32,16 @@ export interface ComponentTabsProps {
   children?: ReactNode;
 }
 
-const ComponentTabsContext = React.createContext<ComponentTabsContext | null>(null);
+const ComponentTabsContext = React.createContext<ComponentTabsContext | null>(
+  null,
+);
 
 export function useComponentTabs() {
   const context = React.useContext(ComponentTabsContext);
   if (!context) {
-    throw new Error('useComponentTabs must be used within a ComponentTabsProvider.');
+    throw new Error(
+      'useComponentTabs must be used within a ComponentTabsProvider.',
+    );
   }
   return context;
 }
@@ -95,7 +99,7 @@ function RtlToggleButton() {
     <Button
       size="sm"
       variant="outline"
-      className={cn('size-7.5 leading-[0] text-muted-foreground text-[0.6rem]')}
+      className={cn('size-7.5 text-[0.6rem] text-muted-foreground leading-[0]')}
       onClick={() => {
         const newDirection = rtl ? 'ltr' : 'rtl';
         setRtl(!rtl);
@@ -111,7 +115,7 @@ function ReloadButton() {
   const { reload } = useComponentTabs();
 
   return (
-    <Button  size="sm" variant="outline" className="size-7.5" onClick={reload}>
+    <Button size="sm" variant="outline" className="size-7.5" onClick={reload}>
       <RotateCw className="size-3.5" />
     </Button>
   );
@@ -121,8 +125,8 @@ function ComponentTabsToolbar() {
   const { setView, name } = useComponentTabs();
 
   return (
-    <div className="flex items-center gap-2.5 justify-between">
-      <div className={cn('w-full flex items-center justify-between gap-2')}>
+    <div className="flex items-center justify-between gap-2.5">
+      <div className={cn('flex w-full items-center justify-between gap-2')}>
         <Tabs
           defaultValue="preview"
           onValueChange={(value) => {
@@ -131,11 +135,11 @@ function ComponentTabsToolbar() {
           }}
           className="flex"
         >
-          <TabsList className="h-7.5 flex items-stretch rounded-md gap-1 px-1 py-1 bg-accent/70">
-            <TabsTrigger value="preview" className="rounded-sm text-xs px-2.5">
+          <TabsList className="flex h-7.5 items-stretch gap-1 rounded-md bg-accent/70 px-1 py-1">
+            <TabsTrigger value="preview" className="rounded-sm px-2.5 text-xs">
               Preview
             </TabsTrigger>
-            <TabsTrigger value="code" className="rounded-sm text-xs px-2.5">
+            <TabsTrigger value="code" className="rounded-sm px-2.5 text-xs">
               Code
             </TabsTrigger>
           </TabsList>
@@ -166,7 +170,7 @@ function ComponentTabsDemo() {
 
         // Get component from registry
         const ComponentFromRegistry = Index['default'][name]?.component;
-        
+
         if (ComponentFromRegistry) {
           setComponent(() => ComponentFromRegistry);
         } else {
@@ -187,7 +191,7 @@ function ComponentTabsDemo() {
     <DirectionProvider dir={rtl ? 'rtl' : 'ltr'}>
       <div
         className={cn(
-          'flex lg:min-h-[350px] grow justify-center items-center bg-background border border-border/90 rounded-lg p-6 lg:p-10',
+          'flex grow items-center justify-center rounded-lg border border-border/90 bg-background p-6 lg:min-h-[350px] lg:p-10',
           theme === 'dark' && 'dark',
           theme === 'light' && 'light',
         )}
@@ -197,7 +201,7 @@ function ComponentTabsDemo() {
         {Component ? (
           <Component key={reloadKey} />
         ) : (
-          <div className="h-full text-xs flex items-center justify-center gap-1.5 text-muted-foreground">
+          <div className="flex h-full items-center justify-center gap-1.5 text-muted-foreground text-xs">
             <LoaderCircleIcon className="size-4 animate-spin" />
             Loading
           </div>
@@ -214,7 +218,11 @@ function ComponentTabsCode() {
 
   return (
     <div>
-      <div className={cn('relative overflow-hidden rounded-xl bg-neutral-950 dark:bg-neutral-900 text-white [&_figure]:my-0')}>
+      <div
+        className={cn(
+          'relative overflow-hidden rounded-xl bg-neutral-950 text-white dark:bg-neutral-900 [&_figure]:my-0',
+        )}
+      >
         {codeElement}
       </div>
     </div>
@@ -227,11 +235,11 @@ function extractCodeFromChildren(children: ReactNode): string {
     if (typeof node === 'string') return node;
     if (typeof node === 'number') return String(node);
     if (!node) return '';
-    
+
     if (Array.isArray(node)) {
       return node.map(extractText).join('');
     }
-    
+
     if (React.isValidElement(node)) {
       // If it's a code element, extract its text content
       const props = node.props as { children?: ReactNode };
@@ -239,7 +247,7 @@ function extractCodeFromChildren(children: ReactNode): string {
         return extractText(props.children);
       }
     }
-    
+
     return '';
   };
 
@@ -255,7 +263,7 @@ export function ComponentTabs({ name, children }: ComponentTabsProps) {
   }
 
   return (
-    <div className="pt-3.5 mb-14">
+    <div className="mb-14 pt-3.5">
       <ComponentTabsProvider name={name} code={code} codeElement={children}>
         <ComponentTabsToolbar />
         <ComponentTabsDemo />

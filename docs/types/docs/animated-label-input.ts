@@ -1,4 +1,4 @@
-import type { CompositionProps } from "@/types";
+import type { CompositionProps } from '@/types';
 
 export interface RootProps extends CompositionProps {}
 

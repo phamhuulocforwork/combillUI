@@ -1,51 +1,51 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export function getIsExternalLink(href: string) {
-  return href.startsWith("http") || href.startsWith("https");
+  return href.startsWith('http') || href.startsWith('https');
 }
 
 export function formatBytes(
   bytes: number,
   opts: {
     decimals?: number;
-    sizeType?: "accurate" | "normal";
+    sizeType?: 'accurate' | 'normal';
   } = {},
 ) {
-  const { decimals = 0, sizeType = "normal" } = opts;
+  const { decimals = 0, sizeType = 'normal' } = opts;
 
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-  const accurateSizes = ["Bytes", "KiB", "MiB", "GiB", "TiB"];
-  if (bytes === 0) return "0 Byte";
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const accurateSizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB'];
+  if (bytes === 0) return '0 Byte';
   const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return `${(bytes / Math.pow(1024, i)).toFixed(decimals)} ${
-    sizeType === "accurate"
-      ? (accurateSizes[i] ?? "Bytest")
-      : (sizes[i] ?? "Bytes")
+  return `${(bytes / 1024 ** i).toFixed(decimals)} ${
+    sizeType === 'accurate'
+      ? (accurateSizes[i] ?? 'Bytest')
+      : (sizes[i] ?? 'Bytes')
   }`;
 }
 
-function indentContent(content: string, indent: string = "      "): string {
+function indentContent(content: string, indent: string = '      '): string {
   return content
-    .split("\n")
+    .split('\n')
     .map((line) => indent + line)
-    .join("\n");
+    .join('\n');
 }
 
 export function htmlToJsx(
-  html: string = "",
-  componentName: string = "HtmlComponent",
+  html: string = '',
+  componentName: string = 'HtmlComponent',
 ): string {
   const toCamelCase = (str: string): string =>
-    str.replace(/-([a-z])/g, (g: string) => g[1]?.toUpperCase() || "");
+    str.replace(/-([a-z])/g, (g: string) => g[1]?.toUpperCase() || '');
 
   const jsxContent: string = html
-    .replace(/class=/g, "className=")
-    .replace(/for=/g, "htmlFor=")
+    .replace(/class=/g, 'className=')
+    .replace(/for=/g, 'htmlFor=')
     .replace(
       /([a-zA-Z-]+)=/g,
       (match: string, p1: string) => `${toCamelCase(p1)}=`,
@@ -64,5 +64,5 @@ ${jsxContentIndented}
 
 export default ${componentName};
 `;
-  return html.length > 0 ? component : "";
+  return html.length > 0 ? component : '';
 }

@@ -16,7 +16,7 @@ export function parseJSON(text: string): ParseResult {
   if (!text.trim()) {
     return {
       success: false,
-      error: "JSON content is empty",
+      error: 'JSON content is empty',
     };
   }
 
@@ -29,7 +29,7 @@ export function parseJSON(text: string): ParseResult {
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Invalid JSON format",
+      error: error instanceof Error ? error.message : 'Invalid JSON format',
     };
   }
 }
@@ -38,7 +38,7 @@ export function parseJSON(text: string): ParseResult {
  * Format a JSON path array into a readable string
  */
 export function formatJSONPath(path: string[]): string {
-  return path.join(".");
+  return path.join('.');
 }
 
 /**
@@ -48,7 +48,7 @@ export function formatJSONPath(path: string[]): string {
 export function compareJSON(
   obj1: any,
   obj2: any,
-  mode: "two-files" | "template" = "two-files",
+  mode: 'two-files' | 'template' = 'two-files',
   currentPath: string[] = [],
 ): ComparisonResult {
   const differences: Record<string, any> = {};
@@ -60,7 +60,7 @@ export function compareJSON(
   }
 
   // If obj2 is null/undefined in template mode, include everything from obj1
-  if (mode === "template" && (obj2 === null || obj2 === undefined)) {
+  if (mode === 'template' && (obj2 === null || obj2 === undefined)) {
     return {
       differences: obj1,
       paths: [formatJSONPath(currentPath)],
@@ -68,7 +68,7 @@ export function compareJSON(
   }
 
   // If obj1 is not an object, check if it exists in obj2
-  if (typeof obj1 !== "object" || Array.isArray(obj1)) {
+  if (typeof obj1 !== 'object' || Array.isArray(obj1)) {
     if (obj2 === undefined || obj2 === null) {
       return {
         differences: obj1,
@@ -80,7 +80,7 @@ export function compareJSON(
 
   // Compare object keys
   for (const key in obj1) {
-    if (!obj1.hasOwnProperty(key)) continue;
+    if (!Object.hasOwn(obj1, key)) continue;
 
     const newPath = [...currentPath, key];
     const value1 = obj1[key];
@@ -93,10 +93,10 @@ export function compareJSON(
     }
     // Both values are objects, recurse
     else if (
-      typeof value1 === "object" &&
+      typeof value1 === 'object' &&
       value1 !== null &&
       !Array.isArray(value1) &&
-      typeof value2 === "object" &&
+      typeof value2 === 'object' &&
       value2 !== null &&
       !Array.isArray(value2)
     ) {
@@ -107,9 +107,12 @@ export function compareJSON(
       }
     }
     // Values exist but are different types or one is array
-    else if (typeof value1 !== typeof value2 || Array.isArray(value1) !== Array.isArray(value2)) {
+    else if (
+      typeof value1 !== typeof value2 ||
+      Array.isArray(value1) !== Array.isArray(value2)
+    ) {
       // In template mode, if types differ, include the difference
-      if (mode === "template") {
+      if (mode === 'template') {
         differences[key] = value1;
         paths.push(formatJSONPath(newPath));
       }
@@ -130,8 +133,8 @@ export function mergeJSON(obj1: any, obj2: any): any {
 
   // If either is not an object, return obj2 (it takes precedence)
   if (
-    typeof obj1 !== "object" ||
-    typeof obj2 !== "object" ||
+    typeof obj1 !== 'object' ||
+    typeof obj2 !== 'object' ||
     Array.isArray(obj1) ||
     Array.isArray(obj2)
   ) {
@@ -142,15 +145,15 @@ export function mergeJSON(obj1: any, obj2: any): any {
   const result: Record<string, any> = { ...obj1 };
 
   for (const key in obj2) {
-    if (!obj2.hasOwnProperty(key)) continue;
+    if (!Object.hasOwn(obj2, key)) continue;
 
     // If key exists in both and both values are objects, recurse
     if (
       key in result &&
-      typeof result[key] === "object" &&
+      typeof result[key] === 'object' &&
       result[key] !== null &&
       !Array.isArray(result[key]) &&
-      typeof obj2[key] === "object" &&
+      typeof obj2[key] === 'object' &&
       obj2[key] !== null &&
       !Array.isArray(obj2[key])
     ) {
@@ -179,6 +182,6 @@ export function formatJSON(data: any, indent: number = 2): string {
   try {
     return JSON.stringify(data, null, indent);
   } catch (_error) {
-    return "";
+    return '';
   }
 }

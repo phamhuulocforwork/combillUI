@@ -1,5 +1,5 @@
-import { registry } from "@/registry";
-import type { Component } from "@/registry/schema";
+import { registry } from '@/registry';
+import type { Component } from '@/registry/schema';
 
 export type RegistryItem = Component & { name: string };
 
@@ -15,6 +15,6 @@ export const getComponentsByNames = (names: string[]): RegistryItem[] => {
 
 export const convertRegistryPaths = (content: string): string => {
   return content
-    .replace(/@\/registry\/default\/ui/g, "@/components/ui")
-    .replace(/@\/registry\/default\/hooks/g, "@/hooks");
+    .replace(/@\/registry\/default\/ui/g, '@/components/ui')
+    .replace(/@\/registry\/default\/hooks/g, '@/hooks');
 };

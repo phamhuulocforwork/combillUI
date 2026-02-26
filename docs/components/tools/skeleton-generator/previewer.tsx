@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import React from "react";
+import type React from 'react';
+import { useEffect, useRef } from 'react';
 
 interface PreviewerProps {
   code: string;
@@ -9,18 +9,18 @@ interface PreviewerProps {
 
 const EmptyState: React.FC = () => {
   return (
-    <div className='flex items-center justify-center h-full'>
-      <div className='text-center p-8 max-w-lg rounded-lg border border-border'>
-        <h2 className='text-2xl font-bold  mb-4'>No Skeletons Yet</h2>
-        <p className='mb-6 hidden md:block'>
+    <div className="flex h-full items-center justify-center">
+      <div className="max-w-lg rounded-lg border border-border p-8 text-center">
+        <h2 className="mb-4 font-bold text-2xl">No Skeletons Yet</h2>
+        <p className="mb-6 hidden md:block">
           This is where your AI-generated skeletons will appear.
         </p>
-        <div className='space-y-4 mb-6'>
-          <Step number={1} text='Paste your code in the left panel' />
+        <div className="mb-6 space-y-4">
+          <Step number={1} text="Paste your code in the left panel" />
           <Step number={2} text='Click the "Submit" button' />
-          <Step number={3} text='Watch your skeleton come to life here!' />
+          <Step number={3} text="Watch your skeleton come to life here!" />
         </div>
-        <p className='text-sm italic bg-muted p-3 rounded'>
+        <p className="rounded bg-muted p-3 text-sm italic">
           Tip: The generator works best with Tailwind CSS classes.
         </p>
       </div>
@@ -29,11 +29,11 @@ const EmptyState: React.FC = () => {
 };
 
 const Step: React.FC<{ number: number; text: string }> = ({ number, text }) => (
-  <div className='flex items-center text-left'>
-    <div className='flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mr-3'>
+  <div className="flex items-center text-left">
+    <div className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">
       {number}
     </div>
-    <p className='text-sm'>{text}</p>
+    <p className="text-sm">{text}</p>
   </div>
 );
 
@@ -79,9 +79,9 @@ const Previewer: React.FC<PreviewerProps> = ({ code }) => {
   }, [code]);
 
   return (
-    <div className='h-full'>
+    <div className="h-full">
       {code && code.trim() ? (
-        <iframe ref={iframeRef} className='w-full h-full border-0'></iframe>
+        <iframe ref={iframeRef} className="h-full w-full border-0"></iframe>
       ) : (
         <EmptyState />
       )}

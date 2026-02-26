@@ -1,6 +1,6 @@
 export type ControlledProps<T extends React.ElementType> = Omit<
   React.ComponentPropsWithoutRef<T>,
-  "defaultValue" | "value" | "onValueChange"
+  'defaultValue' | 'value' | 'onValueChange'
 >;
 
 export type EmptyProps<T extends React.ElementType> = Omit<
@@ -9,16 +9,16 @@ export type EmptyProps<T extends React.ElementType> = Omit<
 >;
 
 export enum EditorTheme {
-  ESPRESSO = "espresso",
-  COBALT = "cobalt",
-  DRACULA = "dracula",
+  ESPRESSO = 'espresso',
+  COBALT = 'cobalt',
+  DRACULA = 'dracula',
 }
 
 export enum EditorLanguage {
-  TEXT = "text",
-  HTML = "html",
-  JAVASCRIPT = "javascript",
-  JSON = "json",
+  TEXT = 'text',
+  HTML = 'html',
+  JAVASCRIPT = 'javascript',
+  JSON = 'json',
 }
 
 export interface CompositionProps {

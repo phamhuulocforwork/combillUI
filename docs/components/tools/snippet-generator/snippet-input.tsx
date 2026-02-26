@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import MonacoEditor from "@/components/blocks/monaco-editor/monaco-editor";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import MonacoEditor from '@/components/blocks/monaco-editor/monaco-editor';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
-import { EditorLanguage } from "@/types";
+import { EditorLanguage } from '@/types';
 
 interface SnippetInputProps {
   description: string;
@@ -24,38 +24,38 @@ export function SnippetInput({
   onSnippetChange,
 }: SnippetInputProps) {
   return (
-    <div className='flex flex-col h-full space-y-4'>
-      <div className='flex space-x-4 mb-2'>
-        <div className='flex-1'>
-          <Label htmlFor='description'>Title & Description</Label>
+    <div className="flex h-full flex-col space-y-4">
+      <div className="mb-2 flex space-x-4">
+        <div className="flex-1">
+          <Label htmlFor="description">Title & Description</Label>
           <Input
-            id='description'
-            placeholder='Title & Description...'
+            id="description"
+            placeholder="Title & Description..."
             value={description}
             onChange={(e) => onDescriptionChange(e.target.value)}
           />
         </div>
 
-        <div className='flex-1'>
-          <Label htmlFor='tabTrigger'>Tab Trigger</Label>
+        <div className="flex-1">
+          <Label htmlFor="tabTrigger">Tab Trigger</Label>
           <Input
-            id='tabTrigger'
-            placeholder='Tab trigger...'
+            id="tabTrigger"
+            placeholder="Tab trigger..."
             value={tabTrigger}
             onChange={(e) => onTabTriggerChange(e.target.value)}
           />
         </div>
       </div>
 
-      <div className='flex-1 flex flex-col min-h-0'>
-        <Label htmlFor='snippet' className='mb-1.5'>
+      <div className="flex min-h-0 flex-1 flex-col">
+        <Label htmlFor="snippet" className="mb-1.5">
           Snippet
         </Label>
-        <p className='text-xs text-muted-foreground mb-3'>
+        <p className="mb-3 text-muted-foreground text-xs">
           📌 Tip: Use Tab to insert tabs, type placeholders like $
-          {"{1:example}"} 👌
+          {'{1:example}'} 👌
         </p>
-        <div className='flex-1 min-h-0'>
+        <div className="min-h-0 flex-1">
           <MonacoEditor
             code={snippet}
             onCodeChange={onSnippetChange}

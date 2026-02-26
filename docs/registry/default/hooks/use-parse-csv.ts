@@ -1,7 +1,6 @@
-import * as React from "react";
-import * as Papa from "papaparse";
-import { getErrorMessage } from "@/lib/handle-error";
-
+import * as Papa from 'papaparse';
+import * as React from 'react';
+import { getErrorMessage } from '@/lib/handle-error';
 
 interface CsvState {
   fileName: string;
@@ -30,7 +29,7 @@ export function useParseCsv({
   ...props
 }: UseParseCsvProps) {
   const [csvState, setCsvState] = React.useState<CsvState>({
-    fileName: "",
+    fileName: '',
     data: {
       parsed: [],
       mapped: [],
@@ -62,12 +61,12 @@ export function useParseCsv({
 
         const newColumns = columns
           .map((column, index) => {
-            if (column.trim() === "" && !showEmptyFields) {
+            if (column.trim() === '' && !showEmptyFields) {
               const hasNonEmptyValue = rows
                 .slice(1)
                 .some(
                   (row) =>
-                    row[index] !== "" &&
+                    row[index] !== '' &&
                     row[index] !== null &&
                     row[index] !== undefined,
                 );
@@ -75,7 +74,7 @@ export function useParseCsv({
                 return null;
               }
             }
-            return column.trim() === "" ? `Field ${index + 1}` : column;
+            return column.trim() === '' ? `Field ${index + 1}` : column;
           })
           .filter((column) => column !== null);
 
@@ -119,8 +118,8 @@ export function useParseCsv({
         setCsvState((prevState) => ({
           ...prevState,
           fileName: localFile?.name
-            ? localFile.name.replace(/\.[^/.]+$/, "")
-            : "Untitled",
+            ? localFile.name.replace(/\.[^/.]+$/, '')
+            : 'Untitled',
           data: {
             parsed: allResults,
             mapped: allResults,
@@ -167,7 +166,7 @@ export function useParseCsv({
         ...prevState.fieldMappings,
         current: {
           ...prevState.fieldMappings.current,
-          [value]: checked ? "" : undefined,
+          [value]: checked ? '' : undefined,
         },
       },
       data: {
@@ -200,7 +199,7 @@ export function useParseCsv({
       Object.keys(row).reduce(
         (acc, key) => ({
           ...acc,
-          [key]: row[key] === null ? "" : row[key],
+          [key]: row[key] === null ? '' : row[key],
         }),
         {},
       ),

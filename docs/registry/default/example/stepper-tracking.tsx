@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
-import { defineStepper } from "@/registry/default/ui/stepper";
+import { defineStepper } from '@/registry/default/ui/stepper';
 
 const {
   StepperProvider,
@@ -15,51 +15,51 @@ const {
   StepperTitle,
 } = defineStepper(
   {
-    id: "step-1",
-    title: "Step 1",
+    id: 'step-1',
+    title: 'Step 1',
   },
   {
-    id: "step-2",
-    title: "Step 2",
+    id: 'step-2',
+    title: 'Step 2',
   },
   {
-    id: "step-3",
-    title: "Step 3",
+    id: 'step-3',
+    title: 'Step 3',
   },
   {
-    id: "step-4",
-    title: "Step 4",
+    id: 'step-4',
+    title: 'Step 4',
   },
   {
-    id: "step-5",
-    title: "Step 5",
+    id: 'step-5',
+    title: 'Step 5',
   },
   {
-    id: "step-6",
-    title: "Step 6",
+    id: 'step-6',
+    title: 'Step 6',
   },
 );
 
 export default function StepperVerticalFollow() {
   const [tracking, setTracking] = React.useState(false);
   return (
-    <div className='flex w-full flex-col gap-8'>
+    <div className="flex w-full flex-col gap-8">
       <RadioGroup
         value={tracking.toString()}
-        onValueChange={(value) => setTracking(value === "true")}
+        onValueChange={(value) => setTracking(value === 'true')}
       >
-        <div className='flex items-center space-x-2'>
-          <RadioGroupItem value='true' id='tracking' />
-          <Label htmlFor='tracking'>Tracking</Label>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="true" id="tracking" />
+          <Label htmlFor="tracking">Tracking</Label>
         </div>
-        <div className='flex items-center space-x-2'>
-          <RadioGroupItem value='false' id='no-tracking' />
-          <Label htmlFor='no-tracking'>No Tracking</Label>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="false" id="no-tracking" />
+          <Label htmlFor="no-tracking">No Tracking</Label>
         </div>
       </RadioGroup>
       <StepperProvider
-        className='space-y-4'
-        variant='vertical'
+        className="space-y-4"
+        variant="vertical"
         tracking={tracking}
       >
         {({ methods }) => (
@@ -73,16 +73,16 @@ export default function StepperVerticalFollow() {
                 >
                   <StepperTitle>{step.title}</StepperTitle>
                   {methods.when(step.id, () => (
-                    <StepperPanel className='space-y-4'>
-                      <div className='h-[200px] content-center rounded border  p-8'>
-                        <p className='text-xl font-normal'>
+                    <StepperPanel className="space-y-4">
+                      <div className="h-[200px] content-center rounded border p-8">
+                        <p className="font-normal text-xl">
                           Content for {step.id}
                         </p>
                       </div>
                       <StepperControls>
                         {!methods.isLast && (
                           <Button
-                            variant='secondary'
+                            variant="secondary"
                             onClick={methods.prev}
                             disabled={methods.isFirst}
                           >
@@ -94,7 +94,7 @@ export default function StepperVerticalFollow() {
                             methods.isLast ? methods.reset : methods.next
                           }
                         >
-                          {methods.isLast ? "Reset" : "Next"}
+                          {methods.isLast ? 'Reset' : 'Next'}
                         </Button>
                       </StepperControls>
                     </StepperPanel>

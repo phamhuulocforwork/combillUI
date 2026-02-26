@@ -1,4 +1,10 @@
-import { Braces, FileJson2, LayoutTemplate, type LucideIcon, QrCode } from "lucide-react";
+import {
+  Braces,
+  FileJson2,
+  LayoutTemplate,
+  type LucideIcon,
+  QrCode,
+} from 'lucide-react';
 
 export type ComponentCategory = {
   slug: string;
@@ -29,10 +35,10 @@ export type ComponentCategory = {
 
 export const categoriesTools: ComponentCategory[] = [
   {
-    slug: "qr-generator",
-    name: "QR Generator",
+    slug: 'qr-generator',
+    name: 'QR Generator',
     description:
-      "Generate QR codes for your website, social media, or any other content.",
+      'Generate QR codes for your website, social media, or any other content.',
     icon: QrCode,
     breakpoints: {
       sm: 1,
@@ -41,10 +47,10 @@ export const categoriesTools: ComponentCategory[] = [
     components: [],
   },
   {
-    slug: "skeleton-generator",
-    name: "Skeleton Generator",
+    slug: 'skeleton-generator',
+    name: 'Skeleton Generator',
     description:
-      "Generate skeleton loading for your website with React and Tailwind CSS.",
+      'Generate skeleton loading for your website with React and Tailwind CSS.',
     icon: LayoutTemplate,
     breakpoints: {
       sm: 1,
@@ -53,9 +59,9 @@ export const categoriesTools: ComponentCategory[] = [
     components: [],
   },
   {
-    slug: "snippet-generator",
-    name: "Snippet Generator",
-    description: "Generate code snippets for VSCode, Sublime Text, and Atom",
+    slug: 'snippet-generator',
+    name: 'Snippet Generator',
+    description: 'Generate code snippets for VSCode, Sublime Text, and Atom',
     icon: Braces,
     breakpoints: {
       sm: 1,
@@ -64,10 +70,10 @@ export const categoriesTools: ComponentCategory[] = [
     components: [],
   },
   {
-    slug: "json-compare",
-    name: "JSON Compare",
+    slug: 'json-compare',
+    name: 'JSON Compare',
     description:
-      "Compare and merge JSON files with recursive key comparison at all levels.",
+      'Compare and merge JSON files with recursive key comparison at all levels.',
     icon: FileJson2,
     breakpoints: {
       sm: 1,

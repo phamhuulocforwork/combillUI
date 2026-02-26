@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import * as React from 'react';
 
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 const AnimatedTooltipProvider = TooltipPrimitive.Provider;
 const AnimatedTooltip = TooltipPrimitive.Root;
@@ -43,7 +42,7 @@ const AnimatedTooltipContent = React.forwardRef<
             y: 0,
             scale: 1,
             transition: {
-              type: "spring",
+              type: 'spring',
               stiffness: 260,
               damping: 10,
             },
@@ -54,7 +53,7 @@ const AnimatedTooltipContent = React.forwardRef<
             rotate: rotate,
           }}
           className={cn(
-            "flex flex-col items-center justify-center rounded-md z-50 shadow-xl bg-primary px-3 py-1.5 text-primary-foreground ",
+            'z-50 flex flex-col items-center justify-center rounded-md bg-primary px-3 py-1.5 text-primary-foreground shadow-xl',
             className,
           )}
         >

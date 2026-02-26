@@ -1,25 +1,24 @@
-import * as React from "react";
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as React from 'react';
+import { useForm, useFormContext } from 'react-hook-form';
+import { z } from 'zod';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useFormContext } from "react-hook-form";
-import { z } from "zod";
+import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-import { defineStepper } from "@/registry/default/ui/stepper";
+import { defineStepper } from '@/registry/default/ui/stepper';
 
 const shippingSchema = z.object({
-  address: z.string().min(1, "Address is required"),
-  city: z.string().min(1, "City is required"),
-  postalCode: z.string().min(5, "Postal code is required"),
+  address: z.string().min(1, 'Address is required'),
+  city: z.string().min(1, 'City is required'),
+  postalCode: z.string().min(5, 'Postal code is required'),
 });
 
 const paymentSchema = z.object({
-  cardNumber: z.string().min(16, "Card number is required"),
-  expirationDate: z.string().min(5, "Expiration date is required"),
-  cvv: z.string().min(3, "CVV is required"),
+  cardNumber: z.string().min(16, 'Card number is required'),
+  expirationDate: z.string().min(5, 'Expiration date is required'),
+  cvv: z.string().min(3, 'CVV is required'),
 });
 
 type ShippingFormValues = z.infer<typeof shippingSchema>;
@@ -32,57 +31,57 @@ const ShippingForm = () => {
   } = useFormContext<ShippingFormValues>();
 
   return (
-    <div className='space-y-4 text-start'>
-      <div className='space-y-2'>
+    <div className="space-y-4 text-start">
+      <div className="space-y-2">
         <label
-          htmlFor={register("address").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('address').name}
+          className="block font-medium text-primary text-sm"
         >
           Address
         </label>
         <Input
-          id={register("address").name}
-          {...register("address")}
-          className='block w-full rounded-md border p-2'
+          id={register('address').name}
+          {...register('address')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.address && (
-          <span className='text-sm text-destructive'>
+          <span className="text-destructive text-sm">
             {errors.address.message}
           </span>
         )}
       </div>
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <label
-          htmlFor={register("city").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('city').name}
+          className="block font-medium text-primary text-sm"
         >
           City
         </label>
         <Input
-          id={register("city").name}
-          {...register("city")}
-          className='block w-full rounded-md border p-2'
+          id={register('city').name}
+          {...register('city')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.city && (
-          <span className='text-sm text-destructive'>
+          <span className="text-destructive text-sm">
             {errors.city.message}
           </span>
         )}
       </div>
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <label
-          htmlFor={register("postalCode").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('postalCode').name}
+          className="block font-medium text-primary text-sm"
         >
           Postal Code
         </label>
         <Input
-          id={register("postalCode").name}
-          {...register("postalCode")}
-          className='block w-full rounded-md border p-2'
+          id={register('postalCode').name}
+          {...register('postalCode')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.postalCode && (
-          <span className='text-sm text-destructive'>
+          <span className="text-destructive text-sm">
             {errors.postalCode.message}
           </span>
         )}
@@ -98,57 +97,57 @@ function PaymentForm() {
   } = useFormContext<PaymentFormValues>();
 
   return (
-    <div className='space-y-4 text-start'>
-      <div className='space-y-2'>
+    <div className="space-y-4 text-start">
+      <div className="space-y-2">
         <label
-          htmlFor={register("cardNumber").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('cardNumber').name}
+          className="block font-medium text-primary text-sm"
         >
           Card Number
         </label>
         <Input
-          id={register("cardNumber").name}
-          {...register("cardNumber")}
-          className='block w-full rounded-md border p-2'
+          id={register('cardNumber').name}
+          {...register('cardNumber')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.cardNumber && (
-          <span className='text-sm text-destructive'>
+          <span className="text-destructive text-sm">
             {errors.cardNumber.message}
           </span>
         )}
       </div>
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <label
-          htmlFor={register("expirationDate").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('expirationDate').name}
+          className="block font-medium text-primary text-sm"
         >
           Expiration Date
         </label>
         <Input
-          id={register("expirationDate").name}
-          {...register("expirationDate")}
-          className='block w-full rounded-md border p-2'
+          id={register('expirationDate').name}
+          {...register('expirationDate')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.expirationDate && (
-          <span className='text-sm text-destructive'>
+          <span className="text-destructive text-sm">
             {errors.expirationDate.message}
           </span>
         )}
       </div>
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <label
-          htmlFor={register("cvv").name}
-          className='block text-sm font-medium text-primary'
+          htmlFor={register('cvv').name}
+          className="block font-medium text-primary text-sm"
         >
           CVV
         </label>
         <Input
-          id={register("cvv").name}
-          {...register("cvv")}
-          className='block w-full rounded-md border p-2'
+          id={register('cvv').name}
+          {...register('cvv')}
+          className="block w-full rounded-md border p-2"
         />
         {errors.cvv && (
-          <span className='text-sm text-destructive'>{errors.cvv.message}</span>
+          <span className="text-destructive text-sm">{errors.cvv.message}</span>
         )}
       </div>
     </div>
@@ -156,7 +155,7 @@ function PaymentForm() {
 }
 
 function CompleteComponent() {
-  return <div className='text-center'>Thank you! Your order is complete.</div>;
+  return <div className="text-center">Thank you! Your order is complete.</div>;
 }
 
 const {
@@ -168,20 +167,20 @@ const {
   useStepper,
 } = defineStepper(
   {
-    id: "shipping",
-    title: "Shipping",
+    id: 'shipping',
+    title: 'Shipping',
     schema: shippingSchema,
     Component: ShippingForm,
   },
   {
-    id: "payment",
-    title: "Payment",
+    id: 'payment',
+    title: 'Payment',
     schema: paymentSchema,
     Component: PaymentForm,
   },
   {
-    id: "complete",
-    title: "Complete",
+    id: 'complete',
+    title: 'Complete',
     schema: z.object({}),
     Component: CompleteComponent,
   },
@@ -199,7 +198,7 @@ const FormStepperComponent = () => {
   const methods = useStepper();
 
   const form = useForm({
-    mode: "onTouched",
+    mode: 'onTouched',
     resolver: zodResolver(methods.current.schema),
   });
 
@@ -209,13 +208,13 @@ const FormStepperComponent = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <StepperNavigation>
           {methods.all.map((step) => (
             <StepperStep
               key={step.id}
               of={step.id}
-              type={step.id === methods.current.id ? "submit" : "button"}
+              type={step.id === methods.current.id ? 'submit' : 'button'}
               onClick={async () => {
                 const valid = await form.trigger();
                 if (!valid) return;
@@ -234,7 +233,7 @@ const FormStepperComponent = () => {
         <StepperControls>
           {!methods.isLast && (
             <Button
-              variant='secondary'
+              variant="secondary"
               onClick={methods.prev}
               disabled={methods.isFirst}
             >
@@ -242,7 +241,7 @@ const FormStepperComponent = () => {
             </Button>
           )}
           <Button
-            type='submit'
+            type="submit"
             onClick={() => {
               if (methods.isLast) {
                 return methods.reset();
@@ -254,7 +253,7 @@ const FormStepperComponent = () => {
               });
             }}
           >
-            {methods.isLast ? "Reset" : "Next"}
+            {methods.isLast ? 'Reset' : 'Next'}
           </Button>
         </StepperControls>
       </form>

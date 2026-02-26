@@ -1,6 +1,5 @@
-import { Fragment } from "react";
-
-import { Package, ShoppingCart, Store, Truck } from "lucide-react";
+import { Package, ShoppingCart, Store, Truck } from 'lucide-react';
+import { Fragment } from 'react';
 
 import {
   Breadcrumb,
@@ -8,27 +7,27 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
+} from '@/components/ui/breadcrumb';
 
 const steps = [
   {
-    label: "Store",
-    href: "#/store",
+    label: 'Store',
+    href: '#/store',
     icon: Store,
   },
   {
-    label: "Delivery Tracking",
-    href: "#/delivery-tracking",
+    label: 'Delivery Tracking',
+    href: '#/delivery-tracking',
     icon: Truck,
   },
   {
-    label: "Cart",
-    href: "#/cart",
+    label: 'Cart',
+    href: '#/cart',
     icon: ShoppingCart,
   },
   {
-    label: "Package",
-    href: "#/package",
+    label: 'Package',
+    href: '#/package',
     icon: Package,
     active: true,
   },
@@ -43,19 +42,19 @@ export default function BreadcrumbsSteps() {
             <BreadcrumbItem>
               {step.active ? (
                 <BreadcrumbPage>
-                  <step.icon className='h-5 w-5' />
+                  <step.icon className="h-5 w-5" />
                 </BreadcrumbPage>
               ) : (
                 <BreadcrumbLink href={step.href}>
-                  <step.icon className='h-5 w-5' />
+                  <step.icon className="h-5 w-5" />
                 </BreadcrumbLink>
               )}
             </BreadcrumbItem>
             {index !== steps.length - 1 && (
               <li
-                role='presentation'
-                aria-hidden='true'
-                className='inline-block h-[2px] w-[40px] bg-muted'
+                role="presentation"
+                aria-hidden="true"
+                className="inline-block h-[2px] w-[40px] bg-muted"
               />
             )}
           </Fragment>

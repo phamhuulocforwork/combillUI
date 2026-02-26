@@ -1,4 +1,4 @@
-import type { DependencyAnalysis } from "./types";
+import type { DependencyAnalysis } from './types';
 
 export function detectDependencies(content: string): DependencyAnalysis {
   const registryDeps = new Set<string>();
@@ -8,7 +8,7 @@ export function detectDependencies(content: string): DependencyAnalysis {
   const uiImports = content.match(/@\/components\/ui\/([a-zA-Z-]+)/g);
   if (uiImports) {
     uiImports.forEach((imp) => {
-      const component = imp.split("/").pop();
+      const component = imp.split('/').pop();
       if (component) {
         registryDeps.add(component);
       }

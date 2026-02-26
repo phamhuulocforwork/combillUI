@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import type { JSX } from "react";
+import type { JSX } from 'react';
+import { useEffect, useState } from 'react';
 
-import CodeBlock, { highlight } from "@/components/code-block";
-import CopyButton from "@/components/copy-button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs";
+import CodeBlock, { highlight } from '@/components/code-block';
+import CopyButton from '@/components/copy-button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 
-import { useLocalStorage } from "@/hooks/use-local-storage";
+import { useLocalStorage } from '@/hooks/use-local-storage';
 
-type PackageManager = "pnpm" | "npm" | "yarn" | "bun";
+type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun';
 
 const ComponentCli = ({ name, toast }: { name: string; toast?: string }) => {
   const [packageManager, setPackageManager] = useLocalStorage<PackageManager>(
-    "packageManager",
-    "pnpm",
+    'packageManager',
+    'pnpm',
   );
 
   const commands = {
@@ -32,7 +32,7 @@ const ComponentCli = ({ name, toast }: { name: string; toast?: string }) => {
     const loadCode = async () => {
       const highlighted = await highlight(
         commands[packageManager as PackageManager],
-        "bash",
+        'bash',
       );
 
       setHighlightedCode(highlighted);
@@ -43,30 +43,30 @@ const ComponentCli = ({ name, toast }: { name: string; toast?: string }) => {
   }, [packageManager]);
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <Tabs
         value={packageManager}
         onValueChange={(value) => {
           setPackageManager(value as PackageManager);
         }}
-        className='rounded-md bg-zinc-950 dark:bg-zinc-900'
+        className="rounded-md bg-zinc-950 dark:bg-zinc-900"
       >
-        <TabsList className='dark h-auto w-full justify-start rounded-none border-b bg-transparent px-4 py-0'>
+        <TabsList className="dark h-auto w-full justify-start rounded-none border-b bg-transparent px-4 py-0">
           {Object.keys(commands).map((pkg) => (
             <TabsTrigger
               key={pkg}
               value={pkg}
-              className='data-[state=active]:!text-foreground data-[state=active]:after:bg-primary hover:!text-muted-foreground !text-muted-foreground/70 relative flex-none cursor-pointer rounded-none border-0 p-3 font-normal after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:!bg-transparent data-[state=active]:shadow-none'
+              className="data-[state=active]:!text-foreground hover:!text-muted-foreground !text-muted-foreground/70 data-[state=active]:!bg-transparent relative flex-none cursor-pointer rounded-none border-0 p-3 font-normal after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:shadow-none data-[state=active]:after:bg-primary"
             >
               {pkg}
             </TabsTrigger>
           ))}
         </TabsList>
         {Object.entries(commands).map(([pkg, command]) => (
-          <TabsContent className='m-0' key={pkg} value={pkg}>
+          <TabsContent className="m-0" key={pkg} value={pkg}>
             <CodeBlock
               code={command}
-              lang='bash'
+              lang="bash"
               preHighlighted={highlightedCode}
             />
           </TabsContent>
@@ -74,8 +74,8 @@ const ComponentCli = ({ name, toast }: { name: string; toast?: string }) => {
       </Tabs>
       <CopyButton
         source={commands[packageManager as PackageManager]}
-        className='dark absolute end-1 top-1 hover:!bg-transparent'
-        btnClassName='hover:!bg-transparent'
+        className="dark hover:!bg-transparent absolute end-1 top-1"
+        btnClassName="hover:!bg-transparent"
         toast={toast}
       />
     </div>

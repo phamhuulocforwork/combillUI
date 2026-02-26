@@ -1,10 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as TabsPrimitive from '@radix-ui/react-tabs';
+import type * as React from 'react';
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 function Tabs({
   className,
@@ -12,8 +11,8 @@ function Tabs({
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
     <TabsPrimitive.Root
-      data-slot='tabs'
-      className={cn("flex flex-col gap-2", className)}
+      data-slot="tabs"
+      className={cn('flex flex-col gap-2', className)}
       {...props}
     />
   );
@@ -25,9 +24,9 @@ function TabsList({
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
   return (
     <TabsPrimitive.List
-      data-slot='tabs-list'
+      data-slot="tabs-list"
       className={cn(
-        "p-1 flex h-9 items-center justify-start rounded-none gap-4 border-b border-border bg-transparent text-muted-foreground",
+        'flex h-9 items-center justify-start gap-4 rounded-none border-border border-b bg-transparent p-1 text-muted-foreground',
         className,
       )}
       {...props}
@@ -41,9 +40,9 @@ function TabsTrigger({
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   return (
     <TabsPrimitive.Trigger
-      data-slot='tabs-trigger'
+      data-slot="tabs-trigger"
       className={cn(
-        "whitespace-nowrap py-1 font-medium text-sm ring-offset-background cursor-pointer transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow*: flex h-8 items-center justify-center rounded-none border-foreground data-[state=active]:border-b-2 px-1.5 pb-3",
+        'data-[state=active]:shadow*: flex h-8 cursor-pointer items-center justify-center whitespace-nowrap rounded-none border-foreground px-1.5 py-1 pb-3 font-medium text-sm ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:text-foreground',
         className,
       )}
       {...props}
@@ -57,8 +56,8 @@ function TabsContent({
 }: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
-      data-slot='tabs-content'
-      className={cn("flex-1 outline-none ", className)}
+      data-slot="tabs-content"
+      className={cn('flex-1 outline-none', className)}
       {...props}
     />
   );

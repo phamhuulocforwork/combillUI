@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip';
 
 export default function LazyTooltip() {
   const [enabled, setEnabled] = React.useState(true);
@@ -20,7 +20,7 @@ export default function LazyTooltip() {
   if (!enabled) {
     return (
       <>
-        <Button variant='secondary'>Lazy Tooltip</Button>
+        <Button variant="secondary">Lazy Tooltip</Button>
       </>
     );
   }
@@ -28,7 +28,7 @@ export default function LazyTooltip() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant='outline' {...triggerProps}>
+        <Button variant="outline" {...triggerProps}>
           Lazy Tooltip
         </Button>
       </TooltipTrigger>

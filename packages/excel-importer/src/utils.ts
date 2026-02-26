@@ -1,37 +1,33 @@
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import { read, utils, write } from "xlsx";
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { read, utils, write } from 'xlsx';
 
-import type {
-  ExcelFieldOption,
-  FieldType,
-  ValidationError,
-} from "./types";
+import type { ExcelFieldOption, FieldType, ValidationError } from './types';
 
 dayjs.extend(customParseFormat);
 
 // Date patterns that Excel/web may return
 const DATE_PATTERNS = [
-  "DD/MM/YYYY",
-  "D/M/YYYY",
-  "DD-MM-YYYY",
-  "D-M-YYYY",
-  "DD.MM.YYYY",
-  "D.M.YYYY",
-  "YYYY-MM-DD",
-  "YYYY/MM/DD",
-  "MMM D, YYYY",
-  "MMMM D, YYYY",
-  "DD MMM YYYY",
-  "DD-MMM-YYYY",
-  "YYYYMMDD",
+  'DD/MM/YYYY',
+  'D/M/YYYY',
+  'DD-MM-YYYY',
+  'D-M-YYYY',
+  'DD.MM.YYYY',
+  'D.M.YYYY',
+  'YYYY-MM-DD',
+  'YYYY/MM/DD',
+  'MMM D, YYYY',
+  'MMMM D, YYYY',
+  'DD MMM YYYY',
+  'DD-MMM-YYYY',
+  'YYYYMMDD',
   // Date + Time
-  "DD/MM/YYYY HH:mm",
-  "DD-MM-YYYY HH:mm",
-  "YYYY-MM-DD HH:mm",
-  "DD MMM YYYY HH:mm",
-  "MMM D, YYYY h:mm A",
-  "YYYY-MM-DDTHH:mm:ss", // ISO
+  'DD/MM/YYYY HH:mm',
+  'DD-MM-YYYY HH:mm',
+  'YYYY-MM-DD HH:mm',
+  'DD MMM YYYY HH:mm',
+  'MMM D, YYYY h:mm A',
+  'YYYY-MM-DDTHH:mm:ss', // ISO
 ];
 
 /**
@@ -45,8 +41,8 @@ export async function parseExcelFile(
   },
 ): Promise<unknown[][]> {
   const buffer = await file.arrayBuffer();
-  const workbook = read(buffer, { cellDates: true, dateNF: "dd/MM/yyyy" });
-  const sheet = workbook.Sheets[workbook.SheetNames[0] ?? ""];
+  const workbook = read(buffer, { cellDates: true, dateNF: 'dd/MM/yyyy' });
+  const sheet = workbook.Sheets[workbook.SheetNames[0] ?? ''];
   const json = utils.sheet_to_json(sheet ?? {}, {
     header: 1,
     raw: false,
@@ -54,7 +50,7 @@ export async function parseExcelFile(
 
   // Filter out empty rows
   const filtered = json.filter((row) =>
-    row.some((cell) => cell !== null && cell !== undefined && cell !== ""),
+    row.some((cell) => cell !== null && cell !== undefined && cell !== ''),
   );
 
   return filtered;
@@ -68,8 +64,8 @@ export function normalizeDate(input?: string): string | undefined {
 
   // If Excel sends a serial number (e.g., 45245 = date)
   if (!isNaN(Number(input))) {
-    const excelEpoch = dayjs("1899-12-30").add(Number(input), "day");
-    return excelEpoch.format("YYYY-MM-DD");
+    const excelEpoch = dayjs('1899-12-30').add(Number(input), 'day');
+    return excelEpoch.format('YYYY-MM-DD');
   }
 
   const matchedPattern = DATE_PATTERNS.find((pattern) => {
@@ -79,15 +75,15 @@ export function normalizeDate(input?: string): string | undefined {
 
   if (matchedPattern) {
     const parsed = dayjs(input, matchedPattern, true);
-    return parsed.format("YYYY-MM-DD");
+    return parsed.format('YYYY-MM-DD');
   }
 
   const autoParsed = dayjs(input);
   if (autoParsed.isValid()) {
-    return autoParsed.format("YYYY-MM-DD");
+    return autoParsed.format('YYYY-MM-DD');
   }
 
-  console.warn("Could not parse date:", input);
+  console.warn('Could not parse date:', input);
   return undefined;
 }
 
@@ -107,53 +103,54 @@ export function validateField(
   // Check required
   if (
     field.required &&
-    (value === null || value === undefined || value === "")
+    (value === null || value === undefined || value === '')
   ) {
     return {
       parsedValue: value,
       error: {
         fieldKey,
         rawValue: String(value),
-        type: "blankInRequired",
+        type: 'blankInRequired',
         description: `Field "${field.label}" is required but is empty`,
       },
     };
   }
 
   // Skip parsing if value is empty and not required
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return { parsedValue: null };
   }
 
   // Type conversion
   try {
     switch (field.parseType) {
-      case "number":
-        if (isNaN(Number(String(value).replace(/,/g, "")))) {
+      case 'number':
+        if (isNaN(Number(String(value).replace(/,/g, '')))) {
           throw new Error(`Cannot convert "${value}" to number`);
         }
-        parsedValue = Number(String(value).replace(/,/g, ""));
+        parsedValue = Number(String(value).replace(/,/g, ''));
         break;
 
-      case "boolean":
-        if (typeof value === "boolean") {
+      case 'boolean':
+        if (typeof value === 'boolean') {
           parsedValue = value;
-        } else if (["true", "1"].includes(String(value).toLowerCase())) {
+        } else if (['true', '1'].includes(String(value).toLowerCase())) {
           parsedValue = true;
-        } else if (["false", "0"].includes(String(value).toLowerCase())) {
+        } else if (['false', '0'].includes(String(value).toLowerCase())) {
           parsedValue = false;
         } else {
           throw new Error(`Cannot convert "${value}" to boolean`);
         }
         break;
 
-      case "date":
+      case 'date': {
         const normalized = normalizeDate(String(value));
         if (!normalized) {
           throw new Error(`Cannot convert "${value}" to date`);
         }
         parsedValue = normalized;
         break;
+      }
 
       default:
         parsedValue = String(value);
@@ -161,9 +158,9 @@ export function validateField(
     }
 
     // Regex validation
-    if (field.parseRegex && parsedValue != null && parsedValue !== "") {
+    if (field.parseRegex && parsedValue != null && parsedValue !== '') {
       const regex =
-        typeof field.parseRegex === "string"
+        typeof field.parseRegex === 'string'
           ? new RegExp(field.parseRegex)
           : field.parseRegex;
 
@@ -183,7 +180,7 @@ export function validateField(
       error: {
         fieldKey,
         rawValue: String(value),
-        type: "format",
+        type: 'format',
         description: error.message,
       },
     };
@@ -202,7 +199,7 @@ export function detectDuplicates<T extends Record<string, unknown>>(
 
   data.forEach((row, index) => {
     const value = row[field.value];
-    if (value == null || value === "") return;
+    if (value == null || value === '') return;
 
     const key = String(value).trim().toLowerCase();
     if (!seen.has(key)) {
@@ -219,7 +216,7 @@ export function detectDuplicates<T extends Record<string, unknown>>(
         errors.set(index, {
           fieldKey: field.value,
           rawValue: key,
-          type: "duplicate",
+          type: 'duplicate',
           description: `Value "${key}" is duplicated in field "${field.label}"`,
         });
       });
@@ -241,8 +238,8 @@ function isObjectPath(path: string): boolean {
  */
 export function getValueByPath(obj: unknown, path: string): unknown {
   if (isObjectPath(path)) {
-    return path.split(".").reduce((acc: unknown, key) => {
-      if (acc && typeof acc === "object" && key in acc) {
+    return path.split('.').reduce((acc: unknown, key) => {
+      if (acc && typeof acc === 'object' && key in acc) {
         return (acc as Record<string, unknown>)[key];
       }
       return undefined;
@@ -259,39 +256,40 @@ function generateExampleValue(field: ExcelFieldOption): string {
     const regexStr = field.parseRegex.toString();
 
     // Email pattern
-    if (regexStr.includes("@")) {
-      return "example@email.com";
+    if (regexStr.includes('@')) {
+      return 'example@email.com';
     }
 
     // Phone pattern
-    if (regexStr.includes("\\d") && regexStr.includes("[\\s-()]")) {
-      return "+1 (555) 123-4567";
+    if (regexStr.includes('\\d') && regexStr.includes('[\\s-()]')) {
+      return '+1 (555) 123-4567';
     }
 
     // SKU pattern (ABC-1234)
-    if (regexStr.includes("[A-Z]") && regexStr.includes("\\d")) {
-      return "ABC-1234";
+    if (regexStr.includes('[A-Z]') && regexStr.includes('\\d')) {
+      return 'ABC-1234';
     }
   }
 
   // Generate based on type
   switch (field.parseType) {
-    case "number":
-      return "100";
-    case "date":
-      return "2024-01-15";
-    case "boolean":
-      return "true";
-    default:
+    case 'number':
+      return '100';
+    case 'date':
+      return '2024-01-15';
+    case 'boolean':
+      return 'true';
+    default: {
       // Generate based on label
       const label = field.label.toLowerCase();
-      if (label.includes("email")) return "example@email.com";
-      if (label.includes("phone")) return "+1 (555) 123-4567";
-      if (label.includes("name")) return "John Doe";
-      if (label.includes("code") || label.includes("id")) return "ABC123";
-      if (label.includes("age")) return "30";
-      if (label.includes("date")) return "2024-01-15";
-      return "Sample Data";
+      if (label.includes('email')) return 'example@email.com';
+      if (label.includes('phone')) return '+1 (555) 123-4567';
+      if (label.includes('name')) return 'John Doe';
+      if (label.includes('code') || label.includes('id')) return 'ABC123';
+      if (label.includes('age')) return '30';
+      if (label.includes('date')) return '2024-01-15';
+      return 'Sample Data';
+    }
   }
 }
 
@@ -305,7 +303,7 @@ export function generateTemplateExcel(
     fileName?: string;
   },
 ): void {
-  const { includeExample = true, fileName = "template" } = options || {};
+  const { includeExample = true, fileName = 'template' } = options || {};
 
   // Create workbook
   const workbook = utils.book_new();
@@ -332,15 +330,15 @@ export function generateTemplateExcel(
   const columnWidths = fields.map((field) => ({
     wch: Math.max(field.label.length + 2, 15),
   }));
-  worksheet["!cols"] = columnWidths;
+  worksheet['!cols'] = columnWidths;
 
   // Add worksheet to workbook
-  utils.book_append_sheet(workbook, worksheet, "Sheet1");
+  utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
   // Generate Excel file and trigger download
-  const excelBuffer = write(workbook, { bookType: "xlsx", type: "array" });
+  const excelBuffer = write(workbook, { bookType: 'xlsx', type: 'array' });
   const blob = new Blob([excelBuffer], {
-    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   });
   downloadFile(blob, `${fileName}.xlsx`);
 }
@@ -355,20 +353,20 @@ export function generateTemplateCSV(
     fileName?: string;
   },
 ): void {
-  const { includeExample = true, fileName = "template" } = options || {};
+  const { includeExample = true, fileName = 'template' } = options || {};
 
   // Create header row
   const headers = fields.map((field) => field.label);
-  let csvContent = headers.map((h) => `"${h}"`).join(",") + "\n";
+  let csvContent = headers.map((h) => `"${h}"`).join(',') + '\n';
 
   // Add example row if requested
   if (includeExample) {
     const exampleRow = fields.map((field) => generateExampleValue(field));
-    csvContent += exampleRow.map((v) => `"${v}"`).join(",") + "\n";
+    csvContent += exampleRow.map((v) => `"${v}"`).join(',') + '\n';
   }
 
   // Create blob and trigger download
-  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
   downloadFile(blob, `${fileName}.csv`);
 }
 
@@ -377,7 +375,7 @@ export function generateTemplateCSV(
  */
 function downloadFile(blob: Blob, fileName: string): void {
   const url = window.URL.createObjectURL(blob);
-  const link = document.createElement("a");
+  const link = document.createElement('a');
   link.href = url;
   link.download = fileName;
   document.body.appendChild(link);

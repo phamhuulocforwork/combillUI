@@ -1,32 +1,31 @@
-import { useState } from "react";
+import { FileUp, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
-import { FileUp, Loader2 } from "lucide-react";
-import { toast } from "sonner";
-
-import MonacoEditor from "@/components/blocks/monaco-editor/monaco-editor";
-import { Button } from "@/components/ui/button";
+import MonacoEditor from '@/components/blocks/monaco-editor/monaco-editor';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
-import { EditorLanguage } from "@/types";
+import { EditorLanguage } from '@/types';
 
-import { parseJSON } from "./utils/json-utils";
+import { parseJSON } from './utils/json-utils';
 
 interface JSONInputCardProps {
-  onCompare: (json1: any, json2: any, mode: "two-files" | "template") => void;
+  onCompare: (json1: any, json2: any, mode: 'two-files' | 'template') => void;
   onMerge: (json1: any, json2: any) => void;
   isProcessing: boolean;
 }
@@ -36,9 +35,9 @@ export default function JSONInputCard({
   onMerge,
   isProcessing,
 }: JSONInputCardProps) {
-  const [json1Text, setJson1Text] = useState("");
-  const [json2Text, setJson2Text] = useState("");
-  const [mode, setMode] = useState<"two-files" | "template">("two-files");
+  const [json1Text, setJson1Text] = useState('');
+  const [json2Text, setJson2Text] = useState('');
+  const [mode, setMode] = useState<'two-files' | 'template'>('two-files');
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -47,8 +46,8 @@ export default function JSONInputCard({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (!file.name.endsWith(".json")) {
-      toast.error("Please upload a JSON file");
+    if (!file.name.endsWith('.json')) {
+      toast.error('Please upload a JSON file');
       return;
     }
 
@@ -63,15 +62,15 @@ export default function JSONInputCard({
         toast.error(`Invalid JSON in ${file.name}: ${result.error}`);
       }
     } catch (_error) {
-      toast.error("Error reading file");
+      toast.error('Error reading file');
     }
 
     // Reset input
-    e.target.value = "";
+    e.target.value = '';
   };
 
   const validateAndProcess = (
-    _action: "compare" | "merge",
+    _action: 'compare' | 'merge',
   ): { json1: any; json2: any } | null => {
     const result1 = parseJSON(json1Text);
     const result2 = parseJSON(json2Text);
@@ -90,14 +89,14 @@ export default function JSONInputCard({
   };
 
   const handleCompare = () => {
-    const result = validateAndProcess("compare");
+    const result = validateAndProcess('compare');
     if (result) {
       onCompare(result.json1, result.json2, mode);
     }
   };
 
   const handleMerge = () => {
-    const result = validateAndProcess("merge");
+    const result = validateAndProcess('merge');
     if (result) {
       onMerge(result.json1, result.json2);
     }
@@ -111,51 +110,51 @@ export default function JSONInputCard({
           Paste JSON code or upload files to compare or merge
         </CardDescription>
       </CardHeader>
-      <CardContent className='space-y-4'>
-        <div className='space-y-2'>
-          <Label htmlFor='mode-select'>Comparison Mode</Label>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="mode-select">Comparison Mode</Label>
           <Select
             value={mode}
             onValueChange={(value) =>
-              setMode(value as "two-files" | "template")
+              setMode(value as 'two-files' | 'template')
             }
           >
-            <SelectTrigger id='mode-select'>
+            <SelectTrigger id="mode-select">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value='two-files'>Compare Two Files</SelectItem>
-              <SelectItem value='template'>Compare with Template</SelectItem>
+              <SelectItem value="two-files">Compare Two Files</SelectItem>
+              <SelectItem value="template">Compare with Template</SelectItem>
             </SelectContent>
           </Select>
-          <p className='text-xs text-muted-foreground'>
-            {mode === "two-files"
+          <p className="text-muted-foreground text-xs">
+            {mode === 'two-files'
               ? "Find keys in JSON 1 that don't exist in JSON 2"
               : "Find keys in JSON 1 that don't exist in the template (JSON 2)"}
           </p>
         </div>
 
-        <div className='space-y-2'>
-          <div className='flex items-center justify-between'>
-            <Label htmlFor='json1'>JSON 1</Label>
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="json1">JSON 1</Label>
             <Button
-              variant='outline'
-              size='sm'
-              onClick={() => document.getElementById("file1")?.click()}
+              variant="outline"
+              size="sm"
+              onClick={() => document.getElementById('file1')?.click()}
               disabled={isProcessing}
             >
-              <FileUp className='h-4 w-4' />
+              <FileUp className="h-4 w-4" />
               Upload File
             </Button>
             <input
-              id='file1'
-              type='file'
-              accept='.json'
-              className='hidden'
+              id="file1"
+              type="file"
+              accept=".json"
+              className="hidden"
               onChange={(e) => handleFileUpload(e, setJson1Text)}
             />
           </div>
-          <div className='h-[300px] border rounded-md overflow-hidden'>
+          <div className="h-[300px] overflow-hidden rounded-md border">
             <MonacoEditor
               code={json1Text}
               onCodeChange={setJson1Text}
@@ -164,29 +163,29 @@ export default function JSONInputCard({
           </div>
         </div>
 
-        <div className='space-y-2'>
-          <div className='flex items-center justify-between'>
-            <Label htmlFor='json2'>
-              JSON 2 {mode === "template" && "(Template)"}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="json2">
+              JSON 2 {mode === 'template' && '(Template)'}
             </Label>
             <Button
-              variant='outline'
-              size='sm'
-              onClick={() => document.getElementById("file2")?.click()}
+              variant="outline"
+              size="sm"
+              onClick={() => document.getElementById('file2')?.click()}
               disabled={isProcessing}
             >
-              <FileUp className='h-4 w-4' />
+              <FileUp className="h-4 w-4" />
               Upload File
             </Button>
             <input
-              id='file2'
-              type='file'
-              accept='.json'
-              className='hidden'
+              id="file2"
+              type="file"
+              accept=".json"
+              className="hidden"
               onChange={(e) => handleFileUpload(e, setJson2Text)}
             />
           </div>
-          <div className='h-[300px] border rounded-md overflow-hidden'>
+          <div className="h-[300px] overflow-hidden rounded-md border">
             <MonacoEditor
               code={json2Text}
               onCodeChange={setJson2Text}
@@ -195,26 +194,26 @@ export default function JSONInputCard({
           </div>
         </div>
 
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
           <Button
             onClick={handleCompare}
             disabled={!json1Text.trim() || !json2Text.trim() || isProcessing}
-            className='flex-1'
+            className="flex-1"
           >
             {isProcessing ? (
               <>
-                <Loader2 className='h-4 w-4 animate-spin' />
+                <Loader2 className="h-4 w-4 animate-spin" />
                 Processing...
               </>
             ) : (
-              "Compare"
+              'Compare'
             )}
           </Button>
           <Button
             onClick={handleMerge}
             disabled={!json1Text.trim() || !json2Text.trim() || isProcessing}
-            variant='outline'
-            className='flex-1'
+            variant="outline"
+            className="flex-1"
           >
             Merge
           </Button>

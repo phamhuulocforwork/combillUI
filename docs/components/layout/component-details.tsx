@@ -1,15 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import type { JSX } from "react";
+import { Code } from 'lucide-react';
+import Link from 'next/link';
+import type { JSX } from 'react';
+import { useEffect, useState } from 'react';
 
-import Link from "next/link";
-
-import { Code } from "lucide-react";
-
-import CodeBlock, { highlight } from "@/components/code-block";
-import CopyButton from "@/components/copy-button";
-import { Button } from "@/components/ui/button";
+import CodeBlock, { highlight } from '@/components/code-block';
+import CopyButton from '@/components/copy-button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -17,22 +15,22 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip';
 
-import type { RegistryItem } from "@/lib/components";
-import { convertRegistryPaths } from "@/lib/components";
-import { cn } from "@/lib/utils";
+import type { RegistryItem } from '@/lib/components';
+import { convertRegistryPaths } from '@/lib/components';
+import { cn } from '@/lib/utils';
 
-import ComponentCli from "../component-cli";
+import ComponentCli from '../component-cli';
 
 const buttonStyle =
-  "text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100";
+  'text-muted-foreground hover:text-foreground cursor-pointer opacity-0 transition-none group-focus-within/item:opacity-100 group-hover/item:opacity-100 disabled:opacity-100';
 
 const ComponentDetails = ({ component }: { component: RegistryItem }) => {
   const [code, setCode] = useState<string | null>(null);
@@ -42,7 +40,7 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
 
   useEffect(() => {
     const handleEmptyCode = () => {
-      setCode("");
+      setCode('');
       setHighlightedCode(null);
     };
 
@@ -56,25 +54,25 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
           return;
         }
 
-        const contentType = response.headers.get("content-type");
+        const contentType = response.headers.get('content-type');
 
-        if (!contentType || !contentType.includes("application/json")) {
+        if (!contentType || !contentType.includes('application/json')) {
           handleEmptyCode();
 
           return;
         }
 
         const data = await response.json();
-        const codeContent = convertRegistryPaths(data.files[0].content) || "";
+        const codeContent = convertRegistryPaths(data.files[0].content) || '';
 
         setCode(codeContent);
 
         // Pre-highlight the code
-        const highlighted = await highlight(codeContent, "tsx");
+        const highlighted = await highlight(codeContent, 'tsx');
 
         setHighlightedCode(highlighted);
       } catch (error) {
-        console.error("Failed to load code:", error);
+        console.error('Failed to load code:', error);
         handleEmptyCode();
       }
     };
@@ -84,18 +82,18 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
 
   return (
     <Dialog>
-      <div className='absolute -top-0.5 -right-0.5 flex w-full items-center justify-between'>
-        <div className={cn(buttonStyle, "text-xs font-medium")}>
+      <div className="-top-0.5 -right-0.5 absolute flex w-full items-center justify-between">
+        <div className={cn(buttonStyle, 'font-medium text-xs')}>
           {component.name}
         </div>
-        <div className='flex gap-2'>
-          <CopyButton source={code} toast='Code' className={buttonStyle} />
+        <div className="flex gap-2">
+          <CopyButton source={code} toast="Code" className={buttonStyle} />
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <DialogTrigger asChild>
-                  <Button variant='ghost' size='icon' className={buttonStyle}>
-                    <Code aria-hidden={true} className='size-4' />
+                  <Button variant="ghost" size="icon" className={buttonStyle}>
+                    <Code aria-hidden={true} className="size-4" />
                   </Button>
                 </DialogTrigger>
               </TooltipTrigger>
@@ -104,26 +102,26 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
           </TooltipProvider>
         </div>
       </div>
-      <DialogContent className='sm:max-w-[650px] max-w-2xl'>
+      <DialogContent className="max-w-2xl sm:max-w-[650px]">
         <DialogHeader>
-          <DialogTitle className='text-left'>Installation</DialogTitle>
-          <DialogDescription className='sr-only'>
+          <DialogTitle className="text-left">Installation</DialogTitle>
+          <DialogDescription className="sr-only">
             Use the CLI to add components to your project
           </DialogDescription>
         </DialogHeader>
-        <div className='min-w-0 space-y-5'>
-          <div className='space-y-4'>
+        <div className="min-w-0 space-y-5">
+          <div className="space-y-4">
             <ComponentCli name={component.name} />
 
-            <div className='relative'>
-              {code === "" ? (
-                <p className='text-muted-foreground text-sm'>
-                  No code available. If you think this is an error, please{" "}
+            <div className="relative">
+              {code === '' ? (
+                <p className="text-muted-foreground text-sm">
+                  No code available. If you think this is an error, please{' '}
                   <Link
-                    href='https://github.com/phamhuulocforwork/combillUI/issues'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-foreground font-medium underline hover:no-underline'
+                    href="https://github.com/phamhuulocforwork/combillUI/issues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-foreground underline hover:no-underline"
                   >
                     open an issue
                   </Link>
@@ -133,14 +131,14 @@ const ComponentDetails = ({ component }: { component: RegistryItem }) => {
                 <>
                   <CodeBlock
                     code={code}
-                    lang='tsx'
+                    lang="tsx"
                     preHighlighted={highlightedCode}
                   />
                   <CopyButton
                     source={code}
-                    className='dark absolute end-1 top-1'
-                    btnClassName='hover:!bg-transparent'
-                    toast='Code'
+                    className="dark absolute end-1 top-1"
+                    btnClassName="hover:!bg-transparent"
+                    toast="Code"
                   />
                 </>
               )}

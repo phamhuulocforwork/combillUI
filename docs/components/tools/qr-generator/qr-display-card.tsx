@@ -1,12 +1,11 @@
-import { useRef } from "react";
+import { Image, Loader2, SplinePointer } from 'lucide-react';
+import { useRef } from 'react';
+import { toast } from 'sonner';
 
-import { Image, Loader2, SplinePointer } from "lucide-react";
-import { toast } from "sonner";
-
-import CopyButton from "@/components/copy-button";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import CopyButton from '@/components/copy-button';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 interface QRDisplayCardProps {
   isGenerating: boolean;
@@ -28,35 +27,35 @@ export default function QRDisplayCard({
 
   const downloadSVG = () => {
     if (!svgString) {
-      toast.error("No QR code to download");
+      toast.error('No QR code to download');
       return;
     }
 
-    const blob = new Blob([svgString], { type: "image/svg+xml" });
+    const blob = new Blob([svgString], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = url;
-    link.download = "qr-code.svg";
+    link.download = 'qr-code.svg';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    toast.success("SVG downloaded!");
+    toast.success('SVG downloaded!');
   };
 
   const downloadPNG = () => {
     if (!pngDataUrl) {
-      toast.error("No QR code to download");
+      toast.error('No QR code to download');
       return;
     }
 
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = pngDataUrl;
-    link.download = "qr-code.png";
+    link.download = 'qr-code.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    toast.success("PNG downloaded!");
+    toast.success('PNG downloaded!');
   };
 
   return (
@@ -64,33 +63,33 @@ export default function QRDisplayCard({
       <CardHeader>
         <CardTitle>QR Code</CardTitle>
       </CardHeader>
-      <CardContent className='space-y-4'>
-        <div className='flex justify-center'>
+      <CardContent className="space-y-4">
+        <div className="flex justify-center">
           {isGenerating ? (
-            <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
-              <div className='text-center text-muted-foreground'>
-                <Loader2 className='h-12 w-12 mx-auto mb-2 animate-spin' />
+            <div className="flex h-64 w-64 items-center justify-center rounded-lg border-2 border-muted-foreground/25 border-dashed">
+              <div className="text-center text-muted-foreground">
+                <Loader2 className="mx-auto mb-2 h-12 w-12 animate-spin" />
                 <p>Generating QR code...</p>
               </div>
             </div>
           ) : hasQRCode ? (
-            <div className='p-4 bg-white rounded-lg border'>
+            <div className="rounded-lg border bg-white p-4">
               <img
                 src={pngDataUrl}
-                alt='QR Code'
-                className='max-w-full hidden'
+                alt="QR Code"
+                className="hidden max-w-full"
               />
               {svgString && (
                 <div
                   ref={svgRef}
-                  className='max-w-full'
+                  className="max-w-full"
                   dangerouslySetInnerHTML={{ __html: svgString }}
                 />
               )}
             </div>
           ) : (
-            <div className='w-64 h-64 border-2 border-dashed border-muted-foreground/25 rounded-lg flex items-center justify-center'>
-              <div className='text-center text-muted-foreground'></div>
+            <div className="flex h-64 w-64 items-center justify-center rounded-lg border-2 border-muted-foreground/25 border-dashed">
+              <div className="text-center text-muted-foreground"></div>
             </div>
           )}
         </div>
@@ -99,35 +98,35 @@ export default function QRDisplayCard({
           <>
             <Separator />
 
-            <div className='space-y-3'>
-              <div className='flex items-center gap-2'>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
                 <Button
-                  variant='outline'
+                  variant="outline"
                   onClick={downloadSVG}
-                  className='flex-1'
+                  className="flex-1"
                 >
                   Download SVG
-                  <SplinePointer className='h-4 w-4 mr-2' />
+                  <SplinePointer className="mr-2 h-4 w-4" />
                 </Button>
                 <CopyButton
                   source={svgString}
-                  toast='SVG copied!'
-                  btnClassName='h-10 w-10'
+                  toast="SVG copied!"
+                  btnClassName="h-10 w-10"
                 />
               </div>
-              <div className='flex items-center gap-2'>
+              <div className="flex items-center gap-2">
                 <Button
-                  variant='outline'
+                  variant="outline"
                   onClick={downloadPNG}
-                  className='flex-1'
+                  className="flex-1"
                 >
                   Download PNG
-                  <Image className='h-4 w-4 mr-2' />
+                  <Image className="mr-2 h-4 w-4" />
                 </Button>
                 <CopyButton
                   source={pngDataUrl}
-                  toast='PNG data URL copied!'
-                  btnClassName='h-10 w-10'
+                  toast="PNG data URL copied!"
+                  btnClassName="h-10 w-10"
                 />
               </div>
             </div>

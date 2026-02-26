@@ -1,10 +1,9 @@
-import Link from "next/link";
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { buttonVariants } from '@/components/ui/button';
 
-import { buttonVariants } from "@/components/ui/button";
-
-import { cn, getIsExternalLink } from "@/lib/utils";
+import { cn, getIsExternalLink } from '@/lib/utils';
 
 interface DynamicLinkProps
   extends React.ComponentPropsWithoutRef<typeof Link> {}
@@ -15,21 +14,21 @@ export function DynamicLink({ href, children, ...props }: DynamicLinkProps) {
   return (
     <Link
       href={href}
-      target={isExternal ? "_blank" : "_self"}
+      target={isExternal ? '_blank' : '_self'}
       className={cn(
         buttonVariants({
-          variant: "outline",
-          size: "sm",
-          className: "h-6 rounded-sm px-2 py-0.5 [&_svg]:size-3.5",
+          variant: 'outline',
+          size: 'sm',
+          className: 'h-6 rounded-sm px-2 py-0.5 [&_svg]:size-3.5',
         }),
       )}
       {...props}
     >
       {children}
       {isExternal ? (
-        <ExternalLink aria-hidden='true' />
+        <ExternalLink aria-hidden="true" />
       ) : (
-        <ArrowRight aria-hidden='true' />
+        <ArrowRight aria-hidden="true" />
       )}
     </Link>
   );

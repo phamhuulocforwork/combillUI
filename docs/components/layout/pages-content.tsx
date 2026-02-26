@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import ScrollToTop from "@/components/layout/scroll-to-top";
+import ScrollToTop from '@/components/layout/scroll-to-top';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface Props {
   children: ReactNode;
@@ -11,8 +11,8 @@ interface Props {
 
 const PagesContent = ({ children, className }: Props) => {
   return (
-    <main className='flex flex-1'>
-      <div className={cn("flex flex-1 flex-col", className)} id='main-section'>
+    <main className="flex flex-1">
+      <div className={cn('flex flex-1 flex-col', className)} id="main-section">
         {children}
       </div>
       <ScrollToTop />

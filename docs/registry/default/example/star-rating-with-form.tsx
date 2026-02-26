@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -13,15 +13,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from '@/hooks/use-toast';
 
-import StarRating from "@/registry/default/ui/star-rating";
+import StarRating from '@/registry/default/ui/star-rating';
 
 const FormSchema = z.object({
   rating: z.number().min(1, {
-    message: "Please provide a rating",
+    message: 'Please provide a rating',
   }),
 });
 
@@ -37,17 +37,17 @@ export default function StarRatingWithForm() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
-      title: "Form submitted!",
+      title: 'Form submitted!',
       description: `Rating: ${data.rating}`,
     });
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name='rating'
+          name="rating"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Rating</FormLabel>
@@ -59,7 +59,7 @@ export default function StarRatingWithForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit Rating</Button>
+        <Button type="submit">Submit Rating</Button>
       </form>
     </Form>
   );

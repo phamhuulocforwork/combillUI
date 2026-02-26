@@ -1,30 +1,29 @@
-"use client";
+'use client';
 
-import * as React from "react";
-
-import { FileTextIcon, UploadIcon, X } from "lucide-react";
+import { FileTextIcon, UploadIcon, X } from 'lucide-react';
+import * as React from 'react';
 import Dropzone, {
   type DropzoneProps,
   type FileRejection,
-} from "react-dropzone";
-import { toast } from "sonner";
+} from 'react-dropzone';
+import { toast } from 'sonner';
 
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-import { cn, formatBytes } from "@/lib/utils";
+import { cn, formatBytes } from '@/lib/utils';
 
-import { useControllableState } from "@/registry/default/hooks/use-controllable-state";
+import { useControllableState } from '@/registry/default/hooks/use-controllable-state';
 
 interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: File[];
   onValueChange?: (files: File[]) => void;
   onUpload?: (files: File[]) => Promise<void>;
   progresses?: Record<string, number>;
-  accept?: DropzoneProps["accept"];
-  maxSize?: DropzoneProps["maxSize"];
-  maxFileCount?: DropzoneProps["maxFiles"];
+  accept?: DropzoneProps['accept'];
+  maxSize?: DropzoneProps['maxSize'];
+  maxFileCount?: DropzoneProps['maxFiles'];
   multiple?: boolean;
   disabled?: boolean;
 }
@@ -36,7 +35,7 @@ export function FileUploader(props: FileUploaderProps) {
     onUpload,
     progresses,
     accept = {
-      "image/*": [],
+      'image/*': [],
     },
     maxSize = 1024 * 1024 * 2,
     maxFileCount = 1,
@@ -54,7 +53,7 @@ export function FileUploader(props: FileUploaderProps) {
   const onDrop = React.useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
       if (!multiple && maxFileCount === 1 && acceptedFiles.length > 1) {
-        toast.error("Cannot upload more than 1 file at a time");
+        toast.error('Cannot upload more than 1 file at a time');
         return;
       }
 
@@ -123,7 +122,7 @@ export function FileUploader(props: FileUploaderProps) {
   const isDisabled = disabled || (files?.length ?? 0) >= maxFileCount;
 
   return (
-    <div className='relative flex flex-col gap-6 overflow-hidden'>
+    <div className="relative flex flex-col gap-6 overflow-hidden">
       <Dropzone
         onDrop={onDrop}
         accept={accept}
@@ -136,43 +135,43 @@ export function FileUploader(props: FileUploaderProps) {
           <div
             {...getRootProps()}
             className={cn(
-              "group relative grid h-52 w-full cursor-pointer place-items-center rounded-lg border-2 border-dashed border-muted-foreground/25 px-5 py-2.5 text-center transition hover:bg-muted/25",
-              "ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-              isDragActive && "border-muted-foreground/50",
-              isDisabled && "pointer-events-none opacity-60",
+              'group relative grid h-52 w-full cursor-pointer place-items-center rounded-lg border-2 border-muted-foreground/25 border-dashed px-5 py-2.5 text-center transition hover:bg-muted/25',
+              'ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+              isDragActive && 'border-muted-foreground/50',
+              isDisabled && 'pointer-events-none opacity-60',
               className,
             )}
             {...dropzoneProps}
           >
             <input {...getInputProps()} />
             {isDragActive ? (
-              <div className='flex flex-col items-center justify-center gap-4 sm:px-5'>
-                <div className='rounded-full border border-dashed p-3'>
+              <div className="flex flex-col items-center justify-center gap-4 sm:px-5">
+                <div className="rounded-full border border-dashed p-3">
                   <UploadIcon
-                    className='size-7 text-muted-foreground'
-                    aria-hidden='true'
+                    className="size-7 text-muted-foreground"
+                    aria-hidden="true"
                   />
                 </div>
-                <p className='font-medium text-muted-foreground'>
+                <p className="font-medium text-muted-foreground">
                   Drop files here
                 </p>
               </div>
             ) : (
-              <div className='flex flex-col items-center justify-center gap-4 sm:px-5'>
-                <div className='rounded-full border border-dashed p-3'>
+              <div className="flex flex-col items-center justify-center gap-4 sm:px-5">
+                <div className="rounded-full border border-dashed p-3">
                   <UploadIcon
-                    className='size-7 text-muted-foreground'
-                    aria-hidden='true'
+                    className="size-7 text-muted-foreground"
+                    aria-hidden="true"
                   />
                 </div>
-                <div className='flex flex-col gap-px'>
-                  <p className='font-medium text-muted-foreground'>
+                <div className="flex flex-col gap-px">
+                  <p className="font-medium text-muted-foreground">
                     Drag and drop files here, or click to select files
                   </p>
-                  <p className='text-sm text-muted-foreground/70'>
+                  <p className="text-muted-foreground/70 text-sm">
                     You can upload
                     {maxFileCount > 1
-                      ? ` ${maxFileCount === Infinity ? "multiple" : maxFileCount}
+                      ? ` ${maxFileCount === Infinity ? 'multiple' : maxFileCount}
                       files (up to ${formatBytes(maxSize)} each)`
                       : ` one file with a maximum size of ${formatBytes(
                           maxSize,
@@ -185,8 +184,8 @@ export function FileUploader(props: FileUploaderProps) {
         )}
       </Dropzone>
       {files?.length ? (
-        <ScrollArea className='h-fit w-full px-3'>
-          <div className='flex max-h-48 flex-col gap-4'>
+        <ScrollArea className="h-fit w-full px-3">
+          <div className="flex max-h-48 flex-col gap-4">
             {files?.map((file, index) => (
               <FileCard
                 key={index}
@@ -210,31 +209,31 @@ interface FileCardProps {
 
 function FileCard({ file, progress, onRemove }: FileCardProps) {
   return (
-    <div className='relative flex items-center gap-2.5'>
-      <div className='flex flex-1 gap-2.5'>
+    <div className="relative flex items-center gap-2.5">
+      <div className="flex flex-1 gap-2.5">
         {isFileWithPreview(file) ? <FilePreview file={file} /> : null}
-        <div className='flex w-full flex-col gap-2'>
-          <div className='flex flex-col gap-px'>
-            <p className='line-clamp-1 text-sm font-medium text-foreground/80'>
+        <div className="flex w-full flex-col gap-2">
+          <div className="flex flex-col gap-px">
+            <p className="line-clamp-1 font-medium text-foreground/80 text-sm">
               {file.name}
             </p>
-            <p className='text-xs text-muted-foreground'>
+            <p className="text-muted-foreground text-xs">
               {formatBytes(file.size)}
             </p>
           </div>
           {progress ? <Progress value={progress} /> : null}
         </div>
       </div>
-      <div className='flex items-center gap-2'>
+      <div className="flex items-center gap-2">
         <Button
-          type='button'
-          variant='outline'
-          size='icon'
-          className='size-7'
+          type="button"
+          variant="outline"
+          size="icon"
+          className="size-7"
           onClick={onRemove}
         >
-          <X className='size-4' aria-hidden='true' />
-          <span className='sr-only'>Remove file</span>
+          <X className="size-4" aria-hidden="true" />
+          <span className="sr-only">Remove file</span>
         </Button>
       </div>
     </div>
@@ -242,7 +241,7 @@ function FileCard({ file, progress, onRemove }: FileCardProps) {
 }
 
 function isFileWithPreview(file: File): file is File & { preview: string } {
-  return "preview" in file && typeof file.preview === "string";
+  return 'preview' in file && typeof file.preview === 'string';
 }
 
 interface FilePreviewProps {
@@ -250,23 +249,23 @@ interface FilePreviewProps {
 }
 
 function FilePreview({ file }: FilePreviewProps) {
-  if (file.type.startsWith("image/")) {
+  if (file.type.startsWith('image/')) {
     return (
       <img
         src={file.preview}
         alt={file.name}
         width={48}
         height={48}
-        loading='lazy'
-        className='aspect-square shrink-0 rounded-md object-cover'
+        loading="lazy"
+        className="aspect-square shrink-0 rounded-md object-cover"
       />
     );
   }
 
   return (
     <FileTextIcon
-      className='size-10 text-muted-foreground'
-      aria-hidden='true'
+      className="size-10 text-muted-foreground"
+      aria-hidden="true"
     />
   );
 }

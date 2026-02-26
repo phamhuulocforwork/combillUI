@@ -1,18 +1,18 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
-import type { Component } from "@/registry/schema";
+import type { Component } from '@/registry/schema';
 
 export async function buildShadcnCli(): Promise<void> {
-  console.log("🔨 Building Shadcn CLI files...");
+  console.log('🔨 Building Shadcn CLI files...');
 
   // Dynamically import registry data after they've been generated
-  const { ui } = await import("@/registry/registry-ui");
-  const { snippets } = await import("@/registry/registry-snippets");
-  const { hooks } = await import("@/registry/registry-hooks");
+  const { ui } = await import('@/registry/registry-ui');
+  const { snippets } = await import('@/registry/registry-snippets');
+  const { hooks } = await import('@/registry/registry-hooks');
 
   // Create the registry directory if it doesn't exist
-  const registryDir = path.join(process.cwd(), "public/registry");
+  const registryDir = path.join(process.cwd(), 'public/registry');
   if (!fs.existsSync(registryDir)) {
     fs.mkdirSync(registryDir, { recursive: true });
   }
@@ -31,8 +31,8 @@ export async function buildShadcnCli(): Promise<void> {
         dark: {},
       },
       files: component.files.map((file) => ({
-        path: file.path.split("/").pop() || "",
-        content: file.content || "",
+        path: file.path.split('/').pop() || '',
+        content: file.content || '',
         type: file.type,
       })),
     } satisfies Component;
@@ -49,8 +49,8 @@ export async function buildShadcnCli(): Promise<void> {
       name: snippet.name,
       type: snippet.type,
       files: snippet.files.map((file) => ({
-        path: file.path.split("/").pop() || "",
-        content: file.content || "",
+        path: file.path.split('/').pop() || '',
+        content: file.content || '',
         type: file.type,
       })),
     };
@@ -70,8 +70,8 @@ export async function buildShadcnCli(): Promise<void> {
       dependencies: hook.dependencies || [],
       devDependencies: hook.devDependencies || [],
       files: hook.files.map((file) => ({
-        path: file.path.split("/").pop() || "",
-        content: file.content || "",
+        path: file.path.split('/').pop() || '',
+        content: file.content || '',
         type: file.type,
       })),
     } satisfies Component;
@@ -82,5 +82,5 @@ export async function buildShadcnCli(): Promise<void> {
     );
   }
 
-  console.log("✅ Generated public/registry");
+  console.log('✅ Generated public/registry');
 }

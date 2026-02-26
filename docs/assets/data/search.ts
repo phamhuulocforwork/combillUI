@@ -1,14 +1,13 @@
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import { Circle, File, type LucideProps } from 'lucide-react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 
-import { Circle, File, type LucideProps } from "lucide-react";
-
-import { categoriesSnippet } from "@/config/snippets";
+import { categoriesSnippet } from '@/config/snippets';
 
 type SearchData = {
   title: string;
   data: {
     icon: ForwardRefExoticComponent<
-      Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+      Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
     >;
     name: string;
     href: string;
@@ -18,22 +17,22 @@ type SearchData = {
 
 export const searchData: SearchData[] = [
   {
-    title: "Links",
+    title: 'Links',
     data: [
       {
         icon: File,
-        name: "Docs",
-        href: "/docs",
+        name: 'Docs',
+        href: '/docs',
       },
       {
         icon: File,
-        name: "Snippets",
-        href: "/snippets",
+        name: 'Snippets',
+        href: '/snippets',
       },
     ],
   },
   {
-    title: "Snippets",
+    title: 'Snippets',
     data: [
       ...categoriesSnippet
         .filter((category) => !category.isComingSoon)

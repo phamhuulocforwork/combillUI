@@ -1,12 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
-import { defineStepper } from "@/registry/default/ui/stepper";
+import { defineStepper } from '@/registry/default/ui/stepper';
 
-type Variant = "horizontal" | "vertical" | "circle";
+type Variant = 'horizontal' | 'vertical' | 'circle';
 
 const {
   StepperProvider,
@@ -17,50 +17,50 @@ const {
   StepperTitle,
 } = defineStepper(
   {
-    id: "step-1",
-    title: "Step 1",
+    id: 'step-1',
+    title: 'Step 1',
   },
   {
-    id: "step-2",
-    title: "Step 2",
+    id: 'step-2',
+    title: 'Step 2',
   },
   {
-    id: "step-3",
-    title: "Step 3",
+    id: 'step-3',
+    title: 'Step 3',
   },
 );
 
 export default function StepperVariants() {
-  const [variant, setVariant] = React.useState<Variant>("horizontal");
+  const [variant, setVariant] = React.useState<Variant>('horizontal');
   return (
-    <div className='flex w-full flex-col gap-8'>
+    <div className="flex w-full flex-col gap-8">
       <RadioGroup
         value={variant}
         onValueChange={(value) => setVariant(value as Variant)}
       >
-        <div className='flex items-center space-x-2'>
-          <RadioGroupItem value='horizontal' id='horizontal-variant' />
-          <Label htmlFor='horizontal-variant'>Horizontal</Label>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="horizontal" id="horizontal-variant" />
+          <Label htmlFor="horizontal-variant">Horizontal</Label>
         </div>
-        <div className='flex items-center space-x-2'>
-          <RadioGroupItem value='vertical' id='vertical-variant' />
-          <Label htmlFor='vertical-variant'>Vertical</Label>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="vertical" id="vertical-variant" />
+          <Label htmlFor="vertical-variant">Vertical</Label>
         </div>
-        <div className='flex items-center space-x-2'>
-          <RadioGroupItem value='circle' id='circle-variant' />
-          <Label htmlFor='circle-variant'>Circle</Label>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="circle" id="circle-variant" />
+          <Label htmlFor="circle-variant">Circle</Label>
         </div>
       </RadioGroup>
-      {variant === "horizontal" && <HorizontalStepper />}
-      {variant === "vertical" && <VerticalStepper />}
-      {variant === "circle" && <CircleStepper />}
+      {variant === 'horizontal' && <HorizontalStepper />}
+      {variant === 'vertical' && <VerticalStepper />}
+      {variant === 'circle' && <CircleStepper />}
     </div>
   );
 }
 
 const HorizontalStepper = () => {
   return (
-    <StepperProvider className='space-y-4' variant='horizontal'>
+    <StepperProvider className="space-y-4" variant="horizontal">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
@@ -75,14 +75,14 @@ const HorizontalStepper = () => {
             ))}
           </StepperNavigation>
           {methods.switch({
-            "step-1": (step) => <Content id={step.id} />,
-            "step-2": (step) => <Content id={step.id} />,
-            "step-3": (step) => <Content id={step.id} />,
+            'step-1': (step) => <Content id={step.id} />,
+            'step-2': (step) => <Content id={step.id} />,
+            'step-3': (step) => <Content id={step.id} />,
           })}
           <StepperControls>
             {!methods.isLast && (
               <Button
-                variant='secondary'
+                variant="secondary"
                 onClick={methods.prev}
                 disabled={methods.isFirst}
               >
@@ -90,7 +90,7 @@ const HorizontalStepper = () => {
               </Button>
             )}
             <Button onClick={methods.isLast ? methods.reset : methods.next}>
-              {methods.isLast ? "Reset" : "Next"}
+              {methods.isLast ? 'Reset' : 'Next'}
             </Button>
           </StepperControls>
         </React.Fragment>
@@ -101,15 +101,15 @@ const HorizontalStepper = () => {
 
 const Content = ({ id }: { id: string }) => {
   return (
-    <StepperPanel className='h-[200px] content-center rounded border  p-8'>
-      <p className='text-xl font-normal'>Content for {id}</p>
+    <StepperPanel className="h-[200px] content-center rounded border p-8">
+      <p className="font-normal text-xl">Content for {id}</p>
     </StepperPanel>
   );
 };
 
 const VerticalStepper = () => {
   return (
-    <StepperProvider className='space-y-4' variant='vertical'>
+    <StepperProvider className="space-y-4" variant="vertical">
       {({ methods }) => (
         <>
           <StepperNavigation>
@@ -121,8 +121,8 @@ const VerticalStepper = () => {
               >
                 <StepperTitle>{step.title}</StepperTitle>
                 {methods.when(step.id, () => (
-                  <StepperPanel className='h-[200px] content-center rounded border  p-8'>
-                    <p className='text-xl font-normal'>Content for {step.id}</p>
+                  <StepperPanel className="h-[200px] content-center rounded border p-8">
+                    <p className="font-normal text-xl">Content for {step.id}</p>
                   </StepperPanel>
                 ))}
               </StepperStep>
@@ -131,7 +131,7 @@ const VerticalStepper = () => {
           <StepperControls>
             {!methods.isLast && (
               <Button
-                variant='secondary'
+                variant="secondary"
                 onClick={methods.prev}
                 disabled={methods.isFirst}
               >
@@ -139,7 +139,7 @@ const VerticalStepper = () => {
               </Button>
             )}
             <Button onClick={methods.isLast ? methods.reset : methods.next}>
-              {methods.isLast ? "Reset" : "Next"}
+              {methods.isLast ? 'Reset' : 'Next'}
             </Button>
           </StepperControls>
         </>
@@ -150,7 +150,7 @@ const VerticalStepper = () => {
 
 const CircleStepper = () => {
   return (
-    <StepperProvider className='space-y-4' variant='circle'>
+    <StepperProvider className="space-y-4" variant="circle">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
@@ -159,8 +159,8 @@ const CircleStepper = () => {
             </StepperStep>
           </StepperNavigation>
           {methods.when(methods.current.id, () => (
-            <StepperPanel className='h-[200px] content-center rounded border  p-8'>
-              <p className='text-xl font-normal'>
+            <StepperPanel className="h-[200px] content-center rounded border p-8">
+              <p className="font-normal text-xl">
                 Content for {methods.current.id}
               </p>
             </StepperPanel>
@@ -168,7 +168,7 @@ const CircleStepper = () => {
           <StepperControls>
             {!methods.isLast && (
               <Button
-                variant='secondary'
+                variant="secondary"
                 onClick={methods.prev}
                 disabled={methods.isFirst}
               >
@@ -176,7 +176,7 @@ const CircleStepper = () => {
               </Button>
             )}
             <Button onClick={methods.isLast ? methods.reset : methods.next}>
-              {methods.isLast ? "Reset" : "Next"}
+              {methods.isLast ? 'Reset' : 'Next'}
             </Button>
           </StepperControls>
         </React.Fragment>

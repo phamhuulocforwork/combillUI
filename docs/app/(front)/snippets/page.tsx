@@ -1,33 +1,33 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 
-import { categoriesSnippet } from "@/config/snippets";
+import { categoriesSnippet } from '@/config/snippets';
 
 //TODO: Add metadata
 export const metadata: Metadata = {
-  title: "Shadcn Snippets",
-  description: "",
+  title: 'Shadcn Snippets',
+  description: '',
   openGraph: {
-    title: "Shadcn Snippets",
-    description: "",
+    title: 'Shadcn Snippets',
+    description: '',
     url: `${process.env.NEXT_PUBLIC_APP_URL}/snippets`,
     images: [
       {
-        url: "",
-        type: "image/png",
+        url: '',
+        type: 'image/png',
         width: 1200,
         height: 630,
-        alt: "",
+        alt: '',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Shadcn Snippets",
-    description: "",
+    card: 'summary_large_image',
+    title: 'Shadcn Snippets',
+    description: '',
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_APP_URL}/snippets`,
@@ -36,32 +36,32 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <div className='flex flex-col items-start justify-center space-y-4 p-4 sm:space-y-8 sm:p-8'>
-      <div className='flex flex-col space-y-3'>
-        <h1 className='text-2xl font-bold sm:text-3xl'>Shadcn Snippets</h1>
-        <p className='text-muted-foreground'>
+    <div className="flex flex-col items-start justify-center space-y-4 p-4 sm:space-y-8 sm:p-8">
+      <div className="flex flex-col space-y-3">
+        <h1 className="font-bold text-2xl sm:text-3xl">Shadcn Snippets</h1>
+        <p className="text-muted-foreground">
           An open-source collection of copy-and-paste Shadcn Snippets designed
           to accelerate your project development. Below is a summary of the
           available component categories:
         </p>
       </div>
-      <div className='grid w-full gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 xl:grid-cols-4'>
+      <div className="grid w-full gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 xl:grid-cols-4">
         {categoriesSnippet
           .filter((category) => !category.isComingSoon)
           .map((category) => (
             <div
               key={category.slug}
-              className='group overflow-hidden rounded-md border'
+              className="group overflow-hidden rounded-md border"
             >
               <Link href={`/snippets/${category.slug}`}>
-                <div className='flex flex-col gap-1 p-4'>
-                  <div className='flex items-center gap-2'>
-                    <category.icon className='size-6 transition-all duration-300 group-hover:scale-110' />
-                    <h2 className='text-base font-medium'>{category.name}</h2>
-                    <Badge variant='secondary'>{`${category.components.length} ${category.components.length === 1 ? "Snippet" : "Snippets"}`}</Badge>
+                <div className="flex flex-col gap-1 p-4">
+                  <div className="flex items-center gap-2">
+                    <category.icon className="size-6 transition-all duration-300 group-hover:scale-110" />
+                    <h2 className="font-medium text-base">{category.name}</h2>
+                    <Badge variant="secondary">{`${category.components.length} ${category.components.length === 1 ? 'Snippet' : 'Snippets'}`}</Badge>
                   </div>
 
-                  <p className='text-muted-foreground text-sm line-clamp-2 mt-1'>
+                  <p className="mt-1 line-clamp-2 text-muted-foreground text-sm">
                     {category.description}
                   </p>
                 </div>

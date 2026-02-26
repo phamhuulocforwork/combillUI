@@ -1,10 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import { Star } from 'lucide-react';
+import * as React from 'react';
 
-import { Star } from "lucide-react";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 let nextId = 0;
 const generateStarIds = (count: number) =>
@@ -44,18 +43,18 @@ const StarIcon = React.memo(
       onClick={onClick}
       onMouseMove={onMouseMove}
       className={cn(
-        "transition-colors duration-200",
-        isInteractive && "cursor-pointer hover:scale-110",
+        'transition-colors duration-200',
+        isInteractive && 'cursor-pointer hover:scale-110',
       )}
       style={style}
     />
   ),
 );
-StarIcon.displayName = "StarIcon";
+StarIcon.displayName = 'StarIcon';
 
 const StarRating = ({
   className,
-  color = "#e4c616",
+  color = '#e4c616',
   size = 24,
   maxStars = 5,
   onChange,
@@ -96,7 +95,7 @@ const StarRating = ({
 
       const difference = ratingToUse - index;
 
-      if (difference <= 0) return { color: "gray", fill: "transparent" };
+      if (difference <= 0) return { color: 'gray', fill: 'transparent' };
       if (difference >= 1) return { color: color, fill: color };
 
       return {
@@ -117,13 +116,13 @@ const StarRating = ({
       return (
         <linearGradient
           id={starIds[partialStarIndex]}
-          x1='0%'
-          y1='0%'
-          x2='100%'
-          y2='0%'
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
         >
           <stop offset={`${partialFill}%`} stopColor={color} />
-          <stop offset={`${partialFill}%`} stopColor='transparent' />
+          <stop offset={`${partialFill}%`} stopColor="transparent" />
         </linearGradient>
       );
     }
@@ -156,10 +155,10 @@ const StarRating = ({
 
   return (
     <div
-      className={cn("relative flex items-center gap-x-0.5", className)}
+      className={cn('relative flex items-center gap-x-0.5', className)}
       onMouseLeave={handleMouseLeave}
     >
-      <svg width='0' height='0' style={{ position: "absolute" }}>
+      <svg width="0" height="0" style={{ position: 'absolute' }}>
         <defs>{renderGradientDefs()}</defs>
       </svg>
       {stars}

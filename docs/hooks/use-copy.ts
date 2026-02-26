@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { toast } from "sonner";
+import { toast } from 'sonner';
 
 export const useCopy = (duration = 1500, toastMessage?: string) => {
   const [copied, setCopied] = useState<boolean>(false);
@@ -12,7 +12,7 @@ export const useCopy = (duration = 1500, toastMessage?: string) => {
       setTimeout(() => setCopied(false), duration);
       toastMessage &&
         toast(`${toastMessage} copied to clipboard`, {
-          position: "top-right",
+          position: 'top-right',
         });
 
       return true;
@@ -20,7 +20,7 @@ export const useCopy = (duration = 1500, toastMessage?: string) => {
       console.error(`${toastMessage} failed to copy to clipboard`, err);
       toastMessage &&
         toast(`${toastMessage} failed to copy to clipboard`, {
-          position: "top-right",
+          position: 'top-right',
         });
 
       return false;

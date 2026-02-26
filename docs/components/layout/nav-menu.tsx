@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import type { LucideIcon } from 'lucide-react';
 
-import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
+import Link from 'next/link';
+import * as React from 'react';
 
 import {
   NavigationMenu,
@@ -13,19 +13,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-
-import { cn } from "@/lib/utils";
-
-import { categoriesSnippet } from "@/config/snippets";
-import { categoriesTools } from "@/config/tools";
+} from '@/components/ui/navigation-menu';
+import { categoriesSnippet } from '@/config/snippets';
+import { categoriesTools } from '@/config/tools';
+import { cn } from '@/lib/utils';
 
 export function NavMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href='/docs' legacyBehavior passHref>
+          <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Components
             </NavigationMenuLink>
@@ -34,7 +32,7 @@ export function NavMenu() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Snippets</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {categoriesSnippet.map((snippet) => (
                 <ListItem
                   key={snippet.slug}
@@ -51,7 +49,7 @@ export function NavMenu() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {categoriesTools.map((tool) => (
                 <ListItem
                   key={tool.slug}
@@ -86,11 +84,11 @@ export function NavMenu() {
   );
 }
 
-interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
+interface ListItemProps extends React.ComponentPropsWithoutRef<'a'> {
   icon?: LucideIcon;
 }
 
-const ListItem = React.forwardRef<React.ElementRef<"a">, ListItemProps>(
+const ListItem = React.forwardRef<React.ElementRef<'a'>, ListItemProps>(
   function ListItemComponent(props, ref) {
     const { className, title, children, icon, ...rest } = props;
     const IconComponent = icon;
@@ -100,16 +98,16 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, ListItemProps>(
           <a
             ref={ref}
             className={cn(
-              "block select-none space-y-1 rounded-sm p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              'block select-none space-y-1 rounded-sm p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
               className,
             )}
             {...rest}
           >
-            <div className='text-sm font-medium leading-none flex items-center gap-2'>
-              {IconComponent && <IconComponent className='h-4 w-4' />}
+            <div className="flex items-center gap-2 font-medium text-sm leading-none">
+              {IconComponent && <IconComponent className="h-4 w-4" />}
               {title}
             </div>
-            <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
+            <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
               {children}
             </p>
           </a>
@@ -118,4 +116,4 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, ListItemProps>(
     );
   },
 );
-ListItem.displayName = "ListItem";
+ListItem.displayName = 'ListItem';

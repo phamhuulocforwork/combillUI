@@ -1,29 +1,29 @@
-import { Contrast, Palette, Zap } from "lucide-react";
+import { Contrast, Palette, Zap } from 'lucide-react';
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 const items = [
   {
-    title: "Is it accessible?",
-    content: "Yes. It adheres to the WAI-ARIA design pattern.",
+    title: 'Is it accessible?',
+    content: 'Yes. It adheres to the WAI-ARIA design pattern.',
     icon: Contrast,
   },
   {
-    title: "Is it styled?",
+    title: 'Is it styled?',
     content:
       "Yes. It comes with default styles that matches the other components' aesthetic.",
     icon: Palette,
     disabled: true,
   },
   {
-    title: "Is it animated?",
+    title: 'Is it animated?',
     content:
       "Yes. It's animated by default, but you can disable it if you prefer.",
     icon: Zap,
@@ -33,20 +33,20 @@ const items = [
 export default function AccordionItemDisabled() {
   return (
     <Accordion
-      defaultValue='item-0'
-      type='single'
+      defaultValue="item-0"
+      type="single"
       collapsible
-      className='max-w-lg my-4 w-full'
+      className="my-4 w-full max-w-lg"
     >
       {items.map(({ title, content, icon: Icon, disabled }, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
           <AccordionTrigger
             disabled={disabled}
             className={cn({
-              "opacity-50": disabled,
+              'opacity-50': disabled,
             })}
           >
-            <div className='flex items-start gap-3'>
+            <div className="flex items-start gap-3">
               <Icon />
               {title}
             </div>

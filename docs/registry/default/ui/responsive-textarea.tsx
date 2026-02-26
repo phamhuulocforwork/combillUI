@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 const ResponsiveTextarea = React.forwardRef<
   HTMLTextAreaElement,
-  React.ComponentProps<"textarea">
+  React.ComponentProps<'textarea'>
 >(({ className, ...props }, ref) => {
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
-  const [val, setVal] = React.useState<string>("");
+  const [val, setVal] = React.useState<string>('');
 
   React.useEffect(() => {
     if (textAreaRef.current) {
-      textAreaRef.current.style.height = "auto";
+      textAreaRef.current.style.height = 'auto';
       textAreaRef.current.style.height =
-        textAreaRef.current.scrollHeight + "px";
+        textAreaRef.current.scrollHeight + 'px';
     }
   }, [val]);
 
   return (
     <textarea
       className={cn(
-        "placeholder:text-muted-foreground flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-transparent px-3 py-2 text-sm text-foreground ring-offset-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 selection:bg-primary disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input/30",
+        'flex min-h-[80px] w-full resize-none overflow-hidden rounded-md border border-input bg-transparent px-3 py-2 text-foreground text-sm ring-offset-primary selection:bg-primary placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input/30',
         className,
       )}
       ref={textAreaRef}
@@ -31,6 +31,6 @@ const ResponsiveTextarea = React.forwardRef<
     />
   );
 });
-ResponsiveTextarea.displayName = "ResponsiveTextarea";
+ResponsiveTextarea.displayName = 'ResponsiveTextarea';
 
 export { ResponsiveTextarea };

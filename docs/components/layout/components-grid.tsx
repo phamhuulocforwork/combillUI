@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Children, type ReactNode, useEffect, useState } from "react";
+import { Children, type ReactNode, useEffect, useState } from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 type GridLayoutProps = {
   children: ReactNode;
@@ -37,24 +37,24 @@ const ComponentsGrid = ({
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [xs, sm, md, lg, xl]);
 
   return (
     <div
-      className='group grid divide-x divide-y divide-dashed'
+      className="group grid divide-x divide-y divide-dashed"
       style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
     >
       {Children.map(children, (child, index) => (
         <div
-          className={cn("p-4", {
-            "border-b-0": index >= length - (length % columns || columns),
-            "border-e-0": (index + 1) % columns === 0,
-            "border-e": length % columns !== 0 && index === length - 1,
+          className={cn('p-4', {
+            'border-b-0': index >= length - (length % columns || columns),
+            'border-e-0': (index + 1) % columns === 0,
+            'border-e': length % columns !== 0 && index === length - 1,
           })}
         >
           {child}

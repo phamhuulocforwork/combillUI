@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Send } from 'lucide-react';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Send } from "lucide-react";
-import { useForm } from "react-hook-form";
-
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -15,15 +14,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from '@/hooks/use-toast';
 
-import { LabeledSwitch } from "@/registry/default/ui/labeled-switch";
+import { LabeledSwitch } from '@/registry/default/ui/labeled-switch';
 
 const formSchema = z.object({
   consent: z.boolean({
-    required_error: "You must accept the terms and conditions",
+    required_error: 'You must accept the terms and conditions',
   }),
 });
 
@@ -40,8 +39,8 @@ export default function LabeledSwitchWithForm() {
 
   function onSubmit(data: FormValues) {
     toast({
-      title: "Form submitted!",
-      description: `Consent: ${data.consent ? "Accepted" : "Not accepted"}`,
+      title: 'Form submitted!',
+      description: `Consent: ${data.consent ? 'Accepted' : 'Not accepted'}`,
     });
   }
 
@@ -49,18 +48,18 @@ export default function LabeledSwitchWithForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='max-w-xs space-y-4'
+        className="max-w-xs space-y-4"
       >
         <FormField
           control={form.control}
-          name='consent'
+          name="consent"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Terms and Conditions</FormLabel>
               <FormControl>
                 <LabeledSwitch
-                  firstLabel='Decline'
-                  secondLabel='Accept'
+                  firstLabel="Decline"
+                  secondLabel="Accept"
                   selected={field.value}
                   onToggle={field.onChange}
                 />
@@ -69,7 +68,7 @@ export default function LabeledSwitchWithForm() {
             </FormItem>
           )}
         />
-        <Button className='w-full' type='submit'>
+        <Button className="w-full" type="submit">
           Submit
           <Send />
         </Button>

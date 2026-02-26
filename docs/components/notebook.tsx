@@ -1,29 +1,27 @@
-import { FC, type HTMLAttributes, type ReactNode } from "react";
+import type { PageTree } from 'fumadocs-core/server';
+import { TreeContextProvider } from 'fumadocs-ui/provider';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
 
-import Link from "next/link";
-import { notFound } from "next/navigation";
-
-import type { PageTree } from "fumadocs-core/server";
-import { TreeContextProvider } from "fumadocs-ui/provider";
-
-import { Icons } from "@/components/icons";
-import { Sidebar, SidebarProps } from "@/components/layout/docs/sidebar";
-import { type Option, RootToggle } from "@/components/layout/root-toggle";
+import { Icons } from '@/components/icons';
+import { Sidebar, type SidebarProps } from '@/components/layout/docs/sidebar';
+import { type Option, RootToggle } from '@/components/layout/root-toggle';
 import {
   DocsNavbar,
   LayoutBody,
   SidebarItems,
-} from "@/components/notebook.client";
+} from '@/components/notebook.client';
 import {
   SidebarContent,
   SidebarGroup,
   SidebarHeader,
   SidebarInset,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
 
-import { TabOptions, getSidebarTabs } from "@/lib/get-sidebar-tabs";
-import { cn } from "@/lib/utils";
+import { getSidebarTabs, type TabOptions } from '@/lib/get-sidebar-tabs';
+import { cn } from '@/lib/utils';
 
 interface SidebarOptions extends SidebarProps {
   tabs?: Option[] | TabOptions | false;
@@ -57,7 +55,7 @@ export function DocsLayout({
   let tabs: Option[] = [];
   if (Array.isArray(tabOptions)) {
     tabs = tabOptions;
-  } else if (typeof tabOptions === "object") {
+  } else if (typeof tabOptions === 'object') {
     tabs = getSidebarTabs(props.tree, tabOptions);
   } else if (tabOptions !== false) {
     tabs = getSidebarTabs(props.tree);
@@ -68,14 +66,14 @@ export function DocsLayout({
       <LayoutBody
         {...props.containerProps}
         className={cn(
-          "[--fd-nav-height:3.5rem] md:[--fd-sidebar-width:260px] lg:[--fd-toc-width:260px] [&_#nd-toc]:max-lg:hidden [&_#nd-tocnav]:lg:hidden",
+          '[--fd-nav-height:3.5rem] md:[--fd-sidebar-width:260px] lg:[--fd-toc-width:260px] [&_#nd-toc]:max-lg:hidden [&_#nd-tocnav]:lg:hidden',
           props.containerProps?.className,
         )}
       >
-        <Sidebar className='md:[--fd-nav-height:0px]'>
+        <Sidebar className="md:[--fd-nav-height:0px]">
           <SidebarHeader>
             <SidebarHeaderItems>
-              <SidebarTrigger className='ms-auto text-fd-muted-foreground' />
+              <SidebarTrigger className="ms-auto text-fd-muted-foreground" />
             </SidebarHeaderItems>
             {tabs.length > 0 ? <RootToggle options={tabs} /> : null}
           </SidebarHeader>
@@ -86,14 +84,14 @@ export function DocsLayout({
           </SidebarContent>
         </Sidebar>
         <SidebarInset>
-          <div className='w-full min-w-0 max-w-[var(--fd-content-width)] [--fd-nav-height:3.5rem]'>
+          <div className="w-full min-w-0 max-w-[var(--fd-content-width)] [--fd-nav-height:3.5rem]">
             <DocsNavbar />
-            <div className='flex flex-row z-[1]'>{children}</div>
+            <div className="z-[1] flex flex-row">{children}</div>
           </div>
           <div
-            className='min-w-[var(--fd-sidebar-width)] flex-1'
+            className="min-w-[var(--fd-sidebar-width)] flex-1"
             style={{
-              marginInlineStart: "calc(var(--fd-sidebar-width) * -1)",
+              marginInlineStart: 'calc(var(--fd-sidebar-width) * -1)',
             }}
           />
         </SidebarInset>
@@ -104,10 +102,10 @@ export function DocsLayout({
 
 function SidebarHeaderItems({ children }: { children: ReactNode }) {
   return (
-    <SidebarGroup className='flex flex-row items-center'>
+    <SidebarGroup className="flex flex-row items-center">
       <Link
-        href='/'
-        className='inline-flex items-center gap-1.5 py-1 font-medium'
+        href="/"
+        className="inline-flex items-center gap-1.5 py-1 font-medium"
       >
         <Icons.logo />
         CombillUI

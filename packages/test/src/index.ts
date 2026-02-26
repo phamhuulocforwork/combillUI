@@ -4,7 +4,7 @@
  * @returns Hello world message
  */
 export function helloWorld(name?: string): string {
-  return name !== undefined ? `Hello ${name}!` : "Hello World";
+  return name !== undefined ? `Hello ${name}!` : 'Hello World';
 }
 
 /**

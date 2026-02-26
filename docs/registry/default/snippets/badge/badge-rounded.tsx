@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 
 export default function BadgeRounded() {
-  return <Badge className='rounded-full'>Rounded</Badge>;
+  return <Badge className="rounded-full">Rounded</Badge>;
 }

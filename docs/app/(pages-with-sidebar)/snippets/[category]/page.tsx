@@ -1,15 +1,13 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from 'next';
 
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import ComponentCard from "@/components/layout/component-card";
-import ComponentDetails from "@/components/layout/component-details";
-import ComponentLoader from "@/components/layout/component-loader";
-import ComponentsGrid from "@/components/layout/components-grid";
-
-import { getComponentsByNames } from "@/lib/components";
-
-import { categoriesSnippet, getCategory } from "@/config/snippets";
+import ComponentCard from '@/components/layout/component-card';
+import ComponentDetails from '@/components/layout/component-details';
+import ComponentLoader from '@/components/layout/component-loader';
+import ComponentsGrid from '@/components/layout/components-grid';
+import { categoriesSnippet, getCategory } from '@/config/snippets';
+import { getComponentsByNames } from '@/lib/components';
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -47,7 +45,7 @@ export async function generateMetadata(
       images: parentMetadata.openGraph?.images,
     },
     twitter: {
-      card: parentMetadata.twitter?.card || "summary_large_image",
+      card: parentMetadata.twitter?.card || 'summary_large_image',
       title: `Shadcn ${category.name}`,
       description: isSingleComponent
         ? `Elevate your UI with a Shadcn ${category.name.toLowerCase()} component, built using React and Tailwind CSS.`
@@ -80,9 +78,9 @@ const Page = async (props: { params: Promise<{ category: string }> }) => {
   );
 
   return (
-    <div className='flex flex-1 flex-col space-y-4 p-4 sm:space-y-8 sm:p-8'>
-      <div className='flex flex-col space-y-3'>
-        <h1 className='text-2xl font-bold sm:text-3xl'>{`Shadcn ${category.name}`}</h1>
+    <div className="flex flex-1 flex-col space-y-4 p-4 sm:space-y-8 sm:p-8">
+      <div className="flex flex-col space-y-3">
+        <h1 className="font-bold text-2xl sm:text-3xl">{`Shadcn ${category.name}`}</h1>
       </div>
       <ComponentsGrid {...category.breakpoints}>
         {components.map((component) => (

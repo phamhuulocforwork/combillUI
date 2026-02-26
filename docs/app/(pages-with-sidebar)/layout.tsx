@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import PagesLayout from "@/components/layout/pages-layout";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import PagesLayout from '@/components/layout/pages-layout';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (

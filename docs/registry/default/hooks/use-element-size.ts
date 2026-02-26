@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-type ObserverRect = Omit<DOMRectReadOnly, "toJSON">;
+type ObserverRect = Omit<DOMRectReadOnly, 'toJSON'>;
 
 const defaultState: ObserverRect = {
   x: 0,
@@ -23,7 +23,7 @@ export function useResizeObserver<T extends HTMLElement = any>(
 
   const observer = React.useMemo(
     () =>
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? new ResizeObserver((entries: any) => {
             const entry = entries[0];
 

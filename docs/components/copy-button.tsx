@@ -1,18 +1,16 @@
-"use client";
+'use client';
 
-import { Check, Copy } from "lucide-react";
+import { Check, Copy } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-import { cn } from "@/lib/utils";
-
-import { useCopy } from "@/hooks/use-copy";
+} from '@/components/ui/tooltip';
+import { useCopy } from '@/hooks/use-copy';
+import { cn } from '@/lib/utils';
 
 const CopyButton = ({
   source,
@@ -33,31 +31,31 @@ const CopyButton = ({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              variant='ghost'
-              size='icon'
+              variant="ghost"
+              size="icon"
               className={cn(
-                `text-muted-foreground hover:text-foreground cursor-pointer transition-none disabled:opacity-100`,
+                `cursor-pointer text-muted-foreground transition-none hover:text-foreground disabled:opacity-100`,
                 btnClassName,
               )}
-              onClick={() => copy(source || "")}
-              aria-label={copied ? "Copied" : "Copy component source"}
+              onClick={() => copy(source || '')}
+              aria-label={copied ? 'Copied' : 'Copy component source'}
               disabled={copied}
             >
               <div
                 className={cn(
-                  "transition-all",
-                  copied ? "scale-100 opacity-100" : "scale-0 opacity-0",
+                  'transition-all',
+                  copied ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
                 )}
               >
-                <Check aria-hidden={true} className='size-4 text-green-500' />
+                <Check aria-hidden={true} className="size-4 text-green-500" />
               </div>
               <div
                 className={cn(
-                  "absolute transition-all",
-                  copied ? "scale-0 opacity-0" : "scale-100 opacity-100",
+                  'absolute transition-all',
+                  copied ? 'scale-0 opacity-0' : 'scale-100 opacity-100',
                 )}
               >
-                <Copy aria-hidden={true} className='size-4' />
+                <Copy aria-hidden={true} className="size-4" />
               </div>
             </Button>
           </TooltipTrigger>

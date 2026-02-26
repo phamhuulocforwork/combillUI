@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react';
 import {
   AlertCircleIcon,
   ChevronsUpDown,
@@ -10,7 +10,7 @@ import {
   RectangleHorizontal,
   TriangleAlert,
   UserIcon,
-} from "lucide-react";
+} from 'lucide-react';
 
 import {
   accordionComponents,
@@ -23,7 +23,7 @@ import {
   collapsibleComponents,
   spinnerComponents,
   tooltipComponents,
-} from "@/registry/default/snippets";
+} from '@/registry/default/snippets';
 
 export type ComponentCategory = {
   slug: string;
@@ -54,10 +54,10 @@ export type ComponentCategory = {
 
 export const categoriesSnippet: ComponentCategory[] = [
   {
-    slug: "accordion",
-    name: "Accordion",
+    slug: 'accordion',
+    name: 'Accordion',
     description:
-      "A vertically stacked set of interactive headings that each reveal a section of content.",
+      'A vertically stacked set of interactive headings that each reveal a section of content.',
     icon: ListCollapse,
     breakpoints: {
       sm: 1,
@@ -66,9 +66,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: accordionComponents,
   },
   {
-    slug: "alert",
-    name: "Alert",
-    description: "Displays a callout for user attention.",
+    slug: 'alert',
+    name: 'Alert',
+    description: 'Displays a callout for user attention.',
     icon: AlertCircleIcon,
     breakpoints: {
       sm: 1,
@@ -77,10 +77,10 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: alertComponents,
   },
   {
-    slug: "alert-dialog",
-    name: "Alert Dialog",
+    slug: 'alert-dialog',
+    name: 'Alert Dialog',
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      'A modal dialog that interrupts the user with important content and expects a response.',
     icon: TriangleAlert,
     breakpoints: {
       sm: 2,
@@ -89,9 +89,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: alertDialogComponents,
   },
   {
-    slug: "avatar",
-    name: "Avatar",
-    description: "An image element with a fallback for representing the user.",
+    slug: 'avatar',
+    name: 'Avatar',
+    description: 'An image element with a fallback for representing the user.',
     icon: UserIcon,
     breakpoints: {
       sm: 2,
@@ -100,9 +100,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: avatarComponents,
   },
   {
-    slug: "badge",
-    name: "Badge",
-    description: "Displays a badge or a component that looks like a badge.",
+    slug: 'badge',
+    name: 'Badge',
+    description: 'Displays a badge or a component that looks like a badge.',
     icon: RectangleHorizontal,
     breakpoints: {
       sm: 2,
@@ -112,10 +112,10 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: badgeComponents,
   },
   {
-    slug: "breadcrumb",
-    name: "Breadcrumb",
+    slug: 'breadcrumb',
+    name: 'Breadcrumb',
     description:
-      "Displays the path to the current resource using a hierarchy of links.",
+      'Displays the path to the current resource using a hierarchy of links.',
     icon: HomeIcon,
     breakpoints: {
       sm: 1,
@@ -124,9 +124,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: breadcrumbComponents,
   },
   {
-    slug: "carousel",
-    name: "Carousel",
-    description: "A carousel with motion and swipe built using Embla.",
+    slug: 'carousel',
+    name: 'Carousel',
+    description: 'A carousel with motion and swipe built using Embla.',
     icon: GalleryThumbnails,
     breakpoints: {
       sm: 1,
@@ -135,9 +135,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: carouselComponents,
   },
   {
-    slug: "collapsible",
-    name: "Collapsible",
-    description: "An interactive component which expands/collapses a panel.",
+    slug: 'collapsible',
+    name: 'Collapsible',
+    description: 'An interactive component which expands/collapses a panel.',
     icon: ChevronsUpDown,
     breakpoints: {
       sm: 1,
@@ -146,9 +146,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: collapsibleComponents,
   },
   {
-    slug: "spinner",
-    name: "Spinner",
-    description: "Informs users about the status of ongoing processes.",
+    slug: 'spinner',
+    name: 'Spinner',
+    description: 'Informs users about the status of ongoing processes.',
     icon: Loader2Icon,
     breakpoints: {
       sm: 2,
@@ -158,9 +158,9 @@ export const categoriesSnippet: ComponentCategory[] = [
     components: spinnerComponents,
   },
   {
-    slug: "tooltip",
-    name: "Tooltip",
-    description: "Displays a tooltip with information about the current state.",
+    slug: 'tooltip',
+    name: 'Tooltip',
+    description: 'Displays a tooltip with information about the current state.',
     icon: MessagesSquare,
     breakpoints: {
       sm: 1,

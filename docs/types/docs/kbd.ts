@@ -1,20 +1,20 @@
-import type { CompositionProps, EmptyProps } from "@/types";
+import type { CompositionProps, EmptyProps } from '@/types';
 
-export interface RootProps extends EmptyProps<"kbd">, CompositionProps {
+export interface RootProps extends EmptyProps<'kbd'>, CompositionProps {
   /**
    * The size of the keyboard key.
    * @default "default"
    */
-  size?: "default" | "sm" | "lg";
+  size?: 'default' | 'sm' | 'lg';
 
   /**
    * The visual style of the keyboard key.
    * @default "default"
    */
-  variant?: "default" | "outline" | "ghost";
+  variant?: 'default' | 'outline' | 'ghost';
 }
 
-export interface KeyProps extends EmptyProps<"span">, CompositionProps {
+export interface KeyProps extends EmptyProps<'span'>, CompositionProps {
   /**
    * Title for the key. If not provided, will try to use the predefined title.
    * @example
@@ -24,4 +24,4 @@ export interface KeyProps extends EmptyProps<"span">, CompositionProps {
   title?: string;
 }
 
-export interface SeparatorProps extends EmptyProps<"span">, CompositionProps {}
+export interface SeparatorProps extends EmptyProps<'span'>, CompositionProps {}

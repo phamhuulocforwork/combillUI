@@ -1,15 +1,14 @@
-"use client";
+'use client';
 
-import type { ComponentProps, MouseEvent } from "react";
+import { Code, LayoutPanelTop, PanelLeftIcon, X } from 'lucide-react';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type { ComponentProps, MouseEvent } from 'react';
 
-import { Code, LayoutPanelTop, PanelLeftIcon, X } from "lucide-react";
-
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Icons } from '@/components/icons';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Sidebar,
   SidebarContent,
@@ -24,20 +23,18 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
+import { categoriesSnippet } from '@/config/snippets';
 
-import { cn } from "@/lib/utils";
+import { useMediaQuery } from '@/hooks/use-media-query';
+import { cn } from '@/lib/utils';
 
-import { useMediaQuery } from "@/hooks/use-media-query";
-
-import { categoriesSnippet } from "@/config/snippets";
-
-type CustomSidebarMenuItemProps = ComponentProps<"li"> & {
+type CustomSidebarMenuItemProps = ComponentProps<'li'> & {
   href?: string;
   openInNewTab?: boolean;
 };
 
-type CustomSidebarMenuSubItemProps = ComponentProps<"li"> & {
+type CustomSidebarMenuSubItemProps = ComponentProps<'li'> & {
   isNew?: boolean;
   isUpdated?: boolean;
   href?: string;
@@ -54,9 +51,9 @@ export const CustomSidebarTrigger = ({
 
   return (
     <Button
-      variant='ghost'
-      size='icon'
-      className={cn("size-7", className)}
+      variant="ghost"
+      size="icon"
+      className={cn('size-7', className)}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
@@ -64,7 +61,7 @@ export const CustomSidebarTrigger = ({
       {...props}
     >
       <PanelLeftIcon />
-      <span className='sr-only'>Sidebar</span>
+      <span className="sr-only">Sidebar</span>
     </Button>
   );
 };
@@ -83,9 +80,9 @@ const CustomSidebarMenuItem = ({
     <SidebarMenuItem>
       <SidebarMenuButton
         className={cn(
-          "text-muted-foreground h-8.5 cursor-pointer rounded-sm px-3 font-medium",
+          'h-8.5 cursor-pointer rounded-sm px-3 font-medium text-muted-foreground',
           {
-            "text-primary hover:text-primary active:text-primary": active,
+            'text-primary hover:text-primary active:text-primary': active,
           },
         )}
         {...(href && { asChild: true })}
@@ -93,8 +90,8 @@ const CustomSidebarMenuItem = ({
         {href ? (
           <Link
             href={href}
-            {...(openInNewTab && { target: "_blank" })}
-            rel='noopener noreferrer'
+            {...(openInNewTab && { target: '_blank' })}
+            rel="noopener noreferrer"
             onClick={() => setOpenMobile(false)}
           >
             {children}
@@ -122,16 +119,16 @@ const CustomSidebarMenuSubItem = ({
 
   return (
     <SidebarMenuSubItem
-      className={cn("hover:border-foreground border-s-1 hover:border-s-2", {
-        "border-primary hover:border-primary active:border-primary border-s-2":
+      className={cn('border-s-1 hover:border-foreground hover:border-s-2', {
+        'border-primary border-s-2 hover:border-primary active:border-primary':
           active,
       })}
     >
       <SidebarMenuSubButton
         className={cn(
-          "text-muted-foreground hover:text-foreground active:text-foreground h-8 cursor-pointer px-3 hover:bg-transparent hover:ps-[11px] active:bg-transparent",
+          'h-8 cursor-pointer px-3 text-muted-foreground hover:bg-transparent hover:ps-[11px] hover:text-foreground active:bg-transparent active:text-foreground',
           {
-            "text-primary hover:text-primary active:text-primary ps-[11px]":
+            'ps-[11px] text-primary hover:text-primary active:text-primary':
               active,
           },
         )}
@@ -140,8 +137,8 @@ const CustomSidebarMenuSubItem = ({
         {href ? (
           <Link
             href={href}
-            {...(openInNewTab && { target: "_blank" })}
-            rel='noopener noreferrer'
+            {...(openInNewTab && { target: '_blank' })}
+            rel="noopener noreferrer"
             onClick={(e) => {
               onClick?.(e);
               setOpenMobile(false);
@@ -154,12 +151,12 @@ const CustomSidebarMenuSubItem = ({
         )}
       </SidebarMenuSubButton>
       {isUpdated && (
-        <SidebarMenuBadge className='!end-0 top-1/2 -translate-y-1/2 rounded-[4px] bg-indigo-500/20 px-2 py-0.5 font-normal text-indigo-500'>
+        <SidebarMenuBadge className="!end-0 -translate-y-1/2 top-1/2 rounded-[4px] bg-indigo-500/20 px-2 py-0.5 font-normal text-indigo-500">
           Updated
         </SidebarMenuBadge>
       )}
       {isNew && (
-        <SidebarMenuBadge className='!end-0 top-1/2 -translate-y-1/2 rounded-[4px] bg-green-500/20 px-2 py-0.5 font-normal text-green-500'>
+        <SidebarMenuBadge className="!end-0 -translate-y-1/2 top-1/2 rounded-[4px] bg-green-500/20 px-2 py-0.5 font-normal text-green-500">
           New
         </SidebarMenuBadge>
       )}
@@ -168,74 +165,74 @@ const CustomSidebarMenuSubItem = ({
 };
 
 const AppSidebar = () => {
-  const isBreakpointReached = useMediaQuery("(max-width: 1023px)");
+  const isBreakpointReached = useMediaQuery('(max-width: 1023px)');
   const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar
-      collapsible={isBreakpointReached ? "offcanvas" : "none"}
-      className='bg-background border-r border-dashed'
+      collapsible={isBreakpointReached ? 'offcanvas' : 'none'}
+      className="border-r border-dashed bg-background"
     >
       {isBreakpointReached && (
-        <SidebarHeader className='min-h-[3rem] flex-row items-center justify-between px-6 py-3.5'>
-          <Link href='/'>
+        <SidebarHeader className="min-h-[3rem] flex-row items-center justify-between px-6 py-3.5">
+          <Link href="/">
             <Icons.logo />
           </Link>
           <Button
-            variant='ghost'
-            size='icon'
-            className='size-7 cursor-pointer'
+            variant="ghost"
+            size="icon"
+            className="size-7 cursor-pointer"
             onClick={() => setOpenMobile(false)}
           >
-            <X className='size-5' />
-            <span className='sr-only'>Close</span>
+            <X className="size-5" />
+            <span className="sr-only">Close</span>
           </Button>
         </SidebarHeader>
       )}
-      <ScrollArea className='max-h-[calc(100vh-3rem)] lg:!sticky lg:top-[3rem]'>
+      <ScrollArea className="lg:!sticky max-h-[calc(100vh-3rem)] lg:top-[3rem]">
         <SidebarContent>
           <SidebarGroup
-            className={cn("px-3 pt-0 pb-4 last:pb-8 lg:px-4", {
-              "first:pt-8": !isBreakpointReached,
+            className={cn('px-3 pt-0 pb-4 last:pb-8 lg:px-4', {
+              'first:pt-8': !isBreakpointReached,
             })}
           >
-            <SidebarMenu className='gap-2.5'>
-              <CustomSidebarMenuItem href='/snippets'>
-                <Code className='!size-5' />
+            <SidebarMenu className="gap-2.5">
+              <CustomSidebarMenuItem href="/snippets">
+                <Code className="!size-5" />
                 Snippets
               </CustomSidebarMenuItem>
               <CustomSidebarMenuItem>
-                <LayoutPanelTop className='!size-5' />
+                <LayoutPanelTop className="!size-5" />
                 Blocks
-                <SidebarMenuBadge className='bg-muted text-muted-foreground static rounded-full px-2 py-0.5 font-normal'>
+                <SidebarMenuBadge className="static rounded-full bg-muted px-2 py-0.5 font-normal text-muted-foreground">
                   Coming Soon
                 </SidebarMenuBadge>
               </CustomSidebarMenuItem>
             </SidebarMenu>
           </SidebarGroup>
           <SidebarGroup
-            className={cn("px-3 pt-0 pb-4 last:pb-8 lg:px-4", {
-              "first:pt-8": !isBreakpointReached,
+            className={cn('px-3 pt-0 pb-4 last:pb-8 lg:px-4', {
+              'first:pt-8': !isBreakpointReached,
             })}
           >
-            <SidebarGroupLabel className='px-3 pb-2 text-sm font-semibold lg:px-4'>
+            <SidebarGroupLabel className="px-3 pb-2 font-semibold text-sm lg:px-4">
               Snippets
             </SidebarGroupLabel>
-            <SidebarMenuSub className='mx-3 gap-0 border-0 p-0 lg:mx-4'>
+            <SidebarMenuSub className="mx-3 gap-0 border-0 p-0 lg:mx-4">
               {categoriesSnippet.map((category) => (
                 <CustomSidebarMenuSubItem
                   key={category.slug}
-                  isNew={"isNew" in category ? category.isNew : undefined}
+                  isNew={'isNew' in category ? category.isNew : undefined}
                   isUpdated={
-                    "isUpdated" in category ? category.isUpdated : undefined
+                    'isUpdated' in category ? category.isUpdated : undefined
                   }
                   {...(category.isComingSoon
-                    ? { href: "/", onClick: (e) => e.preventDefault() }
+                    ? { href: '/', onClick: (e) => e.preventDefault() }
                     : { href: `/snippets/${category.slug}` })}
                 >
                   {category.name}
                   {category.isComingSoon && (
-                    <SidebarMenuBadge className='bg-muted text-muted-foreground static rounded-full px-2 py-0.5 font-normal'>
+                    <SidebarMenuBadge className="static rounded-full bg-muted px-2 py-0.5 font-normal text-muted-foreground">
                       Coming Soon
                     </SidebarMenuBadge>
                   )}

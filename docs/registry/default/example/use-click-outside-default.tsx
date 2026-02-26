@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-import { useClickOutside } from "@/registry/default/hooks/use-click-outside";
+import { useClickOutside } from '@/registry/default/hooks/use-click-outside';
 
 export default function UseClickOutsideDefault() {
   const [opened, setOpened] = React.useState(false);
@@ -15,7 +15,7 @@ export default function UseClickOutsideDefault() {
       <Button onClick={() => setOpened(true)}>Open dropdown</Button>
 
       {opened && (
-        <div ref={ref} className='absolute p-4 rounded-md border bg-background'>
+        <div ref={ref} className="absolute rounded-md border bg-background p-4">
           <span>Click outside to close</span>
         </div>
       )}

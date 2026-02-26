@@ -1,12 +1,10 @@
-import { Fragment, useLayoutEffect, useState } from "react";
-import type { JSX } from "react";
-
-import { jsx, jsxs } from "react/jsx-runtime";
-
-import { toJsxRuntime } from "hast-util-to-jsx-runtime";
-import { Loader2Icon } from "lucide-react";
-import { codeToHast } from "shiki/bundle/web";
-import type { BundledLanguage } from "shiki/bundle/web";
+import { toJsxRuntime } from 'hast-util-to-jsx-runtime';
+import { Loader2Icon } from 'lucide-react';
+import type { JSX } from 'react';
+import { Fragment, useLayoutEffect, useState } from 'react';
+import { jsx, jsxs } from 'react/jsx-runtime';
+import type { BundledLanguage } from 'shiki/bundle/web';
+import { codeToHast } from 'shiki/bundle/web';
 
 type Props = {
   code: string | null;
@@ -18,7 +16,7 @@ type Props = {
 export const highlight = async (code: string, lang: BundledLanguage) => {
   const out = await codeToHast(code, {
     lang,
-    theme: "one-dark-pro",
+    theme: 'one-dark-pro',
   });
 
   return toJsxRuntime(out, {
@@ -46,7 +44,7 @@ const CodeBlock = ({ code, lang, initial, preHighlighted }: Props) => {
       });
     } else {
       setContent(
-        <pre className='rounded-md bg-zinc-950 p-4'>No code available</pre>,
+        <pre className="rounded-md bg-zinc-950 p-4">No code available</pre>,
       );
     }
 
@@ -56,12 +54,12 @@ const CodeBlock = ({ code, lang, initial, preHighlighted }: Props) => {
   }, [code, lang, preHighlighted]);
 
   return content ? (
-    <div className='*:outline-none! [&_code]:font-mono [&_code]:text-[13px] [&_pre]:max-h-[450px] [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:bg-zinc-950! [&_pre]:p-4 [&_pre]:leading-snug dark:[&_pre]:bg-zinc-900!'>
+    <div className="*:outline-none! [&_code]:font-mono [&_code]:text-[13px] [&_pre]:max-h-[450px] [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:bg-zinc-950! [&_pre]:p-4 [&_pre]:leading-snug dark:[&_pre]:bg-zinc-900!">
       {content}
     </div>
   ) : (
-    <pre className='rounded-md bg-zinc-950 p-4 flex items-center justify-center text-muted-foreground text-sm font-semibold'>
-      <Loader2Icon className='mr-2 animate-spin size-5' /> Loading...
+    <pre className="flex items-center justify-center rounded-md bg-zinc-950 p-4 font-semibold text-muted-foreground text-sm">
+      <Loader2Icon className="mr-2 size-5 animate-spin" /> Loading...
     </pre>
   );
 };

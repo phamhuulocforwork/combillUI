@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { htmlToJsx } from "@/lib/utils";
+import { htmlToJsx } from '@/lib/utils';
 
-import { EditorLanguage } from "@/types";
+import { EditorLanguage } from '@/types';
 
-import MonacoEditor from "../../blocks/monaco-editor/monaco-editor";
-import Previewer from "./previewer";
+import MonacoEditor from '../../blocks/monaco-editor/monaco-editor';
+import Previewer from './previewer';
 
 interface ResultOutputProps {
   activeTab: string;
@@ -20,18 +20,18 @@ const ResultOutput: React.FC<ResultOutputProps> = ({
 }) => {
   return (
     <React.Fragment>
-      {activeTab === "preview" ? (
-        <div className={`w-full h-full overflow-auto ${code && "rounded-md"}`}>
+      {activeTab === 'preview' ? (
+        <div className={`h-full w-full overflow-auto ${code && 'rounded-md'}`}>
           <Previewer code={code} />
         </div>
       ) : (
-        <div className='w-full h-full rounded-md overflow-auto'>
+        <div className="h-full w-full overflow-auto rounded-md">
           <MonacoEditor
-            code={activeTab === "html" ? code : htmlToJsx(code, "Skeleton")}
+            code={activeTab === 'html' ? code : htmlToJsx(code, 'Skeleton')}
             onCodeChange={onCodeChange}
             editable={false}
             language={
-              activeTab === "html"
+              activeTab === 'html'
                 ? EditorLanguage.HTML
                 : EditorLanguage.JAVASCRIPT
             }

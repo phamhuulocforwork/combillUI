@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 function getFullscreenElement(): HTMLElement | null {
   const _document = window.document as any;
@@ -15,16 +15,16 @@ function getFullscreenElement(): HTMLElement | null {
 function exitFullscreen() {
   const _document = window.document as any;
 
-  if (typeof _document.exitFullscreen === "function") {
+  if (typeof _document.exitFullscreen === 'function') {
     return _document.exitFullscreen();
   }
-  if (typeof _document.msExitFullscreen === "function") {
+  if (typeof _document.msExitFullscreen === 'function') {
     return _document.msExitFullscreen();
   }
-  if (typeof _document.webkitExitFullscreen === "function") {
+  if (typeof _document.webkitExitFullscreen === 'function') {
     return _document.webkitExitFullscreen();
   }
-  if (typeof _document.mozCancelFullScreen === "function") {
+  if (typeof _document.mozCancelFullScreen === 'function') {
     return _document.mozCancelFullScreen();
   }
 
@@ -43,7 +43,7 @@ function enterFullScreen(element: HTMLElement) {
   );
 }
 
-const prefixes = ["", "webkit", "moz", "ms"];
+const prefixes = ['', 'webkit', 'moz', 'ms'];
 
 function addEvents(
   element: HTMLElement,

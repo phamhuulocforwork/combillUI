@@ -1,4 +1,4 @@
-import { html } from "common-tags";
+import { html } from 'common-tags';
 
 const parseSublimeText = (
   description: string,
@@ -6,7 +6,7 @@ const parseSublimeText = (
   snippet: string,
 ) => {
   const regexpMagic = /(\$)([a-z(]+)([^$])/gi;
-  const escapedSnippet = snippet.replace(regexpMagic, "\\$1$2$3");
+  const escapedSnippet = snippet.replace(regexpMagic, '\\$1$2$3');
   // prettier-ignore
   return html`
     <snippet>

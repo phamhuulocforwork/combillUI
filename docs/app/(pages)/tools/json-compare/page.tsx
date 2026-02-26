@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import PagesContent from "@/components/layout/pages-content";
-import JSONCompareHeader from "@/components/tools/json-compare/json-compare-header";
-import JSONInputCard from "@/components/tools/json-compare/json-input-card";
-import JSONResultCard from "@/components/tools/json-compare/json-result-card";
+import PagesContent from '@/components/layout/pages-content';
+import JSONCompareHeader from '@/components/tools/json-compare/json-compare-header';
+import JSONInputCard from '@/components/tools/json-compare/json-input-card';
+import JSONResultCard from '@/components/tools/json-compare/json-result-card';
 import {
+  type ComparisonResult,
   compareJSON,
   mergeJSON,
-  type ComparisonResult,
-} from "@/components/tools/json-compare/utils/json-utils";
+} from '@/components/tools/json-compare/utils/json-utils';
 
 export default function JSONComparePage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [comparisonResult, setComparisonResult] =
     useState<ComparisonResult | null>(null);
   const [mergedResult, setMergedResult] = useState<any | null>(null);
-  const [mode, setMode] = useState<"two-files" | "template">("two-files");
+  const [mode, setMode] = useState<'two-files' | 'template'>('two-files');
 
   const handleCompare = (
     json1: any,
     json2: any,
-    comparisonMode: "two-files" | "template",
+    comparisonMode: 'two-files' | 'template',
   ) => {
     setIsProcessing(true);
     setMode(comparisonMode);
@@ -47,13 +47,13 @@ export default function JSONComparePage() {
   };
 
   return (
-    <div className='flex flex-1'>
-      <div className='mx-auto flex w-full container border-dashed min-[1400px]:border-x'>
-        <PagesContent className='flex items-center justify-center'>
-          <div className='container mx-auto py-8 px-4 max-w-7xl'>
+    <div className="flex flex-1">
+      <div className="container mx-auto flex w-full border-dashed min-[1400px]:border-x">
+        <PagesContent className="flex items-center justify-center">
+          <div className="container mx-auto max-w-7xl px-4 py-8">
             <JSONCompareHeader />
 
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <JSONInputCard
                 onCompare={handleCompare}
                 onMerge={handleMerge}

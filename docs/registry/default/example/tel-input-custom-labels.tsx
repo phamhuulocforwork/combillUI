@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { TelInput } from "@/registry/default/ui/tel-input";
+import { TelInput } from '@/registry/default/ui/tel-input';
 
 export default function TelInputCustomLabels() {
-  const [value, setValue] = React.useState<string>("");
+  const [value, setValue] = React.useState<string>('');
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div className="flex flex-col gap-2">
       <TelInput
         value={value}
         onChange={setValue}
-        defaultCountry='VN'
+        defaultCountry="VN"
         labels={{
-          VN: "Vietnam mãi đỉnh",
+          VN: 'Vietnam mãi đỉnh',
         }}
-        placeholder='Custom country labels'
+        placeholder="Custom country labels"
       />
-      <p className='text-sm text-muted-foreground'>
-        Phone number: {value || "No phone number entered"}
+      <p className="text-muted-foreground text-sm">
+        Phone number: {value || 'No phone number entered'}
       </p>
     </div>
   );
