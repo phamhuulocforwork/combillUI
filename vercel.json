@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm --filter \"@combillui/*\" build && pnpm build",
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install"
 }
